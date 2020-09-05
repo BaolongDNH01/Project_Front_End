@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="375226ba-6cfe-46f9-b49b-cd8ffe8d5973" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Project_Front_End.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/FE/src/app/exam/top-point/top-point.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/FE/src/app/exam/top-point/top-point.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/FE/src/app/exam/top-point/top-point.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/exam/exam.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/exam/exam.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/exam/exam_service/exam.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/exam/exam_service/exam.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/test/test.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/test/test.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/test/test_service/test.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/test/test_service/test.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/user/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/user/user.module.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1h5kPkpBVLv7enE6b4BnJctGye1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="D:/musicAppBackend" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="375226ba-6cfe-46f9-b49b-cd8ffe8d5973" name="Default Changelist" comment="" />
+      <created>1599308318813</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599308318813</updated>
+      <workItem from="1599308320721" duration="9000" />
+      <workItem from="1599311221224" duration="23000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1599311245346">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599311245346" />
+  </component>
+</project>
