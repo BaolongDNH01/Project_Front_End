@@ -1,13 +1,15 @@
 export class Question {
   questionId: string;
   question: string;
-  answer1: string;
-  answer2: string;
-  answer3: string;
-  answer4: string;
+  answerA: string;
+  answerB: string;
+  answerC: string;
+  answerD: string;
   rightAnswer: string;
-
+  testId: [];
+  subjectId;
 
   constructor() {
   }
 }
+
