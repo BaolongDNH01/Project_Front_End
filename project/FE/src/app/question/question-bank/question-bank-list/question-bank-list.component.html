@@ -1,4 +1,3 @@
-
 <div class="container-fluid mt-md-3 mb-md-3 ">
   <div class="row">
     <div class="col-md-12">
@@ -23,70 +22,30 @@
         <table class="table table-bordered mt-lg-2 text-center">
           <thead>
           <tr class="bg-title-table">
-            <th scope="col">No </th>
-            <th scope="col" >Question Code</th>
-            <th scope="col" >Question</th>
-            <th scope="col" >The answer</th>
-            <th scope="col" >Correct answer</th>
+            <th scope="col">No</th>
+            <th scope="col">Question Code</th>
+            <th scope="col">Question</th>
+            <th scope="col">The answer</th>
+            <th scope="col">Correct answer</th>
           </tr>
           </thead>
           <tbody class="bg-table ">
-          <tr>
+          <tr *ngFor="let questionList of question">
             <th style="font-weight: normal">1</th>
-            <td>001</td>
-            <td class="text-left">
-              What is incremental movement?</td>
+            <td>{{questionList.questionId}}</td>
+            <td class="text-left">{{questionList.question}}</td>
             <td>
               <div class="border">
-                <div class="navbar  bg-answer-1">Acceleration does not change</div>
-                <div class="navbar  bg-answer-2">The speed does not change</div>
-                <div class="navbar  bg-answer-3">The largest road square</div>
-                <div class="navbar  bg-answer-4">The speed increases with constant acceleration</div>
+                <div class="navbar  bg-answer-1">{{questionList.answerA}}</div>
+                <div class="navbar  bg-answer-2">{{questionList.answerB}}</div>
+                <div class="navbar  bg-answer-3">{{questionList.answerC}}</div>
+                <div class="navbar  bg-answer-4">{{questionList.answerD}}</div>
               </div>
             </td>
-            <td class="text-left">The speed increases with constant acceleration</td>
+            <td class="text-left">{{questionList.rightAnswer}}</td>
             <td>
-              <a href="">Edit </a>
-              <a href=""> Del</a>
-            </td>
-
-          </tr>
-
-          <tr>
-            <th style="font-weight: normal">2</th>
-            <td>002</td>
-            <td class="font-text ">General properties of metals?</td>
-            <td>
-              <div class="border">
-                <div class="navbar  bg-answer-1">Flexible, conductive, heat-conductive, iridescent</div>
-                <div class="navbar  bg-answer-2">Color, hard, conductive, heat conductive</div>
-                <div class="navbar  bg-answer-3">Color, flexible, metallic, heat conductive</div>
-                <div class="navbar  bg-answer-4">All right</div>
-              </div>
-            </td>
-            <td class="font-text">Flexible, conductive, heat-conductive, iridescent</td>
-            <td>
-              <a href="">Edit </a>
-              <a href=""> Del</a>
-            </td>
-          </tr>
-
-          <tr>
-            <th style="text-align: center ; font-weight: normal" class="font-text" scope="row">3</th>
-            <td style="text-align: center" class="font-text">003</td>
-            <td class="font-text">I am intersted in (listen)___to music</td>
-            <td>
-              <div class="border">
-                <div class="navbar  bg-answer-1">listening</div>
-                <div class="navbar  bg-answer-2">listened</div>
-                <div class="navbar  bg-answer-3">listen</div>
-                <div class="navbar  bg-answer-4">To listen</div>
-              </div>
-            </td>
-            <td class="font-text">listening</td>
-            <td>
-              <a href="">Edit </a>
-              <a href=""> Del</a>
+              <a href="">Edit</a>
+              <a href="">Del</a>
             </td>
           </tr>
 
@@ -98,7 +57,9 @@
             <div class="col-xs-12 col-sm-6 col-md-3">
               <div id="emoji" class="collapse">
                 <input type="file">
-                <button data-toggle="collapse" type="button" data-target="#notification" class="btn bg-btn btn-primary mt-3">Upload</button>
+                <button data-toggle="collapse" type="button" data-target="#notification"
+                        class="btn bg-btn btn-primary mt-3">Upload
+                </button>
               </div>
 
               <div id="notification" class="collapse errors">
@@ -111,9 +72,13 @@
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-2">
-              <button data-toggle="collapse" type="button" data-target="#notification" class="btn bg-btn btn-primary mb-3">Add New</button>
+              <button data-toggle="collapse" type="button" data-target="#notification"
+                      class="btn bg-btn btn-primary mb-3">Add New
+              </button>
 
-              <button type="button" data-toggle="collapse" data-target="#notification" class="btn bg-btn btn-primary mb-3">Close</button>
+              <button type="button" data-toggle="collapse" data-target="#notification"
+                      class="btn bg-btn btn-primary mb-3">Close
+              </button>
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-1">

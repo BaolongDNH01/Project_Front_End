@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {QuestionService} from '../../question.service';
+import {Question} from '../../question';
 
 @Component({
   selector: 'app-question-bank-list',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../../../../assets/css/style-table-question.css']
 })
 export class QuestionBankListComponent implements OnInit {
+  question: Question[];
 
-  constructor() { }
+  constructor(
+    private questionService: QuestionService
+  ) {
+  }
 
   ngOnInit(): void {
+    this.questionService.getAllQuestion().subscribe(
+      next => {
+        this.question = next;
+      }, error => {
+        this.question = new Array();
+      });
   }
 
 }
