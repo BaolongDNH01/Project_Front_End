@@ -1,0 +1,70 @@
+
+.question b > span {
+  font-family: Arial, consolas, serif;
+  font-size: 16px;
+}
+.question li>input {
+  font-family: Arial, consolas, serif;
+  font-size: 16px;
+}
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.question input[type="radio"] {
+  display: none;
+}
+
+.question input[type="radio"] + label {
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.25s linear;
+}
+
+.question input[type="radio"]:checked + label {
+  color: #23ff86;
+  font-weight: bold;
+}
+
+.question input[type="radio"] + label:before {
+  display: inline-block;
+  content: "";
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+  margin-left: 15px;
+  border: 4px solid #37616e;
+  border-radius: 50%;
+  transition: all 0.25s linear;
+  vertical-align: middle;
+}
+
+
+.question input[type="radio"]:hover + label:before {
+  border: 4px solid ;
+  margin-right: 20px;
+}
+
+.question input[type="radio"]:checked + label:before {
+  margin-right: 20px;
+  border: 4px solid #54c766;
+  background: #000000;
+}
+
+#resultFinal div{
+  width: 150px;
+  height: 150px;
+  border: 1px solid red;
+  margin-right: 10px;
+  float: left;
+}
+
+.question{
+  clear:left;
+}
