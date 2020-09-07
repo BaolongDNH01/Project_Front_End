@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c667251c-6898-4026-9f10-373a62276f4a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FE/src/app/exam/exam.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/src/app/exam/exam.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/exam/exam.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/src/app/exam/exam_service/exam.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/exam/exam_service/exam.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/app.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/C0220H1-DauTuanPhuong/module4/[C0220H1]Prototype_DAUTUANPHUONG_final" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -40,6 +40,18 @@
       <recent name="D:\C0220H1_WebThiTracNghiem\Project_Front_End\project\FE\src\app\exam" />
     </key>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -53,6 +65,7 @@
       <workItem from="1599325157010" duration="8000" />
       <workItem from="1599394274984" duration="402000" />
       <workItem from="1599394774028" duration="4177000" />
+      <workItem from="1599454454355" duration="8000" />
     </task>
     <servers />
   </component>
