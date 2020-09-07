@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Exam} from '../exam';
-import {ExamService} from "../exam_service/exam.service";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ExamService} from '../exam_service/exam.service';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {Test} from '../../test/test';
+import {TestService} from '../../test/test_service/test.service';
 
 @Component({
   selector: 'app-get-exam',
@@ -11,8 +13,9 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 export class GetExamComponent implements OnInit {
 
   exam: Exam = new Exam();
+  test: Test;
 
-  constructor(private examService: ExamService, private activatedRoute: ActivatedRoute) {
+  constructor(private examService: ExamService, private activatedRoute: ActivatedRoute, private testService: TestService) {
   }
 
   ngOnInit(): void {
@@ -24,7 +27,13 @@ export class GetExamComponent implements OnInit {
           this.exam = next;
         }
       );
+      this.testService.findById(this.exam.test).subscribe(
+        (next) => {
+          this.test = next;
+        }
+      );
     });
+
   }
 
 }
