@@ -7,6 +7,9 @@ import {QuestionBankDeleteComponent} from './question-bank-delete/question-bank-
 import {QuestionRoutingModule} from './question-routing/question-routing.module';
 import {QuestionService} from './question.service';
 import {RouterModule} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AutocompleteLibModule} from "angular-ng-autocomplete";
 
 @NgModule({
 
@@ -14,10 +17,15 @@ import {RouterModule} from '@angular/router';
   imports: [
     CommonModule,
     QuestionRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    AutocompleteLibModule
   ],
   exports: [
-    QuestionBankListComponent
+    QuestionBankListComponent,
+    AddQuestionComponent
   ],
   providers: [
     QuestionService
