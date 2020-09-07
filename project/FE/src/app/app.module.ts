@@ -8,6 +8,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {ExamModule} from './exam/exam.module';
 import {QuestionModule} from './question/question.module';
 import {HttpClientModule} from '@angular/common/http';
+import {QuestionRoutingModule} from './question/question-routing/question-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     ExamModule,
     QuestionModule,
-    HttpClientModule
+    HttpClientModule,
+    QuestionRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

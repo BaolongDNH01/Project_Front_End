@@ -1,13 +1,27 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {QuestionService} from './question_service/question.service';
+import {AddQuestionComponent} from './add-question/add-question.component';
 
+import {QuestionBankListComponent} from './question-bank-list/question-bank-list.component';
+import {QuestionBankDeleteComponent} from './question-bank-delete/question-bank-delete.component';
+import {QuestionRoutingModule} from './question-routing/question-routing.module';
+import {QuestionService} from './question.service';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
-  declarations: [],
+
+  declarations: [QuestionBankListComponent, QuestionBankDeleteComponent, AddQuestionComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    QuestionRoutingModule,
+    RouterModule
   ],
-  providers: [QuestionService]
+  exports: [
+    QuestionBankListComponent
+  ],
+  providers: [
+    QuestionService
+  ]
 })
-export class QuestionModule { }
+export class QuestionModule {
+}

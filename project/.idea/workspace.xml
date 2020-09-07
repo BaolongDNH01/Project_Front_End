@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c667251c-6898-4026-9f10-373a62276f4a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/FE/src/app/exam/exam.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/exam/exam.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/exam/exam.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/app/exam/exam_service/exam.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/exam/exam_service/exam.service.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1h6IXeTV0Y65mtOHJJ6qSM7aS2Q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="D:/C0220H1-DauTuanPhuong/module4/[C0220H1]Prototype_DAUTUANPHUONG_final" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\C0220H1_WebThiTracNghiem\Project_Front_End\project\FE\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\C0220H1_WebThiTracNghiem\Project_Front_End\project\FE\src\app\exam" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c667251c-6898-4026-9f10-373a62276f4a" name="Default Changelist" comment="" />
+      <created>1599325155859</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599325155859</updated>
+      <workItem from="1599325157010" duration="8000" />
+      <workItem from="1599394274984" duration="402000" />
+      <workItem from="1599394774028" duration="4177000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="614" y="183" key="FileChooserDialogImpl" timestamp="1599398834951">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="614" y="183" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599398834951" />
+    <state x="2106" y="280" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1920.1050@1366.0.1920.1050" timestamp="1599325163725" />
+  </component>
+</project>
