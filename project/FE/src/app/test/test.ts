@@ -3,7 +3,7 @@ export class Test {
   testCode: string;
   testName: string;
   grade: string;
-  questions: object;
+  questions: [];
   subject: number;
   examList: [];
 

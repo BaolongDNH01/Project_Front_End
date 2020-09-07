@@ -5,6 +5,8 @@ export class Exam {
   mark: number;
   answer: [];
   times: string;
+  user: number;
+  test: number;
 
   constructor() {
   }
