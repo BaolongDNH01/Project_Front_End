@@ -9,36 +9,41 @@
   </div>
   <table>
     <tbody>
+    <ng-container *ngFor="let question of listQuestion">
+      <ul class="question">
+        <li>
+          <!--question-->
+          <b><span>Q 1: </span></b><b><span>{{question.question}}</span></b>
+        </li>
+      </ul>
 
-
-
-
+    </ng-container>
     <!--    <ul class="question">-->
-    <!--      <li>-->
-    <!--        &lt;!&ndash;question&ndash;&gt;-->
-    <!--        <b><span>Q 1: </span></b><b><span>what color is the sky?</span></b>-->
-    <!--        &lt;!&ndash;correct answer&ndash;&gt;-->
-    <!--        <input id="text1" style="visibility: hidden;" value="A"/><br/>-->
-    <!--        &lt;!&ndash;answer&ndash;&gt;-->
-    <!--        <i id="Q1A" class="fa fa-check"></i>-->
-    <!--        <input id="Cau1A" name="question_01" type="radio" value="A"/><label for="Cau1A"-->
-    <!--                                                                            id="C1A">blue</label>-->
-    <!--        <br/>-->
-    <!--        <i id="Q1B" class="fa fa-times" aria-hidden="false"></i>-->
-    <!--        <input id="Cau1B" name="question_01" type="radio" value="B"/><label for="Cau1B"-->
-    <!--                                                                            id="C1B">red</label>-->
-    <!--        <br/>-->
-    <!--        <i id="Q1C" class="fa fa-times" aria-hidden="false"></i>-->
+<!--          <li>-->
+<!--            &lt;!&ndash;question&ndash;&gt;-->
+<!--            <b><span>Q 1: </span></b><b><span>what color is the sky?</span></b>-->
+<!--            &lt;!&ndash;correct answer&ndash;&gt;-->
+<!--            <input id="text1" style="visibility: hidden;" value="A"/><br/>-->
+<!--            &lt;!&ndash;answer&ndash;&gt;-->
+<!--            <i id="Q1A" class="fa fa-check"></i>-->
+<!--            <input id="Cau1A" name="question_01" type="radio" value="A"/><label for="Cau1A"-->
+<!--                                                                                id="C1A">blue</label>-->
+<!--            <br/>-->
+<!--            <i id="Q1B" class="fa fa-times" aria-hidden="false"></i>-->
+<!--            <input id="Cau1B" name="question_01" type="radio" value="B"/><label for="Cau1B"-->
+<!--                                                                                id="C1B">red</label>-->
+<!--            <br/>-->
+<!--            <i id="Q1C" class="fa fa-times" aria-hidden="false"></i>-->
 
-    <!--        <input id="Cau1C" name="question_01" type="radio" value="C"/><label for="Cau1C"-->
-    <!--                                                                            id="C1C">green</label>-->
-    <!--        <br/>-->
-    <!--        <i id="Q1D" class="fa fa-times" aria-hidden="false"></i>-->
+<!--            <input id="Cau1C" name="question_01" type="radio" value="C"/><label for="Cau1C"-->
+<!--                                                                                id="C1C">green</label>-->
+<!--            <br/>-->
+<!--            <i id="Q1D" class="fa fa-times" aria-hidden="false"></i>-->
 
-    <!--        <input id="Cau1D" name="question_01" type="radio" value="D"/><label for="Cau1D"-->
-    <!--                                                                            id="C1D">violet</label>-->
-    <!--        <br/><br/>-->
-    <!--      </li>-->
+<!--            <input id="Cau1D" name="question_01" type="radio" value="D"/><label for="Cau1D"-->
+<!--                                                                                id="C1D">violet</label>-->
+<!--            <br/><br/>-->
+<!--          </li>-->
     <!--      <li>-->
     <!--        &lt;!&ndash;question&ndash;&gt;-->
     <!--        <b><span>Q 2: </span></b><b><span>Is water wet?</span></b>-->
