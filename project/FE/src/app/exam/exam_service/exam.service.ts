@@ -23,7 +23,7 @@ export class ExamService {
     return this.httpClient.get<Exam>(this.URL + '/get-exam/' + examId);
   }
 
-  // save(exam: Exam): Observable<Exam> {
-  //   return this.httpClient.post<Exam>(this.URL, Exam);
-  // }
+  save(exam: Exam): Observable<Exam> {
+    return this.httpClient.post<Exam>(this.URL + '/create-exam', Exam);
+  }
 }
