@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class QuestionService {
   question: Question;
-  API_URL = 'http://localhost:8080/question';
+  API_URL = 'http://localhost:8080';
 
   constructor(
     private httpClient: HttpClient
@@ -16,14 +16,14 @@ export class QuestionService {
   }
 
   getAllQuestion(): Observable<Question[]> {
-    return this.httpClient.get<Question[]>(this.API_URL);
+    return this.httpClient.get<Question[]>(this.API_URL + '/question');
   }
 
   findById(id: string): Observable<Question> {
-    return this.httpClient.get<Question>(this.API_URL + '/' + id);
+    return this.httpClient.get<Question>(this.API_URL + '/question/' + id);
   }
 
-  deleteProduct(id: number): Observable<Question> {
+  deleteQuestion(id: string): Observable<Question> {
     return this.httpClient.delete<Question>(this.API_URL + '/delete-question/' + id);
   }
 }

@@ -6,7 +6,7 @@ import {QuestionBankDeleteComponent} from '../question-bank-delete/question-bank
 
 const routes: Routes = [
   {
-    path: 'question-list',
+    path: 'question',
     children: [
       {path: '', component: QuestionBankListComponent},
       {path: 'question-delete/:id', component: QuestionBankDeleteComponent}

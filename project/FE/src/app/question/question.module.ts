@@ -7,6 +7,7 @@ import {QuestionBankDeleteComponent} from './question-bank-delete/question-bank-
 import {QuestionRoutingModule} from './question-routing/question-routing.module';
 import {QuestionService} from './question.service';
 import {RouterModule} from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
 
@@ -14,7 +15,8 @@ import {RouterModule} from '@angular/router';
   imports: [
     CommonModule,
     QuestionRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     QuestionBankListComponent
