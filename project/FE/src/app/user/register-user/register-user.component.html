@@ -1,0 +1,101 @@
+<div class="container-fluid mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 card p-0">
+      <div class="card-header">Register</div>
+      <div class="card-body mt-3 mb-3">
+        <form onsubmit="return validate()">
+          <div class="form-group row justify-content-center">
+            <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-6">
+              <input type="text"  class="form-control" id="inputUsername" placeholder="Username">
+              <span class="errors" id="inputUsernameError" style="display: none"></span>
+            </div>
+            <div class="col-md-1">
+              <span style="color: red">*</span>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-6">
+              <input type="password"  class="form-control" id="inputPassword" placeholder="Password">
+              <span class="errors" id="inputPasswordError" style="display: none"></span>
+            </div>
+            <div class="col-md-1">
+              <span style="color: red">*</span>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <label for="inputRePassword" class="col-sm-2 col-form-label">Re Password</label>
+            <div class="col-sm-6">
+              <input type="password"  class="form-control" id="inputRePassword" placeholder="Re Password">
+              <p class="errors" id="inputRePasswordError" style="display: none"></p>
+            </div>
+            <div class="col-md-1">
+              <span style="color: red">*</span>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <label for="inputFullName" class="col-sm-2 col-form-label">Full Name</label>
+            <div class="col-sm-6">
+              <input type="text"  class="form-control" id="inputFullName" placeholder="Full Name">
+              <p class="errors" id="inputFullNameError" style="display: none"></p>
+            </div>
+            <div class="col-md-1">
+              <span style="color: red">*</span>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-6">
+              <input type="text"  class="form-control" id="inputEmail" placeholder="Email">
+              <p class="errors" id="inputEmailError" style="display: none"></p>
+            </div>
+            <div class="col-md-1">
+              <span style="color: red">*</span>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-6">
+              <input type="text"  class="form-control" id="inputAddress" placeholder="Address">
+              <p class="errors" id="inputAddressError" style="display: none"></p>
+            </div>
+            <div class="col-md-1">
+              <span style="color: red">*</span>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone No</label>
+            <div class="col-sm-6">
+              <input type="tel"  class="form-control" id="inputPhoneNumber" placeholder="Phone Number">
+              <p class="errors" id="inputPhoneNumberError" style="display: none"></p>
+            </div>
+            <div class="col-md-1">
+              <span style="color: red">*</span>
+            </div>
+          </div>
+          <div class="form-group row justify-content-center">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-6">
+              <button id="closeButton" class="btn btn-outline-secondary">
+                Close
+              </button>
+              <button type="submit" class="btn btn-outline-secondary">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="modal fade bd-example-modal-lg" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <span id="message"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
