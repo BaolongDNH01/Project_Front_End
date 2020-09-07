@@ -11,5 +11,7 @@ export class QuestionBankDeleteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  on(): void {
+    alert('đã xóa');
+}
 }

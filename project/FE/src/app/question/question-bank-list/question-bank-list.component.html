@@ -44,8 +44,8 @@
             </td>
             <td class="text-left">{{questionList.rightAnswer}}</td>
             <td>
+              <a [routerLink]="['question-delete', questionList.questionId]">Del</a>
               <a href="">Edit</a>
-              <a href="">Del</a>
             </td>
           </tr>
 
@@ -103,4 +103,5 @@
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>
 

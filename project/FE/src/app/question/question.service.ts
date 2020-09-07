@@ -18,4 +18,12 @@ export class QuestionService {
   getAllQuestion(): Observable<Question[]> {
     return this.httpClient.get<Question[]>(this.API_URL);
   }
+
+  findById(id: string): Observable<Question> {
+    return this.httpClient.get<Question>(this.API_URL + '/' + id);
+  }
+
+  deleteProduct(id: number): Observable<Question> {
+    return this.httpClient.delete<Question>(this.API_URL + '/delete-question/' + id);
+  }
 }
