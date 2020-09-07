@@ -4,7 +4,7 @@ export class Test {
   testName: string;
   grade: string;
   questions: object;
-  subject: string;
+  subject: number;
   examList: [];
 
   constructor() {
