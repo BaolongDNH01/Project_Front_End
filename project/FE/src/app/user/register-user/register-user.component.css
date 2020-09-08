@@ -1,0 +1,25 @@
+.card-header, thead {
+  background-color: #d9edf7;
+}
+body {
+  font-family: 'arial', consolas, serif;
+  font-size: 16px;
+}
+
+label {
+  font-weight: bolder;
+}
+
+#dropdownMenuLink, #closeButton, .dropdown-menu, #delete {
+  background-color: #1979a9;
+  color: white;
+}
+
+.errors {
+  color: white;
+  background-color: red;
+}
+
+/*tbody {*/
+/*    background-color: #d3d3d3;*/
+/*}*/
