@@ -8,7 +8,7 @@ import {ExamService} from '../../exam/exam_service/exam.service';
 import {Question} from '../../question/question';
 
 @Component({
-  selector: 'app-get-test',
+  selector: "app-get-test",
   templateUrl: './get-test.component.html',
   styleUrls: ['./get-test.component.css']
 })
