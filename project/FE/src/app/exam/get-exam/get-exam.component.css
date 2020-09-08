@@ -62,12 +62,18 @@ ul {
   clear:left;
 }
 
-.fa-times{
+.allCheckQ{
   visibility: hidden;
+}
+
+.fa-times{
+  visibility: visible;
 }
 
 .fa-check{
-  visibility: hidden;
+  visibility: visible;
 }
 
-
+.rightAnswer{
+  visibility: hidden;
+}
