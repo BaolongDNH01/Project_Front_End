@@ -89,11 +89,11 @@ body {
   display: inline;
 }
 
-.btn {
-  background: rgb(219, 214, 214);
-  background: linear-gradient(0deg, rgb(228, 223, 223) 0%, rgb(248, 248, 248) 35%);
-  border: 1px solid rgb(199, 197, 197);
-}
+/*.btn {*/
+/*  background: rgb(219, 214, 214);*/
+/*  background: linear-gradient(0deg, rgb(228, 223, 223) 0%, rgb(248, 248, 248) 35%);*/
+/*  border: 1px solid rgb(199, 197, 197);*/
+/*}*/
 /*-------------IMG--------*/
 .frames-img{
   margin: 0 3% 7% 3%;
