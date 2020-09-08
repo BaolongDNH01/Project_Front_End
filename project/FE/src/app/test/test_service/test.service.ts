@@ -21,8 +21,6 @@ export class TestService {
   private addTestApi = 'http://localhost:8080/addTest';
   URL = 'http://localhost:8080';
 
-  URL = 'http://localhost:8080';
-
   getAllTest(): Observable<Test[]> {
     return this.httpClient.get<Test[]>(this.getAllTestApi);
   }
