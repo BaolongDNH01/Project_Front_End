@@ -1,12 +1,25 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
+import {QuestionBankListComponent} from '../question-bank-list/question-bank-list.component';
+import {QuestionBankDeleteComponent} from '../question-bank-delete/question-bank-delete.component';
 
-
+const routes: Routes = [
+  {
+    path: 'question',
+    children: [
+      {path: '', component: QuestionBankListComponent},
+      {path: 'question-delete/:id', component: QuestionBankDeleteComponent}
+    ]
+  }
+];
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forRoot(routes)
   ]
 })
-export class QuestionRoutingModule { }
+export class QuestionRoutingModule {
+}

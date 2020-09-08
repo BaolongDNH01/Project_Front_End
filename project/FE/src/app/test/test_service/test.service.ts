@@ -1,14 +1,17 @@
 import {Injectable} from '@angular/core';
+
 import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Test} from '../test-model';
 import {Subject} from '../subject';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class TestService {
+
   private getAllTestApi = 'http://localhost:8080/getAllTest';
   private uploadFile = 'http://localhost:8080/uploadFile';
   private deleteTest = 'http://localhost:8080/deleteTest';
@@ -40,4 +43,13 @@ export class TestService {
   addTest(test: Test): Observable<any> {
     return this.httpClient.post<any>(this.addTestApi, test);
   }
+
+  URL = 'http://localhost:8080';
+
+ 
+
+  findById(testId: number): Observable<Test> {
+    return this.httpClient.get<Test>(this.URL + '/get-test/' + testId);
+  }
+
 }

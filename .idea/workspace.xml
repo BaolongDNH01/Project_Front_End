@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="375226ba-6cfe-46f9-b49b-cd8ffe8d5973" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/project/FE/src/assets/image/import.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/FE/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/FE/src/app/test/test.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/test/test.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/FE/src/app/test/test_service/test.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/test/test_service/test.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/FE/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-delete/question-bank-delete.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-delete/question-bank-delete.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-delete/question-bank-delete.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-delete/question-bank-delete.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-delete/question-bank-delete.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-delete/question-bank-delete.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-list/question-bank-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-list/question-bank-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-list/question-bank-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-list/question-bank-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-list/question-bank-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-list/question-bank-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-routing/question-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-routing/question-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +48,7 @@
       <workItem from="1599308320721" duration="9000" />
       <workItem from="1599311221224" duration="23000" />
       <workItem from="1599325143055" duration="13000" />
-      <workItem from="1599496424190" duration="51000" />
+      <workItem from="1599442036019" duration="126000" />
     </task>
     <servers />
   </component>
@@ -49,11 +56,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="521" y="135" key="FileChooserDialogImpl" timestamp="1599496474119">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2017" y="172" key="FileChooserDialogImpl" timestamp="1599442160792">
+      <screen x="1366" y="0" width="1920" height="1050" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1599311245346" />
-    <state x="2017" y="172" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1920.1050@1366.0.1920.1050" timestamp="1599325154866" />
-    <state x="521" y="135" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1599496474119" />
+    <state x="2017" y="172" key="FileChooserDialogImpl/0.0.1366.738/1366.0.1920.1050@1366.0.1920.1050" timestamp="1599442160792" />
   </component>
 </project>

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {QuestionService} from '../../question.service';
-import {Question} from '../../question';
+import {QuestionService} from '../question.service';
+import {Question} from '../Question';
 
 @Component({
   selector: 'app-question-bank-list',
   templateUrl: './question-bank-list.component.html',
-  styleUrls: ['../../../../assets/css/style-table-question.css']
+  styleUrls: ['../../../assets/css/style-table-question.css']
 })
 export class QuestionBankListComponent implements OnInit {
   question: Question[];
