@@ -21,6 +21,7 @@ import { StatisticalUserComponent } from './statistical-user/statistical-user.co
         StatisticalUserComponent
     ],
     providers: [UserService]
+
 })
 export class UserModule {
 }

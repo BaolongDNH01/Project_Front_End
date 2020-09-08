@@ -1,31 +1,31 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../user_service/user.service';
 import {Router} from '@angular/router';
 import {User} from '../user_model/User';
+import {ValidatePassword} from '../validator/validator';
 
-// tslint:disable-next-line:typedef
-export function ValidatePassword(abstract: AbstractControl, confirmPassword: string) {
-  const v = abstract.value;
-  return (v.user_password === confirmPassword) ? null : {
-    passwordNotMatch: true
-  };
-}
-
+declare var $: any;
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent implements OnInit {
+  passwordForm: FormGroup;
   registerForm: FormGroup;
   newUser: User;
-  confirmPassword: string;
+
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+    this.passwordForm = formBuilder.group({
+      password: ['', [Validators.required, Validators.maxLength(16)]],
+      confirm_password: new FormControl([''])
+    }, {validators: ValidatePassword('password', 'confirm_password')});
+
     this.registerForm = formBuilder.group({
         username: ['', [Validators.required, Validators.maxLength(25)]],
-        user_password: ['', [Validators.required, Validators.maxLength(16)]],
+        user_password: this.passwordForm,
         fullName: ['', [Validators.required, Validators.maxLength(50)]],
         email: ['',
           [
@@ -36,19 +36,43 @@ export class RegisterUserComponent implements OnInit {
         ],
         address: ['', [Validators.required, Validators.maxLength(255)]],
         phoneNumber: ['', [Validators.required, Validators.maxLength(15)]]
-      }, {
-        validators: ValidatePassword(this.registerForm, this.confirmPassword)
       }
     );
   }
 
+  // tslint:disable-next-line:typedef
+  // ValidatePassword(abstract: AbstractControl) {
+  //   const v = abstract.value;
+  //   return (v.password !== v.confirm_password) ? {passwordnotmatch: true} : null;
+  // }
+
   ngOnInit(): void {
+    console.log(this.registerForm.value.user_password);
   }
 
   register(): void {
-    if (this.registerForm.valid){
-      this.newUser = this.registerForm.value;
-      this.userService.saveNewUser(this.newUser).subscribe(res => res.statusText);
+    if (this.registerForm.valid && this.passwordForm.valid) {
+      const c = this.registerForm.value;
+      this.newUser = {
+        id: null,
+        username: c.username,
+        user_password: this.passwordForm.value.password,
+        fullName: c.fullName,
+        email: c.email,
+        address: c.address,
+        phoneNumber: c.phoneNumber,
+        examList: null
+      };
+      this.userService.saveNewUser(this.newUser).subscribe(res => {
+        if (res.statusText === 'OK'){
+          document.getElementById('message').innerText = 'Register Successfully';
+          $('#modalSuccess').modal();
+          setTimeout(() => {
+            this.router.navigateByUrl('');
+          }, 7000);
+        }else {document.getElementById('message').innerText = 'Your username already exist';
+               $('#modalSuccess').modal();}
+      });
     }
   }
 }

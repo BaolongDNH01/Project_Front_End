@@ -96,17 +96,18 @@ export class AddQuestionComponent implements OnInit {
       this.testIdList.push(Number(this.listTestQuestion[i].testId));
     }
     console.log(this.testIdList);
-    this.question = new Question(
-      this.formQuestion.value.questionId,
-      this.formQuestion.value.question,
-      this.formQuestion.value.answerA,
-      this.formQuestion.value.answerB,
-      this.formQuestion.value.answerC,
-      this.formQuestion.value.answerD,
-      this.formQuestion.value.answerAndRight.rightAnswer,
-      this.testIdList,
-      this.formQuestion.value.subjectId,
-    );
+    // @ts-ignore
+    // this.question = new Question(
+    //   this.formQuestion.value.questionId,
+    //   this.formQuestion.value.question,
+    //   this.formQuestion.value.answerA,
+    //   this.formQuestion.value.answerB,
+    //   this.formQuestion.value.answerC,
+    //   this.formQuestion.value.answerD,
+    //   this.formQuestion.value.answerAndRight.rightAnswer,
+    //   this.testIdList,
+    //   this.formQuestion.value.subjectId,
+    // );
     this.questionService.saveQuestion(this.question).subscribe(
       next => {},
       error => {},
