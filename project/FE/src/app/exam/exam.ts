@@ -7,7 +7,7 @@ export class Exam {
   times: string;
   user: number;
   test: number;
-
+  
   constructor() {
   }
 }

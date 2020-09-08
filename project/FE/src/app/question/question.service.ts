@@ -24,7 +24,7 @@ export class QuestionService {
     return this.httpClient.get<Question>(this.API_URL + '/question/' + id);
   }
 
-  deleteProduct(id: number): Observable<Question> {
+  deleteQuestion(id: string): Observable<Question> {
     return this.httpClient.delete<Question>(this.API_URL + '/delete-question/' + id);
   }
   saveQuestion(question: Question): Observable<any>{
