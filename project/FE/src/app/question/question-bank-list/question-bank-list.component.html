@@ -56,10 +56,10 @@
           <div class="row ">
             <div class="col-xs-12 col-sm-6 col-md-3">
               <div id="emoji" class="collapse">
-                <input type="file">
-                <button data-toggle="collapse" type="button" data-target="#notification"
-                        class="btn bg-btn btn-primary mt-3">Upload
-                </button>
+<!--                <input type="file" accept=".txt" (change)="selectFile($event)" class="custom-file-input">-->
+<!--                <button data-toggle="collapse" type="button" data-target="#notification"-->
+<!--                        class="btn bg-btn btn-primary mt-3">Upload-->
+<!--                </button>-->
               </div>
 
               <div id="notification" class="collapse errors">
@@ -103,5 +103,6 @@
     </div>
   </div>
 </div>
-<router-outlet></router-outlet>
+<input type="file" accept=".txt"  (change)="selectFile($event)" class="custom-file-input" for="import">
+
 

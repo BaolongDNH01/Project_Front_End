@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Question} from './question';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpEvent} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Test} from '../test/test';
 import {QuestionInExam} from './question-in-exam';
@@ -11,8 +11,8 @@ import {QuestionInExam} from './question-in-exam';
 })
 export class QuestionService {
   question: Question;
-  questionInExam: QuestionInExam;
   API_URL = 'http://localhost:8080';
+  uploadFile = 'http://localhost:8080/uploadFile';
 
   constructor(
     private httpClient: HttpClient
@@ -44,8 +44,8 @@ export class QuestionService {
     return this.httpClient.post<any>(this.API_URL + '/create-question', question);
   }
 
-  saveQuestionInExam(questionInExam: QuestionInExam): Observable<any> {
-    return this.httpClient.post<any>(this.API_URL + '/addQuestionInExam', questionInExam);
+  saveQuestionInExam(questionInExam: QuestionInExam[]): Observable<QuestionInExam> {
+    return this.httpClient.post<QuestionInExam>(this.API_URL + '/addQuestionInExam', questionInExam);
   }
 
   updateQuestion(question: Question): Observable<Question> {
@@ -54,5 +54,11 @@ export class QuestionService {
 
   getAllTest(): Observable<Test[]> {
     return this.httpClient.get<Test[]>(this.API_URL + '/getAllTest');
+  }
+
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.httpClient.post<HttpEvent<any>>(this.uploadFile, formData);
   }
 }

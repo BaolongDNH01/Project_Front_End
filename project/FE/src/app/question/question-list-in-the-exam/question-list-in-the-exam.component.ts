@@ -13,8 +13,9 @@ import {Router} from '@angular/router';
 export class QuestionListInTheExamComponent implements OnInit {
   question: Question[];
   listQuestionInExamDelete: string[] = [];
-  questionInExam: QuestionInExam[];
-
+  questionInExams: Array<QuestionInExam> = [];
+  questionInExam: QuestionInExam;
+  count = 1;
   constructor(
     private questionService: QuestionService,
     private router: Router
@@ -27,22 +28,43 @@ export class QuestionListInTheExamComponent implements OnInit {
         // @ts-ignore
         this.questionInExam = next;
       }, error => {
-        this.questionInExam = new Array();
+        // this.questionInExams = new Array();
       }
     );
   }
 
   addQuestionList(): void {
-   this.questionService.getAllQuestion().subscribe(
+    this.questionService.getAllQuestion().subscribe(
       next => {
-         // @ts-ignore
-        this.questionInExam = next;
-        // @ts-ignore
-        this.questionService.saveQuestionInExam(this.questionInExam);
+
+        // this.questionInExam = next;
+        //         //
+        //         // this.questionService.saveQuestionInExam(next);
+        this.toQuestionInExamArr(next);
       }, error => {
         this.question = new Array();
       }
     );
+  }
+
+  toQuestionInExamArr(arr: Question[]): void {
+    // tslint:disable-next-line:prefer-for-of
+    if (this.questionInExams.length === 0) {
+      for (let i = 0; i < 10; i++) {
+        const randNum = Math.floor(Math.random() * arr.length);
+        this.questionInExam = new QuestionInExam();
+        this.questionInExam.questionId = arr[randNum].questionId;
+        this.questionInExam.question = arr[randNum].question;
+        this.questionInExam.rightAnswer = arr[randNum].rightAnswer;
+        this.questionInExams.push(this.questionInExam);
+        arr.splice(randNum, 1);
+      }
+      // console.log(this.questionInExams);
+      // tslint:disable-next-line:prefer-for-of
+      this.questionService.saveQuestionInExam(this.questionInExams).subscribe();
+    }else {
+      alert('ko cho add');
+    }
   }
 
   chooseToDelete(questionId: string): void {
@@ -51,7 +73,7 @@ export class QuestionListInTheExamComponent implements OnInit {
     } else {
       this.listQuestionInExamDelete.push(questionId);
     }
-    console.log(this.listQuestionInExamDelete);
+    console.log(this.listQuestionInExamDelete.length);
   }
 
   deleteQuestion(): void {

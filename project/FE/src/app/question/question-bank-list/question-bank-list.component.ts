@@ -23,5 +23,7 @@ export class QuestionBankListComponent implements OnInit {
         this.question = new Array();
       });
   }
-
+  selectFile(event): void {
+    this.questionService.upload(event.target.files.item(0)).subscribe();
+  }
 }
