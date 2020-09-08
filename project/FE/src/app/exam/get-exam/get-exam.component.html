@@ -15,21 +15,21 @@
           <!--question-->
           <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b>
           <!--correct answer-->
-          <input id="text{{i+1}}" style="visibility: hidden;" value="{{question.rightAnswer}}"/><br/>
+          <input id="text{{i+1}}" [style.visibility]="'hidden'"  value="{{question.rightAnswer}}"/><br/>
           <!--answer-->
-          <i id="Q{{i+1}}A" ng-class="{{listAnswer[i]}}=={{question.answerA}}?'fa-check':'fa-times'" class="fa"></i>
+          <i id="Q{{i+1}}A" ng-class="{{listAnswer[i]}}=={{question.answerA}}?'fa-check':'fa-times'" class="fa allCheckQ"></i>
           <input id="Cau{{question.questionId}}A" [name]="question.questionId" type="radio"
                  value="{{question.answerA}}"><label for="Cau{{question.questionId}}A">{{question.answerA}}</label>
           <br/>
-          <i id="Q{{i+1}}B" ng-class="{{listAnswer[i]}}=={{question.answerB}}?'fa-check':'fa-times'" class="fa"></i>
+          <i id="Q{{i+1}}B" ng-class="{{listAnswer[i]}}=={{question.answerB}}?'fa-check':'fa-times'" class="fa allCheckQ"></i>
           <input id="Cau{{question.questionId}}B" [name]="question.questionId" type="radio"
                  value="{{question.answerB}}"><label for="Cau{{question.questionId}}B">{{question.answerB}}</label>
           <br/>
-          <i id="Q{{i+1}}C" ng-class="{{listAnswer[i]}}=={{question.answerB}}?'fa-check':'fa-times'" class="fa"></i>
+          <i id="Q{{i+1}}C" ng-class="{{listAnswer[i]}}=={{question.answerB}}?'fa-check':'fa-times'" class="fa allCheckQ"></i>
           <input id="Cau{{question.questionId}}C" [name]="question.questionId" type="radio"
                  value="{{question.answerC}}"><label for="Cau{{question.questionId}}C">{{question.answerC}}</label>
           <br/>
-          <i id="Q{{i+1}}D" ng-class="{{listAnswer[i]}}=={{question.answerD}}?'fa-check':'fa-times'" class="fa"></i>
+          <i id="Q{{i+1}}D" ng-class="{{listAnswer[i]}}=={{question.answerD}}?'fa-check':'fa-times'" class="fa allCheckQ"></i>
           <input id="Cau{{question.questionId}}D" [name]="question.questionId" type="radio"
                  value="{{question.answerD}}"><label for="Cau{{question.questionId}}D">{{question.answerD}}</label>
           <br/><br/>
@@ -38,120 +38,120 @@
     </ng-container>
 
 
-<!--    <ul class="question">-->
-<!--      <li>-->
-<!--        &lt;!&ndash;question&ndash;&gt;-->
-<!--        <b><span>Q 1: </span></b><b><span>what color is the sky?</span></b>-->
-<!--        &lt;!&ndash;correct answer&ndash;&gt;-->
-<!--        <input id="text1" style="visibility: hidden;" value="A"/><br/>-->
-<!--        &lt;!&ndash;answer&ndash;&gt;-->
-<!--        <i id="Q1A" class="fa fa-check"></i>-->
-<!--        <input id="Cau1A" name="question_01" type="radio" value="A"/><label for="Cau1A"-->
-<!--                                                                            id="C1A">blue</label>-->
-<!--        <br/>-->
-<!--        <i id="Q1B" class="fa fa-times" aria-hidden="false"></i>-->
-<!--        <input id="Cau1B" name="question_01" type="radio" value="B"/><label for="Cau1B"-->
-<!--                                                                            id="C1B">red</label>-->
-<!--        <br/>-->
-<!--        <i id="Q1C" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--    <ul class="question">-->
+    <!--      <li>-->
+    <!--        &lt;!&ndash;question&ndash;&gt;-->
+    <!--        <b><span>Q 1: </span></b><b><span>what color is the sky?</span></b>-->
+    <!--        &lt;!&ndash;correct answer&ndash;&gt;-->
+    <!--        <input id="text1" style="visibility: hidden;" value="A"/><br/>-->
+    <!--        &lt;!&ndash;answer&ndash;&gt;-->
+    <!--        <i id="Q1A" class="fa fa-check"></i>-->
+    <!--        <input id="Cau1A" name="question_01" type="radio" value="A"/><label for="Cau1A"-->
+    <!--                                                                            id="C1A">blue</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q1B" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <input id="Cau1B" name="question_01" type="radio" value="B"/><label for="Cau1B"-->
+    <!--                                                                            id="C1B">red</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q1C" class="fa fa-times" aria-hidden="false"></i>-->
 
-<!--        <input id="Cau1C" name="question_01" type="radio" value="C"/><label for="Cau1C"-->
-<!--                                                                            id="C1C">green</label>-->
-<!--        <br/>-->
-<!--        <i id="Q1D" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <input id="Cau1C" name="question_01" type="radio" value="C"/><label for="Cau1C"-->
+    <!--                                                                            id="C1C">green</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q1D" class="fa fa-times" aria-hidden="false"></i>-->
 
-<!--        <input id="Cau1D" name="question_01" type="radio" value="D"/><label for="Cau1D"-->
-<!--                                                                            id="C1D">violet</label>-->
-<!--        <br/><br/>-->
-<!--      </li>-->
+    <!--        <input id="Cau1D" name="question_01" type="radio" value="D"/><label for="Cau1D"-->
+    <!--                                                                            id="C1D">violet</label>-->
+    <!--        <br/><br/>-->
+    <!--      </li>-->
 
 
-      <!--      <li>-->
-      <!--        &lt;!&ndash;question&ndash;&gt;-->
-      <!--        <b><span>Q 2: </span></b><b><span>Is water wet?</span></b>-->
-      <!--        &lt;!&ndash;correct answer&ndash;&gt;-->
+    <!--      <li>-->
+    <!--        &lt;!&ndash;question&ndash;&gt;-->
+    <!--        <b><span>Q 2: </span></b><b><span>Is water wet?</span></b>-->
+    <!--        &lt;!&ndash;correct answer&ndash;&gt;-->
 
-      <!--        <input id="text2" style="visibility: hidden;" value="C"/><br/>-->
-      <!--        &lt;!&ndash;answer&ndash;&gt;-->
-      <!--        <i id="Q2A" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <input id="text2" style="visibility: hidden;" value="C"/><br/>-->
+    <!--        &lt;!&ndash;answer&ndash;&gt;-->
+    <!--        <i id="Q2A" class="fa fa-times" aria-hidden="false"></i>-->
 
-      <!--        <input id="Cau2A" name="question_02" type="radio" value="A"/><label for="Cau2A"-->
-      <!--                                                                            id="C2A">what?</label>-->
-      <!--        <br/>-->
-      <!--        <i id="Q2B" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <input id="Cau2A" name="question_02" type="radio" value="A"/><label for="Cau2A"-->
+    <!--                                                                            id="C2A">what?</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q2B" class="fa fa-times" aria-hidden="false"></i>-->
 
-      <!--        <input id="Cau2B" name="question_02" type="radio" value="B"/><label for="Cau2B"-->
-      <!--                                                                            id="C2B">No</label>-->
-      <!--        <br/>-->
-      <!--        <i id="Q2C" class="fa fa-check"></i>-->
+    <!--        <input id="Cau2B" name="question_02" type="radio" value="B"/><label for="Cau2B"-->
+    <!--                                                                            id="C2B">No</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q2C" class="fa fa-check"></i>-->
 
-      <!--        <input id="Cau2C" name="question_02" type="radio" value="C"/><label for="Cau2C"-->
-      <!--                                                                            id="C2C">Yes</label>-->
-      <!--        <br/>-->
+    <!--        <input id="Cau2C" name="question_02" type="radio" value="C"/><label for="Cau2C"-->
+    <!--                                                                            id="C2C">Yes</label>-->
+    <!--        <br/>-->
 
-      <!--        <i id="Q2D" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <i id="Q2D" class="fa fa-times" aria-hidden="false"></i>-->
 
-      <!--        <input id="Cau2D" name="question_02" type="radio" value="D"/><label for="Cau2D"-->
-      <!--                                                                            id="C2D">I need some-->
-      <!--        coffee</label>-->
-      <!--        <br/><br/>-->
-      <!--      </li>-->
-      <!--      <li>-->
-      <!--        &lt;!&ndash;question&ndash;&gt;-->
-      <!--        <b><span>Q 3: </span></b><b><span>Is water wet?</span></b>-->
-      <!--        &lt;!&ndash;correct answer&ndash;&gt;-->
-      <!--        <input id="text3" style="visibility: hidden;" value="C"/><br/>-->
-      <!--        &lt;!&ndash;answer&ndash;&gt;-->
-      <!--        <i id="Q3A" class="fa fa-times" aria-hidden="false"></i>-->
-      <!--        <input id="Cau3A" name="question_03" type="radio" value="A"/><label for="Cau3A"-->
-      <!--                                                                            id="C3A">what?</label>-->
-      <!--        <br/>-->
-      <!--        <i id="Q3B" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <input id="Cau2D" name="question_02" type="radio" value="D"/><label for="Cau2D"-->
+    <!--                                                                            id="C2D">I need some-->
+    <!--        coffee</label>-->
+    <!--        <br/><br/>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        &lt;!&ndash;question&ndash;&gt;-->
+    <!--        <b><span>Q 3: </span></b><b><span>Is water wet?</span></b>-->
+    <!--        &lt;!&ndash;correct answer&ndash;&gt;-->
+    <!--        <input id="text3" style="visibility: hidden;" value="C"/><br/>-->
+    <!--        &lt;!&ndash;answer&ndash;&gt;-->
+    <!--        <i id="Q3A" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <input id="Cau3A" name="question_03" type="radio" value="A"/><label for="Cau3A"-->
+    <!--                                                                            id="C3A">what?</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q3B" class="fa fa-times" aria-hidden="false"></i>-->
 
-      <!--        <input id="Cau3B" name="question_03" type="radio" value="B"/><label for="Cau3B"-->
-      <!--                                                                            id="C3B">No</label>-->
-      <!--        <br/>-->
-      <!--        <i id="Q3C" class="fa fa-check"></i>-->
+    <!--        <input id="Cau3B" name="question_03" type="radio" value="B"/><label for="Cau3B"-->
+    <!--                                                                            id="C3B">No</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q3C" class="fa fa-check"></i>-->
 
-      <!--        <input id="Cau3C" name="question_03" type="radio" value="C"/><label for="Cau3C"-->
-      <!--                                                                            id="C3C">Yes</label>-->
-      <!--        <br/>-->
-      <!--        <i id="Q3D" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <input id="Cau3C" name="question_03" type="radio" value="C"/><label for="Cau3C"-->
+    <!--                                                                            id="C3C">Yes</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q3D" class="fa fa-times" aria-hidden="false"></i>-->
 
-      <!--        <input id="Cau3D" name="question_03" type="radio" value="D"/><label for="Cau3D"-->
-      <!--                                                                            id="C3D">I need some-->
-      <!--        coffee</label>-->
-      <!--        <br/><br/>-->
-      <!--      </li>-->
-      <!--      <li>-->
-      <!--        &lt;!&ndash;question&ndash;&gt;-->
-      <!--        <b><span>Q 4: </span></b><b><span>Is water wet?</span></b>-->
-      <!--        &lt;!&ndash;correct answer&ndash;&gt;-->
-      <!--        <input id="text4" style="visibility: hidden;" value="C"/><br/>-->
-      <!--        &lt;!&ndash;answer&ndash;&gt;-->
-      <!--        <i id="Q4A" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <input id="Cau3D" name="question_03" type="radio" value="D"/><label for="Cau3D"-->
+    <!--                                                                            id="C3D">I need some-->
+    <!--        coffee</label>-->
+    <!--        <br/><br/>-->
+    <!--      </li>-->
+    <!--      <li>-->
+    <!--        &lt;!&ndash;question&ndash;&gt;-->
+    <!--        <b><span>Q 4: </span></b><b><span>Is water wet?</span></b>-->
+    <!--        &lt;!&ndash;correct answer&ndash;&gt;-->
+    <!--        <input id="text4" style="visibility: hidden;" value="C"/><br/>-->
+    <!--        &lt;!&ndash;answer&ndash;&gt;-->
+    <!--        <i id="Q4A" class="fa fa-times" aria-hidden="false"></i>-->
 
-      <!--        <input id="Cau4A" name="question_04" type="radio" value="A"/><label for="Cau4A"-->
-      <!--                                                                            id="C4A">what?</label>-->
-      <!--        <br/>-->
-      <!--        <i id="Q4B" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <input id="Cau4A" name="question_04" type="radio" value="A"/><label for="Cau4A"-->
+    <!--                                                                            id="C4A">what?</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q4B" class="fa fa-times" aria-hidden="false"></i>-->
 
-      <!--        <input id="Cau4B" name="question_04" type="radio" value="B"/><label for="Cau4B"-->
-      <!--                                                                            id="C4B">No</label>-->
-      <!--        <br/>-->
-      <!--        <i id="Q4C" class="fa fa-check"></i>-->
+    <!--        <input id="Cau4B" name="question_04" type="radio" value="B"/><label for="Cau4B"-->
+    <!--                                                                            id="C4B">No</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q4C" class="fa fa-check"></i>-->
 
-      <!--        <input id="Cau4C" name="question_04" type="radio" value="C"/><label for="Cau4C"-->
-      <!--                                                                            id="C4C">Yes</label>-->
-      <!--        <br/>-->
-      <!--        <i id="Q4D" class="fa fa-times" aria-hidden="false"></i>-->
+    <!--        <input id="Cau4C" name="question_04" type="radio" value="C"/><label for="Cau4C"-->
+    <!--                                                                            id="C4C">Yes</label>-->
+    <!--        <br/>-->
+    <!--        <i id="Q4D" class="fa fa-times" aria-hidden="false"></i>-->
 
-      <!--        <input id="Cau4D" name="question_04" type="radio" value="D"/><label for="Cau4D"-->
-      <!--                                                                            id="C4D">I need some-->
-      <!--        coffee</label>-->
-      <!--        <br/><br/>-->
-      <!--      </li>-->
-      <!--    </ul>-->
+    <!--        <input id="Cau4D" name="question_04" type="radio" value="D"/><label for="Cau4D"-->
+    <!--                                                                            id="C4D">I need some-->
+    <!--        coffee</label>-->
+    <!--        <br/><br/>-->
+    <!--      </li>-->
+    <!--    </ul>-->
     </tbody>
   </table>
   <div>
