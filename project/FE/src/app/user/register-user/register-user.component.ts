@@ -61,6 +61,7 @@ export class RegisterUserComponent implements OnInit {
         email: c.email,
         address: c.address,
         phoneNumber: c.phoneNumber,
+        avatar: null,
         examList: null
       };
       this.userService.saveNewUser(this.newUser).subscribe(res => {
