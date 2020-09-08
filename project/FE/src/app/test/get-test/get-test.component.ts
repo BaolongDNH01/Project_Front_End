@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Test} from '../test';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {TestService} from '../test_service/test.service';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Exam} from '../../exam/exam';
 import {ExamService} from '../../exam/exam_service/exam.service';
 import {Question} from '../../question/question';
@@ -17,6 +17,9 @@ export class GetTestComponent implements OnInit {
   exam: Exam;
   examForm: FormGroup;
   listQuestion: Question[];
+  time = 15 * 60;
+  display;
+  interval;
 
   constructor(private fb: FormBuilder, private testService: TestService, private examService: ExamService,
               private router: Router, private activatedRoute: ActivatedRoute) {
@@ -42,6 +45,7 @@ export class GetTestComponent implements OnInit {
           this.listQuestion = this.test.questions;
         });
     });
+    this.startTimer();
   }
 
   // tslint:disable-next-line:typedef
@@ -61,5 +65,23 @@ export class GetTestComponent implements OnInit {
       }
     );
     this.router.navigateByUrl('' + this.examService.findById(this.exam.examId));
+  }
+
+  // tslint:disable-next-line:typedef
+  startTimer() {
+    this.interval = setInterval(() => {
+      if (this.time === 0) {
+        this.exam.times = this.time;
+        this.onSubmit();
+      } else {
+        this.time--;
+      }
+      this.display = this.transform(this.time);
+    }, 1000);
+  }
+
+  transform(value: number): string {
+    const minutes: number = Math.floor(value / 60);
+    return minutes + ':' + (value - minutes * 60);
   }
 }

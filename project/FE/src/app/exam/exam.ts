@@ -4,7 +4,7 @@ export class Exam {
   examDate: string;
   mark: number;
   answer: string;
-  times: string;
+  times: number;
   user: number;
   test: number;
 
