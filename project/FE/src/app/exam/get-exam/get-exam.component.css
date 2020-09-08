@@ -74,4 +74,6 @@ ul {
   visibility: visible;
 }
 
-
+.rightAnswer{
+  visibility: hidden;
+}
