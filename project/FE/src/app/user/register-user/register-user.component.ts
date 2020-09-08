@@ -49,7 +49,7 @@ export class RegisterUserComponent implements OnInit {
   register(): void {
     if (this.registerForm.valid){
       this.newUser = this.registerForm.value;
-      this.userService.saveNewUser(this.newUser).subscribe(res => res.headers);
+      this.userService.saveNewUser(this.newUser).subscribe(res => res.statusText);
     }
   }
 }
