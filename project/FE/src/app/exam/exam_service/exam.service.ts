@@ -20,10 +20,11 @@ export class ExamService {
   }
 
   findById(examId: number): Observable<Exam> {
-    return this.httpClient.get<Exam>(this.URL + '/get-test/' + examId);
+    return this.httpClient.get<Exam>(this.URL + '/getTestById/' + examId);
   }
 
-  // save(exam: Exam): Observable<Exam> {
-  //   return this.httpClient.post<Exam>(this.URL, Exam);
-  // }
+  save(exam: Exam): Observable<Exam> {
+    return this.httpClient.post<Exam>(this.URL + '/create-exam', Exam);
+  }
+
 }
