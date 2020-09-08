@@ -12,7 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {QuestionListInTheExamComponent} from './question-list-in-the-exam/question-list-in-the-exam.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { UpdateQuestionComponent } from './update-question/update-question.component';
-import {AddQuestionComponent} from "./add-question/add-question.component";
+import {AddQuestionComponent} from './add-question/add-question.component';
 
 
 
