@@ -6,6 +6,8 @@ import {ListUserComponent} from './list-user/list-user.component';
 import {DeleteUserComponent} from './delete-user/delete-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { StatisticalUserComponent } from './statistical-user/statistical-user.component';
+import {AngularPaginatorModule} from 'angular-paginator';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -13,10 +15,12 @@ import { StatisticalUserComponent } from './statistical-user/statistical-user.co
         ListUserComponent,
         DeleteUserComponent,
         StatisticalUserComponent],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    AngularPaginatorModule,
+    MatPaginatorModule
+  ],
     exports: [
         StatisticalUserComponent
     ],
