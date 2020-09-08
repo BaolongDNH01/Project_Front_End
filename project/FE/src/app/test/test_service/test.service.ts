@@ -16,6 +16,7 @@ export class TestService {
   private deleteTest = 'http://localhost:8080/deleteTest';
   private getAllSubjectApi = 'http://localhost:8080/getAllSubject';
   private addTestApi = 'http://localhost:8080/addTest';
+  URL = 'http://localhost:8080';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -43,11 +44,8 @@ export class TestService {
     return this.httpClient.post<any>(this.addTestApi, test);
   }
 
-  URL = 'http://localhost:8080';
-
-
   findById(testId: number): Observable<Test> {
-    return this.httpClient.get<Test>(this.URL + '/get-test/' + testId);
+    return this.httpClient.get<Test>(this.URL + '/getTestById/' + testId);
   }
 
 }
