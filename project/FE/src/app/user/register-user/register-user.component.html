@@ -38,7 +38,7 @@
             <label for="inputRePassword" class="col-sm-2 col-form-label">Re Password</label>
             <div class="col-sm-6">
               <input type="password" formControlName="confirm_password" class="form-control" id="inputRePassword" placeholder="Re Password">
-              <span *ngIf="passwordForm.controls['confirm_password'].hasError('mismatchedPasswords') && passwordForm.controls['confirm_password'].touched" class="errors" >
+              <span *ngIf="passwordForm.hasError('mismatchedPasswords') && passwordForm.controls['confirm_password'].touched" class="errors" >
                 Confirm Password must match to Password.
               </span>
             </div>

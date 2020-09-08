@@ -8,6 +8,7 @@ export interface User {
   email: string;
   address: string;
   phoneNumber: string;
+  avatar: string;
   examList: Exam[];
   // roles: Role[];
 }
