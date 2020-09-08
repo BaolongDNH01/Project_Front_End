@@ -5,17 +5,22 @@ import {RegisterUserComponent} from './register-user/register-user.component';
 import {ListUserComponent} from './list-user/list-user.component';
 import {DeleteUserComponent} from './delete-user/delete-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { StatisticalUserComponent } from './statistical-user/statistical-user.component';
 
 
 @NgModule({
-  declarations: [RegisterUserComponent,
-    ListUserComponent,
-    DeleteUserComponent],
+    declarations: [RegisterUserComponent,
+        ListUserComponent,
+        DeleteUserComponent,
+        StatisticalUserComponent],
     imports: [
         CommonModule,
         ReactiveFormsModule
     ],
-  providers: [UserService]
+    exports: [
+        StatisticalUserComponent
+    ],
+    providers: [UserService]
 })
 export class UserModule {
 }
