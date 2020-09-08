@@ -6,7 +6,6 @@ import {Test} from '../test-model';
 import {Subject} from '../subject';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -46,7 +45,6 @@ export class TestService {
 
   URL = 'http://localhost:8080';
 
- 
 
   findById(testId: number): Observable<Test> {
     return this.httpClient.get<Test>(this.URL + '/get-test/' + testId);
