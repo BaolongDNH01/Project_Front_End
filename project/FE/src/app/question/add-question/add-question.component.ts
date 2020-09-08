@@ -4,6 +4,7 @@ import {Question} from '../question';
 import {QuestionService} from '../question.service';
 import {Test} from '../../test/test';
 import {Observable} from 'rxjs';
+import {Subject} from "../subject";
 
 
 @Component({
@@ -12,6 +13,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./add-question.component.css']
 })
 export class AddQuestionComponent implements OnInit {
+  listSubject: Subject[];
   arr: string[];
   test: Test;
   testQuestion: Test;
@@ -44,6 +46,14 @@ export class AddQuestionComponent implements OnInit {
             this.listAllTest = next;
           }, error => {
             this.listAllTest = new Array();
+          }, () => {
+            questionService.getAllSubject().subscribe(
+              next => {
+                this.listSubject = next;
+              }, error => {
+                this.listSubject = new Array();
+              }
+            );
           }
         );
       }
@@ -119,6 +129,7 @@ export class AddQuestionComponent implements OnInit {
     this.formQuestion.value.answerB = this.arrAnswer[1];
     this.formQuestion.value.answerC = this.arrAnswer[2];
     this.formQuestion.value.answerD = this.arrAnswer[3];
+
   }
   inputTesst(): void{
     this.test = Object.assign({}, this.formQuestion.value.testCode);
