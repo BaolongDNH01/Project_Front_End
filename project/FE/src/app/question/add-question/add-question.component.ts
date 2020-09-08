@@ -5,6 +5,7 @@ import {QuestionService} from '../question.service';
 import {Test} from '../../test/test';
 import {Observable} from 'rxjs';
 import {Subject} from "../subject";
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class AddQuestionComponent implements OnInit {
   listQuestion: Question[] = [];
   error = '';
 
-  constructor(private fb: FormBuilder, private questionService: QuestionService) {
+  constructor(private fb: FormBuilder, private questionService: QuestionService, private router: Router) {
     this.data$ = questionService.getAllTest();
     questionService.getAllQuestion().subscribe(
       next => {
@@ -118,8 +119,8 @@ export class AddQuestionComponent implements OnInit {
           }, error => {
             this.listQuestion = [];
           }, () => {
-            console.log(this.listQuestion.length);
-          }
+            this.router.navigateByUrl('/question');
+          },
         );
       }
     );
