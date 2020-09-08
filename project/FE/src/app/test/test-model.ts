@@ -5,6 +5,6 @@ export interface Test {
   grade: string;
   subjectId: number;
   subjectName: string;
-  listQuestion: number[];
-  listExam: number[];
+  questions: number[];
+  examList: number[];
 }

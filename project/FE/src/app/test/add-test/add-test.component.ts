@@ -39,7 +39,7 @@ export class AddTestComponent implements OnInit {
       () => null,
       () => null,
       () => {
-        console.log('add ok, dit me may');
+        console.log('add ok');
       }
     );
   }

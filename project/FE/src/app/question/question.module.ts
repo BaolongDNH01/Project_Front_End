@@ -10,11 +10,13 @@ import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { UpdateQuestionComponent } from './update-question/update-question.component';
+
 
 
 @NgModule({
 
-  declarations: [QuestionBankListComponent, QuestionBankDeleteComponent, AddQuestionComponent],
+  declarations: [QuestionBankListComponent, QuestionBankDeleteComponent, AddQuestionComponent, UpdateQuestionComponent],
   imports: [
     CommonModule,
     QuestionRoutingModule,
@@ -26,7 +28,8 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
   ],
   exports: [
     QuestionBankListComponent,
-    AddQuestionComponent
+    AddQuestionComponent,
+    UpdateQuestionComponent
   ],
   providers: [
     QuestionService
