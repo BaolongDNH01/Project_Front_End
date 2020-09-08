@@ -52,6 +52,7 @@ export class GetTestComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSubmit() {
     this.exam = Object.assign({}, this.examForm.value);
+    this.exam.answer = this.exam.answer.toString();
     this.examService.save(this.exam).subscribe(
       next => {
         console.log('Create process!');
