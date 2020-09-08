@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Test} from '../test-model';
+import {Test} from '../test';
 import {Subject} from '../subject';
 
 
@@ -12,14 +12,16 @@ import {Subject} from '../subject';
 })
 export class TestService {
 
+  constructor(private httpClient: HttpClient) {
+  }
+
   private getAllTestApi = 'http://localhost:8080/getAllTest';
   private uploadFile = 'http://localhost:8080/uploadFile';
   private deleteTest = 'http://localhost:8080/deleteTest';
   private getAllSubjectApi = 'http://localhost:8080/getAllSubject';
   private addTestApi = 'http://localhost:8080/addTest';
 
-  constructor(private httpClient: HttpClient) {
-  }
+  URL = 'http://localhost:8080';
 
   getAllTest(): Observable<Test[]> {
     return this.httpClient.get<Test[]>(this.getAllTestApi);
@@ -44,9 +46,7 @@ export class TestService {
     return this.httpClient.post<any>(this.addTestApi, test);
   }
 
-  URL = 'http://localhost:8080';
 
- 
 
   findById(testId: number): Observable<Test> {
     return this.httpClient.get<Test>(this.URL + '/get-test/' + testId);
