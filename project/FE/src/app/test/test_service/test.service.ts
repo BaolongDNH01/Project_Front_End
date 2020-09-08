@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 
 import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Test} from '../test';
+
 import {Subject} from '../subject';
+import {Test} from '../test-model';
 
 
 @Injectable({
@@ -19,8 +20,6 @@ export class TestService {
   private deleteTest = 'http://localhost:8080/deleteTest';
   private getAllSubjectApi = 'http://localhost:8080/getAllSubject';
   private addTestApi = 'http://localhost:8080/addTest';
-  URL = 'http://localhost:8080';
-
   URL = 'http://localhost:8080';
 
   getAllTest(): Observable<Test[]> {
