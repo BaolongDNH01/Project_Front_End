@@ -9,7 +9,7 @@ import {TestService} from '../test_service/test.service';
   styleUrls: ['./test-list.component.css']
 })
 export class TestListComponent implements OnInit {
-  listTest: Array<Test>;
+  listTest: Test[];
   listTestDelete: number[] = [];
 
   constructor(private testService: TestService) {

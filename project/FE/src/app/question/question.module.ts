@@ -9,6 +9,7 @@ import {QuestionService} from './question.service';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// @ts-ignore
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 
