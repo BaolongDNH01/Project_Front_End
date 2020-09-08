@@ -12,7 +12,7 @@
               <!--question-->
               <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b>
               <!--correct answer-->
-              <input id="text1" style="visibility: hidden;" value="{{question.rightAnswer}}"/><br/>
+              <input id="text{{i+1}}" style="visibility: hidden;" value="{{question.rightAnswer}}"/><br/>
               <!--answer-->
               <input id="Cau{{question.questionId}}A" [name]="question.questionId" type="radio"
                      value="{{question.answerA}}"
@@ -37,11 +37,10 @@
             </li>
           </ul>
         </ng-container>
+        <input class="btn btn-sm  rounded" type="submit" value="Submit">
       </form>
-
       </tbody>
     </table>
-    <input class="btn btn-sm  rounded" type="submit" value="Submit">
   </form>
   <div>
   </div>
