@@ -16,9 +16,9 @@ export class AddQuestionComponent implements OnInit {
   test: Test;
   testQuestion: Test;
   listTestCode = '';
-  listTestQuestion = new Array();
-  testIdList = new Array();
-  testCodeQuestion = new Array();
+  listTestQuestion = [];
+  testIdList = [];
+  testCodeQuestion = [];
   public keyword = 'testCode';
 
   public data$: Observable<Test[]>;
@@ -37,13 +37,13 @@ export class AddQuestionComponent implements OnInit {
       next => {
         this.listQuestion = next;
       }, error => {
-        this.listQuestion = new Array();
+        this.listQuestion = [];
       }, () => {
         this.questionService.getAllTest().subscribe(
           next => {
             this.listAllTest = next;
           }, error => {
-            this.listAllTest = new Array();
+            this.listAllTest = [];
           }
         );
       }
@@ -105,7 +105,7 @@ export class AddQuestionComponent implements OnInit {
           next => {
             this.listQuestion = next;
           }, error => {
-            this.listQuestion = new Array();
+            this.listQuestion = [];
           }, () => {
             console.log(this.listQuestion.length);
           }
