@@ -10,17 +10,7 @@ import {UserService} from '../user_service/user.service';
 })
 export class StatisticalUserComponent implements OnInit {
   // tslint:disable-next-line:new-parens
-  user: User = new class implements User {
-    address: string;
-    email: string;
-    examList: Exam[];
-    fullName: string;
-    id: number;
-    phoneNumber: string;
-    // tslint:disable-next-line:variable-name
-    user_password: string;
-    username: string;
-  };
+  user: User ;
   totalUser = 0;
   listUser: User[];
   constructor(private userService: UserService) {
@@ -31,13 +21,14 @@ export class StatisticalUserComponent implements OnInit {
         // tslint:disable-next-line:new-parens
         this.user = new class implements User {
           address: string;
+          avatar: string;
           email: string;
           examList: Exam[];
           fullName: string;
           id: number;
           phoneNumber: string;
           // tslint:disable-next-line:variable-name
-          user_password: string;
+          user_Password: string;
           username: string;
         };
       }, () => {

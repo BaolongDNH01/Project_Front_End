@@ -18,6 +18,6 @@ export class UserService {
     return this.httpClient.get<User>(this.API_URL + '/new-user');
   }
   findAllUser(): Observable<User[]>{
-    return this.httpClient.get<User[]>(this.API_URL + '/allUser');
+    return this.httpClient.get<User[]>(this.API_URL + '/listUser');
   }
 }

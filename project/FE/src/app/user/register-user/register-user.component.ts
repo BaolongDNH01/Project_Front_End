@@ -56,7 +56,7 @@ export class RegisterUserComponent implements OnInit {
       this.newUser = {
         id: null,
         username: c.username,
-        user_password: this.passwordForm.value.password,
+        user_Password: this.passwordForm.value.password,
         fullName: c.fullName,
         email: c.email,
         address: c.address,
