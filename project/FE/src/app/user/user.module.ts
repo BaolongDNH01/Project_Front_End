@@ -4,15 +4,17 @@ import {UserService} from './user_service/user.service';
 import {RegisterUserComponent} from './register-user/register-user.component';
 import {ListUserComponent} from './list-user/list-user.component';
 import {DeleteUserComponent} from './delete-user/delete-user.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [RegisterUserComponent,
     ListUserComponent,
     DeleteUserComponent],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule
+    ],
   providers: [UserService]
 })
 export class UserModule {
