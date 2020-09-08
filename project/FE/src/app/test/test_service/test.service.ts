@@ -4,7 +4,8 @@ import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 import {Subject} from '../subject';
-import {Test} from '../test-model';
+import {Test} from '../test';
+
 
 
 @Injectable({
