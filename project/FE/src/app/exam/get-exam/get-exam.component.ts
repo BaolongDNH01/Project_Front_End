@@ -18,6 +18,7 @@ export class GetExamComponent implements OnInit {
   test: Test;
   listQuestion: Question[];
   listAnswer: string[];
+  mark = 0;
 
   constructor(private examService: ExamService, private activatedRoute: ActivatedRoute, private testService: TestService) {
   }
@@ -44,8 +45,18 @@ export class GetExamComponent implements OnInit {
           );
         }
       );
-
     });
+    this.caculationMark();
   }
 
+  // tslint:disable-next-line:typedef
+  caculationMark() {
+    for (let i = 0; i < this.listQuestion.length; i++) {
+      // tslint:disable-next-line:triple-equals
+      if (!(this.listAnswer[i] == this.listQuestion[i].rightAnswer)) {
+        this.mark += 0.5;
+      }
+    }
+    this.exam.mark = this.mark;
+  }
 }
