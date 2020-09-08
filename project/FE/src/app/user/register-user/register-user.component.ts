@@ -45,4 +45,11 @@ export class RegisterUserComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  register(): void {
+    if (this.registerForm.valid){
+      this.newUser = this.registerForm.value;
+      this.userService.saveNewUser(this.newUser).subscribe(res => res.headers);
+    }
+  }
 }
