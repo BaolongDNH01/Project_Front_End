@@ -5,8 +5,8 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {Question} from '../question';
 import {QuestionService} from '../question.service';
 import {TestService} from '../../test/test_service/test.service';
-import {Subject} from "../subject";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {Subject} from '../subject';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
   selector: 'app-update-question',
@@ -35,7 +35,7 @@ export class UpdateQuestionComponent implements OnInit {
   listQuestion: Question[] = [];
   error = '';
   constructor(private questionService: QuestionService, private fb: FormBuilder,
-              private testService: TestService, private activatedRoute: ActivatedRoute) {
+              private testService: TestService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.data$ = questionService.getAllTest();
   }
   ngOnInit(): void {
@@ -131,6 +131,7 @@ export class UpdateQuestionComponent implements OnInit {
             this.listQuestion = new Array();
           }, () => {
             console.log(this.listQuestion.length);
+            this.router.navigateByUrl('/question');
           }
         );
       }
