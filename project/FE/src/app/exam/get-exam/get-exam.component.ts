@@ -39,7 +39,7 @@ export class GetExamComponent implements OnInit {
 
             }, () => {
               this.listQuestion = this.test.questions;
-              this.listAnswer = this.exam.answer.split(',');
+              this.listAnswer = this.exam.answer;
             }
           );
         }
