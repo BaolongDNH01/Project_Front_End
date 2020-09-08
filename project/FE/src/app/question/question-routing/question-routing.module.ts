@@ -8,7 +8,7 @@ import {UpdateQuestionComponent} from "../update-question/update-question.compon
 
 const routes: Routes = [
   {
-    path: 'question-list',
+    path: 'question',
     children: [
       {path: '', component: QuestionBankListComponent},
       {path: 'question-delete/:id', component: QuestionBankDeleteComponent},

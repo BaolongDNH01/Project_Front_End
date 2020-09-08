@@ -12,6 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AutocompleteLibModule} from "angular-ng-autocomplete";
 import { UpdateQuestionComponent } from './update-question/update-question.component';
 
+
 @NgModule({
 
   declarations: [QuestionBankListComponent, QuestionBankDeleteComponent, AddQuestionComponent, UpdateQuestionComponent],
