@@ -1,0 +1,75 @@
+<div class="container-fluid font">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <form *ngIf="formAddTest" [formGroup]="formAddTest" (ngSubmit)="addTest()"
+            class="table table-bordered custom form-border mt-2">
+        <div class="header d-flex flex-column p-1 header-border">
+          <span>Create new</span>
+        </div>
+        <!--        name test-->
+        <div class="row mt-2 p-4 ml-1 mr-2 input-shadow">
+          <span class="col-md-3">Name test</span>
+          <input formControlName="testName" class="col-md-8">
+        </div>
+
+        <!--        subject-->
+        <div class="row mt-2 pt-4 pl-4 ml-1 mr-2" id="input-shadow">
+          <div class="col-md-3">
+            Choose subject
+          </div>
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-3 col-sm-6" *ngFor="let subject of listSubject">
+                <label>
+                  <input type="radio" formControlName="subjectId" value="{{subject.subjectId}}"> {{subject.subjectName}}
+                </label>
+              </div>
+            </div>
+          </div>
+          <span class="text-danger"
+                *ngIf="formAddTest.get('subjectId').hasError('required') && formAddTest.get('subjectId').touched">
+            subject not empty!
+          </span>
+        </div>
+
+        <!--        grade-->
+        <div class="row mt-2 p-4 ml-1 mr-2 input-shadow">
+          <span class="col-md-3">Grade</span>
+          <input formControlName="grade" class="col-md-4">
+          <div id="gradeErr"></div>
+        </div>
+
+        <div>
+          <input formControlName="id" type="hidden">
+        </div>
+
+        <div class="row">
+          <div class="col-md-3"></div>
+          <!--          nút submit-->
+          <div class="col-md-2 mb-4 mt-4">
+          <span class="col-md-11 d-flex justify-content-center">
+            <input [disabled]="formAddTest.invalid" class="btn btn-outline-info" type="submit" value="Submit">
+          </span>
+          </div>
+          <!--          dòng thông báo lỗi-->
+          <div class="col-md-7 error mt-2">
+            <div class="text-danger" *ngIf="formAddTest.get('testName').hasError('required') && formAddTest.get('testName').touched">
+              *name test not empty
+            </div>
+            <div class="text-danger" *ngIf="formAddTest.get('testName').hasError('pattern') && formAddTest.get('testName').touched">
+              *name test only allows numbers, letters and special characters (# _ / *), and less than 51 character
+            </div>
+
+            <div class="text-danger" *ngIf="formAddTest.get('grade').hasError('required') && formAddTest.get('grade').touched">
+              *grade not empty
+            </div>
+            <div class="text-danger" *ngIf="formAddTest.get('grade').hasError('pattern') && formAddTest.get('grade').touched">
+              *grade not allowed special character, and less than 21 character
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

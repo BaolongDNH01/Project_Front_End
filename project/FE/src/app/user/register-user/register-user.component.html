@@ -3,11 +3,11 @@
     <div class="col-md-8 card p-0">
       <div class="card-header">Register</div>
       <div class="card-body mt-3 mb-3">
-        <form onsubmit="return validate()">
+        <form [formGroup]="registerForm" (submit)="register()">
           <div class="form-group row justify-content-center">
             <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
             <div class="col-sm-6">
-              <input type="text"  class="form-control" id="inputUsername" placeholder="Username">
+              <input formControlName="username" type="text"  class="form-control" id="inputUsername" placeholder="Username">
               <span class="errors" id="inputUsernameError" style="display: none"></span>
             </div>
             <div class="col-md-1">
@@ -17,7 +17,7 @@
           <div class="form-group row justify-content-center">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-6">
-              <input type="password"  class="form-control" id="inputPassword" placeholder="Password">
+              <input formControlName="user_password" type="password"  class="form-control" id="inputPassword" placeholder="Password">
               <span class="errors" id="inputPasswordError" style="display: none"></span>
             </div>
             <div class="col-md-1">
@@ -37,7 +37,7 @@
           <div class="form-group row justify-content-center">
             <label for="inputFullName" class="col-sm-2 col-form-label">Full Name</label>
             <div class="col-sm-6">
-              <input type="text"  class="form-control" id="inputFullName" placeholder="Full Name">
+              <input formControlName="fullName" type="text"  class="form-control" id="inputFullName" placeholder="Full Name">
               <p class="errors" id="inputFullNameError" style="display: none"></p>
             </div>
             <div class="col-md-1">
@@ -47,7 +47,7 @@
           <div class="form-group row justify-content-center">
             <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-6">
-              <input type="text"  class="form-control" id="inputEmail" placeholder="Email">
+              <input formControlName="email" type="text"  class="form-control" id="inputEmail" placeholder="Email">
               <p class="errors" id="inputEmailError" style="display: none"></p>
             </div>
             <div class="col-md-1">
@@ -57,7 +57,7 @@
           <div class="form-group row justify-content-center">
             <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
             <div class="col-sm-6">
-              <input type="text"  class="form-control" id="inputAddress" placeholder="Address">
+              <input formControlName="address" type="text"  class="form-control" id="inputAddress" placeholder="Address">
               <p class="errors" id="inputAddressError" style="display: none"></p>
             </div>
             <div class="col-md-1">
@@ -67,7 +67,7 @@
           <div class="form-group row justify-content-center">
             <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone No</label>
             <div class="col-sm-6">
-              <input type="tel"  class="form-control" id="inputPhoneNumber" placeholder="Phone Number">
+              <input formControlName="phoneNumber" type="tel"  class="form-control" id="inputPhoneNumber" placeholder="Phone Number">
               <p class="errors" id="inputPhoneNumberError" style="display: none"></p>
             </div>
             <div class="col-md-1">

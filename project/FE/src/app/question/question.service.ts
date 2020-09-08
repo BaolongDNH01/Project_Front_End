@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Test} from '../test/test';
 import {QuestionInExam} from './question-in-exam';
+import {Subject} from "./subject";
 
 
 @Injectable({
@@ -54,5 +55,8 @@ export class QuestionService {
 
   getAllTest(): Observable<Test[]> {
     return this.httpClient.get<Test[]>(this.API_URL + '/getAllTest');
+  }
+  getAllSubject(): Observable<Subject[]>{
+    return this.httpClient.get<Subject[]>(this.API_URL + '/getAllSubject');
   }
 }

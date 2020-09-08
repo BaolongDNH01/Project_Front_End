@@ -1,26 +1,28 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Test} from '../../test/test';
+import {Observable} from 'rxjs';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Question} from '../question';
 import {QuestionService} from '../question.service';
-import {Test} from '../../test/test';
-import {Observable} from 'rxjs';
+import {TestService} from '../../test/test_service/test.service';
 import {Subject} from "../subject";
-
+import {ActivatedRoute, ParamMap} from "@angular/router";
 
 @Component({
-  selector: 'app-add-question',
-  templateUrl: './add-question.component.html',
-  styleUrls: ['./add-question.component.css']
+  selector: 'app-update-question',
+  templateUrl: './update-question.component.html',
+  styleUrls: ['./update-question.component.css']
 })
-export class AddQuestionComponent implements OnInit {
+export class UpdateQuestionComponent implements OnInit {
   listSubject: Subject[];
+  id: string;
   arr: string[];
   test: Test;
   testQuestion: Test;
   listTestCode = '';
-  listTestQuestion = [];
-  testIdList = [];
-  testCodeQuestion = [];
+  listTestQuestion = new Array();
+  testIdList = new Array();
+  testCodeQuestion = new Array();
   public keyword = 'testCode';
 
   public data$: Observable<Test[]>;
@@ -32,35 +34,52 @@ export class AddQuestionComponent implements OnInit {
   question: Question;
   listQuestion: Question[] = [];
   error = '';
-
-  constructor(private fb: FormBuilder, private questionService: QuestionService) {
+  constructor(private questionService: QuestionService, private fb: FormBuilder,
+              private testService: TestService, private activatedRoute: ActivatedRoute) {
     this.data$ = questionService.getAllTest();
-    questionService.getAllQuestion().subscribe(
+  }
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = paramMap.get('id');
+    });
+    this.questionService.findById(this.id).subscribe(
       next => {
-        this.listQuestion = next;
+        this.question = next;
+        this.formQuestion.patchValue({questionId: this.question.questionId});
+        this.formQuestion.patchValue({question: this.question.question});
+        this.formQuestion.patchValue({answerAndRight: {answer: (this.question.answerA + '\n' +
+              this.question.answerB + '\n' + this.question.answerC + '\n' + this.question.answerD)}});
+        this.formQuestion.patchValue({question: this.question.question});
+        this.formQuestion.patchValue({question: this.question.question});
+        this.formQuestion.patchValue({answerAndRight: {rightAnswer: this.question.rightAnswer}});
+        this.formQuestion.patchValue({subjectId: this.question.subjectId});
       }, error => {
-        this.listQuestion = [];
       }, () => {
-        this.questionService.getAllTest().subscribe(
+        this.questionService.getAllQuestion().subscribe(
           next => {
-            this.listAllTest = next;
+            this.listQuestion = next;
           }, error => {
-            this.listAllTest = new Array();
+            this.listQuestion = new Array();
           }, () => {
-            questionService.getAllSubject().subscribe(
+            this.questionService.getAllTest().subscribe(
               next => {
-                this.listSubject = next;
+                this.listAllTest = next;
               }, error => {
-                this.listSubject = new Array();
+                this.listAllTest = new Array();
+              }, () => {
+                this.questionService.getAllSubject().subscribe(
+                  next => {
+                    this.listSubject = next;
+                  }, error => {
+                    this.listSubject = new Array();
+                  }
+                );
               }
             );
           }
         );
       }
     );
-  }
-
-  ngOnInit(): void {
     this.formQuestion = this.fb.group({
       questionId: ['', [Validators.required]],
       question: ['', [Validators.required]],
@@ -78,12 +97,6 @@ export class AddQuestionComponent implements OnInit {
     });
   }
   addQuestion(): void{
-    for (let i = 0; i < this.listQuestion.length; i++){
-      if (this.formQuestion.value.questionId === this.listQuestion[i].questionId){
-        this.error = 'id already exist!';
-        return;
-      }
-    }
     this.splitAnswer();
     this.testCodeQuestion =  this.formQuestion.value.testCodeList.split(' ');
     for (let i = 0; i < this.testCodeQuestion.length - 1; i++){
@@ -115,7 +128,7 @@ export class AddQuestionComponent implements OnInit {
           next => {
             this.listQuestion = next;
           }, error => {
-            this.listQuestion = [];
+            this.listQuestion = new Array();
           }, () => {
             console.log(this.listQuestion.length);
           }
@@ -129,7 +142,6 @@ export class AddQuestionComponent implements OnInit {
     this.formQuestion.value.answerB = this.arrAnswer[1];
     this.formQuestion.value.answerC = this.arrAnswer[2];
     this.formQuestion.value.answerD = this.arrAnswer[3];
-
   }
   inputTesst(): void{
     this.test = Object.assign({}, this.formQuestion.value.testCode);
