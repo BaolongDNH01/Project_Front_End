@@ -24,7 +24,6 @@ export class RegisterUserComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     this.registerForm = formBuilder.group({
-        id: [''],
         username: ['', [Validators.required, Validators.maxLength(25)]],
         user_password: ['', [Validators.required, Validators.maxLength(16)]],
         fullName: ['', [Validators.required, Validators.maxLength(50)]],
