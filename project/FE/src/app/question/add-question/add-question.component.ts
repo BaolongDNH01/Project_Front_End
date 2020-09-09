@@ -82,7 +82,7 @@ export class AddQuestionComponent implements OnInit {
   addQuestion(): void{
     for (let i = 0; i < this.listQuestion.length; i++){
       if (this.formQuestion.value.questionId === this.listQuestion[i].questionId){
-        this.error = 'id already exist!';
+        this.error = 'Question Code already exist!';
         return;
       }
     }
