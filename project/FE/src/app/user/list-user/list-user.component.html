@@ -28,7 +28,7 @@
           <table class="table table-bordered text-center">
             <thead class="thead">
             <tr>
-              <th scope="col">STT</th>
+              <th scope="col">No</th>
               <th scope="col">Username</th>
               <th scope="col">Full Name</th>
               <th scope="col">Address</th>
@@ -38,13 +38,13 @@
             </tr>
             </thead>
             <tbody class="bg-light">
-            <tr>
-              <th scope="row">1</th>
-              <td>demons</td>
-              <td>Văn Thanh Long</td>
-              <td>193 Nguyễn Lương Bằng, Đà Nẵng</td>
-              <td>01234567887</td>
-              <td>22/3</td>
+            <tr *ngFor="let user of userList | paginate: {itemsPerPage: 10, currentPage: currentPage}; let i = index">
+              <th scope="row">{{i}}</th>
+              <td>{{user.username}}</td>
+              <td>{{user.fullName}}</td>
+              <td>{{user.address}}</td>
+              <td>{{user.phoneNumber}}</td>
+<!--              <td>{{user.}}</td>-->
               <td>
                 <a href="#">
                   <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -52,11 +52,11 @@
               </td>
               <td>
                 <!-- Button trigger modal -->
-                <a href="#" data-toggle="modal" data-target="#member">
+                <a href="#" data-toggle="modal" [attr.data-target]="'#myModal'+ user.id">
                   <i class="fa fa-trash"></i>
                 </a>
                 <!-- Modal -->
-                <div class="modal fade" id="member" tabindex="-1" role="dialog"
+                <div class="modal fade" [id]="'myModal' +user.id" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -67,12 +67,12 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <span>Do you really want to delete this member: Văn Thanh Long </span>
+                        <span>Do you really want to delete this member: {{user.fullName}} </span>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                         <button type="button" id="delete" class="btn btn-outline-secondary" data-dismiss="modal">
-                          <a class="text-white" href="list_member.html">
+                          <a class="text-white" [routerLink]="'/delete-user/'+user.id">
                             Yes
                           </a>
                         </button>
@@ -84,13 +84,7 @@
             </tr>
             </tbody>
           </table>
-          <mat-paginator [showFirstLastButtons]="true"
-                         [length]="totalSize"
-                         [pageSize]="pageSize"
-                         [pageSizeOptions]="[5, 10, 20]"
-                         (page)="pageEvent = handlePage($event)"
-                         [pageIndex]="currentPage">
-          </mat-paginator>
+          <pagination-controls>(pageChange)="currentPage = $event"</pagination-controls>
           <div class="col-md-12 d-flex justify-content-md-end mb-3">
             <button id="closeButton" class="btn btn-outline-secondary align-self-end">
               Close

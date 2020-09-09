@@ -29,7 +29,8 @@ export class AddTestComponent implements OnInit {
       id: [1],
       testName: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9#_/*&]{1,50}$')]],
       subjectId: ['', [Validators.required]],
-      grade: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]{1,20}$')]]
+      grade: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]{1,20}$')]],
+      testCode: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]{1,3}$')]]
     });
   }
 

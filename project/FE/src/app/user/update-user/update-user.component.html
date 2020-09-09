@@ -1,0 +1,73 @@
+<div class="container mt-5" style="width: 800px">
+  <form class="card info-form m-5" [formGroup]="infoEditForm" (ngSubmit)="onSubmit()">
+    <div class="card-header title">
+      <span>Edit Personal Information</span>
+    </div>
+    <div class="p-5">
+      <div class="row mb-3">
+        <div class="col-md-4 font-weight-bolder">Full name</div>
+        <div class="col-md-7">
+          <input class="form-control" type="text" formControlName="name" required>
+          <p *ngIf="infoEditForm.controls.name.errors?.required && infoEditForm.controls.name.touched"
+             class="text-danger">
+            Enter your information!
+          </p>
+          <p *ngIf="infoEditForm.controls.name.errors?.maxlength && infoEditForm.controls.name.touched"
+             class="text-danger">
+            Information has length invalid!
+          </p>
+        </div>
+        <div class="col-md-1 text-danger">*</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4 font-weight-bolder">Email</div>
+        <div class="col-md-7">
+          <input class="form-control" type="email" formControlName="email" required>
+          <p *ngIf="infoEditForm.get('email').hasError('required') && infoEditForm.get('email').touched">
+            Enter your information!
+          </p>
+          <p *ngIf="infoEditForm.get('email').hasError('pattern')">
+            Email invalid!
+          </p>
+        </div>
+        <div class="col-md-1 text-danger">*</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4 font-weight-bolder">Address</div>
+        <div class="col-md-7">
+          <input class="form-control" type="text" formControlName="address" required>
+          <p *ngIf="infoEditForm.controls.address.errors?.required && infoEditForm.controls.address.touched"
+             class="text-danger">
+            Enter your information!
+          </p>
+          <p *ngIf="infoEditForm.controls.address.errors?.maxlength && infoEditForm.controls.address.touched"
+             class="text-danger">
+            Address has length invalid!
+          </p>
+        </div>
+        <div class="col-md-1 text-danger">*</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4 font-weight-bolder">Phone</div>
+        <div class="col-md-7">
+          <input class="form-control" type="text" formControlName="phoneNumber" required>
+          <p *ngIf="infoEditForm.controls.phoneNumber.errors?.required && infoEditForm.controls.phoneNumber.touched"
+             class="text-danger">
+            Enter your information!
+          </p>
+          <p *ngIf="infoEditForm.controls.phoneNumber.errors?.pattern && infoEditForm.controls.phoneNumber.touched"
+             class="text-danger">
+            Phone Number invalid!
+          </p>
+        </div>
+        <div class="col-md-1 text-danger">*</div>
+      </div>
+      <div class="row mb-1 mt-4">
+        <div class="col-md-12 text-center">
+          <button class="btn btn-light border-secondary">Submit</button>
+          <a href="edit_password.html" class="btn btn-info">Edit Password</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

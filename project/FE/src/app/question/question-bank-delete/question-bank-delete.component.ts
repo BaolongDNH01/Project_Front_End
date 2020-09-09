@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Question} from '../Question';
 import {FormControl, FormGroup} from '@angular/forms';
 import {QuestionService} from '../question.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Question} from '../question';
 
 @Component({
   selector: 'app-question-bank-delete',
