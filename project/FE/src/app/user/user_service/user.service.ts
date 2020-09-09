@@ -10,6 +10,13 @@ import {Password} from '../update-password/password';
 export class UserService {
   REGISTER_USER_API_URL = 'http://localhost:8080/register';
   API_URL = 'http://localhost:8080';
+
+
+  // Thiện update lần 2 - CẤM XOÁ ! //
+   private ACCESS_ADMIN_API = 'http://localhost:8080/admin';
+   private ACCESS_MEMBER_API = 'http://localhost:8080/member';
+  ///////////////////////////////////////////////////////
+
   constructor(private httpClient: HttpClient) { }
 
   saveNewUser(user: User): Observable<HttpResponse<User>> {
@@ -36,4 +43,14 @@ export class UserService {
   editUser(user: User): Observable<User> {
     return this.httpClient.patch<User>(`${this.API_URL}/${user.id}`, user);
   }
+
+  // Thiện update lần 2 - CẤM XOÁ ! //
+  accessAdminPage(): Observable<string> {
+    return this.httpClient.get(this.ACCESS_ADMIN_API, { responseType: 'text' });
+  }
+
+  accessMemberPage(): Observable<string> {
+    return this.httpClient.get(this.ACCESS_MEMBER_API, { responseType: 'text' });
+  }
+  ////////////////////////////////////////////////////////////////////////////////
 }

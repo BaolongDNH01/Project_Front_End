@@ -1,3 +1,7 @@
+<div class="border">
+  <nav class="navbar bg-title-list-quiz ">
+    <p class="m-auto heard">Update Question</p>
+  </nav>
 <form  [formGroup]="formQuestion">
   <div class="d-flex justify-content-center align-items-center flex-column update">
     <div class="card-body body-background top-ranking">
@@ -10,8 +14,9 @@
         <li class="list-inline mt-2">
           Question
           <i class="pr-5" aria-hidden="true"></i>
-          <span class="float-right "><input class="form-control" style="width: 300px"formControlName="question" type="text"></span>
+          <span class="float-right "><input class="form-control" style="width: 300px" formControlName="question" type="text"></span>
         </li>
+        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.get('question').hasError('required') && formQuestion.get('question').touched">* Enter Question please</li>
         <fieldset  formGroupName="answerAndRight">
           <ul class="list-group">
             <li class="list-inline mt-2">
@@ -32,58 +37,65 @@
           Subject
           <i class="pr-5" aria-hidden="true"></i>
           <span class="float-right">
-<!--            <input class="form-control" style="width: 300px" formControlName="subjectId" type="number">-->
             <select class="form-control" style="width: 300px" formControlName="subjectId">
               <option class="form-control" *ngFor="let subject of listSubject" value="{{subject.subjectId}}">{{subject.subjectName}}</option>
             </select>
           </span>
         </li>
+        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.get('subjectId').hasError('required') && formQuestion.get('subjectId').touched">* Enter subject please</li>
 
         <li class="list-inline mt-2">
           Test
           <i class="pr-5" aria-hidden="true"></i>
           <div class="input-group mb-3  float-right" style="width: 300px">
-            <input formControlName="testCodeList" readonly class=" form-control" type="text"  [(ngModel)]="listTestCode" [value]="listTestCode" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <input formControlName="testCodeList" readonly class=" form-control" type="text"  [(ngModel)]="listTestCode" aria-label="Recipient's username" aria-describedby="button-addon2">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" (click)="reset()" type="button" id="button-addon2">Retype</button>
             </div>
           </div>
 
         </li>
-        <li  class="list-inline mt-2">
-          <div class="container row">
+        <li  class="list-inline">
+          <i class=" " aria-hidden="true"></i>
+          <div class="row">
+
             <div class="col-4"></div>
-            <div class="col-5 " >
+            <div class="col-8 float-left">
+              <div class="float-left  input-group" style="width: 200px" >
 
-              <ng-autocomplete  formControlName="testCode"
-                                [data]="data$ | async"
-                                [searchKeyword]="keyword"
-                                [itemTemplate]="itemTemplate"
-                                [notFoundTemplate]="notFoundTemplate"
-              >
-              </ng-autocomplete>
+                <ng-autocomplete  formControlName="testCode"
+                                  [data]="data$ | async"
+                                  [searchKeyword]="keyword"
+                                  [itemTemplate]="itemTemplate"
+                                  [notFoundTemplate]="notFoundTemplate"
+                >
+                </ng-autocomplete>
 
-              <ng-template  #itemTemplate let-item>
-                <a  [innerHTML]="item.testCode" ></a>
-              </ng-template>
-              <ng-template  #notFoundTemplate let-notFound>
-                <div [innerHTML]="listTestCode"></div>
-              </ng-template>
-            </div>
-            <div class="col-3">
-              <input class="float-right btn btn-light bg-transparent button-update" value="add test"  type="submit" (click)="inputTesst()">
+                <ng-template  #itemTemplate let-item>
+                  <a  [innerHTML]="item.testCode" ></a>
+                </ng-template>
+                <ng-template  #notFoundTemplate let-notFound>
+                  <div [innerHTML]="listTestCode"></div>
+                </ng-template>
+              </div>
+              <div class="input-group-append float-right">
+                <input class=" btn btn-outline-secondary" value="add test"   type="submit" (click)="inputTesst()">
+              </div>
             </div>
           </div>
         </li>
 
         <li class="list-inline mt-4" style="margin-left: 150px">
-          <button (click)="addQuestion()" [disabled]="formQuestion.invalid" class="btn btn-light bg-transparent button-update"  type="submit" id="button-addon1">Submit</button>
+          <div>
+            <button (click)="addQuestion()" [disabled]="formQuestion.invalid" class="btn btn-sm border rounded"  type="submit" >Submit</button>
+
+          </div>
         </li>
       </ul>
     </div>
   </div>
 
 </form>
-
+</div>
 
 
