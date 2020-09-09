@@ -1,5 +1,7 @@
+import { LoginModule } from './login/login.module';
+import { httpInterceptorProviders } from './login/auth/auth-http.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {UserModule} from './user/user.module';
@@ -19,6 +21,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   ],
   imports: [
     BrowserModule,
+    LoginModule,
     UserModule,
     TestModule,
     AppRoutingModule,
@@ -28,7 +31,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
     QuestionRoutingModule,
     NgxPaginationModule
   ],
-  providers: [],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
