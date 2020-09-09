@@ -62,18 +62,19 @@ ul {
   clear:left;
 }
 
-.allCheckQ{
+
+.fa-times{
   visibility: hidden;
 }
 
-.fa-times{
-  visibility: visible;
-}
-
 .fa-check{
-  visibility: visible;
+  visibility: hidden;
 }
 
 .rightAnswer{
   visibility: hidden;
+}
+
+.allCheckQ{
+  visibility:visible ;
 }
