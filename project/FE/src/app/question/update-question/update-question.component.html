@@ -56,33 +56,40 @@
 
         </li>
         <li  class="list-inline">
-          <div class="container row">
+          <i class=" " aria-hidden="true"></i>
+          <div class="row">
+
             <div class="col-4"></div>
-            <div class="col-7 " >
+            <div class="col-8 float-left">
+              <div class="float-left  input-group" style="width: 200px" >
 
-              <ng-autocomplete  formControlName="testCode"
-                                [data]="data$ | async"
-                                [searchKeyword]="keyword"
-                                [itemTemplate]="itemTemplate"
-                                [notFoundTemplate]="notFoundTemplate"
-              >
-              </ng-autocomplete>
+                <ng-autocomplete  formControlName="testCode"
+                                  [data]="data$ | async"
+                                  [searchKeyword]="keyword"
+                                  [itemTemplate]="itemTemplate"
+                                  [notFoundTemplate]="notFoundTemplate"
+                >
+                </ng-autocomplete>
 
-              <ng-template  #itemTemplate let-item>
-                <a  [innerHTML]="item.testCode" ></a>
-              </ng-template>
-              <ng-template  #notFoundTemplate let-notFound>
-                <div [innerHTML]="listTestCode"></div>
-              </ng-template>
-            </div>
-            <div class="col-1 ">
-              <input class="float-left btn btn-light bg-transparent button-update" value="add test"  type="submit" (click)="inputTesst()">
+                <ng-template  #itemTemplate let-item>
+                  <a  [innerHTML]="item.testCode" ></a>
+                </ng-template>
+                <ng-template  #notFoundTemplate let-notFound>
+                  <div [innerHTML]="listTestCode"></div>
+                </ng-template>
+              </div>
+              <div class="input-group-append float-right">
+                <input class=" btn btn-outline-secondary" value="add test"   type="submit" (click)="inputTesst()">
+              </div>
             </div>
           </div>
         </li>
 
         <li class="list-inline mt-4" style="margin-left: 150px">
-          <button (click)="addQuestion()" [disabled]="formQuestion.invalid" class="btn btn-light bg-transparent button-update"  type="submit" id="button-addon1">Submit</button>
+          <div>
+            <button (click)="addQuestion()" [disabled]="formQuestion.invalid" class="btn btn-sm border rounded"  type="submit" >Submit</button>
+
+          </div>
         </li>
       </ul>
     </div>
