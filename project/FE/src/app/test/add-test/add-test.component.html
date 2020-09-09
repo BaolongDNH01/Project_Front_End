@@ -40,6 +40,12 @@
           <div id="gradeErr"></div>
         </div>
 
+<!--      test code-->
+        <div class="row mt-2 p-4 ml-1 mr-2 input-shadow">
+          <span class="col-md-3">Test code</span>
+          <input formControlName="testCode" class="col-md-4">
+        </div>
+
         <div>
           <input formControlName="id" type="hidden">
         </div>
@@ -66,6 +72,13 @@
             </div>
             <div class="text-danger" *ngIf="formAddTest.get('grade').hasError('pattern') && formAddTest.get('grade').touched">
               *grade not allowed special character, and less than 21 character
+            </div>
+
+            <div class="text-danger" *ngIf="formAddTest.get('testCode').hasError('required') && formAddTest.get('testCode').touched">
+              *test code not empty
+            </div>
+            <div class="text-danger" *ngIf="formAddTest.get('testCode').hasError('pattern') && formAddTest.get('testCode').touched">
+              *grade not allowed special character, and less than 4 character
             </div>
           </div>
         </div>
