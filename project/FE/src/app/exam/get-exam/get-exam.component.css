@@ -1,4 +1,7 @@
-
+.get-test{
+  font-family: Arial, consolas, serif;
+  font-size: 16px;
+}
 .question b > span {
   font-family: Arial, consolas, serif;
   font-size: 16px;
