@@ -3,8 +3,8 @@ export class Exam {
   examId: number;
   examDate: string;
   mark: number;
-  answer: [];
-  times: string;
+  answer: string;
+  times: number;
   user: number;
   test: number;
 

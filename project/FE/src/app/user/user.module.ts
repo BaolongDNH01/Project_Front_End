@@ -5,17 +5,27 @@ import {RegisterUserComponent} from './register-user/register-user.component';
 import {ListUserComponent} from './list-user/list-user.component';
 import {DeleteUserComponent} from './delete-user/delete-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { StatisticalUserComponent } from './statistical-user/statistical-user.component';
+import {AngularPaginatorModule} from 'angular-paginator';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
-  declarations: [RegisterUserComponent,
-    ListUserComponent,
-    DeleteUserComponent],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule
+    declarations: [RegisterUserComponent,
+        ListUserComponent,
+        DeleteUserComponent,
+        StatisticalUserComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    AngularPaginatorModule,
+    MatPaginatorModule
+  ],
+    exports: [
+        StatisticalUserComponent
     ],
-  providers: [UserService]
+    providers: [UserService]
+
 })
 export class UserModule {
 }

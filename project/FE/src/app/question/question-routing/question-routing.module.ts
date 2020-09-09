@@ -5,6 +5,7 @@ import {QuestionBankListComponent} from '../question-bank-list/question-bank-lis
 import {QuestionBankDeleteComponent} from '../question-bank-delete/question-bank-delete.component';
 import {AddQuestionComponent} from '../add-question/add-question.component';
 import {UpdateQuestionComponent} from "../update-question/update-question.component";
+import {ErrorPageComponent} from '../../error-page/error-page.component';
 
 const routes: Routes = [
   {
@@ -12,8 +13,8 @@ const routes: Routes = [
     children: [
       {path: '', component: QuestionBankListComponent},
       {path: 'question-delete/:id', component: QuestionBankDeleteComponent},
-      {path: 'question-add', component: AddQuestionComponent},
-      {path: 'question-update/:{id}', component: UpdateQuestionComponent}
+      {path: 'add-question', component: AddQuestionComponent},
+      {path: 'update-question/:id', component: UpdateQuestionComponent},
     ]
   }
 ];
