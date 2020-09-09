@@ -6,25 +6,25 @@ import {ListUserComponent} from './list-user/list-user.component';
 import {DeleteUserComponent} from './delete-user/delete-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { StatisticalUserComponent } from './statistical-user/statistical-user.component';
-import {AngularPaginatorModule} from 'angular-paginator';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {NgxPaginationModule} from 'ngx-pagination';
-import {RouterModule} from '@angular/router';
+import { DetailUserComponent } from './detail-user/detail-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { TestHistoryComponent } from './test-history/test-history.component';
 
 
 @NgModule({
     declarations: [RegisterUserComponent,
         ListUserComponent,
         DeleteUserComponent,
-        StatisticalUserComponent],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    AngularPaginatorModule,
-    MatPaginatorModule,
-    NgxPaginationModule,
-    RouterModule
-  ],
+        StatisticalUserComponent,
+        DetailUserComponent,
+        UpdateUserComponent,
+        UpdatePasswordComponent,
+        TestHistoryComponent],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule
+    ],
     exports: [
         StatisticalUserComponent
     ],

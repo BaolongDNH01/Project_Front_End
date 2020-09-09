@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { User } from '../user_model/User';
-import { Observable } from 'rxjs';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {User} from '../user_model/User';
+import {Observable} from 'rxjs';
+import {Password} from '../update-password/password';
 
 @Injectable({
   providedIn: 'root'
@@ -9,33 +10,30 @@ import { Observable } from 'rxjs';
 export class UserService {
   REGISTER_USER_API_URL = 'http://localhost:8080/register';
   API_URL = 'http://localhost:8080';
-
-  // THIEN UPDATE
-  private ACCESS_ADMIN_API = 'http://localhost:8080/admin';
-  private ACCESS_MEMBER_API = 'http://localhost:8080/member';
-
-
   constructor(private httpClient: HttpClient) { }
 
   saveNewUser(user: User): Observable<HttpResponse<User>> {
-    return this.httpClient.post<User>(this.REGISTER_USER_API_URL, user, { observe: 'response' });
+   return  this.httpClient.post <User>(this.REGISTER_USER_API_URL, user, { observe: 'response' });
   }
-  findUserNew(): Observable<User> {
+  findUserNew(): Observable<User>{
     return this.httpClient.get<User>(this.API_URL + '/new-user');
   }
-  findAllUser(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.API_URL + '/listUser');
+  findAllUser(): Observable<User[]>{
+    return this.httpClient.get<User[]>(this.API_URL + '/allUser');
   }
 
-  deleteUser(id: number): Observable<void>{
-    return this.httpClient.delete<void>(this.API_URL + '/delete-user/' + id);
-
-  // THIEN UPDATE
-  accessAdminPage(): Observable<string> {
-    return this.httpClient.get(this.ACCESS_ADMIN_API, { responseType: 'text' });
+  getUserById(id: number): Observable<User> {
+    return this.httpClient.get<User>(`${this.API_URL}/information-user/${id}`);
   }
 
-  accessMemberPage(): Observable<string> {
-    return this.httpClient.get(this.ACCESS_MEMBER_API, { responseType: 'text' });
+  changePassword(userId: number, password: Password): Observable<User> {
+    return this.httpClient.patch<User>(
+      `${this.API_URL}/${userId}/changePassword`,
+      password
+    );
+  }
+
+  editUser(user: User): Observable<User> {
+    return this.httpClient.patch<User>(`${this.API_URL}/${user.id}`, user);
   }
 }

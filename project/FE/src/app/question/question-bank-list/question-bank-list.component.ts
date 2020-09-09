@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {QuestionService} from '../question.service';
-import {Question} from '../Question';
+import {Question} from '../question';
+
 
 @Component({
   selector: 'app-question-bank-list',

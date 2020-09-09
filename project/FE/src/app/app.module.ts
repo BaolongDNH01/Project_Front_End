@@ -1,7 +1,5 @@
-import { LoginModule } from './login/login.module';
-import { httpInterceptorProviders } from './login/auth/auth-http.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {UserModule} from './user/user.module';
@@ -12,16 +10,18 @@ import {QuestionModule} from './question/question.module';
 import {HttpClientModule} from '@angular/common/http';
 import {QuestionRoutingModule} from './question/question-routing/question-routing.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import {FormDirective} from './directive/form.directive';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    FormDirective,
   ],
   imports: [
     BrowserModule,
-    LoginModule,
     UserModule,
     TestModule,
     AppRoutingModule,
@@ -29,12 +29,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
     QuestionModule,
     HttpClientModule,
     QuestionRoutingModule,
-    NgxPaginationModule
+    ReactiveFormsModule,
   ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
-  providers: [httpInterceptorProviders],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
+  exports: [FormDirective]
 })
 export class AppModule { }

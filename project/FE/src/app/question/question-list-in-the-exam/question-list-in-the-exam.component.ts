@@ -1,10 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Question} from '../Question';
 import {QuestionService} from '../question.service';
 import {QuestionInExam} from '../question-in-exam';
 import {Router} from '@angular/router';
+
 import {Exam} from '../../exam/exam';
 import {ExamService} from '../../exam/exam_service/exam.service';
+
+import {Question} from '../question';
+
 
 // @ts-ignore
 @Component({
