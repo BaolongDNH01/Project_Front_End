@@ -27,11 +27,11 @@ export class TestService {
     return this.httpClient.get<Test[]>(this.getAllTestApi);
   }
 
-  upload(file: File): Observable<HttpEvent<any>> {
+  upload(file: File): Observable<string> {
     const formData: FormData = new FormData();
     formData.append('file', file);
 
-    return this.httpClient.post<HttpEvent<any>>(this.uploadFile, formData);
+    return this.httpClient.post<string>(this.uploadFile, formData);
   }
 
   deleteTests(list: number[]): Observable<any> {
@@ -42,8 +42,8 @@ export class TestService {
     return this.httpClient.get<Subject[]>(this.getAllSubjectApi);
   }
 
-  addTest(test: Test): Observable<any> {
-    return this.httpClient.post<any>(this.addTestApi, test);
+  addTest(test: Test): Observable<string> {
+    return this.httpClient.post<string>(this.addTestApi, test);
   }
 
   findById(testId: number): Observable<Test> {

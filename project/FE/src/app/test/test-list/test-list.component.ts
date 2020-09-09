@@ -11,6 +11,7 @@ import {Test} from '../test';
 export class TestListComponent implements OnInit {
   listTest: Array<Test>;
   listTestDelete: number[] = [];
+  message: string;
 
   constructor(private testService: TestService) {
   }
@@ -28,7 +29,11 @@ export class TestListComponent implements OnInit {
   }
 
   selectFile(event): void {
-    this.testService.upload(event.target.files.item(0)).subscribe();
+    this.testService.upload(event.target.files.item(0)).subscribe(
+      mess => console.log(mess),
+      () => null,
+    () => this.getAllTest()
+    );
   }
 
   chooseToDelete(testId: number): void {
