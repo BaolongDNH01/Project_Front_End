@@ -10,7 +10,7 @@ import {QuestionModule} from './question/question.module';
 import {HttpClientModule} from '@angular/common/http';
 import {QuestionRoutingModule} from './question/question-routing/question-routing.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     QuestionModule,
     HttpClientModule,
     QuestionRoutingModule,
-    MatPaginatorModule
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

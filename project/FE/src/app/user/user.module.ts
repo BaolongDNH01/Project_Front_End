@@ -8,6 +8,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { StatisticalUserComponent } from './statistical-user/statistical-user.component';
 import {AngularPaginatorModule} from 'angular-paginator';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CommonModule,
     ReactiveFormsModule,
     AngularPaginatorModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgxPaginationModule,
+    RouterModule
   ],
     exports: [
         StatisticalUserComponent

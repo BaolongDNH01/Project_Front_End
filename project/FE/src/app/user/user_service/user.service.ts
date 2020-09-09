@@ -20,4 +20,7 @@ export class UserService {
   findAllUser(): Observable<User[]>{
     return this.httpClient.get<User[]>(this.API_URL + '/listUser');
   }
+  deleteUser(id: number): Observable<void>{
+    return this.httpClient.delete<void>(this.API_URL + '/delete-user/' + id);
+  }
 }
