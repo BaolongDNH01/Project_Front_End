@@ -27,6 +27,9 @@ export class UserService {
     return this.httpClient.get<User[]>(this.API_URL + '/listUser');
   }
 
+  deleteUser(id: number): Observable<void>{
+    return this.httpClient.delete<void>(this.API_URL + '/delete-user/' + id);
+
   // THIEN UPDATE
   accessAdminPage(): Observable<string> {
     return this.httpClient.get(this.ACCESS_ADMIN_API, { responseType: 'text' });
