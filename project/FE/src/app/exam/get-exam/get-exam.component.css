@@ -61,7 +61,9 @@ ul {
 .question{
   clear:left;
 }
-
+#score{
+  color: blue;
+}
 
 .fa-times{
   visibility: hidden;
