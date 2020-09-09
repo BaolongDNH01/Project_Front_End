@@ -39,7 +39,7 @@
           Subject
           <i class="pr-5" aria-hidden="true"></i>
           <span class="float-right">
-<!--            <input class="form-control" style="width: 300px" formControlName="subjectId" type="number">-->
+
             <select class="form-control" style="width: 300px" formControlName="subjectId">
               <option class="form-control" *ngFor="let subject of listSubject" value="{{subject.subjectId}}">{{subject.subjectName}}</option>
             </select>
@@ -54,15 +54,18 @@
           <div class="input-group mb-3  float-right" style="width: 300px">
             <input formControlName="testCodeList" readonly  class=" form-control" type="text"  [(ngModel)]="listTestCode" [value]="listTestCode" aria-label="Recipient's username" aria-describedby="button-addon2">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" (click)="reset()" type="button" id="button-addon2">Retype</button>
+              <button class="btn btn-outline-secondary" (click)="reset()" type="button" >Retype</button>
             </div>
           </div>
 
         </li>
         <li  class="list-inline">
-          <div class="container row">
+          <i class=" " aria-hidden="true"></i>
+          <div class="row">
+
             <div class="col-4"></div>
-            <div class="col-7 " >
+            <div class="col-8 float-left">
+            <div class="float-left  input-group" style="width: 200px" >
 
               <ng-autocomplete  formControlName="testCode"
                                 [data]="data$ | async"
@@ -79,14 +82,18 @@
                 <div [innerHTML]="listTestCode"></div>
               </ng-template>
             </div>
-            <div class="col-1">
-              <input class="float-left btn btn-light bg-transparent button-update" value="add test"  type="submit" (click)="inputTesst()">
+            <div class="input-group-append float-right">
+              <input class=" btn btn-outline-secondary" value="add test"   type="submit" (click)="inputTesst()">
             </div>
+          </div>
           </div>
         </li>
 
         <li class="list-inline mt-4" style="margin-left: 150px">
-          <button (click)="addQuestion()" [disabled]="formQuestion.invalid" class="btn btn-light bg-transparent button-update"  type="submit" id="button-addon1">Submit</button>
+          <div>
+            <button (click)="addQuestion()" [disabled]="formQuestion.invalid" class="btn btn-sm  rounded border"  type="submit" >Submit</button>
+
+          </div>
         </li>
       </ul>
     </div>
