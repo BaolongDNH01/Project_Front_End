@@ -1,3 +1,4 @@
+
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Question} from '../question';
@@ -177,3 +178,4 @@ function checkRightAnswer(formControl: AbstractControl): any {
   }
   return {checkRightAnswer: true};
 }
+
