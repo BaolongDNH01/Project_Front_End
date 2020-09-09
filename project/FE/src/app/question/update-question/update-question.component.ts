@@ -14,6 +14,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
   styleUrls: ['./update-question.component.css']
 })
 export class UpdateQuestionComponent implements OnInit {
+  strTestCode = '';
   listSubject: Subject[];
   id: string;
   arr: string[];
@@ -37,11 +38,12 @@ export class UpdateQuestionComponent implements OnInit {
   constructor(private questionService: QuestionService, private fb: FormBuilder,
               private testService: TestService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.data$ = questionService.getAllTest();
-  }
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+    activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
     });
+  }
+  ngOnInit(): void {
+
     this.questionService.findById(this.id).subscribe(
       next => {
         this.question = next;
@@ -53,8 +55,24 @@ export class UpdateQuestionComponent implements OnInit {
         this.formQuestion.patchValue({question: this.question.question});
         this.formQuestion.patchValue({answerAndRight: {rightAnswer: this.question.rightAnswer}});
         this.formQuestion.patchValue({subjectId: this.question.subjectId});
+        let test: Test;
+        for (let i = 0; i < this.question.testId.length; i++){
+          this.testService.findById(this.question.testId[i]).subscribe(
+            // tslint:disable-next-line:no-shadowed-variable
+            next => {
+              test = next;
+              console.log('c' + test.testCode);
+            }, error => {
+              test = new Test();
+            }, () => {
+              this.strTestCode += (test.testCode + ' ');
+              this.formQuestion.patchValue({testCodeList: this.strTestCode});
+            }
+          );
+        }
       }, error => {
       }, () => {
+        this.listTestCode = this.strTestCode;
         this.questionService.getAllQuestion().subscribe(
           next => {
             this.listQuestion = next;
