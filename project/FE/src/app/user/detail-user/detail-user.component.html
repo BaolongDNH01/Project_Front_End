@@ -1,0 +1,56 @@
+<div class="container w-75 mt-5">
+<!--  <form class="card info-form">-->
+    <div class="title card-header">
+      <span>Personal Information</span>
+    </div>
+    <div class="form-row pr-5 pt-5">
+      <div class="col-md-4 form-group text-center pl-4">
+        <p>Avatar</p>
+        <a class='btn btn-upload' href='javascript:;'>
+          <input type="file" multiple id="uploadFile" name="file_source"
+                 onchange='$("#upload-file-info").html($(this).val());'
+                 style="width: 190px; height: 200px; margin-left: 115px">
+          <img *ngIf="user" [src]="user.avatar" alt="avatar" style="width: 200px; height: 230px">
+        </a>
+      </div>
+      <div class="col-md-8 pl-0 ml-0">
+        <table class="w-100 h-100">
+          <tr style="background-color: #f5f5f5">
+            <td>User: </td>
+            <td>{{user.username}}</td>
+          </tr>
+          <tr style="background-color: #DFF0D8">
+            <td>Name: </td>
+            <td>{{user.fullName}}</td>
+          </tr>
+          <tr style="background-color: #FCF8E3">
+            <td>Email: </td>
+            <td>{{user.email}}</td>
+          </tr>
+          <tr style="background-color: #F2DEDE">
+            <td>Address: </td>
+            <td>{{user.address}}</td>
+          </tr>
+          <tr style="background-color: #D9EDF7">
+            <td>Phone: </td>
+            <td>{{user.phoneNumber}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="form-row ml-5 pl-4">
+      <div class="col-md-1 form-group pl-5 ml-3">
+        <button type="button" class="btn btn-outline-secondary">Update</button>
+      </div>
+      <div class="col-md-10 ml-5 pt-2">
+        <span class='label label-info text-info' id="upload-file-info"></span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-12 form-group text-center">
+<!--        <a routerLink="" class="btn btn-info">Edit</a>-->
+<!--        <a routerLink="" class="btn btn-info">History</a>-->
+      </div>
+    </div>
+<!--  </form>-->
+</div>
