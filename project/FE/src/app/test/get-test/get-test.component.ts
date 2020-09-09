@@ -20,7 +20,7 @@ export class GetTestComponent implements OnInit {
   time = 15 * 60;
   display;
   interval;
-
+  mark = 0;
   constructor(private fb: FormBuilder, private testService: TestService, private examService: ExamService,
               private router: Router, private activatedRoute: ActivatedRoute) {
     this.examForm = this.fb.group({
@@ -56,6 +56,7 @@ export class GetTestComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSubmit() {
     this.exam = Object.assign({}, this.examForm.value);
+    this.caculationMark();
     this.exam.answer = this.exam.answer.toString();
     this.examService.save(this.exam).subscribe(
       next => {
@@ -83,5 +84,16 @@ export class GetTestComponent implements OnInit {
   transform(value: number): string {
     const minutes: number = Math.floor(value / 60);
     return minutes + ':' + (value - minutes * 60);
+  }
+
+  // tslint:disable-next-line:typedef
+  caculationMark() {
+    for (let i = 0; i < this.listQuestion.length; i++) {
+      // tslint:disable-next-line:triple-equals
+      if (!(this.exam.answer[i] == this.listQuestion[i].rightAnswer)) {
+        this.mark += 0.5;
+      }
+    }
+    this.exam.mark = this.mark;
   }
 }
