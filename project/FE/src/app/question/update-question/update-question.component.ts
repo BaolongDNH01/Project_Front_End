@@ -5,8 +5,8 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
 import {Question} from '../question';
 import {QuestionService} from '../question.service';
 import {TestService} from '../../test/test_service/test.service';
-import {Subject} from "../subject";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {Subject} from '../subject';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
   selector: 'app-update-question',
@@ -14,6 +14,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
   styleUrls: ['./update-question.component.css']
 })
 export class UpdateQuestionComponent implements OnInit {
+  strTestCode = '';
   listSubject: Subject[];
   id: string;
   arr: string[];
@@ -35,13 +36,14 @@ export class UpdateQuestionComponent implements OnInit {
   listQuestion: Question[] = [];
   error = '';
   constructor(private questionService: QuestionService, private fb: FormBuilder,
-              private testService: TestService, private activatedRoute: ActivatedRoute) {
+              private testService: TestService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.data$ = questionService.getAllTest();
-  }
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+    activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
     });
+  }
+  ngOnInit(): void {
+
     this.questionService.findById(this.id).subscribe(
       next => {
         this.question = next;
@@ -53,8 +55,24 @@ export class UpdateQuestionComponent implements OnInit {
         this.formQuestion.patchValue({question: this.question.question});
         this.formQuestion.patchValue({answerAndRight: {rightAnswer: this.question.rightAnswer}});
         this.formQuestion.patchValue({subjectId: this.question.subjectId});
+        let test: Test;
+        for (let i = 0; i < this.question.testId.length; i++){
+          this.testService.findById(this.question.testId[i]).subscribe(
+            // tslint:disable-next-line:no-shadowed-variable
+            next => {
+              test = next;
+              console.log('c' + test.testCode);
+            }, error => {
+              test = new Test();
+            }, () => {
+              this.strTestCode += (test.testCode + ' ');
+              this.formQuestion.patchValue({testCodeList: this.strTestCode});
+            }
+          );
+        }
       }, error => {
       }, () => {
+        this.listTestCode = this.strTestCode;
         this.questionService.getAllQuestion().subscribe(
           next => {
             this.listQuestion = next;
@@ -108,17 +126,17 @@ export class UpdateQuestionComponent implements OnInit {
       this.testIdList.push(Number(this.listTestQuestion[i].testId));
     }
     console.log(this.testIdList);
-    this.question = new Question(
-      this.formQuestion.value.questionId,
-      this.formQuestion.value.question,
-      this.formQuestion.value.answerA,
-      this.formQuestion.value.answerB,
-      this.formQuestion.value.answerC,
-      this.formQuestion.value.answerD,
-      this.formQuestion.value.answerAndRight.rightAnswer,
-      this.testIdList,
-      this.formQuestion.value.subjectId,
-    );
+    // this.question = new Question(
+    //   this.formQuestion.value.questionId,
+    //   this.formQuestion.value.question,
+    //   this.formQuestion.value.answerA,
+    //   this.formQuestion.value.answerB,
+    //   this.formQuestion.value.answerC,
+    //   this.formQuestion.value.answerD,
+    //   this.formQuestion.value.answerAndRight.rightAnswer,
+    //   this.testIdList,
+    //   this.formQuestion.value.subjectId,
+    // );
     this.questionService.saveQuestion(this.question).subscribe(
       next => {},
       error => {},
@@ -131,6 +149,7 @@ export class UpdateQuestionComponent implements OnInit {
             this.listQuestion = new Array();
           }, () => {
             console.log(this.listQuestion.length);
+            this.router.navigateByUrl('/question');
           }
         );
       }

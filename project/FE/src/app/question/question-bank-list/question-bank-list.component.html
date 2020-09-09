@@ -45,7 +45,7 @@
             <td class="text-left">{{questionList.rightAnswer}}</td>
             <td>
               <a [routerLink]="['question-delete', questionList.questionId]">Del</a>
-              <a href="">Edit</a>
+              <a [routerLink]="['update-question/' + questionList.questionId]" >Edit</a>
             </td>
           </tr>
 
@@ -72,7 +72,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-2">
-              <button data-toggle="collapse" type="button" data-target="#notification"
+              <button [routerLink]="['add-question']" data-toggle="collapse" type="button" data-target="#notification"
                       class="btn bg-btn btn-primary mb-3">Add New
               </button>
 

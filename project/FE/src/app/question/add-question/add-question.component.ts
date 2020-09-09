@@ -5,6 +5,7 @@ import {QuestionService} from '../question.service';
 import {Test} from '../../test/test';
 import {Observable} from 'rxjs';
 import {Subject} from "../subject";
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class AddQuestionComponent implements OnInit {
   listQuestion: Question[] = [];
   error = '';
 
-  constructor(private fb: FormBuilder, private questionService: QuestionService) {
+  constructor(private fb: FormBuilder, private questionService: QuestionService, private router: Router) {
     this.data$ = questionService.getAllTest();
     questionService.getAllQuestion().subscribe(
       next => {
@@ -95,17 +96,18 @@ export class AddQuestionComponent implements OnInit {
       this.testIdList.push(Number(this.listTestQuestion[i].testId));
     }
     console.log(this.testIdList);
-    this.question = new Question(
-      this.formQuestion.value.questionId,
-      this.formQuestion.value.question,
-      this.formQuestion.value.answerA,
-      this.formQuestion.value.answerB,
-      this.formQuestion.value.answerC,
-      this.formQuestion.value.answerD,
-      this.formQuestion.value.answerAndRight.rightAnswer,
-      this.testIdList,
-      this.formQuestion.value.subjectId,
-    );
+    // @ts-ignore
+    // this.question = new Question(
+    //   this.formQuestion.value.questionId,
+    //   this.formQuestion.value.question,
+    //   this.formQuestion.value.answerA,
+    //   this.formQuestion.value.answerB,
+    //   this.formQuestion.value.answerC,
+    //   this.formQuestion.value.answerD,
+    //   this.formQuestion.value.answerAndRight.rightAnswer,
+    //   this.testIdList,
+    //   this.formQuestion.value.subjectId,
+    // );
     this.questionService.saveQuestion(this.question).subscribe(
       next => {},
       error => {},
@@ -117,8 +119,8 @@ export class AddQuestionComponent implements OnInit {
           }, error => {
             this.listQuestion = [];
           }, () => {
-            console.log(this.listQuestion.length);
-          }
+            this.router.navigateByUrl('/question');
+          },
         );
       }
     );

@@ -9,10 +9,13 @@ import {ExamModule} from './exam/exam.module';
 import {QuestionModule} from './question/question.module';
 import {HttpClientModule} from '@angular/common/http';
 import {QuestionRoutingModule} from './question/question-routing/question-routing.module';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,8 @@ import {QuestionRoutingModule} from './question/question-routing/question-routin
     ExamModule,
     QuestionModule,
     HttpClientModule,
-    QuestionRoutingModule
+    QuestionRoutingModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
