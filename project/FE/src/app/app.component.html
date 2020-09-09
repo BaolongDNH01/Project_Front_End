@@ -65,21 +65,36 @@
       <h1>Sau khi đăng nhập ở đây sẽ có link để truy cập vào các chức năng tuỳ theo role </h1>
       <ul class="nav navbar-nav" routerLinkActive="active">
         <li *ngIf="authority === 'admin'" class="nav-item">
-          <a class="nav-link" routerLink="admin">
-            Access Admin Page
-          </a>
+          Task nào cần role admin thì bỏ selector vào đây
           <pre>List admin feature</pre>
+          <a class="nav-link" routerLink="admin">
+            Chức năng 1
+          </a>
+          <a class="nav-link" routerLink="admin">
+            Chức năng 2
+          </a>
+          <a class="nav-link" routerLink="admin">
+            Chức năng 3
+          </a>
         </li>
         <li *ngIf="authority === 'member'" class="nav-item">
+          Task nào cần role member thì bỏ selector vào đây
+          <pre>List member feature</pre>
           <a class="nav-link" routerLink="member">
-            Access Member Page
+            Chức năng 1
+          </a>
+          <a class="nav-link" routerLink="member">
+            Chức năng 2
+          </a>
+          <a class="nav-link" routerLink="member">
+            Chức năng 3
           </a>
         </li>
         <li *ngIf="authority === 'unauthorized'" class="nav-item">
           <p>Login please!</p>
         </li>
       </ul>
-      <h1>Danh sách chức năng</h1>
+      <h1>Feature Area</h1>
       <router-outlet></router-outlet>
     </div>
     <!-- // -->
