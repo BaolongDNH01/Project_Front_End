@@ -10,11 +10,15 @@ import {QuestionModule} from './question/question.module';
 import {HttpClientModule} from '@angular/common/http';
 import {QuestionRoutingModule} from './question/question-routing/question-routing.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import {FormDirective} from './directive/form.directive';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    FormDirective,
   ],
   imports: [
     BrowserModule,
@@ -24,9 +28,11 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ExamModule,
     QuestionModule,
     HttpClientModule,
-    QuestionRoutingModule
+    QuestionRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [FormDirective]
 })
 export class AppModule { }

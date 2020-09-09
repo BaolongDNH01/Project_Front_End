@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {User} from '../user_model/User';
 import {Observable} from 'rxjs';
+import {Password} from '../update-password/password';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,20 @@ export class UserService {
   }
   findAllUser(): Observable<User[]>{
     return this.httpClient.get<User[]>(this.API_URL + '/allUser');
+  }
+
+  getUserById(id: number): Observable<User> {
+    return this.httpClient.get<User>(`${this.API_URL}/information-user/${id}`);
+  }
+
+  changePassword(userId: number, password: Password): Observable<User> {
+    return this.httpClient.patch<User>(
+      `${this.API_URL}/${userId}/changePassword`,
+      password
+    );
+  }
+
+  editUser(user: User): Observable<User> {
+    return this.httpClient.patch<User>(`${this.API_URL}/${user.id}`, user);
   }
 }

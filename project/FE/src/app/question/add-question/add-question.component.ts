@@ -4,7 +4,7 @@ import {Question} from '../question';
 import {QuestionService} from '../question.service';
 import {Test} from '../../test/test';
 import {Observable} from 'rxjs';
-import {Subject} from "../subject";
+import {Subject} from '../subject';
 import {Router} from '@angular/router';
 
 

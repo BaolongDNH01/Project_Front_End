@@ -11,6 +11,7 @@ import {UserService} from '../user_service/user.service';
 export class StatisticalUserComponent implements OnInit {
   // tslint:disable-next-line:new-parens
   user: User = new class implements User {
+    avatar: string;
     address: string;
     email: string;
     examList: Exam[];
@@ -30,6 +31,7 @@ export class StatisticalUserComponent implements OnInit {
       }, error => {
         // tslint:disable-next-line:new-parens
         this.user = new class implements User {
+          avatar: string;
           address: string;
           email: string;
           examList: Exam[];
