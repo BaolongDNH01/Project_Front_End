@@ -1,5 +1,7 @@
+import { LoginModule } from './login/login.module';
+import { httpInterceptorProviders } from './login/auth/auth-http.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {UserModule} from './user/user.module';
@@ -30,8 +32,19 @@ import {ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     QuestionRoutingModule,
     ReactiveFormsModule,
+
+    // Thiện update lần 2 - CẤM XOÁ ! //
+    LoginModule
+    /////////////////////////////////////
   ],
-  providers: [],
+
+  // Thiện update lần 2 - CẤM XOÁ ! //
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  providers: [httpInterceptorProviders],
+  /////////////////////////////////////
+
   bootstrap: [AppComponent],
   exports: [FormDirective]
 })
