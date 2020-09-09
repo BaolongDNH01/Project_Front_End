@@ -19,6 +19,7 @@ export class GetExamComponent implements OnInit {
   listQuestion: Question[];
   listAnswer: string[];
 
+
   constructor(private examService: ExamService, private activatedRoute: ActivatedRoute, private testService: TestService) {
   }
 
@@ -44,8 +45,9 @@ export class GetExamComponent implements OnInit {
           );
         }
       );
-
     });
+
   }
+
 
 }

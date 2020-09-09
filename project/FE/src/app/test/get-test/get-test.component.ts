@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Test} from '../test';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {TestService} from '../test_service/test.service';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Exam} from '../../exam/exam';
 import {ExamService} from '../../exam/exam_service/exam.service';
 import {Question} from '../../question/question';
 
 @Component({
-  selector: 'app-get-test',
+  selector: "app-get-test",
   templateUrl: './get-test.component.html',
   styleUrls: ['./get-test.component.css']
 })
@@ -17,7 +17,10 @@ export class GetTestComponent implements OnInit {
   exam: Exam;
   examForm: FormGroup;
   listQuestion: Question[];
-
+  time = 15 * 60;
+  display;
+  interval;
+  mark = 0;
   constructor(private fb: FormBuilder, private testService: TestService, private examService: ExamService,
               private router: Router, private activatedRoute: ActivatedRoute) {
     this.examForm = this.fb.group({
@@ -42,6 +45,7 @@ export class GetTestComponent implements OnInit {
           this.listQuestion = this.test.questions;
         });
     });
+    this.startTimer();
   }
 
   // tslint:disable-next-line:typedef
@@ -52,6 +56,7 @@ export class GetTestComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSubmit() {
     this.exam = Object.assign({}, this.examForm.value);
+    this.caculationMark();
     this.exam.answer = this.exam.answer.toString();
     this.examService.save(this.exam).subscribe(
       next => {
@@ -61,5 +66,34 @@ export class GetTestComponent implements OnInit {
       }
     );
     this.router.navigateByUrl('' + this.examService.findById(this.exam.examId));
+  }
+
+  // tslint:disable-next-line:typedef
+  startTimer() {
+    this.interval = setInterval(() => {
+      if (this.time === 0) {
+        this.exam.times = this.time;
+        this.onSubmit();
+      } else {
+        this.time--;
+      }
+      this.display = this.transform(this.time);
+    }, 1000);
+  }
+
+  transform(value: number): string {
+    const minutes: number = Math.floor(value / 60);
+    return minutes + ':' + (value - minutes * 60);
+  }
+
+  // tslint:disable-next-line:typedef
+  caculationMark() {
+    for (let i = 0; i < this.listQuestion.length; i++) {
+      // tslint:disable-next-line:triple-equals
+      if (!(this.exam.answer[i] == this.listQuestion[i].rightAnswer)) {
+        this.mark += 0.5;
+      }
+    }
+    this.exam.mark = this.mark;
   }
 }
