@@ -1,3 +1,7 @@
+<div class="border">
+<nav class="navbar bg-title-list-quiz ">
+  <p class="m-auto heard">Add Question</p>
+</nav>
 <form  [formGroup]="formQuestion">
   <div class="d-flex justify-content-center align-items-center flex-column update">
     <div class="card-body body-background top-ranking">
@@ -8,11 +12,13 @@
           <span class="float-right "><input class="form-control" style="width: 300px" formControlName="questionId" type="text"></span>
         </li>
         <li class="list-inline mt-2 ml-5 text-danger" *ngIf="error !== ''">* {{error}}</li>
+        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.get('questionId').hasError('required') && formQuestion.get('questionId').touched">* Enter Question Code please</li>
         <li class="list-inline mt-2">
           Question
           <i class="pr-5" aria-hidden="true"></i>
           <span class="float-right "><input class="form-control" style="width: 300px"formControlName="question" type="text"></span>
         </li>
+        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.get('question').hasError('required') && formQuestion.get('question').touched">* Enter Question please</li>
         <fieldset  formGroupName="answerAndRight">
           <ul class="list-group">
             <li class="list-inline mt-2">
@@ -40,6 +46,7 @@
           </span>
 
         </li>
+        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.get('subjectId').hasError('required') && formQuestion.get('subjectId').touched">* Enter subject please</li>
 
         <li class="list-inline mt-2">
           Test
@@ -52,10 +59,10 @@
           </div>
 
         </li>
-        <li  class="list-inline mt-2">
+        <li  class="list-inline">
           <div class="container row">
             <div class="col-4"></div>
-            <div class="col-5 " >
+            <div class="col-7 " >
 
               <ng-autocomplete  formControlName="testCode"
                                 [data]="data$ | async"
@@ -72,8 +79,8 @@
                 <div [innerHTML]="listTestCode"></div>
               </ng-template>
             </div>
-            <div class="col-3">
-              <input class="float-right btn btn-light bg-transparent button-update" value="add test"  type="submit" (click)="inputTesst()">
+            <div class="col-1">
+              <input class="float-left btn btn-light bg-transparent button-update" value="add test"  type="submit" (click)="inputTesst()">
             </div>
           </div>
         </li>
@@ -86,5 +93,6 @@
   </div>
 
 </form>
+</div>
 
 
