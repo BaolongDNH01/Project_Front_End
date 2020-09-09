@@ -31,7 +31,7 @@
           </thead>
           <tbody class="bg-table ">
           <tr *ngFor="let questionList of question">
-            <th style="font-weight: normal">1</th>
+            <th style="font-weight: normal">{{questionList.no}}</th>
             <td>{{questionList.questionId}}</td>
             <td class="text-left">{{questionList.question}}</td>
             <td>

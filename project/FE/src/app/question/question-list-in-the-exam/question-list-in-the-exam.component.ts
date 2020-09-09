@@ -3,6 +3,8 @@ import {Question} from '../Question';
 import {QuestionService} from '../question.service';
 import {QuestionInExam} from '../question-in-exam';
 import {Router} from '@angular/router';
+import {Exam} from '../../exam/exam';
+import {ExamService} from '../../exam/exam_service/exam.service';
 
 // @ts-ignore
 @Component({
@@ -15,10 +17,13 @@ export class QuestionListInTheExamComponent implements OnInit {
   listQuestionInExamDelete: string[] = [];
   questionInExams: Array<QuestionInExam> = [];
   questionInExam: QuestionInExam;
-  count = 1;
+  numberCount = 1;
+  exam: Exam[];
+
   constructor(
     private questionService: QuestionService,
-    private router: Router
+    private router: Router,
+    private examService: ExamService
   ) {
   }
 
@@ -28,7 +33,9 @@ export class QuestionListInTheExamComponent implements OnInit {
         // @ts-ignore
         this.questionInExam = next;
       }, error => {
-        // this.questionInExams = new Array();
+        this.questionInExams = new Array();
+      }, () => {
+        console.log('Ok');
       }
     );
   }
@@ -36,13 +43,11 @@ export class QuestionListInTheExamComponent implements OnInit {
   addQuestionList(): void {
     this.questionService.getAllQuestion().subscribe(
       next => {
-
-        // this.questionInExam = next;
-        //         //
-        //         // this.questionService.saveQuestionInExam(next);
         this.toQuestionInExamArr(next);
       }, error => {
         this.question = new Array();
+      }, () => {
+
       }
     );
   }
@@ -57,12 +62,13 @@ export class QuestionListInTheExamComponent implements OnInit {
         this.questionInExam.question = arr[randNum].question;
         this.questionInExam.rightAnswer = arr[randNum].rightAnswer;
         this.questionInExams.push(this.questionInExam);
+        this.questionInExams[i].no = this.numberCount++;
         arr.splice(randNum, 1);
       }
       // console.log(this.questionInExams);
       // tslint:disable-next-line:prefer-for-of
       this.questionService.saveQuestionInExam(this.questionInExams).subscribe();
-    }else {
+    } else {
       alert('ko cho add');
     }
   }

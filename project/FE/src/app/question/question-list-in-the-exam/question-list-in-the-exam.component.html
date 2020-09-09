@@ -16,7 +16,7 @@
           </thead>
           <tbody class="bg-table">
           <tr *ngFor="let questionList of questionInExams">
-            <th style="font-weight: normal">{{count}}</th>
+            <th style="font-weight: normal" >{{questionList.no}}</th>
             <td>{{questionList.questionId}}</td>
             <td class="text-left">{{questionList.question}}</td>
             <td class="text-left">{{questionList.rightAnswer}}</td>

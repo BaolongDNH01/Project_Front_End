@@ -9,6 +9,7 @@ import {Question} from '../Question';
 })
 export class QuestionBankListComponent implements OnInit {
   question: Question[];
+  numberCount = 1;
 
   constructor(
     private questionService: QuestionService
@@ -21,8 +22,13 @@ export class QuestionBankListComponent implements OnInit {
         this.question = next;
       }, error => {
         this.question = new Array();
+      }, () => {
+        for (let i = 0; i < this.question.length; i++) {
+          this.question[i].no = this.numberCount++;
+        }
       });
   }
+
   selectFile(event): void {
     this.questionService.upload(event.target.files.item(0)).subscribe();
   }
