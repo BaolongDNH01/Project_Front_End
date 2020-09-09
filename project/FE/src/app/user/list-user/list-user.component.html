@@ -1,1 +1,97 @@
-<p>list-user works!</p>
+<div class="row m-5 justify-content-center">
+  <div class="col-md-12 card p-0 col-md-8">
+    <div class="card-header mb-2">
+      Manager
+    </div>
+    <div class="card-body p-0">
+      <div class="row">
+        <div class="col-md-1 ml-2">
+          <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+        </div>
+        <div class="col-md-1 align-self-center p-0">
+          <p class="m-0">List Name:</p>
+        </div>
+        <div class="dropdown col-md-2 align-self-center">
+          <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button"
+             id="dropdownMenuLink"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Member List
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Member List</a>
+            <a class="dropdown-item" href="#">Exam List</a>
+            <a class="dropdown-item" href="#">Questions Bank</a>
+            <a class="dropdown-item" href="#">Top Grade</a>
+          </div>
+        </div>
+        <div class="col-md-12 mt-2">
+          <table class="table table-bordered text-center">
+            <thead class="thead">
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Username</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Address</th>
+              <th scope="col">Phone Number</th>
+              <th scope="col">Point/Times</th>
+              <th scope="col" colspan="2">Action</th>
+            </tr>
+            </thead>
+            <tbody class="bg-light">
+            <tr *ngFor="let user of userList | paginate: {itemsPerPage: 10, currentPage: currentPage}; let i = index">
+              <th scope="row">{{i}}</th>
+              <td>{{user.username}}</td>
+              <td>{{user.fullName}}</td>
+              <td>{{user.address}}</td>
+              <td>{{user.phoneNumber}}</td>
+<!--              <td>{{user.}}</td>-->
+              <td>
+                <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+              </td>
+              <td>
+                <!-- Button trigger modal -->
+                <a href="#" data-toggle="modal" [attr.data-target]="'#myModal'+ user.id">
+                  <i class="fa fa-trash"></i>
+                </a>
+                <!-- Modal -->
+                <div class="modal fade" [id]="'myModal' +user.id" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Delete Confirmation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <span>Do you really want to delete this member: {{user.fullName}} </span>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="button" id="delete" class="btn btn-outline-secondary" data-dismiss="modal">
+                          <a class="text-white" [routerLink]="'/delete-user/'+user.id">
+                            Yes
+                          </a>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <pagination-controls>(pageChange)="currentPage = $event"</pagination-controls>
+          <div class="col-md-12 d-flex justify-content-md-end mb-3">
+            <button id="closeButton" class="btn btn-outline-secondary align-self-end">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

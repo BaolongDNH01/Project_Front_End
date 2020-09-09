@@ -32,14 +32,20 @@
         <li class="list-inline mt-2">
           Subject
           <i class="pr-5" aria-hidden="true"></i>
-          <span class="float-right"><input class="form-control" style="width: 300px" formControlName="subjectId" type="number"></span>
+          <span class="float-right">
+<!--            <input class="form-control" style="width: 300px" formControlName="subjectId" type="number">-->
+            <select class="form-control" style="width: 300px" formControlName="subjectId">
+              <option class="form-control" *ngFor="let subject of listSubject" value="{{subject.subjectId}}">{{subject.subjectName}}</option>
+            </select>
+          </span>
+
         </li>
 
         <li class="list-inline mt-2">
           Test
           <i class="pr-5" aria-hidden="true"></i>
           <div class="input-group mb-3  float-right" style="width: 300px">
-            <input formControlName="testCodeList"  class=" form-control" type="text"  [(ngModel)]="listTestCode" [value]="listTestCode" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <input formControlName="testCodeList" readonly  class=" form-control" type="text"  [(ngModel)]="listTestCode" [value]="listTestCode" aria-label="Recipient's username" aria-describedby="button-addon2">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" (click)="reset()" type="button" id="button-addon2">Retype</button>
             </div>

@@ -4,8 +4,9 @@ export class Test {
   testName: string;
   grade: string;
   questions: [];
-  subject: number;
-  examList: [];
+  subjectId: number;
+  subjectName: string;
+  examList: number[];
 
   constructor() {
   }

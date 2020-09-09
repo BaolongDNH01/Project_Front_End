@@ -3,32 +3,44 @@
     <div class="col-md-8 card p-0">
       <div class="card-header">Register</div>
       <div class="card-body mt-3 mb-3">
-        <form onsubmit="return validate()">
+        <form [formGroup]="registerForm" (submit)="register()">
           <div class="form-group row justify-content-center">
             <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
             <div class="col-sm-6">
-              <input type="text"  class="form-control" id="inputUsername" placeholder="Username">
-              <span class="errors" id="inputUsernameError" style="display: none"></span>
+              <input formControlName="username" type="text"  class="form-control" id="inputUsername" placeholder="Username">
+              <span *ngIf="((registerForm.get('username').hasError('required')) && (registerForm.get('username').touched))" class="errors">
+                This field is required!
+              </span>
+              <p *ngIf="((registerForm.get('username').hasError('maxlength')) && (registerForm.get('username').touched))" class="errors">
+                This field length cannot exceed 25 character!
+              </p>
             </div>
             <div class="col-md-1">
               <span style="color: red">*</span>
             </div>
           </div>
-          <div class="form-group row justify-content-center">
+          <div formGroupName="user_password" class="form-group row justify-content-center">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-6">
-              <input type="password"  class="form-control" id="inputPassword" placeholder="Password">
-              <span class="errors" id="inputPasswordError" style="display: none"></span>
+              <input formControlName="password" type="password"  class="form-control" id="inputPassword" placeholder="Password">
+              <span *ngIf="passwordForm.controls['password'].hasError('required') && passwordForm.controls['password'].touched" class="errors" >
+                This field is required!
+              </span>
+              <span *ngIf="passwordForm.controls['password'].hasError('maxlength') && passwordForm.controls['password'].touched" class="errors" >
+                This field length cannot exceed 16 character!
+              </span>
             </div>
             <div class="col-md-1">
               <span style="color: red">*</span>
             </div>
           </div>
-          <div class="form-group row justify-content-center">
+          <div formGroupName="user_password" class="form-group row justify-content-center">
             <label for="inputRePassword" class="col-sm-2 col-form-label">Re Password</label>
             <div class="col-sm-6">
-              <input type="password"  class="form-control" id="inputRePassword" placeholder="Re Password">
-              <p class="errors" id="inputRePasswordError" style="display: none"></p>
+              <input type="password" formControlName="confirm_password" class="form-control" id="inputRePassword" placeholder="Re Password">
+              <span *ngIf="passwordForm.hasError('mismatchedPasswords') && passwordForm.controls['confirm_password'].touched" class="errors" >
+                Confirm Password must match to Password.
+              </span>
             </div>
             <div class="col-md-1">
               <span style="color: red">*</span>
@@ -37,8 +49,13 @@
           <div class="form-group row justify-content-center">
             <label for="inputFullName" class="col-sm-2 col-form-label">Full Name</label>
             <div class="col-sm-6">
-              <input type="text"  class="form-control" id="inputFullName" placeholder="Full Name">
-              <p class="errors" id="inputFullNameError" style="display: none"></p>
+              <input formControlName="fullName" type="text"  class="form-control" id="inputFullName" placeholder="Full Name">
+              <span *ngIf="registerForm.get('fullName').hasError('required') && registerForm.get('fullName').touched" class="errors" >
+                This field is required!
+              </span>
+              <span *ngIf="registerForm.get('fullName').hasError('maxlength') && registerForm.get('fullName').touched" class="errors" >
+                This field length cannot exceed 50 character!
+              </span>
             </div>
             <div class="col-md-1">
               <span style="color: red">*</span>
@@ -47,8 +64,16 @@
           <div class="form-group row justify-content-center">
             <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-6">
-              <input type="text"  class="form-control" id="inputEmail" placeholder="Email">
-              <p class="errors" id="inputEmailError" style="display: none"></p>
+              <input formControlName="email" type="text"  class="form-control" id="inputEmail" placeholder="Email">
+              <span *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched" class="errors" >
+                This field is required!
+              </span>
+              <span *ngIf="registerForm.get('email').hasError('maxlength') && registerForm.get('email').touched" class="errors" >
+                This field length cannot exceed 55 character!
+              </span>
+              <span *ngIf="registerForm.get('email').hasError('pattern') && registerForm.get('email').touched" class="errors" >
+                Email must match pattern: xxx@xxx.xxx with x can be character, number or _ .
+              </span>
             </div>
             <div class="col-md-1">
               <span style="color: red">*</span>
@@ -57,8 +82,13 @@
           <div class="form-group row justify-content-center">
             <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
             <div class="col-sm-6">
-              <input type="text"  class="form-control" id="inputAddress" placeholder="Address">
-              <p class="errors" id="inputAddressError" style="display: none"></p>
+              <input formControlName="address" type="text"  class="form-control" id="inputAddress" placeholder="Address">
+              <span *ngIf="registerForm.get('address').hasError('required') && registerForm.get('address').touched" class="errors" >
+                This field is required!
+              </span>
+              <span *ngIf="registerForm.get('address').hasError('maxlength') && registerForm.get('address').touched" class="errors" >
+                This field length cannot exceed 255 character!
+              </span>
             </div>
             <div class="col-md-1">
               <span style="color: red">*</span>
@@ -67,8 +97,13 @@
           <div class="form-group row justify-content-center">
             <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone No</label>
             <div class="col-sm-6">
-              <input type="tel"  class="form-control" id="inputPhoneNumber" placeholder="Phone Number">
-              <p class="errors" id="inputPhoneNumberError" style="display: none"></p>
+              <input formControlName="phoneNumber" type="tel"  class="form-control" id="inputPhoneNumber" placeholder="Phone Number">
+              <span *ngIf="registerForm.get('phoneNumber').hasError('required') && registerForm.get('phoneNumber').touched" class="errors" >
+                This field is required!
+              </span>
+              <span *ngIf="registerForm.get('phoneNumber').hasError('maxlength') && registerForm.get('phoneNumber').touched" class="errors" >
+                This field length cannot exceed 15 number!
+              </span>
             </div>
             <div class="col-md-1">
               <span style="color: red">*</span>

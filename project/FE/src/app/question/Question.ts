@@ -21,6 +21,7 @@ export class Question {
     this.testId = testId;
     this.subjectId = subjectId;
   }
+
 }
 
 
