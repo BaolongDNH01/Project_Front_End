@@ -9,6 +9,8 @@ import {ListUserComponent} from './user/list-user/list-user.component';
 import {DeleteUserComponent} from './user/delete-user/delete-user.component';
 import { AdminComponent } from './login/components/admin/admin.component';
 import { MemberComponent } from './login/components/member/member.component';
+import {TestListComponent} from './test/test-list/test-list.component';
+import {AddTestComponent} from './test/add-test/add-test.component';
 
 const routes: Routes = [
   {path: 'question-delete', component: QuestionBankDeleteComponent},
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path: 'delete-user/:id', component: DeleteUserComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'member', component: MemberComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' },
+  {path: 'testManage', component: TestListComponent},
+  {path: 'addTest', component: AddTestComponent}
 ];
 
 @NgModule({
