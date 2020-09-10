@@ -95,7 +95,7 @@ export class GetTestComponent implements OnInit {
   caculationMark() {
     for (let i = 0; i < this.listQuestion.length; i++) {
       // tslint:disable-next-line:triple-equals
-      if (!(this.exam.answer[i] == this.listQuestion[i].rightAnswer)) {
+      if (this.exam.answer[i] == this.listQuestion[i].rightAnswer) {
         this.mark += 0.5;
       }
     }
