@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TestService} from '../test_service/test.service';
 import {Test} from '../test';
+import {Message} from '../message';
 
 
 @Component({
@@ -11,7 +12,7 @@ import {Test} from '../test';
 export class TestListComponent implements OnInit {
   listTest: Test[];
   listTestDelete: number[] = [];
-  message: string;
+  message: Message;
 
   constructor(private testService: TestService) {
   }
@@ -30,9 +31,9 @@ export class TestListComponent implements OnInit {
 
   selectFile(event): void {
     this.testService.upload(event.target.files.item(0)).subscribe(
-      mess => console.log(mess),
-      () => null,
-    () => this.getAllTest()
+      mess => this.message = mess,
+      e => console.log(e),
+      () => this.getAllTest()
     );
   }
 
