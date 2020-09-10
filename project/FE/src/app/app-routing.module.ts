@@ -9,6 +9,13 @@ import {ListUserComponent} from './user/list-user/list-user.component';
 import {DeleteUserComponent} from './user/delete-user/delete-user.component';
 import { AdminComponent } from './login/components/admin/admin.component';
 import { MemberComponent } from './login/components/member/member.component';
+import {UpdateUserComponent} from "./user/update-user/update-user.component";
+import {TestHistoryComponent} from "./user/test-history/test-history.component";
+import {UpdatePasswordComponent} from "./user/update-password/update-password.component";
+import {DetailUserComponent} from "./user/detail-user/detail-user.component";
+import {TestListComponent} from './test/test-list/test-list.component';
+import {AddTestComponent} from './test/add-test/add-test.component';
+
 
 const routes: Routes = [
   {path: 'question-delete', component: QuestionBankDeleteComponent},
@@ -19,7 +26,14 @@ const routes: Routes = [
   {path: 'delete-user/:id', component: DeleteUserComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'member', component: MemberComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' },
+  {path: 'update-user/:id', component: UpdateUserComponent},
+  {path: 'history/:id', component: TestHistoryComponent},
+  {path: 'update-password/:id', component: UpdatePasswordComponent},
+  {path: 'update-avatar/:id', component: UpdatePasswordComponent},
+  {path: 'detail-user/:id', component: DetailUserComponent}
+  {path: 'testManage', component: TestListComponent},
+  {path: 'addTest', component: AddTestComponent}
 ];
 
 @NgModule({

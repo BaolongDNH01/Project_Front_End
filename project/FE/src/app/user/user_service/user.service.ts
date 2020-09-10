@@ -28,20 +28,20 @@ export class UserService {
   findAllUser(): Observable<User[]>{
     return this.httpClient.get<User[]>(this.API_URL + '/allUser');
   }
-  
+
   deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<void>(this.API_URL + '/delete-user/' + id);
   }
 
   // THIEN UPDATE
- 
+
   getUserById(id: number): Observable<User> {
-    return this.httpClient.get<User>(`${this.API_URL}/information-user/${id}`);
+    return this.httpClient.get<User>(`${this.API_URL}/detail-user/${id}`);
   }
 
   changePassword(userId: number, password: Password): Observable<User> {
     return this.httpClient.patch<User>(
-      `${this.API_URL}/${userId}/changePassword`,
+      `${this.API_URL}/update-password/${userId}`,
       password
     );
   }

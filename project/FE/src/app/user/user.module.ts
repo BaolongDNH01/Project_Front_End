@@ -10,6 +10,9 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { TestHistoryComponent } from './test-history/test-history.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {RouterModule} from '@angular/router';
+
 
 
 @NgModule({
@@ -20,11 +23,14 @@ import { TestHistoryComponent } from './test-history/test-history.component';
         DetailUserComponent,
         UpdateUserComponent,
         UpdatePasswordComponent,
-        TestHistoryComponent],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule
+        TestHistoryComponent,
     ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    RouterModule
+  ],
     exports: [
         StatisticalUserComponent
     ],
