@@ -39,7 +39,7 @@ export class GetTestComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = Number(paramMap.get('testId'));
+      const id = Number(paramMap.get('id'));
       this.testService.findById(id).subscribe(
         (next) => {
           this.test = next;
