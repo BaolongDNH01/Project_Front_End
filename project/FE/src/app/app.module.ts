@@ -14,6 +14,7 @@ import {QuestionRoutingModule} from './question/question-routing/question-routin
 import { ErrorPageComponent } from './error-page/error-page.component';
 import {FormDirective} from './directive/form.directive';
 import {ReactiveFormsModule} from '@angular/forms';
+import {InfoComponent} from "./user/info/info.component";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     AppComponent,
     ErrorPageComponent,
     FormDirective,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,
