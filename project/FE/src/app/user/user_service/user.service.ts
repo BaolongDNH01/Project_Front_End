@@ -28,13 +28,13 @@ export class UserService {
   findAllUser(): Observable<User[]>{
     return this.httpClient.get<User[]>(this.API_URL + '/allUser');
   }
-  
+
   deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<void>(this.API_URL + '/delete-user/' + id);
   }
 
   // THIEN UPDATE
- 
+
   getUserById(id: number): Observable<User> {
     return this.httpClient.get<User>(`${this.API_URL}/information-user/${id}`);
   }
