@@ -84,7 +84,7 @@ export class DetailUserComponent implements OnInit {
         }).catch(err=> { console.log(err) });
       })
     )
-      .subscribe()
+      .subscribe();
   }
 
   uploadAvatar() {
