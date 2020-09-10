@@ -27,15 +27,15 @@ export class UserService {
     return this.httpClient.get<User[]>(this.API_URL + '/listUser');
   }
 
-  deleteUser(id: number): Observable<void>{
+  deleteUser(id: number): Observable<void> {
     return this.httpClient.delete<void>(this.API_URL + '/delete-user/' + id);
-
+  }
   // THIEN UPDATE
-  accessAdminPage(): Observable<string> {
+    accessAdminPage(): Observable<string> {
     return this.httpClient.get(this.ACCESS_ADMIN_API, { responseType: 'text' });
   }
 
-  accessMemberPage(): Observable<string> {
+    accessMemberPage(): Observable<string> {
     return this.httpClient.get(this.ACCESS_MEMBER_API, { responseType: 'text' });
   }
 }
