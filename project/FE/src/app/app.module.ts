@@ -14,6 +14,7 @@ import {QuestionRoutingModule} from './question/question-routing/question-routin
 import { ErrorPageComponent } from './error-page/error-page.component';
 import {FormDirective} from './directive/form.directive';
 import {ReactiveFormsModule} from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     QuestionRoutingModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
 
     // Thiện update lần 2 - CẤM XOÁ ! //
     LoginModule
