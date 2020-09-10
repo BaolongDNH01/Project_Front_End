@@ -26,7 +26,7 @@ export class GetTestComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private testService: TestService, private examService: ExamService,
               private router: Router, private activatedRoute: ActivatedRoute, private datePipe: DatePipe) {
-
+    console.log('abc');
     this.examForm = this.fb.group({
       examDate: [''],
       mark: [''],
