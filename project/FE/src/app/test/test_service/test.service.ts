@@ -21,7 +21,7 @@ export class TestService {
   private deleteTest = 'http://localhost:8080/deleteTest';
   private getAllSubjectApi = 'http://localhost:8080/getAllSubject';
   private addTestApi = 'http://localhost:8080/addTest';
-  URL = 'http://localhost:8080';
+  private URL = 'http://localhost:8080';
 
 
   getAllTest(): Observable<Test[]> {

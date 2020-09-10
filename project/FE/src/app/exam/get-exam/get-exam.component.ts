@@ -33,7 +33,7 @@ export class GetExamComponent implements OnInit {
         }, error => {
 
         }, () => {
-          this.testService.findById(this.exam.test).subscribe(
+          this.testService.findById(this.exam.testId).subscribe(
             (next) => {
               this.test = next;
             }, error => {

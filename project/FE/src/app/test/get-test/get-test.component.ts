@@ -70,7 +70,7 @@ export class GetTestComponent implements OnInit {
         console.log('Create failed!');
       }
     );
-    this.router.navigateByUrl('' + this.examService.findById(this.exam.examId));
+    this.router.navigateByUrl('');
   }
 
   // tslint:disable-next-line:typedef
