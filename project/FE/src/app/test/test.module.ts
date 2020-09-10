@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {TestService} from './test_service/test.service';
 
 
 import {HttpClientModule} from '@angular/common/http';
 import { AddTestComponent } from './add-test/add-test.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { GetTestComponent } from './get-test/get-test.component';
 import {TestListComponent} from './test-list/test-list.component';
 
@@ -20,12 +20,15 @@ import {TestListComponent} from './test-list/test-list.component';
   imports: [
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   exports: [
+    GetTestComponent,
     TestListComponent,
     AddTestComponent
   ],
-  providers: [TestService]
+  providers: [TestService, DatePipe]
 })
 export class TestModule { }
