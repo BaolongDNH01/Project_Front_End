@@ -1,10 +1,10 @@
-<div>
+<div class="get-test">
   <div id="resultFinal">
     <div>
       <p>Exam number {{exam.examId}}</p>
     </div>
     <div>
-      <label id="result">Your score is <b [style.color]="'blue'"> {{exam.mark}}/10 </b> question."
+      <label id="result">Your score is <b id="score"> {{exam.mark}}/10 </b> question."
       </label><br/>
     </div>
   </div>
@@ -19,21 +19,25 @@
           <input id="text{{i+1}}" class="rightAnswer" value="{{question.rightAnswer}}"/><br/>
           <!--answer-->
           <i id="Q{{i+1}}A" ng-class="{{listAnswer[i]}}=={{question.answerA}}?'fa-check':'fa-times'"
-             class="fa allCheckQ"></i>
+             ng-class="{{listAnswer[i]}}=={{question.rightAnswer}}?'allCheckQ':''"
+             class="fa "></i>
           <input id="Cau{{question.questionId}}A" [name]="question.questionId" type="radio"
                  value="{{question.answerA}}"><label for="Cau{{question.questionId}}A">{{question.answerA}}</label>
           <br/>
           <i id="Q{{i+1}}B" ng-class="{{listAnswer[i]}}=={{question.answerB}}?'fa-check':'fa-times'"
+             ng-class="{{listAnswer[i]}}=={{question.rightAnswer}}?'allCheckQ':''"
              class="fa allCheckQ"></i>
           <input id="Cau{{question.questionId}}B" [name]="question.questionId" type="radio"
                  value="{{question.answerB}}"><label for="Cau{{question.questionId}}B">{{question.answerB}}</label>
           <br/>
           <i id="Q{{i+1}}C" ng-class="{{listAnswer[i]}}=={{question.answerB}}?'fa-check':'fa-times'"
+             ng-class="{{listAnswer[i]}}=={{question.rightAnswer}}?'allCheckQ':''"
              class="fa allCheckQ"></i>
           <input id="Cau{{question.questionId}}C" [name]="question.questionId" type="radio"
                  value="{{question.answerC}}"><label for="Cau{{question.questionId}}C">{{question.answerC}}</label>
           <br/>
           <i id="Q{{i+1}}D" ng-class="{{listAnswer[i]}}=={{question.answerD}}?'fa-check':'fa-times'"
+             ng-class="{{listAnswer[i]}}=={{question.rightAnswer}}?'allCheckQ':''"
              class="fa allCheckQ"></i>
           <input id="Cau{{question.questionId}}D" [name]="question.questionId" type="radio"
                  value="{{question.answerD}}"><label for="Cau{{question.questionId}}D">{{question.answerD}}</label>

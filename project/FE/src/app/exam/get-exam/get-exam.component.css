@@ -1,4 +1,7 @@
-
+.get-test{
+  font-family: Arial, consolas, serif;
+  font-size: 16px;
+}
 .question b > span {
   font-family: Arial, consolas, serif;
   font-size: 16px;
@@ -61,19 +64,22 @@ ul {
 .question{
   clear:left;
 }
-
-.allCheckQ{
-  visibility: hidden;
+#score{
+  color: blue;
 }
 
 .fa-times{
-  visibility: visible;
+  visibility: hidden;
 }
 
 .fa-check{
-  visibility: visible;
+  visibility: hidden;
 }
 
 .rightAnswer{
   visibility: hidden;
+}
+
+.allCheckQ{
+  visibility:visible ;
 }

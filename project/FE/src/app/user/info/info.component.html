@@ -16,7 +16,7 @@
           *ngIf="user"
         >
           <div class="form-group">
-            <label for="inputName">Họ và tên</label>
+            <label for="inputName">Full Name</label>
             <input
               type="text"
               formControlName="name"
@@ -25,7 +25,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="inputAddress">Địa chỉ</label>
+            <label for="inputAddress">Address</label>
             <input
               type="text"
               formControlName="address"
@@ -34,12 +34,21 @@
             />
           </div>
           <div class="form-group">
-            <label for="inputPhoneNumber">Số điện thoại</label>
+            <label for="inputPhoneNumber">Phone Number</label>
             <input
               type="text"
               formControlName="phoneNumber"
               class="form-control"
               id="inputPhoneNumber"
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputPhoneNumber">Email</label>
+            <input
+              type="text"
+              formControlName="email"
+              class="form-control"
+              id="inputEmail"
             />
           </div>
           <div *ngIf="updatedInfoSuccess" class="alert alert-info">
@@ -50,7 +59,7 @@
             [disabled]="infoFormInput.invalid"
             class="btn btn-primary"
           >
-            Lưu thay đổi
+            Save
           </button>
         </form>
       </div>
@@ -61,20 +70,20 @@
       <div class="card-body">
         <form [formGroup]="passwordFormInput" (submit)="handleChangePassword()">
           <div class="form-group">
-            <label for="inputPassword">Mật khẩu cũ</label>
+            <label for="inputPassword">Current Password</label>
             <input
               type="password"
-              formControlName="oldPassword"
+              formControlName="currentPassword"
               class="form-control"
               [class.is-invalid]="submitted && !changedPasswordSuccess"
               id="inputPassword"
             />
             <div class="invalid-feedback">
-              Mật khẩu không chính xát!
+              Current Password not correct!
             </div>
           </div>
           <div class="form-group">
-            <label for="inputNewPassword">Mật khẩu mới</label>
+            <label for="inputNewPassword">New Password</label>
             <input
               type="password"
               formControlName="newPassword"
@@ -86,11 +95,11 @@
               "
             />
             <div class="invalid-feedback">
-              Mật khẩu mới không nên giống mật khẩu cũ!
+              New Password used!
             </div>
           </div>
           <div class="form-group">
-            <label for="inputConfirmPassword">Xát nhận mật khẩu</label>
+            <label for="inputConfirmPassword">Confirm Password</label>
             <input
               type="password"
               formControlName="confirmPassword"
@@ -102,7 +111,7 @@
               id="inputConfirmPassword"
             />
             <div class="invalid-feedback">
-              Mật khẩu xát nhận không khớp!
+              Password not matching!
             </div>
           </div>
           <div *ngIf="changedPasswordSuccess" class="alert alert-info">
@@ -113,7 +122,7 @@
             [disabled]="passwordFormInput.invalid"
             class="btn btn-primary"
           >
-            Lưu thay đổi
+            Save
           </button>
         </form>
       </div>

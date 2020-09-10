@@ -65,6 +65,6 @@ export class QuestionService {
 
   getAllSubject(): Observable<Subject[]>{
     return this.httpClient.get<Subject[]>(this.API_URL + '/getAllSubject');
-
   }
 }
+

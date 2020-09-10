@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ExamModule} from '../../exam/exam.module';
 import {Exam} from '../../exam/exam';
 import {User} from '../user_model/User';
 import {UserService} from "../user_service/user.service";
@@ -15,8 +14,8 @@ export class TestHistoryComponent implements OnInit {
   user: User;
   userId: number;
   examList: Exam[];
-  sum: number;
-  avg: number;
+  // sum: number;
+  // avg: number;
   currentPage = 1;
 
   constructor(
