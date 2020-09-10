@@ -5,38 +5,20 @@
     <div class="form-row">
       <div class="col-md-12">
         <table class="table table-bordered w-100 h-100 text-center">
-          <thead>
+          <thead class="thead">
           <tr style="background-color: #DFF0D8">
             <td scope="col">NO</td>
             <td scope="col">Test</td>
-            <td scope="col">
-              Mark
-              <span>(mark/10)</span>
-            </td>
-            <td scope="col">
-              Day
-              <span>(MM/dd/yy)</span>
-            </td>
+            <td scope="col">Mark<span>(mark/10)</span></td>
+            <td scope="col">Day<span>(MM/dd/yy)</span></td>
           </tr>
           </thead>
           <tbody id="tbody-custom">
-          <tr>
-            <td scope="row">{{user.id}}</td>
-            <td>{{user.examList}}</td>
-            <td>8</td>
-            <td>2/1/2015</td>
-          </tr>
-          <tr>
-            <td scope="row">2</td>
-            <td>Chemistry - issue 2</td>
-            <td>7</td>
-            <td>2/1/2015</td>
-          </tr>
-          <tr>
-            <td scope="row">3</td>
-            <td>Physical - issue 1</td>
-            <td>7</td>
-            <td>3/1/2015</td>
+          <tr *ngFor="let exam of examList | paginate: {itemsPerPage: 5, currentPage: currentPage}; let i = index">
+            <th scope="row">{{i}}</th>
+            <td>{{exam.test}}</td>
+            <td>{{exam.mark}}</td>
+            <td>{{exam.examDate}}</td>
           </tr>
           </tbody>
         </table>
@@ -45,11 +27,11 @@
     <div class="form-row mt-3 mb-3">
       <div class="col-md-4 form-group font-weight-bold text-right">
         <label>Total Mark:</label>
-        <label class="text-danger">22.0</label>
+        <label class="text-danger">abc</label>
       </div>
       <div class="col-md-4 form-group font-weight-bold text-center">
         <label>AVG:</label>
-        <label class="text-danger">7.33</label>
+        <label class="text-danger">abc</label>
       </div>
       <div class="col-md-4 form-group text-left">
         <a routerLink="" class="btn btn-info">Close</a>

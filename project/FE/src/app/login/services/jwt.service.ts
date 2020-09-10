@@ -50,4 +50,13 @@ export class JwtService {
   logOut(): void {
     window.sessionStorage.clear();
   }
+
+  public saveUser(user) {
+    window.sessionStorage.removeItem(USERNAME_KEY);
+    window.sessionStorage.setItem(USERNAME_KEY, JSON.stringify(user));
+  }
+
+  public getUser() {
+    return JSON.parse(sessionStorage.getItem(USERNAME_KEY));
+  }
 }
