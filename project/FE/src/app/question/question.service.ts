@@ -13,7 +13,7 @@ import {Subject} from "./subject";
 export class QuestionService {
   question: Question;
   API_URL = 'http://localhost:8080';
-  uploadFile = 'http://localhost:8080/uploadFile';
+  uploadFile = 'http://localhost:8080/importQuestion';
 
   constructor(
     private httpClient: HttpClient

@@ -17,7 +17,7 @@ export class TestService {
   }
 
   private getAllTestApi = 'http://localhost:8080/getAllTest';
-  private uploadFile = 'http://localhost:8080/uploadFile';
+  private uploadFile = 'http://localhost:8080/importTest';
   private deleteTest = 'http://localhost:8080/deleteTest';
   private getAllSubjectApi = 'http://localhost:8080/getAllSubject';
   private addTestApi = 'http://localhost:8080/addTest';
