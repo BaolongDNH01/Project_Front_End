@@ -12,16 +12,18 @@ import {QuestionModule} from './question/question.module';
 import {HttpClientModule} from '@angular/common/http';
 import {QuestionRoutingModule} from './question/question-routing/question-routing.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import {FormDirective} from './directive/form.directive';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    FormDirective,
   ],
   imports: [
     BrowserModule,
-    LoginModule,
     UserModule,
     TestModule,
     AppRoutingModule,
@@ -29,12 +31,21 @@ import {NgxPaginationModule} from 'ngx-pagination';
     QuestionModule,
     HttpClientModule,
     QuestionRoutingModule,
-    NgxPaginationModule
+    ReactiveFormsModule,
+
+    // Thiện update lần 2 - CẤM XOÁ ! //
+    LoginModule
+    /////////////////////////////////////
   ],
+
+  // Thiện update lần 2 - CẤM XOÁ ! //
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [httpInterceptorProviders],
-  bootstrap: [AppComponent]
+  /////////////////////////////////////
+
+  bootstrap: [AppComponent],
+  exports: [FormDirective]
 })
 export class AppModule { }

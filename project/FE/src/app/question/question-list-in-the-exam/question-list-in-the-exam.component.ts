@@ -1,8 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Question} from '../Question';
 import {QuestionService} from '../question.service';
 import {QuestionInExam} from '../question-in-exam';
 import {Router} from '@angular/router';
+
+import {Exam} from '../../exam/exam';
+import {ExamService} from '../../exam/exam_service/exam.service';
+
+import {Question} from '../question';
+
 
 // @ts-ignore
 @Component({
@@ -13,11 +18,15 @@ import {Router} from '@angular/router';
 export class QuestionListInTheExamComponent implements OnInit {
   question: Question[];
   listQuestionInExamDelete: string[] = [];
-  questionInExam: QuestionInExam[];
+  questionInExams: Array<QuestionInExam> = [];
+  questionInExam: QuestionInExam;
+  numberCount = 1;
+  exam: Exam[];
 
   constructor(
     private questionService: QuestionService,
-    private router: Router
+    private router: Router,
+    private examService: ExamService
   ) {
   }
 
@@ -27,22 +36,44 @@ export class QuestionListInTheExamComponent implements OnInit {
         // @ts-ignore
         this.questionInExam = next;
       }, error => {
-        this.questionInExam = new Array();
+        this.questionInExams = new Array();
+      }, () => {
+        console.log('Ok');
       }
     );
   }
 
   addQuestionList(): void {
-   this.questionService.getAllQuestion().subscribe(
+    this.questionService.getAllQuestion().subscribe(
       next => {
-         // @ts-ignore
-        this.questionInExam = next;
-        // @ts-ignore
-        this.questionService.saveQuestionInExam(this.questionInExam);
+        this.toQuestionInExamArr(next);
       }, error => {
         this.question = new Array();
+      }, () => {
+
       }
     );
+  }
+
+  toQuestionInExamArr(arr: Question[]): void {
+    // tslint:disable-next-line:prefer-for-of
+    if (this.questionInExams.length === 0) {
+      for (let i = 0; i < 10; i++) {
+        const randNum = Math.floor(Math.random() * arr.length);
+        this.questionInExam = new QuestionInExam();
+        this.questionInExam.questionId = arr[randNum].questionId;
+        this.questionInExam.question = arr[randNum].question;
+        this.questionInExam.rightAnswer = arr[randNum].rightAnswer;
+        this.questionInExams.push(this.questionInExam);
+        this.questionInExams[i].no = this.numberCount++;
+        arr.splice(randNum, 1);
+      }
+      // console.log(this.questionInExams);
+      // tslint:disable-next-line:prefer-for-of
+      this.questionService.saveQuestionInExam(this.questionInExams).subscribe();
+    } else {
+      alert('ko cho add');
+    }
   }
 
   chooseToDelete(questionId: string): void {
@@ -51,7 +82,7 @@ export class QuestionListInTheExamComponent implements OnInit {
     } else {
       this.listQuestionInExamDelete.push(questionId);
     }
-    console.log(this.listQuestionInExamDelete);
+    console.log(this.listQuestionInExamDelete.length);
   }
 
   deleteQuestion(): void {
