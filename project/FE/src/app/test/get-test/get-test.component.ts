@@ -39,7 +39,7 @@ export class GetTestComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = Number(paramMap.get('testId'));
+      const id = Number(paramMap.get('id'));
       this.testService.findById(id).subscribe(
         (next) => {
           this.test = next;
@@ -95,7 +95,7 @@ export class GetTestComponent implements OnInit {
   caculationMark() {
     for (let i = 0; i < this.listQuestion.length; i++) {
       // tslint:disable-next-line:triple-equals
-      if (!(this.exam.answer[i] == this.listQuestion[i].rightAnswer)) {
+      if (this.exam.answer[i] == this.listQuestion[i].rightAnswer) {
         this.mark += 0.5;
       }
     }
