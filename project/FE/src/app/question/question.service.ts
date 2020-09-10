@@ -61,9 +61,9 @@ export class QuestionService {
     const formData: FormData = new FormData();
     formData.append('file', file);
     return this.httpClient.post<HttpEvent<any>>(this.uploadFile, formData);
-
+  }
   getAllSubject(): Observable<Subject[]>{
     return this.httpClient.get<Subject[]>(this.API_URL + '/getAllSubject');
-
   }
 }
+
