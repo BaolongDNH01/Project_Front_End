@@ -67,8 +67,8 @@
         <li *ngIf="authority === 'admin'" class="nav-item">
           Task nào cần role admin thì bỏ selector vào đây
           <pre>List admin feature</pre>
-          <a class="nav-link" routerLink="admin">
-            Chức năng 1
+          <a class="nav-link" [routerLink]="['testManage']">
+            Test
           </a>
           <a class="nav-link" routerLink="admin">
             Chức năng 2
