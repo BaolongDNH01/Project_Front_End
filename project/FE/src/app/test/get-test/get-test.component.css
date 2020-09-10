@@ -1,3 +1,7 @@
+.get-test{
+  font-family: Arial, consolas, serif;
+  font-size: 16px;
+}
 
 .question b > span {
   font-family: Arial, consolas, serif;
@@ -15,7 +19,9 @@ ul {
   margin: 0px;
   padding: 0px;
 }
-
+.rightAnswer{
+  visibility: hidden;
+}
 .question input[type="radio"] {
   display: none;
 }
@@ -67,4 +73,8 @@ ul {
 
 .question{
   clear:left;
+}
+
+#time{
+  color: red;
 }
