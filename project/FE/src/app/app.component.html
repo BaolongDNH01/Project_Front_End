@@ -1,195 +1,192 @@
-<app-test-list></app-test-list>
-<app-add-test></app-add-test>
+<div class="container-fluid p-0">
 
-<!--<div class="container-fluid p-0">-->
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <a class="flex-md-fill text-md-center nav-link" href="#">
+        <i class="fa fa-home" aria-hidden="true"></i> Home
+      </a>
+      <a class="flex-md-fill text-md-center nav-link" href="#">
+        <i class="fa fa-eur" aria-hidden="true"></i> Grade A
+      </a>
+      <a class="flex-md-fill text-md-center nav-link" href="#">
+        <i class="fa fa-cloud" aria-hidden="true"></i> Grade B
+      </a>
+      <a class="flex-md-fill text-md-center nav-link" href="#">
+        <i class="fa fa-wrench" aria-hidden="true"></i> Grade D
+      </a>
+      <a class="flex-md-fill text-md-center nav-link" href="#">
+        <i class="fa fa-book" aria-hidden="true"></i> IQ Test
+      </a>
+      <a class="flex-md-fill text-md-center nav-link" href="#">
+        <i class="fa fa-globe" aria-hidden="true"></i> About Us
+      </a>
+    </div>
+  </nav>
 
-<!--  &lt;!&ndash; NAVBAR &ndash;&gt;-->
-<!--  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">-->
-<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"-->
-<!--      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--      <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-<!--    <div class="collapse navbar-collapse" id="navbarNav">-->
-<!--      <a class="flex-md-fill text-md-center nav-link" href="#">-->
-<!--        <i class="fa fa-home" aria-hidden="true"></i> Home-->
-<!--      </a>-->
-<!--      <a class="flex-md-fill text-md-center nav-link" href="#">-->
-<!--        <i class="fa fa-eur" aria-hidden="true"></i> Grade A-->
-<!--      </a>-->
-<!--      <a class="flex-md-fill text-md-center nav-link" href="#">-->
-<!--        <i class="fa fa-cloud" aria-hidden="true"></i> Grade B-->
-<!--      </a>-->
-<!--      <a class="flex-md-fill text-md-center nav-link" href="#">-->
-<!--        <i class="fa fa-wrench" aria-hidden="true"></i> Grade D-->
-<!--      </a>-->
-<!--      <a class="flex-md-fill text-md-center nav-link" href="#">-->
-<!--        <i class="fa fa-book" aria-hidden="true"></i> IQ Test-->
-<!--      </a>-->
-<!--      <a class="flex-md-fill text-md-center nav-link" href="#">-->
-<!--        <i class="fa fa-globe" aria-hidden="true"></i> About Us-->
-<!--      </a>-->
-<!--    </div>-->
-<!--  </nav>-->
+  <!-- BODY -->
+  <div class="row d-flex justify-content-md-around main-comp mx-0">
 
-<!--  &lt;!&ndash; BODY &ndash;&gt;-->
-<!--  <div class="row d-flex justify-content-md-around main-comp mx-0">-->
+    <!-- LEFT COLLUMN -->
+    <div class="col-md-3 ">
+      <div class="sticky-top" style="top: 10%">
+        <app-top-point></app-top-point>
+        <div class="border p-0 rounded online-support">
+          <div class="card-header p-2">
+            <i class="fa fa-phone" aria-hidden="true"></i> Online Support
+          </div>
+          <div class="card-body body-background">
+            <ul class="list-group">
+              <li class="list-group-item green">
+                <i class="fa fa-inbox pr-2" aria-hidden="true"></i> ONLINE
+                <span class="badge badge-pill badge-secondary float-right mt-1">Skype</span>
+              </li>
+              <li class="list-group-item blue">
+                <i class="fa fa-mobile pr-2" aria-hidden="true"></i> HOTLINE
+                <span class="badge badge-pill badge-secondary float-right mt-1">092.2216.3113</span>
+              </li>
+            </ul>
+            <div class="card online-support-massage">
+              <div class="card-mess">
+                <img src="images/messenger.jpg" alt="mess">
+                MESSENGER
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Thiện update lần 2 - CẤM XOÁ ! -->
+    <div>
+      <h1>Sau khi đăng nhập ở đây sẽ có link để truy cập vào các chức năng tuỳ theo role </h1>
+      <ul class="nav navbar-nav" routerLinkActive="active">
+        <li *ngIf="authority === 'admin'" class="nav-item">
+          Task nào cần role admin thì bỏ selector vào đây
+          <pre>List admin feature</pre>
+          <a class="nav-link" [routerLink]="['testManage']">
+            Test
+          </a>
+          <a class="nav-link" routerLink="admin">
+            Chức năng 2
+          </a>
+          <a class="nav-link" routerLink="admin">
+            Chức năng 3
+          </a>
+        </li>
+        <li *ngIf="authority === 'member'" class="nav-item">
+          Task nào cần role member thì bỏ selector vào đây
+          <pre>List member feature</pre>
+          <a class="nav-link" routerLink="member">
+            Chức năng 1
+          </a>
+          <a class="nav-link" routerLink="member">
+            Chức năng 2
+          </a>
+          <a class="nav-link" routerLink="member">
+            Chức năng 3
+          </a>
+        </li>
+        <li *ngIf="authority === 'unauthorized'" class="nav-item">
+          <p>Login please!</p>
+        </li>
+      </ul>
+      <h1>Feature Area</h1>
+      <router-outlet></router-outlet>
+    </div>
+    <!-- // -->
 
-<!--    &lt;!&ndash; LEFT COLLUMN &ndash;&gt;-->
-<!--    <div class="col-md-3 ">-->
-<!--      <div class="sticky-top" style="top: 10%">-->
-<!--        <app-top-point></app-top-point>-->
-<!--        <div class="border p-0 rounded online-support">-->
-<!--          <div class="card-header p-2">-->
-<!--            <i class="fa fa-phone" aria-hidden="true"></i> Online Support-->
-<!--          </div>-->
-<!--          <div class="card-body body-background">-->
-<!--            <ul class="list-group">-->
-<!--              <li class="list-group-item green">-->
-<!--                <i class="fa fa-inbox pr-2" aria-hidden="true"></i> ONLINE-->
-<!--                <span class="badge badge-pill badge-secondary float-right mt-1">Skype</span>-->
-<!--              </li>-->
-<!--              <li class="list-group-item blue">-->
-<!--                <i class="fa fa-mobile pr-2" aria-hidden="true"></i> HOTLINE-->
-<!--                <span class="badge badge-pill badge-secondary float-right mt-1">092.2216.3113</span>-->
-<!--              </li>-->
-<!--            </ul>-->
-<!--            <div class="card online-support-massage">-->
-<!--              <div class="card-mess">-->
-<!--                <img src="images/messenger.jpg" alt="mess">-->
-<!--                MESSENGER-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; Thiện update lần 2 - CẤM XOÁ ! &ndash;&gt;-->
-<!--    <div>-->
-<!--      <h1>Sau khi đăng nhập ở đây sẽ có link để truy cập vào các chức năng tuỳ theo role </h1>-->
-<!--      <ul class="nav navbar-nav" routerLinkActive="active">-->
-<!--        <li *ngIf="authority === 'admin'" class="nav-item">-->
-<!--          Task nào cần role admin thì bỏ selector vào đây-->
-<!--          <pre>List admin feature</pre>-->
-<!--          <a class="nav-link" [routerLink]="['testManage']">-->
-<!--            Test-->
-<!--          </a>-->
-<!--          <a class="nav-link" routerLink="admin">-->
-<!--            Chức năng 2-->
-<!--          </a>-->
-<!--          <a class="nav-link" routerLink="admin">-->
-<!--            Chức năng 3-->
-<!--          </a>-->
-<!--        </li>-->
-<!--        <li *ngIf="authority === 'member'" class="nav-item">-->
-<!--          Task nào cần role member thì bỏ selector vào đây-->
-<!--          <pre>List member feature</pre>-->
-<!--          <a class="nav-link" routerLink="member">-->
-<!--            Chức năng 1-->
-<!--          </a>-->
-<!--          <a class="nav-link" routerLink="member">-->
-<!--            Chức năng 2-->
-<!--          </a>-->
-<!--          <a class="nav-link" routerLink="member">-->
-<!--            Chức năng 3-->
-<!--          </a>-->
-<!--        </li>-->
-<!--        <li *ngIf="authority === 'unauthorized'" class="nav-item">-->
-<!--          <p>Login please!</p>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--      <h1>Feature Area</h1>-->
-<!--      <router-outlet></router-outlet>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; // &ndash;&gt;-->
+    <!-- CENTER COLLUMN -->
 
-<!--    &lt;!&ndash; CENTER COLLUMN &ndash;&gt;-->
-
-<!--    <div class="col-md-6">-->
-<!--      &lt;!&ndash;            Content&ndash;&gt;-->
-<!--      <div class="row d-flex justify-content-md-center">-->
-<!--        <div class="frames-img col-md-5">-->
-<!--          <img class="img-card" src="images/toan-hoc.png">-->
-<!--          <div class="label">Toán học</div>-->
-<!--        </div>-->
-<!--        <div class="frames-img col-md-5">-->
-<!--          <img class="img-card" src="images/hoa-hoc.png">-->
-<!--          <div class="label">Hoá học</div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row d-flex justify-content-md-center">-->
-<!--        <div class="frames-img col-md-5">-->
-<!--          <img class="img-card" src="images/vat-ly.png">-->
-<!--          <div class="label">Vật lý</div>-->
-<!--        </div>-->
-<!--        <div class="frames-img col-md-5">-->
-<!--          <img class="img-card" src="images/tu-nhien.png">-->
-<!--          <div class="label">Tự nhiên</div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row d-flex justify-content-md-center">-->
-<!--        <div class="frames-img col-md-5">-->
-<!--          <img class="img-card" src="images/vat-ly.png">-->
-<!--          <div class="label">Vật lý</div>-->
-<!--        </div>-->
-<!--        <div class="frames-img col-md-5">-->
-<!--          <img class="img-card" src="images/tu-nhien.png">-->
-<!--          <div class="label">Tự nhiên</div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row d-flex justify-content-md-center">-->
-<!--        <div class="frames-img col-md-5">-->
-<!--          <img class="img-card" src="images/vat-ly.png">-->
-<!--          <div class="label">Vật lý</div>-->
-<!--        </div>-->
-<!--        <div class="frames-img col-md-5">-->
-<!--          <img class="img-card" src="images/tu-nhien.png">-->
-<!--          <div class="label">Tự nhiên</div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row d-flex justify-content-md-center">-->
-<!--        <div class="frames-img col-md-5">-->
-<!--          <img class="img-card" src="images/vat-ly.png">-->
-<!--          <div class="label">Vật lý</div>-->
-<!--        </div>-->
-<!--        <div class="frames-img col-md-5">-->
-<!--          <img class="img-card" src="images/tu-nhien.png">-->
-<!--          <div class="label">Tự nhiên</div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; RIGHT COLLUMN &ndash;&gt;-->
-<!--    <div class="col-md-3 pr-4">-->
-<!--      <div class="sticky-top" style="top: 10%">-->
-<!--        <div class="border p-0 rounded ">-->
-<!--          <div class="card-header p-2">Customers</div>-->
-<!--          <app-auth-login></app-auth-login>-->
-<!--          <div class="card-body members yellow">-->
-<!--            &lt;!&ndash; Thiện: Chỗ này sau khi import reactive form sẽ lỗi, nên sửa &ndash;&gt;-->
-<!--            <form formGroup="">-->
-<!--              <div class="form-group row">-->
-<!--                <i class="fa fa-user" aria-hidden="true"> MEMBERS</i>-->
-<!--              </div>-->
-<!--              <app-statistical-user></app-statistical-user>-->
-<!--            </form>-->
-<!--          </div>-->
-<!--          <div class="card-body blue search-box">-->
-<!--            &lt;!&ndash; Thiện: Chỗ này sau khi import reactive form sẽ lỗi, nên sửa &ndash;&gt;-->
-<!--            <form formGroup="">-->
-<!--              <div class="form-group row">-->
-<!--                <i class="fa fa-search" aria-hidden="true"> SEARCH</i>-->
-<!--              </div>-->
-<!--              <div class="form-group row">-->
-<!--                <div class="form-group">-->
-<!--                  <input type="text" class="form-control" id="search" placeholder="Search">-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </form>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <router-outlet></router-outlet>-->
-<!--</div>-->
+    <div class="col-md-6">
+      <!--            Content-->
+      <div class="row d-flex justify-content-md-center">
+        <div class="frames-img col-md-5">
+          <img class="img-card" src="images/toan-hoc.png">
+          <div class="label">Toán học</div>
+        </div>
+        <div class="frames-img col-md-5">
+          <img class="img-card" src="images/hoa-hoc.png">
+          <div class="label">Hoá học</div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-md-center">
+        <div class="frames-img col-md-5">
+          <img class="img-card" src="images/vat-ly.png">
+          <div class="label">Vật lý</div>
+        </div>
+        <div class="frames-img col-md-5">
+          <img class="img-card" src="images/tu-nhien.png">
+          <div class="label">Tự nhiên</div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-md-center">
+        <div class="frames-img col-md-5">
+          <img class="img-card" src="images/vat-ly.png">
+          <div class="label">Vật lý</div>
+        </div>
+        <div class="frames-img col-md-5">
+          <img class="img-card" src="images/tu-nhien.png">
+          <div class="label">Tự nhiên</div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-md-center">
+        <div class="frames-img col-md-5">
+          <img class="img-card" src="images/vat-ly.png">
+          <div class="label">Vật lý</div>
+        </div>
+        <div class="frames-img col-md-5">
+          <img class="img-card" src="images/tu-nhien.png">
+          <div class="label">Tự nhiên</div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-md-center">
+        <div class="frames-img col-md-5">
+          <img class="img-card" src="images/vat-ly.png">
+          <div class="label">Vật lý</div>
+        </div>
+        <div class="frames-img col-md-5">
+          <img class="img-card" src="images/tu-nhien.png">
+          <div class="label">Tự nhiên</div>
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT COLLUMN -->
+    <div class="col-md-3 pr-4">
+      <div class="sticky-top" style="top: 10%">
+        <div class="border p-0 rounded ">
+          <div class="card-header p-2">Customers</div>
+          <app-auth-login></app-auth-login>
+          <div class="card-body members yellow">
+            <!-- Thiện: Chỗ này sau khi import reactive form sẽ lỗi, nên sửa -->
+            <form formGroup="">
+              <div class="form-group row">
+                <i class="fa fa-user" aria-hidden="true"> MEMBERS</i>
+              </div>
+              <app-statistical-user></app-statistical-user>
+            </form>
+          </div>
+          <div class="card-body blue search-box">
+            <!-- Thiện: Chỗ này sau khi import reactive form sẽ lỗi, nên sửa -->
+            <form formGroup="">
+              <div class="form-group row">
+                <i class="fa fa-search" aria-hidden="true"> SEARCH</i>
+              </div>
+              <div class="form-group row">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search" placeholder="Search">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
 
 
