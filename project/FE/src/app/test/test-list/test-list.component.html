@@ -8,7 +8,7 @@
 
   <!--thanh chọn bảng-->
   <div class="row">
-    <div class="col-md pt-3 pb-3 pl-1">
+    <div class="col-md-2 pt-3 pb-3 pl-1">
       <div class="dropdown">
         <i class="fa fa-sign-in" aria-hidden="true"></i>
         List name:
@@ -21,6 +21,13 @@
           <button class="dropdown-item" type="button">List member</button>
           <button class="dropdown-item" type="button">Question bank</button>
           <button class="dropdown-item" type="button">TOP</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-12 message-bg mt-4">
+          <span id="message" class="d-flex align-items-center" hidden>{{message}}</span>
         </div>
       </div>
     </div>
@@ -69,7 +76,7 @@
       <div class="row">
         <div class="col-md-3 col-sm-6">
           <button id="import" class="btn import" style="width: 140px; height: 40px">
-            <input type="file" accept=".txt"  (change)="selectFile($event)" class="custom-file-input" for="import">
+            <input type="file" accept=".txt" (change)="selectFile($event)" class="custom-file-input" for="import">
           </button>
         </div>
         <div class="col-md-3 col-sm-6">
