@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import { JwtResponse } from '../models/jwt-response';
-import {JwtService} from "./jwt.service";
-import {User} from "../../user/user_model/User";
+import {JwtService} from './jwt.service';
+import {User} from '../../user/user_model/User';
+import { SocialSignUpInfo } from '../models/social-signup-info';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   })
 };
 
@@ -18,6 +19,7 @@ const httpOptions = {
 export class AuthService {
 
   private AUTH_LOGIN_API = 'http://localhost:8080/login';
+  private AUTH_SOCIAL_SIGNUP_API = 'http://localhost:8080/register';
 
   private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
@@ -28,6 +30,10 @@ export class AuthService {
 
   authLogin(loginInfo: LoginInfo): Observable<JwtResponse> {
     return this.http.post<JwtResponse>(this.AUTH_LOGIN_API, loginInfo, httpOptions);
+  }
+
+  signUpSocialUser(socialSignUpInfo: SocialSignUpInfo): Observable<string> {
+    return this.http.post<string>(this.AUTH_SOCIAL_SIGNUP_API, JSON.stringify(socialSignUpInfo), httpOptions);
   }
 
   getCurrentUser(): void {
