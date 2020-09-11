@@ -7,12 +7,13 @@
       <tbody>
       <form [formGroup]="examForm" (ngSubmit)="onSubmit()">
         <ng-container formArrayName="answer" *ngFor="let question of listQuestion ;let i=index;">
-          <ul class="question">
-            <li>
+
+          <td class="question">
+            <tr>
               <!--question-->
               <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b>
               <!--correct answer-->
-              <input class="rightAnswer" id="text{{i+1}}"  value="{{question.rightAnswer}}"/><br/>
+              <input formControlName="" class="rightAnswer" id="text{{i+1}}"  value="{{question.rightAnswer}}"/><br/>
               <!--answer-->
               <input id="Cau{{question.questionId}}A" [name]="question.questionId" type="radio"
                      value="{{question.answerA}}"
@@ -34,8 +35,8 @@
                      [formControl]="answer[i]"/><label
               for="Cau{{question.questionId}}D">{{question.answerD}}</label>
               <br/><br/>
-            </li>
-          </ul>
+            </tr>
+          </td>
         </ng-container>
         <input class="btn btn-sm  rounded" type="submit" value="Submit">
       </form>

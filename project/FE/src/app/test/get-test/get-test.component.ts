@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Test} from '../test';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {TestService} from '../test_service/test.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Exam} from '../../exam/exam';
 import {ExamService} from '../../exam/exam_service/exam.service';
 import {Question} from '../../question/question';
 import {DatePipe} from '@angular/common';
+import {QuestionService} from '../../question/question.service';
 
 @Component({
   selector: 'app-get-test',
@@ -14,10 +15,11 @@ import {DatePipe} from '@angular/common';
   styleUrls: ['./get-test.component.css']
 })
 export class GetTestComponent implements OnInit {
-  test: Test;
-  exam: Exam;
+  test: Test = new Test();
+  exam: Exam = new Exam();
+  question: Question;
   examForm: FormGroup;
-  listQuestion: Question[];
+  listQuestion = new Array<Question>();
   time = 15 * 60;
   display;
   interval;
@@ -25,8 +27,8 @@ export class GetTestComponent implements OnInit {
   myDate = new Date();
 
   constructor(private fb: FormBuilder, private testService: TestService, private examService: ExamService,
-              private router: Router, private activatedRoute: ActivatedRoute, private datePipe: DatePipe) {
-    console.log('abc');
+              private questionService: QuestionService, private router: Router,
+              private activatedRoute: ActivatedRoute, private datePipe: DatePipe) {
     this.examForm = this.fb.group({
       examDate: [''],
       mark: [''],
@@ -42,13 +44,30 @@ export class GetTestComponent implements OnInit {
       const id = Number(paramMap.get('id'));
       this.testService.findById(id).subscribe(
         (next) => {
+          // console.log(next);
           this.test = next;
+          // console.log(this.test);
         }, error => {
-
         }, () => {
-          this.listQuestion = this.test.questions;
+          this.test.questions.forEach(item => {
+            this.questionService.findById(item).subscribe(
+              next => {
+                this.question = next;
+                this.listQuestion.push(next);
+              }, error => {
+              }, () => {
+                console.log(this.question);
+              });
+          });
+
+          // this.test.questions.forEach(function(question) {
+          //
+          //   this.listQuestion.push(new FormControl());
+          // });
         });
     });
+
+    // console.log(this.test.questions);
     this.startTimer();
   }
 
@@ -61,16 +80,17 @@ export class GetTestComponent implements OnInit {
   onSubmit() {
     this.exam.examDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
     this.exam = Object.assign({}, this.examForm.value);
-    this.caculationMark();
+    // this.caculationMark();
     this.exam.answer = this.exam.answer.toString();
     this.examService.save(this.exam).subscribe(
       next => {
         console.log('Create process!');
       }, error => {
         console.log('Create failed!');
-      }
+      },
     );
     this.router.navigateByUrl('');
+
   }
 
   // tslint:disable-next-line:typedef
@@ -92,15 +112,15 @@ export class GetTestComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  caculationMark() {
-    for (let i = 0; i < this.listQuestion.length; i++) {
-      // tslint:disable-next-line:triple-equals
-      if (this.exam.answer[i] == this.listQuestion[i].rightAnswer) {
-        this.mark += 0.5;
-      }
-    }
-    this.exam.mark = this.mark;
-  }
+  // caculationMark() {
+  //   for (let i = 0; i < this.listQuestion.length; i++) {
+  //     // tslint:disable-next-line:triple-equals
+  //     if (this.exam.answer[i] == this.listQuestion[i].rightAnswer) {
+  //       this.mark += 0.5;
+  //     }
+  //   }
+  //   this.exam.mark = this.mark;
+  // }
 
 
 }
