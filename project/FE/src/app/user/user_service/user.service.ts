@@ -18,6 +18,9 @@ export class UserService {
   ///////////////////////////////////////////////////////
 
   constructor(private httpClient: HttpClient) { }
+  getTotalUser(): Observable<number>{
+    return this.httpClient.get<number>(this.API_URL + '/getTotalUser');
+  }
 
   saveNewUser(user: User): Observable<HttpResponse<User>> {
    return  this.httpClient.post <User>(this.REGISTER_USER_API_URL, user, { observe: 'response' });
