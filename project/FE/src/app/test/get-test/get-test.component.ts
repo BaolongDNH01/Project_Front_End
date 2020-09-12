@@ -17,10 +17,11 @@ import {QuestionService} from '../../question/question.service';
 export class GetTestComponent implements OnInit {
   test: Test = new Test();
   exam: Exam = new Exam();
-  question: Question;
   examForm: FormGroup;
   listQuestion = new Array<Question>();
-  time = 15 * 60;
+  answerArr = new FormArray([]);
+  timeSet = 15 * 60;
+  time = this.timeSet;
   display;
   interval;
   mark = 0;
@@ -30,12 +31,9 @@ export class GetTestComponent implements OnInit {
               private questionService: QuestionService, private router: Router,
               private activatedRoute: ActivatedRoute, private datePipe: DatePipe) {
     this.examForm = this.fb.group({
-      examDate: [''],
-      mark: [''],
-      answer: this.fb.array([]),
+      answer: this.answerArr,
       times: [''],
-      userId: [''],
-      testId: [''],
+      userId: ['']
     });
   }
 
@@ -44,44 +42,43 @@ export class GetTestComponent implements OnInit {
       const id = Number(paramMap.get('id'));
       this.testService.findById(id).subscribe(
         (next) => {
-          // console.log(next);
           this.test = next;
-          // console.log(this.test);
         }, error => {
         }, () => {
           this.test.questions.forEach(item => {
             this.questionService.findById(item).subscribe(
               next => {
-                this.question = next;
                 this.listQuestion.push(next);
               }, error => {
               }, () => {
-                console.log(this.question);
+                console.log(this.listQuestion);
+                console.log(this.listQuestion[0]);
+                this.createArrAnswer();
               });
           });
 
-          // this.test.questions.forEach(function(question) {
-          //
-          //   this.listQuestion.push(new FormControl());
-          // });
         });
     });
 
-    // console.log(this.test.questions);
     this.startTimer();
   }
 
-  // tslint:disable-next-line:typedef
-  get answer() {
-    return this.examForm.get('answer') as FormArray;
+  createArrAnswer() {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.listQuestion.length; i++) {
+      this.answerArr.push(new FormControl(''));
+    }
   }
 
   // tslint:disable-next-line:typedef
   onSubmit() {
-    this.exam.examDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
     this.exam = Object.assign({}, this.examForm.value);
-    // this.caculationMark();
+    this.exam.examDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
+    this.exam.testId = this.test.testId;
+    this.caculationMark();
     this.exam.answer = this.exam.answer.toString();
+    this.exam.times = this.timeSet - this.time;
+    console.log(this.exam);
     this.examService.save(this.exam).subscribe(
       next => {
         console.log('Create process!');
@@ -89,15 +86,13 @@ export class GetTestComponent implements OnInit {
         console.log('Create failed!');
       },
     );
-    this.router.navigateByUrl('');
+    // this.router.navigateByUrl('');
 
   }
 
-  // tslint:disable-next-line:typedef
   startTimer() {
     this.interval = setInterval(() => {
       if (this.time === 0) {
-        this.exam.times = this.time;
         this.onSubmit();
       } else {
         this.time--;
@@ -111,16 +106,15 @@ export class GetTestComponent implements OnInit {
     return minutes + ':' + (value - minutes * 60);
   }
 
-  // tslint:disable-next-line:typedef
-  // caculationMark() {
-  //   for (let i = 0; i < this.listQuestion.length; i++) {
-  //     // tslint:disable-next-line:triple-equals
-  //     if (this.exam.answer[i] == this.listQuestion[i].rightAnswer) {
-  //       this.mark += 0.5;
-  //     }
-  //   }
-  //   this.exam.mark = this.mark;
-  // }
+  caculationMark() {
+    for (let i = 0; i < this.listQuestion.length; i++) {
+      // tslint:disable-next-line:triple-equals
+      if (this.exam.answer[i] == this.listQuestion[i].rightAnswer) {
+        this.mark += 0.5;
+      }
+    }
+    this.exam.mark = this.mark;
+  }
 
 
 }
