@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = 'token';
 const USERNAME_KEY = 'username';
+const EMAIL_KEY = 'email';
+const AVATAR_KEY = 'avatar';
 const AUTHORITIES_KEY = 'authorities';
 
 @Injectable({
@@ -29,6 +31,24 @@ export class JwtService {
 
   getUsername(): string {
     return sessionStorage.getItem(USERNAME_KEY);
+  }
+
+  saveEmail(email: string): void {
+    window.sessionStorage.removeItem(EMAIL_KEY);
+    window.sessionStorage.setItem(EMAIL_KEY, email);
+  }
+
+  getEmail(): string {
+    return sessionStorage.getItem(EMAIL_KEY);
+  }
+
+  saveAvatar(avatarUrl: string): void {
+    window.sessionStorage.removeItem(AVATAR_KEY);
+    window.sessionStorage.setItem(AVATAR_KEY, avatarUrl);
+  }
+
+  getAvatar(): string {
+    return sessionStorage.getItem(AVATAR_KEY);
   }
 
   saveAuthorities(authorities: string[]): void {

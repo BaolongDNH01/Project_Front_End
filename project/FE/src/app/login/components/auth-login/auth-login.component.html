@@ -12,14 +12,17 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-body p-2">User:
-            <div class="username-card">{{username}}</div>
+            <div class="username-card">{{ username }}</div>
           </div>
         </div>
       </div>
       <div class="col-md-12">
         <div class="card">
           <div class="card-body p-2">Information:
-            <div class="username-card">{{roles}}</div>
+            <div class="username-card">{{ roles }}</div>
+            <div *ngIf="socialUser">
+              <div class="username-card">{{ socialUser.email }}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -43,10 +46,10 @@
           LOGIN
         </div>
         <div class="col-md-7 mr-0 icon-align">
-          <a href="#">
+          <a (click)="signInWithGoogle()">
             <i class="fa fa-2x fa-google float-md-right mr-3 bg-light p-1 text-center" aria-hidden="true"></i>
           </a>
-          <a href="#">
+          <a (click)="signInWithFB()">
             <i class="fa fa-2x fa-facebook float-md-right mr-3 bg-light p-1 text-center" aria-hidden="true"></i>
           </a>
         </div>
@@ -86,5 +89,3 @@
     </form>
   </div>
 </ng-template>
-
-

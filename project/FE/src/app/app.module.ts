@@ -2,6 +2,11 @@ import { LoginModule } from './login/login.module';
 import { httpInterceptorProviders } from './login/auth/auth-http.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from 'angularx-social-login';
 
 import { AppComponent } from './app.component';
 import {UserModule} from './user/user.module';
@@ -37,19 +42,33 @@ import {NgxPaginationModule} from 'ngx-pagination';
     QuestionRoutingModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-
-    // Thiện update lần 2 - CẤM XOÁ ! //
-    LoginModule
-    /////////////////////////////////////
+    LoginModule,
+    SocialLoginModule
   ],
-
-  // Thiện update lần 2 - CẤM XOÁ ! //
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  providers: [httpInterceptorProviders],
-  /////////////////////////////////////
-
+  providers: [
+    httpInterceptorProviders,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '570845823533-rd5op7viidgmviib1mcgh9jqkmqlhf7q.apps.googleusercontent.com'
+            ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('242813840370623'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent],
   exports: [FormDirective]
 })
