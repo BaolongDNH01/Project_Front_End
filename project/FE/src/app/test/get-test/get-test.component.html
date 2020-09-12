@@ -1,47 +1,45 @@
 <div class="get-test">
   <div>
-    <label>Remaining time <span id="time" ><b>{{display}}</b></span></label>
+    <label>Remaining time <span id="time"><b>{{display}}</b></span></label>
   </div>
-  <form name="myform">
-    <table>
-      <tbody>
-      <form [formGroup]="examForm" (ngSubmit)="onSubmit()">
-        <ng-container formArrayName="answer" *ngFor="let question of listQuestion ;let i=index;">
-          <ul class="question">
-            <li>
-              <!--question-->
-              <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b>
-              <!--correct answer-->
-              <input class="rightAnswer" id="text{{i+1}}"  value="{{question.rightAnswer}}"/><br/>
-              <!--answer-->
-              <input id="Cau{{question.questionId}}A" [name]="question.questionId" type="radio"
-                     value="{{question.answerA}}"
-                     [formControl]="answer[i]"/>
-              <label for="Cau{{question.questionId}}A">{{question.answerA}}</label>
-              <br/>
-              <input id="Cau{{question.questionId}}B" [name]="question.questionId" type="radio"
-                     value="{{question.answerB}}"
-                     [formControl]="answer[i]"/><label
-              for="Cau{{question.questionId}}B">{{question.answerB}}</label>
-              <br/>
-              <input id="Cau{{question.questionId}}C" [name]="question.questionId" type="radio"
-                     value="{{question.answerC}}"
-                     [formControl]="answer[i]"/><label
-              for="Cau{{question.questionId}}C">{{question.answerC}}</label>
-              <br/>
-              <input id="Cau{{question.questionId}}D" [name]="question.questionId" type="radio"
-                     value="{{question.answerD}}"
-                     [formControl]="answer[i]"/><label
-              for="Cau{{question.questionId}}D">{{question.answerD}}</label>
-              <br/><br/>
-            </li>
-          </ul>
-        </ng-container>
-        <input class="btn btn-sm  rounded" type="submit" value="Submit">
-      </form>
-      </tbody>
-    </table>
+  <form [formGroup]="examForm" (ngSubmit)="onSubmit()">
+    <div *ngFor="let question of listQuestion ;let i=index;">
+      <table>
+        <tr class="question">
+          <td>
+            <!--question-->
+            <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b>
+            <!--correct answer-->
+            <input formControlName="" class="rightAnswer" id="text{{i+1}}" value="{{question.rightAnswer}}"/><br/>
+            <!--answer-->
+            <input id="Cau{{question.questionId}}A" name="question.questionId" type="radio"
+                   value="{{question.answerA}}"
+                   [formControl]="answerArr.controls[i]"/>
+            <label for="Cau{{question.questionId}}A">{{question.answerA}}</label>
+            <br/>
+            <input id="Cau{{question.questionId}}B" name="question.questionId" type="radio"
+                   value="{{question.answerB}}"
+                   [formControl]="answerArr.controls[i]"><label
+            for="Cau{{question.questionId}}B">{{question.answerB}}</label>
+            <br/>
+            <input id="Cau{{question.questionId}}C" name="question.questionId" type="radio"
+                   value="{{question.answerC}}"
+                   [formControl]="answerArr.controls[i]"/><label
+            for="Cau{{question.questionId}}C">{{question.answerC}}</label>
+            <br/>
+            <input id="Cau{{question.questionId}}D" name="question.questionId" type="radio"
+                   value="{{question.answerD}}"
+                   [formControl]="answerArr.controls[i]"/><label
+            for="Cau{{question.questionId}}D">{{question.answerD}}</label>
+            <br/><br/>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <input class="btn btn-sm  rounded" type="submit" value="Submit">
   </form>
   <div>
   </div>
+  {{ examForm.value | json}}
+
 </div>
