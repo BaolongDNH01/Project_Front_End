@@ -29,6 +29,7 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
   authority: string;
 
   socialSignUpInfo: SocialSignUpInfo;
+  socialUser: SocialUser;
 
   constructor(
     private fb: FormBuilder,
@@ -61,6 +62,11 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
         return true;
       });
     }
+
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedIn = (user != null);
+    });
   }
 
   onLogin(): void {
@@ -89,32 +95,27 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
 
   signInWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then(data => {
-        const usernameConverted = this.formatUsername.removeVietnameseTones(data.name).replace(/\s/g, '');
+      .then(userData => {
+        const usernameConverted = this.formatUsername.removeVietnameseTones(userData.name).replace(/\s/g, '');
         this.socialSignUpInfo = new SocialSignUpInfo(
           usernameConverted,
-          data.name,
-          data.email,
-          data.provider,
-          data.id,
-          data.photoUrl,
-          '123123',
-          ['member']
+          userData.name,
+          userData.email,
+          userData.provider,
+          userData.id,
+          userData.photoUrl,
         );
-        console.log(this.socialSignUpInfo);
+
         this.authService.signUpSocialUser(this.socialSignUpInfo).subscribe({
           next: () => {
-            alert('Register successfully');
+            this.loginInfo = new LoginInfo(this.socialSignUpInfo.username, this.socialSignUpInfo.userPassword);
+            this.authLogin(this.loginInfo);
           },
-          error: (err) => {
-            console.log(err.message);
+          error: () => {
+            this.loginInfo = new LoginInfo(this.socialSignUpInfo.username, this.socialSignUpInfo.userPassword);
+            this.authLogin(this.loginInfo);
           }
         });
-
-        this.loginInfo = new LoginInfo(this.socialSignUpInfo.username, this.socialSignUpInfo.userPassword);
-        console.log(this.loginInfo.username);
-        console.log(this.loginInfo.password);
-        this.authLogin(this.loginInfo);
       });
   }
 

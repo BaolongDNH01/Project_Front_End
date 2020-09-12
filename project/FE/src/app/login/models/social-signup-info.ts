@@ -15,8 +15,7 @@ export class SocialSignUpInfo {
     address: string,
     phoneNumber: string,
     avatar: string,
-    userPassword: string,
-    role: string[]
+
     ) {
       this.username = username;
       this.fullName = fullName;
@@ -24,7 +23,7 @@ export class SocialSignUpInfo {
       this.address = address;
       this.phoneNumber = phoneNumber;
       this.avatar = avatar;
-      this.userPassword = userPassword;
-      this.role = role;
+      this.userPassword = '123123';
+      this.role = ['member'];
   }
 }

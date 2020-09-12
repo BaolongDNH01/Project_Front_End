@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   signUpSocialUser(socialSignUpInfo: SocialSignUpInfo): Observable<string> {
-    return this.http.post<string>(this.AUTH_SOCIAL_SIGNUP_API, JSON.stringify(socialSignUpInfo), httpOptions);
+    return this.http.post(this.AUTH_SOCIAL_SIGNUP_API, socialSignUpInfo,  {responseType: 'text'});
   }
 
   getCurrentUser(): void {

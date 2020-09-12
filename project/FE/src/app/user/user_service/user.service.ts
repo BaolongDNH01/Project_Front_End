@@ -11,11 +11,8 @@ export class UserService {
   REGISTER_USER_API_URL = 'http://localhost:8080/register';
   API_URL = 'http://localhost:8080';
 
-
-  // Thiện update lần 2 - CẤM XOÁ ! //
    private ACCESS_ADMIN_API = 'http://localhost:8080/admin';
    private ACCESS_MEMBER_API = 'http://localhost:8080/member';
-  ///////////////////////////////////////////////////////
 
   constructor(private httpClient: HttpClient) { }
   getTotalUser(): Observable<number>{
@@ -53,7 +50,6 @@ export class UserService {
     return this.httpClient.patch<User>(`${this.API_URL}/${user.id}`, user);
   }
 
-  // Thiện update lần 2 - CẤM XOÁ ! //
     accessAdminPage(): Observable<string> {
     return this.httpClient.get(this.ACCESS_ADMIN_API, { responseType: 'text' });
   }
@@ -61,5 +57,4 @@ export class UserService {
     accessMemberPage(): Observable<string> {
     return this.httpClient.get(this.ACCESS_MEMBER_API, { responseType: 'text' });
   }
-  ////////////////////////////////////////////////////////////////////////////////
 }
