@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subject} from '../subject';
 import {TestService} from '../test_service/test.service';
 import {Test} from '../test';
@@ -26,7 +26,7 @@ export class AddTestComponent implements OnInit {
   validateTest(): void {
     this.testService.getAllSubject().subscribe(list => this.listSubject = list);
     this.formAddTest = this.formBuilder.group({
-      id: [1],
+      id: [],
       testName: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9#_/*&]{1,50}$')]],
       subjectId: ['', [Validators.required]],
       grade: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]{1,20}$')]],

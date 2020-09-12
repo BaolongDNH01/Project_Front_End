@@ -32,14 +32,10 @@ export class StatisticalUserComponent implements OnInit {
           username: string;
         };
       }, () => {
-        userService.findAllUser().subscribe(
+        userService.getTotalUser().subscribe(
           next => {
-            this.listUser = next;
-          }, error => {
-            this.listUser = new Array();
-          }, () => {
-            this.totalUser = this.listUser.length;
-          }
+            this.totalUser = next;
+          },
         );
       }
     );
