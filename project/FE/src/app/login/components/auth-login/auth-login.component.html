@@ -20,8 +20,15 @@
         <div class="card">
           <div class="card-body p-2">Information:
             <div class="username-card">{{ roles }}</div>
-            <div *ngIf="socialUser">
-              <div class="username-card">{{ socialUser.email }}</div>
+          </div>
+          <div *ngIf="isLoggedIn">
+            <div class="card-body p-2">Email:
+              <div class="username-card">{{ email }}</div>
+            </div>
+            <div class="card-body p-2">Avatar:
+              <div class="username-card">
+                <img src="{{ avatar }}" alt="avatar.jpg">
+              </div>
             </div>
           </div>
         </div>

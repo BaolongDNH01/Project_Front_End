@@ -27,6 +27,8 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
   roles: string[] = [];
   username: string;
   authority: string;
+  email: string;
+  avatar: string;
 
   socialSignUpInfo: SocialSignUpInfo;
   socialUser: SocialUser;
@@ -49,6 +51,8 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
       this.isLoggedIn = true;
       this.username = this.jwtService.getUsername();
       this.roles = this.jwtService.getAuthorities();
+      this.email = this.jwtService.getEmail();
+      this.avatar = this.jwtService.getAvatar();
 
       // Handling authorities granted
       this.roles.every(role => {
@@ -83,19 +87,22 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
         this.jwtService.saveToken(data.token);
         this.jwtService.saveUsername(data.username);
         this.jwtService.saveAuthorities(data.authorities);
+        this.jwtService.saveEmail(data.email);
+        this.jwtService.saveAvatar(data.avatar);
         this.isLoggedIn = true;
         this.reloadPage();
       },
       error: (err) => {
         console.error(err);
         this.isLogInFailed = true;
-      }
+      },
     });
   }
 
   signInWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
       .then(userData => {
+        this.socialUser = userData;
         const usernameConverted = this.formatUsername.removeVietnameseTones(userData.name).replace(/\s/g, '');
         this.socialSignUpInfo = new SocialSignUpInfo(
           usernameConverted,
@@ -117,6 +124,7 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
           }
         });
       });
+    console.log(this.socialUser);
   }
 
   signInWithFB(): void {
