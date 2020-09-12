@@ -50,7 +50,7 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
     if (this.jwtService.getToken()) {
       this.isLoggedIn = true;
       this.username = this.jwtService.getUsername();
-      this.roles = this.jwtService.getAuthorities();
+      this.roles = this.jwtService.getAuthorities().map(r => r.replace('ROLE_', '').toLowerCase());
       this.email = this.jwtService.getEmail();
       this.avatar = this.jwtService.getAvatar();
 
@@ -99,10 +99,23 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  signInWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+  loginSocial(social: string): void {
+    switch (social) {
+      case 'fb':
+        this.processSocialLogin(FacebookLoginProvider.PROVIDER_ID);
+        break;
+      case 'gg':
+        this.processSocialLogin(GoogleLoginProvider.PROVIDER_ID);
+        break;
+      default:
+        alert('Something went wrong !');
+        break;
+    }
+  }
+
+  processSocialLogin(socialProvider: string): void {
+    this.socialAuthService.signIn(socialProvider)
       .then(userData => {
-        this.socialUser = userData;
         const usernameConverted = this.formatUsername.removeVietnameseTones(userData.name).replace(/\s/g, '');
         this.socialSignUpInfo = new SocialSignUpInfo(
           usernameConverted,
@@ -119,16 +132,12 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
             this.authLogin(this.loginInfo);
           },
           error: () => {
+            // By passing status code 409 -> Still login when account has existed
             this.loginInfo = new LoginInfo(this.socialSignUpInfo.username, this.socialSignUpInfo.userPassword);
             this.authLogin(this.loginInfo);
           }
         });
       });
-    console.log(this.socialUser);
-  }
-
-  signInWithFB(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => console.log(data));
   }
 
   valid(field: string, errorCode: string): boolean {
