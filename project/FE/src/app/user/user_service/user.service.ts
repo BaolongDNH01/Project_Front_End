@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {User} from '../user_model/User';
 import {Observable} from 'rxjs';
 import {Password} from '../update-password/password';
+import {JwtService} from '../../login/services/jwt.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,12 @@ export class UserService {
    private ACCESS_ADMIN_API = 'http://localhost:8080/admin';
    private ACCESS_MEMBER_API = 'http://localhost:8080/member';
 
-  constructor(private httpClient: HttpClient) { }
+
+  constructor(private httpClient: HttpClient, private jwt: JwtService) { }
   getTotalUser(): Observable<number>{
     return this.httpClient.get<number>(this.API_URL + '/getTotalUser');
   }
+
 
   saveNewUser(user: User): Observable<HttpResponse<User>> {
    return  this.httpClient.post <User>(this.REGISTER_USER_API_URL, user, { observe: 'response' });
@@ -30,11 +33,13 @@ export class UserService {
   }
 
   deleteUser(id: number): Observable<void> {
-    return this.httpClient.delete<void>(this.API_URL + '/delete-user/' + id);
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('Authorization',
+      'Bearer ' + this.jwt.getToken());
+    return this.httpClient.delete<void>(this.API_URL + '/delete-user/' + id, {headers: headerAuth});
   }
 
   // THIEN UPDATE
-
   getUserById(id: number): Observable<User> {
     return this.httpClient.get<User>(`${this.API_URL}/detail-user/${id}`);
   }

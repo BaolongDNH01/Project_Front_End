@@ -38,8 +38,8 @@
             </tr>
             </thead>
             <tbody class="bg-light">
-            <tr *ngFor="let user of userList | paginate: {itemsPerPage: 10, currentPage: currentPage}; let i = index">
-              <th scope="row">{{i}}</th>
+            <tr *ngFor="let user of userList | paginate: {itemsPerPage: 10, currentPage: p}; let i = index">
+              <th scope="row">{{i+1}}</th>
               <td>{{user.username}}</td>
               <td>{{user.fullName}}</td>
               <td>{{user.address}}</td>
@@ -84,7 +84,7 @@
             </tr>
             </tbody>
           </table>
-          <pagination-controls>(pageChange)="currentPage = $event"</pagination-controls>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
           <div class="col-md-12 d-flex justify-content-md-end mb-3">
             <button id="closeButton" class="btn btn-outline-secondary align-self-end">
               Close

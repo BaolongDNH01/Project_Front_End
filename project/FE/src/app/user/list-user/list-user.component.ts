@@ -8,7 +8,7 @@ import {User} from '../user_model/User';
   styleUrls: ['./list-user.component.css']
 })
 export class ListUserComponent implements OnInit {
-  currentPage = 1;
+  p = 1;
   userList: User[];
 
   constructor(private userService: UserService) {
@@ -18,9 +18,6 @@ export class ListUserComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-
-
 
 
 }
