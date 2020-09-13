@@ -1,4 +1,4 @@
-import { LoginInfo } from './../models/login-info';
+import { LoginInfo } from '../models/login-info';
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';

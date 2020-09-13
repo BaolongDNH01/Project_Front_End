@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {UserService} from '../user_service/user.service';
+import {AuthHttpInterceptor} from '../../login/auth/auth-http.interceptor';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-delete-user',
@@ -9,13 +11,16 @@ import {UserService} from '../user_service/user.service';
 })
 export class DeleteUserComponent implements OnInit {
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: UserService) { }
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private service: UserService) {
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const id = Number(paramMap.get('id'));
       console.log(id);
       this.service.deleteUser(id).subscribe(next => this.router.navigateByUrl('list-user'));
-  });
+    });
   }
 }
