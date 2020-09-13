@@ -32,7 +32,6 @@ export class GetTestComponent implements OnInit {
               private activatedRoute: ActivatedRoute, private datePipe: DatePipe) {
     this.examForm = this.fb.group({
       answer: this.answerArr,
-      times: [''],
       userId: ['']
     });
   }
@@ -51,8 +50,6 @@ export class GetTestComponent implements OnInit {
                 this.listQuestion.push(next);
               }, error => {
               }, () => {
-                console.log(this.listQuestion);
-                console.log(this.listQuestion[0]);
                 this.createArrAnswer();
               });
           });
@@ -74,7 +71,7 @@ export class GetTestComponent implements OnInit {
   onSubmit() {
     this.exam = Object.assign({}, this.examForm.value);
     this.exam.examDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
-    this.exam.testId = this.test.testId;
+    this.exam.test = this.test.testId;
     this.caculationMark();
     this.exam.answer = this.exam.answer.toString();
     this.exam.times = this.timeSet - this.time;

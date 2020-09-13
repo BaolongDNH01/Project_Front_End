@@ -1,7 +1,7 @@
 <div class="get-test">
   <div id="resultFinal">
     <div>
-      <p>Exam number {{exam.examId}}</p>
+      <p>Exam number {{exam.test}}</p>
     </div>
     <div>
       <label id="result">Your score is <b id="score"> {{exam.mark}}/10 </b> question."
@@ -10,42 +10,39 @@
   </div>
   <table>
     <tbody>
-    <ng-container *ngFor="let question of listQuestion ;let i=index;">
-      <ul class="question">
-        <li>
+    <div *ngFor="let question of listQuestion ;let i=index;">
+      <tr class="question">
+        <td>
           <!--question-->
-          <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b>
-          <!--correct answer-->
-          <input id="text{{i+1}}" class="rightAnswer" value="{{question.rightAnswer}}"/><br/>
+          <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b><br>
           <!--answer-->
           <i id="Q{{i+1}}A" ng-class="{{listAnswer[i]}}=={{question.answerA}}?'fa-check':'fa-times'"
              ng-class="{{listAnswer[i]}}=={{question.rightAnswer}}?'allCheckQ':''"
              class="fa "></i>
           <input id="Cau{{question.questionId}}A" [name]="question.questionId" type="radio"
-                 value="{{question.answerA}}"><label for="Cau{{question.questionId}}A">{{question.answerA}}</label>
+                 value="{{question.answerA}}" disabled><label for="Cau{{question.questionId}}A">{{question.answerA}}</label>
           <br/>
           <i id="Q{{i+1}}B" ng-class="{{listAnswer[i]}}=={{question.answerB}}?'fa-check':'fa-times'"
              ng-class="{{listAnswer[i]}}=={{question.rightAnswer}}?'allCheckQ':''"
              class="fa allCheckQ"></i>
           <input id="Cau{{question.questionId}}B" [name]="question.questionId" type="radio"
-                 value="{{question.answerB}}"><label for="Cau{{question.questionId}}B">{{question.answerB}}</label>
+                 value="{{question.answerB}}" disabled><label for="Cau{{question.questionId}}B">{{question.answerB}}</label>
           <br/>
           <i id="Q{{i+1}}C" ng-class="{{listAnswer[i]}}=={{question.answerB}}?'fa-check':'fa-times'"
              ng-class="{{listAnswer[i]}}=={{question.rightAnswer}}?'allCheckQ':''"
              class="fa allCheckQ"></i>
           <input id="Cau{{question.questionId}}C" [name]="question.questionId" type="radio"
-                 value="{{question.answerC}}"><label for="Cau{{question.questionId}}C">{{question.answerC}}</label>
+                 value="{{question.answerC}}" disabled><label for="Cau{{question.questionId}}C">{{question.answerC}}</label>
           <br/>
           <i id="Q{{i+1}}D" ng-class="{{listAnswer[i]}}=={{question.answerD}}?'fa-check':'fa-times'"
              ng-class="{{listAnswer[i]}}=={{question.rightAnswer}}?'allCheckQ':''"
              class="fa allCheckQ"></i>
           <input id="Cau{{question.questionId}}D" [name]="question.questionId" type="radio"
-                 value="{{question.answerD}}"><label for="Cau{{question.questionId}}D">{{question.answerD}}</label>
+                 value="{{question.answerD}}" disabled><label for="Cau{{question.questionId}}D">{{question.answerD}}</label>
           <br/><br/>
-        </li>
-      </ul>
-    </ng-container>
-
+        </td>
+      </tr>
+    </div>
     </tbody>
   </table>
   <div>

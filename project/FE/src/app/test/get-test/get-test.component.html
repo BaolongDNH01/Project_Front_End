@@ -8,9 +8,8 @@
         <tr class="question">
           <td>
             <!--question-->
-            <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b>
+            <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b><br>
             <!--correct answer-->
-            <input formControlName="" class="rightAnswer" id="text{{i+1}}" value="{{question.rightAnswer}}"/><br/>
             <!--answer-->
             <input id="Cau{{question.questionId}}A" name="question.questionId" type="radio"
                    value="{{question.answerA}}"
