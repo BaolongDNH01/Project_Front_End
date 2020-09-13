@@ -25,7 +25,7 @@ export class GetExamComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = Number(paramMap.get('examId'));
+      const id = Number(paramMap.get('id'));
 
       this.examService.findById(id).subscribe(
         (next) => {
@@ -33,7 +33,7 @@ export class GetExamComponent implements OnInit {
         }, error => {
 
         }, () => {
-          this.testService.findById(this.exam.test).subscribe(
+          this.testService.findById(this.exam.testId).subscribe(
             (next) => {
               this.test = next;
             }, error => {

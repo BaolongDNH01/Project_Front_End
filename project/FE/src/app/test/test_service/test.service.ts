@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 
-import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 import {Subject} from '../subject';
 import {Test} from '../test';
+import {Message} from '../message';
 
 
 
@@ -17,22 +18,22 @@ export class TestService {
   }
 
   private getAllTestApi = 'http://localhost:8080/getAllTest';
-  private uploadFile = 'http://localhost:8080/uploadFile';
+  private uploadFile = 'http://localhost:8080/importTest';
   private deleteTest = 'http://localhost:8080/deleteTest';
   private getAllSubjectApi = 'http://localhost:8080/getAllSubject';
   private addTestApi = 'http://localhost:8080/addTest';
-  URL = 'http://localhost:8080';
+  private URL = 'http://localhost:8080';
 
 
   getAllTest(): Observable<Test[]> {
     return this.httpClient.get<Test[]>(this.getAllTestApi);
   }
 
-  upload(file: File): Observable<string> {
+  upload(file: File): Observable<Message> {
     const formData: FormData = new FormData();
     formData.append('file', file);
 
-    return this.httpClient.post<string>(this.uploadFile, formData);
+    return this.httpClient.post<Message>(this.uploadFile, formData);
   }
 
   deleteTests(list: number[]): Observable<any> {
@@ -43,8 +44,8 @@ export class TestService {
     return this.httpClient.get<Subject[]>(this.getAllSubjectApi);
   }
 
-  addTest(test: Test): Observable<string> {
-    return this.httpClient.post<string>(this.addTestApi, test);
+  addTest(test: Test): Observable<Message> {
+    return this.httpClient.post<Message>(this.addTestApi, test);
   }
 
   findById(testId: number): Observable<Test> {

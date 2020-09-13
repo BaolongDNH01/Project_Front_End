@@ -1,6 +1,10 @@
+import { FormatUsernameService } from './../../services/format-username.service';
+import { SocialSignUpInfo } from './../../models/social-signup-info';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SocialAuthService, SocialUser } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 
 import { LoginInfo } from './../../models/login-info';
 import { AuthService } from './../../services/auth.service';
@@ -24,10 +28,15 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
   username: string;
   authority: string;
 
+  socialSignUpInfo: SocialSignUpInfo;
+  socialUser: SocialUser;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private socialAuthService: SocialAuthService,
+    private formatUsername: FormatUsernameService
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +62,11 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
         return true;
       });
     }
+
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedIn = (user != null);
+    });
   }
 
   onLogin(): void {
@@ -60,8 +74,11 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
       this.loginForm.value.username,
       this.loginForm.value.password
     );
+    this.authLogin(this.loginInfo);
+  }
 
-    this.subscription = this.authService.authLogin(this.loginInfo).subscribe({
+  authLogin(loginInfo: LoginInfo): void {
+    this.subscription = this.authService.authLogin(loginInfo).subscribe({
       next: data => {
         this.jwtService.saveToken(data.token);
         this.jwtService.saveUsername(data.username);
@@ -76,10 +93,34 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+  signInWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then(userData => {
+        const usernameConverted = this.formatUsername.removeVietnameseTones(userData.name).replace(/\s/g, '');
+        this.socialSignUpInfo = new SocialSignUpInfo(
+          usernameConverted,
+          userData.name,
+          userData.email,
+          userData.provider,
+          userData.id,
+          userData.photoUrl,
+        );
+
+        this.authService.signUpSocialUser(this.socialSignUpInfo).subscribe({
+          next: () => {
+            this.loginInfo = new LoginInfo(this.socialSignUpInfo.username, this.socialSignUpInfo.userPassword);
+            this.authLogin(this.loginInfo);
+          },
+          error: () => {
+            this.loginInfo = new LoginInfo(this.socialSignUpInfo.username, this.socialSignUpInfo.userPassword);
+            this.authLogin(this.loginInfo);
+          }
+        });
+      });
+  }
+
+  signInWithFB(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => console.log(data));
   }
 
   valid(field: string, errorCode: string): boolean {
@@ -96,5 +137,11 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
 
   reloadPage(): void {
     window.location.href = '';
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
