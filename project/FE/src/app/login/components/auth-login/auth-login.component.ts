@@ -30,6 +30,8 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
   email: string;
   avatar: string;
 
+  checkboxMarked = false;
+
   socialSignUpInfo: SocialSignUpInfo;
   socialUser: SocialUser;
 
@@ -67,7 +69,11 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
       });
     }
 
-    this.socialAuthService.authState.subscribe((user) => {
+    if (window.localStorage.getItem('usernameRemember')) {
+      this.username = this.jwtService.getUsername();
+    }
+
+    this.subscription = this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedIn = (user != null);
     });
@@ -91,6 +97,12 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
         this.jwtService.saveAvatar(data.avatar);
         this.isLoggedIn = true;
         this.reloadPage();
+
+        if (this.checkboxMarked) {
+          window.localStorage.setItem('usernameRemember', this.jwtService.getUsername());
+        } else {
+          window.localStorage.clear();
+        }
       },
       error: (err) => {
         console.error(err);
@@ -126,14 +138,18 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
           userData.photoUrl,
         );
 
-        this.authService.signUpSocialUser(this.socialSignUpInfo).subscribe({
+        this.subscription = this.authService.signUpSocialUser(this.socialSignUpInfo).subscribe({
           next: () => {
-            this.loginInfo = new LoginInfo(this.socialSignUpInfo.username, this.socialSignUpInfo.userPassword);
+            this.loginInfo = new LoginInfo(
+              this.socialSignUpInfo.username,
+              this.socialSignUpInfo.userPassword);
             this.authLogin(this.loginInfo);
           },
           error: () => {
             // By passing status code 409 -> Still login when account has existed
-            this.loginInfo = new LoginInfo(this.socialSignUpInfo.username, this.socialSignUpInfo.userPassword);
+            this.loginInfo = new LoginInfo(
+              this.socialSignUpInfo.username,
+              this.socialSignUpInfo.userPassword);
             this.authLogin(this.loginInfo);
           }
         });
@@ -148,12 +164,20 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
   }
 
   logOut(): void {
-    this.jwtService.logOut();
-    this.reloadPage();
+    if (window.confirm('Are you sure to logout ?')) {
+      this.jwtService.logOut();
+      this.reloadPage();
+    }
+    this.jwtService.saveUsername(window.localStorage.getItem('usernameRemember'));
   }
 
   reloadPage(): void {
+    window.location.reload();
     window.location.href = '';
+  }
+
+  isRememberChecked(e: any): void {
+    this.checkboxMarked = e.target.checked;
   }
 
   ngOnDestroy(): void {

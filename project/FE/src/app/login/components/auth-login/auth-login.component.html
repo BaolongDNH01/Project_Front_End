@@ -49,10 +49,10 @@
           LOGIN
         </div>
         <div class="col-md-7 mr-0 icon-align">
-          <a (click)="loginSocial('gg')">
+          <a (click)="loginSocial('gg')" href="#">
             <i class="fa fa-2x fa-google float-md-right mr-3 bg-light p-1 text-center" aria-hidden="true"></i>
           </a>
-          <a (click)="loginSocial('fb')">
+          <a (click)="loginSocial('fb')" href="#">
             <i class="fa fa-2x fa-facebook float-md-right mr-3 bg-light p-1 text-center" aria-hidden="true"></i>
           </a>
         </div>
@@ -62,7 +62,7 @@
           <b>User</b>
         </label>
         <div class="col-md-10">
-          <input type="text" class="form-control form-control-md" placeholder="Name" formControlName="username">
+          <input type="text" class="form-control form-control-md" placeholder="Name" formControlName="username" [(ngModel)]="username">
           <div class="alert alert-danger p-1" role="alert" *ngIf="valid('username', 'required')">
             Must not be empty !
           </div>
@@ -82,8 +82,13 @@
       <div class="form-group row">
         <div class="col-md-2"></div>
         <div class="col-md-10">
-          <button type="submit" class="btn rounded mr-3" [disabled]="loginForm.invalid">Sign in</button>
-          <button class="btn rounded">Register</button>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" (change)="isRememberChecked($event)">Remember me
+            </label>
+          </div>
+          <button type="submit" class="btn rounded mr-3 mt-3" [disabled]="loginForm.invalid">Sign in</button>
+          <button class="btn rounded mt-3">Register</button>      
           <div *ngIf="loginForm.dirty && isLogInFailed" class="alert alert-danger p-1 mt-2">
             Account doesn't exist !
           </div>
