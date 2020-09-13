@@ -27,6 +27,10 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
   roles: string[] = [];
   username: string;
   authority: string;
+  email: string;
+  avatar: string;
+
+  checkboxMarked = false;
 
   socialSignUpInfo: SocialSignUpInfo;
   socialUser: SocialUser;
@@ -48,7 +52,9 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
     if (this.jwtService.getToken()) {
       this.isLoggedIn = true;
       this.username = this.jwtService.getUsername();
-      this.roles = this.jwtService.getAuthorities();
+      this.roles = this.jwtService.getAuthorities().map(r => r.replace('ROLE_', '').toLowerCase());
+      this.email = this.jwtService.getEmail();
+      this.avatar = this.jwtService.getAvatar();
 
       // Handling authorities granted
       this.roles.every(role => {
@@ -63,7 +69,11 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
       });
     }
 
-    this.socialAuthService.authState.subscribe((user) => {
+    if (window.localStorage.getItem('usernameRemember')) {
+      this.username = this.jwtService.getUsername();
+    }
+
+    this.subscription = this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedIn = (user != null);
     });
@@ -83,18 +93,40 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
         this.jwtService.saveToken(data.token);
         this.jwtService.saveUsername(data.username);
         this.jwtService.saveAuthorities(data.authorities);
+        this.jwtService.saveEmail(data.email);
+        this.jwtService.saveAvatar(data.avatar);
         this.isLoggedIn = true;
         this.reloadPage();
+
+        if (this.checkboxMarked) {
+          window.localStorage.setItem('usernameRemember', this.jwtService.getUsername());
+        } else {
+          window.localStorage.clear();
+        }
       },
       error: (err) => {
         console.error(err);
         this.isLogInFailed = true;
-      }
+      },
     });
   }
 
-  signInWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+  loginSocial(social: string): void {
+    switch (social) {
+      case 'fb':
+        this.processSocialLogin(FacebookLoginProvider.PROVIDER_ID);
+        break;
+      case 'gg':
+        this.processSocialLogin(GoogleLoginProvider.PROVIDER_ID);
+        break;
+      default:
+        alert('Something went wrong !');
+        break;
+    }
+  }
+
+  processSocialLogin(socialProvider: string): void {
+    this.socialAuthService.signIn(socialProvider)
       .then(userData => {
         const usernameConverted = this.formatUsername.removeVietnameseTones(userData.name).replace(/\s/g, '');
         this.socialSignUpInfo = new SocialSignUpInfo(
@@ -106,21 +138,22 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
           userData.photoUrl,
         );
 
-        this.authService.signUpSocialUser(this.socialSignUpInfo).subscribe({
+        this.subscription = this.authService.signUpSocialUser(this.socialSignUpInfo).subscribe({
           next: () => {
-            this.loginInfo = new LoginInfo(this.socialSignUpInfo.username, this.socialSignUpInfo.userPassword);
+            this.loginInfo = new LoginInfo(
+              this.socialSignUpInfo.username,
+              this.socialSignUpInfo.userPassword);
             this.authLogin(this.loginInfo);
           },
           error: () => {
-            this.loginInfo = new LoginInfo(this.socialSignUpInfo.username, this.socialSignUpInfo.userPassword);
+            // By passing status code 409 -> Still login when account has existed
+            this.loginInfo = new LoginInfo(
+              this.socialSignUpInfo.username,
+              this.socialSignUpInfo.userPassword);
             this.authLogin(this.loginInfo);
           }
         });
       });
-  }
-
-  signInWithFB(): void {
-    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => console.log(data));
   }
 
   valid(field: string, errorCode: string): boolean {
@@ -131,12 +164,20 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
   }
 
   logOut(): void {
-    this.jwtService.logOut();
-    this.reloadPage();
+    if (window.confirm('Are you sure to logout ?')) {
+      this.jwtService.logOut();
+      this.reloadPage();
+    }
+    this.jwtService.saveUsername(window.localStorage.getItem('usernameRemember'));
   }
 
   reloadPage(): void {
+    window.location.reload();
     window.location.href = '';
+  }
+
+  isRememberChecked(e: any): void {
+    this.checkboxMarked = e.target.checked;
   }
 
   ngOnDestroy(): void {
