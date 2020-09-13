@@ -9,10 +9,10 @@ import {ListUserComponent} from './user/list-user/list-user.component';
 import {DeleteUserComponent} from './user/delete-user/delete-user.component';
 import { AdminComponent } from './login/components/admin/admin.component';
 import { MemberComponent } from './login/components/member/member.component';
-import {UpdateUserComponent} from "./user/update-user/update-user.component";
-import {TestHistoryComponent} from "./user/test-history/test-history.component";
-import {UpdatePasswordComponent} from "./user/update-password/update-password.component";
-import {DetailUserComponent} from "./user/detail-user/detail-user.component";
+import {UpdateUserComponent} from './user/update-user/update-user.component';
+import {TestHistoryComponent} from './user/test-history/test-history.component';
+import {UpdatePasswordComponent} from './user/update-password/update-password.component';
+import {DetailUserComponent} from './user/detail-user/detail-user.component';
 import {TestListComponent} from './test/test-list/test-list.component';
 import {AddTestComponent} from './test/add-test/add-test.component';
 
