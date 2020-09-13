@@ -14,6 +14,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {RouterModule} from '@angular/router';
 
 
+
 @NgModule({
     declarations: [RegisterUserComponent,
         ListUserComponent,
@@ -22,7 +23,8 @@ import {RouterModule} from '@angular/router';
         DetailUserComponent,
         UpdateUserComponent,
         UpdatePasswordComponent,
-        TestHistoryComponent],
+        TestHistoryComponent,
+    ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
