@@ -7,6 +7,7 @@ import {Exam} from '../../exam/exam';
 import {ExamService} from '../../exam/exam_service/exam.service';
 
 import {Question} from '../question';
+import {TestService} from '../../test/test_service/test.service';
 
 
 // @ts-ignore
@@ -19,61 +20,44 @@ export class QuestionListInTheExamComponent implements OnInit {
   question: Question[];
   listQuestionInExamDelete: string[] = [];
   questionInExams: Array<QuestionInExam> = [];
-  questionInExam: QuestionInExam;
-  numberCount = 1;
   exam: Exam[];
+  idTestUpdating: number;
 
   constructor(
     private questionService: QuestionService,
     private router: Router,
-    private examService: ExamService
+    private examService: ExamService,
+    private testService: TestService
   ) {
   }
 
   ngOnInit(): void {
-    this.questionService.getAllQuestionInExam().subscribe(
+      this.findTestById(6);
+  }
+
+  findTestById(id: number) {
+    this.testService.findById(id).subscribe(
       next => {
-        // @ts-ignore
-        this.questionInExam = next;
-      }, error => {
-        this.questionInExams = new Array();
-      }, () => {
-        console.log('Ok');
+        this.findQuestionInTest(next.questions);
+        this.idTestUpdating = next.testId
       }
     );
+  }
+
+  findQuestionInTest(questions: string[]) {
+    this.questionInExams = [];
+    for (let i = 0; i < questions.length; i++) {
+      this.questionService.findById(questions[i]).subscribe(
+        question => {
+          this.questionInExams.push(question);
+        }
+      );
+    }
   }
 
   addQuestionList(): void {
-    this.questionService.getAllQuestion().subscribe(
-      next => {
-        this.toQuestionInExamArr(next);
-      }, error => {
-        this.question = new Array();
-      }, () => {
-
-      }
-    );
-  }
-
-  toQuestionInExamArr(arr: Question[]): void {
-    // tslint:disable-next-line:prefer-for-of
-    if (this.questionInExams.length === 0) {
-      for (let i = 0; i < 10; i++) {
-        const randNum = Math.floor(Math.random() * arr.length);
-        this.questionInExam = new QuestionInExam();
-        this.questionInExam.questionId = arr[randNum].questionId;
-        this.questionInExam.question = arr[randNum].question;
-        this.questionInExam.rightAnswer = arr[randNum].rightAnswer;
-        this.questionInExams.push(this.questionInExam);
-        this.questionInExams[i].no = this.numberCount++;
-        arr.splice(randNum, 1);
-      }
-      // console.log(this.questionInExams);
-      // tslint:disable-next-line:prefer-for-of
-      this.questionService.saveQuestionInExam(this.questionInExams).subscribe();
-    } else {
-      alert('ko cho add');
-    }
+    this.router.navigateByUrl('question/add-question-in-exam');
+    console.log('jfhfhfhfh');
   }
 
   chooseToDelete(questionId: string): void {
@@ -82,17 +66,15 @@ export class QuestionListInTheExamComponent implements OnInit {
     } else {
       this.listQuestionInExamDelete.push(questionId);
     }
-    console.log(this.listQuestionInExamDelete.length);
   }
 
   deleteQuestion(): void {
-    // @ts-ignore
-    this.questionService.deleteQuestionInExam(this.listQuestionInExamDelete).subscribe(
+
+    this.questionService.deleteQuestionInExam(this.idTestUpdating, this.listQuestionInExamDelete).subscribe(
       () => null,
       () => null,
-      () => this.questionService.getAllQuestion()
+      () => this.findTestById(this.idTestUpdating)
     );
-    this.router.navigateByUrl('/question');
   }
 
 }
