@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Question} from './question';
-import {HttpClient, HttpEvent} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Test} from '../test/test';
 import {QuestionInExam} from './question-in-exam';
 import {Subject} from "./subject";
+import {JwtResponse} from '../login/models/jwt-response';
+import {JwtService} from '../login/services/jwt.service';
 
 
 @Injectable({
@@ -16,7 +18,8 @@ export class QuestionService {
   uploadFile = 'http://localhost:8080/importQuestion';
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private jwt: JwtService
   ) {
   }
 
@@ -42,7 +45,9 @@ export class QuestionService {
   }
 
   saveQuestion(question: Question): Observable<any> {
-    return this.httpClient.post<any>(this.API_URL + '/create-question', question);
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
+    return this.httpClient.post<any>(this.API_URL + '/add-question', question, {headers: headerAuth});
   }
 
   saveQuestionInExam(questionInExam: QuestionInExam[]): Observable<QuestionInExam> {
