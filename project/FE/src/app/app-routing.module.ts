@@ -15,6 +15,9 @@ import {UpdatePasswordComponent} from './user/update-password/update-password.co
 import {DetailUserComponent} from './user/detail-user/detail-user.component';
 import {TestListComponent} from './test/test-list/test-list.component';
 import {AddTestComponent} from './test/add-test/add-test.component';
+import {AddQuestionComponent} from './question/add-question/add-question.component';
+import {UpdateQuestionComponent} from './question/update-question/update-question.component';
+import {ErrorPageComponent} from './error-page/error-page.component';
 
 
 const routes: Routes = [
@@ -26,14 +29,16 @@ const routes: Routes = [
   {path: 'delete-user/:id', component: DeleteUserComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'member', component: MemberComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: 'add-question', component: AddQuestionComponent },
+  { path: 'update-question/:id', component: UpdateQuestionComponent },
+  { path: '**', redirectTo: '', component: ErrorPageComponent },
   {path: 'update-user/:id', component: UpdateUserComponent},
   {path: 'history/:id', component: TestHistoryComponent},
   {path: 'update-password/:id', component: UpdatePasswordComponent},
   {path: 'update-avatar/:id', component: UpdatePasswordComponent},
   {path: 'detail-user/:id', component: DetailUserComponent},
   {path: 'testManage', component: TestListComponent},
-  {path: 'addTest', component: AddTestComponent}
+  {path: 'addTest', component: AddTestComponent},
 ];
 
 @NgModule({
