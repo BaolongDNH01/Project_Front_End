@@ -6,6 +6,7 @@ import {User} from '../user_model/User';
 import {ValidatePassword} from '../validator/validator';
 
 declare var $: any;
+
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
@@ -53,10 +54,11 @@ export class RegisterUserComponent implements OnInit {
   register(): void {
     if (this.registerForm.valid && this.passwordForm.valid) {
       const c = this.registerForm.value;
+      console.log(this.passwordForm.value.password);
       this.newUser = {
         id: null,
         username: c.username,
-        user_Password: this.passwordForm.value.password,
+        userPassword: this.passwordForm.value.password,
         fullName: c.fullName,
         email: c.email,
         address: c.address,
@@ -65,15 +67,19 @@ export class RegisterUserComponent implements OnInit {
         examList: null
       };
       this.userService.saveNewUser(this.newUser).subscribe(res => {
-        if (res.statusText === 'OK'){
+        if (res.statusText === 'OK') {
           document.getElementById('message').innerText = 'Register Successfully';
           $('#modalSuccess').modal();
           setTimeout(() => {
             this.router.navigateByUrl('');
           }, 7000);
-        }else {document.getElementById('message').innerText = 'Your username already exist';
-               $('#modalSuccess').modal();}
-      });
+        }
+      }, error => {
+        console.log(error);
+        document.getElementById('message').innerText = 'Your username already exist';
+        $('#modalSuccess').modal();
+      },)
+      ;
     }
   }
 }

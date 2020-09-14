@@ -29,7 +29,7 @@ export class StatisticalUserComponent implements OnInit {
           id: number;
           phoneNumber: string;
           // tslint:disable-next-line:variable-name
-          user_Password: string;
+          userPassword: string;
           username: string;
         };
       }, () => {
