@@ -70,6 +70,9 @@ export class GetTestComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSubmit() {
     this.exam = Object.assign({}, this.examForm.value);
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.exam.user = Number(paramMap.get('idUser'));
+    });
     this.exam.examDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
     this.exam.test = this.test.testId;
     this.caculationMark();

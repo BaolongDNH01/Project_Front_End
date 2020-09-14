@@ -53,6 +53,44 @@ export class GetExamComponent implements OnInit {
         }
       );
     });
+
   }
 
+  isAnswerA(id) {
+    // tslint:disable-next-line:triple-equals
+    if (this.listQuestion[id].rightAnswer == this.listQuestion[id].answerA) {
+      return true;
+    }
+    return false;
+  }
+
+  isAnswerB(id) {
+    // tslint:disable-next-line:triple-equals
+    if (this.listQuestion[id].rightAnswer == this.listQuestion[id].answerB) {
+      return true;
+    }
+    return false;
+  }
+
+  isAnswerC(id) {
+    // tslint:disable-next-line:triple-equals
+    if (this.listQuestion[id].rightAnswer == this.listQuestion[id].answerB) {
+      return true;
+    }
+    return false;
+  }
+
+  isAnswerD(id) {
+    // tslint:disable-next-line:triple-equals
+    if (this.listQuestion[id].rightAnswer == this.listQuestion[id].answerB) {
+      return true;
+    }
+    return false;
+  }
+
+
+
 }
+
+// tslint:disable-next-line:ban-types
+

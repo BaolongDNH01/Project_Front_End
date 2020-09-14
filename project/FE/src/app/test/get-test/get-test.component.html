@@ -11,22 +11,22 @@
             <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b><br>
             <!--correct answer-->
             <!--answer-->
-            <input id="Cau{{question.questionId}}A" name="question.questionId" type="radio"
+            <input id="Cau{{question.questionId}}A" name="{{question.questionId}}" type="radio"
                    value="{{question.answerA}}"
                    [formControl]="answerArr.controls[i]"/>
             <label for="Cau{{question.questionId}}A">{{question.answerA}}</label>
             <br/>
-            <input id="Cau{{question.questionId}}B" name="question.questionId" type="radio"
+            <input id="Cau{{question.questionId}}B" name="{{question.questionId}}" type="radio"
                    value="{{question.answerB}}"
                    [formControl]="answerArr.controls[i]"><label
             for="Cau{{question.questionId}}B">{{question.answerB}}</label>
             <br/>
-            <input id="Cau{{question.questionId}}C" name="question.questionId" type="radio"
+            <input id="Cau{{question.questionId}}C" name="{{question.questionId}}" type="radio"
                    value="{{question.answerC}}"
                    [formControl]="answerArr.controls[i]"/><label
             for="Cau{{question.questionId}}C">{{question.answerC}}</label>
             <br/>
-            <input id="Cau{{question.questionId}}D" name="question.questionId" type="radio"
+            <input id="Cau{{question.questionId}}D" name="{{question.questionId}}" type="radio"
                    value="{{question.answerD}}"
                    [formControl]="answerArr.controls[i]"/><label
             for="Cau{{question.questionId}}D">{{question.answerD}}</label>
