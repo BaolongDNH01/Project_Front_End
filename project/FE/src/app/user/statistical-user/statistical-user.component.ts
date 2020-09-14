@@ -13,6 +13,7 @@ export class StatisticalUserComponent implements OnInit {
   user: User ;
   totalUser = 0;
   listUser: User[];
+  nameUser = '';
   constructor(private userService: UserService) {
     userService.findUserNew().subscribe(
       next => {
@@ -35,7 +36,10 @@ export class StatisticalUserComponent implements OnInit {
         userService.getTotalUser().subscribe(
           next => {
             this.totalUser = next;
-          },
+          }, error => {
+          }, () => {
+            this.nameUser = this.user.username;
+          }
         );
       }
     );
