@@ -32,11 +32,11 @@ export class UserService {
     return this.httpClient.get<User[]>(this.API_URL + '/allUser');
   }
 
-  deleteUser(id: number): Observable<void> {
+  deleteUser(id: number): Observable<HttpResponse<any>> {
     // const headerAuth = new HttpHeaders();
     // headerAuth.append('Authorization',
     //   'Bearer ' + this.jwt.getToken());
-    return this.httpClient.delete<void>(this.API_URL + '/delete-user/' + id);
+    return this.httpClient.delete<any>(this.API_URL + '/delete-user/' + id, { observe: 'response' });
   }
 
   // THIEN UPDATE

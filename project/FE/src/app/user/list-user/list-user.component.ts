@@ -25,6 +25,15 @@ export class ListUserComponent implements OnInit {
     return totalTime;
   }
 
+  getTotalPoint(user: User){
+    let exam: Exam;
+    let totalPoint = 0;
+    for (exam of user.examList){
+      totalPoint += exam.mark;
+    }
+    return totalPoint;
+  }
+
   ngOnInit(): void {
 
   }
