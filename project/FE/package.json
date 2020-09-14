@@ -27,7 +27,7 @@
     "angular-paginator": "^5.0.1",
     "angularx-social-login": "^3.2.1",
     "bootstrap": "^4.5.2",
-    "firebase": "^7.13.1",
+    "firebase": "^7.20.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "ng2-order-pipe": "^0.1.5",
