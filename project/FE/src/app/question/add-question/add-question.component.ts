@@ -7,6 +7,7 @@ import {Test} from '../../test/test';
 import {Observable} from 'rxjs';
 import {Subject} from '../subject';
 import {Router} from '@angular/router';
+import {JwtService} from '../../login/services/jwt.service';
 
 
 @Component({
@@ -34,8 +35,19 @@ export class AddQuestionComponent implements OnInit {
   question: Question;
   listQuestion: Question[] = [];
   error = '';
+  roles: string[];
 
-  constructor(private fb: FormBuilder, private questionService: QuestionService, private router: Router) {
+  constructor(private fb: FormBuilder, private questionService: QuestionService, private router: Router, private jwt: JwtService) {
+    this.roles = jwt.getAuthorities();
+    if (this.roles.length === 0){
+      router.navigateByUrl('**');
+    }
+    this.roles.every(role => {
+      if (role === 'ROLE_MEMBER'){
+        router.navigateByUrl('**');
+        return;
+      }
+    });
     this.data$ = questionService.getAllTest();
     questionService.getAllQuestion().subscribe(
       next => {
@@ -97,18 +109,17 @@ export class AddQuestionComponent implements OnInit {
       this.testIdList.push(Number(this.listTestQuestion[i].testId));
     }
     console.log(this.testIdList);
-    // @ts-ignore
-    // this.question = new Question(
-    //   this.formQuestion.value.questionId,
-    //   this.formQuestion.value.question,
-    //   this.formQuestion.value.answerA,
-    //   this.formQuestion.value.answerB,
-    //   this.formQuestion.value.answerC,
-    //   this.formQuestion.value.answerD,
-    //   this.formQuestion.value.answerAndRight.rightAnswer,
-    //   this.testIdList,
-    //   this.formQuestion.value.subjectId,
-    // );
+    this.question = new Question(
+      this.formQuestion.value.questionId,
+      this.formQuestion.value.question,
+      this.formQuestion.value.answerA,
+      this.formQuestion.value.answerB,
+      this.formQuestion.value.answerC,
+      this.formQuestion.value.answerD,
+      this.formQuestion.value.answerAndRight.rightAnswer,
+      this.testIdList,
+      this.formQuestion.value.subjectId,
+    );
     this.questionService.saveQuestion(this.question).subscribe(
       next => {},
       error => {},
