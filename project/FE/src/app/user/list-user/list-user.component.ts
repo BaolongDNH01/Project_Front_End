@@ -3,6 +3,7 @@ import {UserService} from '../user_service/user.service';
 import {User} from '../user_model/User';
 import {Exam} from '../../exam/exam';
 
+declare var $: any;
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
@@ -32,6 +33,19 @@ export class ListUserComponent implements OnInit {
       totalPoint += exam.mark;
     }
     return totalPoint;
+  }
+
+  deleteUser(id: number){
+    this.userService.deleteUser(id).subscribe(res => {
+      console.log(res.statusText);
+      if (res.statusText === 'OK') {
+        document.getElementById('message').innerText = 'This User Deleted!';
+        $('#deletedStatus').modal();
+      }
+    }, error => {
+      document.getElementById('message').innerText = 'This User Is Not Exist!';
+      $('#deletedStatus').modal();
+    });
   }
 
   ngOnInit(): void {

@@ -22,14 +22,12 @@ export class DeleteUserComponent implements OnInit {
       this.service.deleteUser(id).subscribe(res => {
         if (res.statusText === 'OK') {
           document.getElementById('message').innerText = 'This User Deleted!';
-        } else {
-          document.getElementById('message').innerText = 'This User Is Not Exist!';
+          $('#deletedStatus').modal();
         }
       }, error => {
-        console.log('error');
-        }, () => {
+        document.getElementById('message').innerText = 'This User Is Not Exist!';
         $('#deletedStatus').modal();
-      } );
+        });
     });
   }
 }

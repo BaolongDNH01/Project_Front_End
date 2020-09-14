@@ -71,8 +71,8 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="button" id="delete" class="btn btn-outline-secondary" data-dismiss="modal">
-                          <a class="text-white" [routerLink]="'/delete-user/'+user.id">
+                        <button type="button" id="delete" class="btn btn-outline-secondary" data-dismiss="modal" >
+                          <a class="text-white" (click)="deleteUser(user.id)">
                             Yes
                           </a>
                         </button>

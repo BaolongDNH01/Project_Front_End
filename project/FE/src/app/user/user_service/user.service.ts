@@ -22,8 +22,8 @@ export class UserService {
   }
 
 
-  saveNewUser(user: User): Observable<HttpResponse<User>> {
-   return  this.httpClient.post <User>(this.REGISTER_USER_API_URL, user, { observe: 'response' });
+  saveNewUser(user: User): Observable<HttpResponse<any>> {
+   return  this.httpClient.post <any>(this.REGISTER_USER_API_URL, user, { observe: 'response' });
   }
   findUserNew(): Observable<User>{
     return this.httpClient.get<User>(this.API_URL + '/new-user');
