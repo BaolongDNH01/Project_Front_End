@@ -37,8 +37,14 @@ export class QuestionService {
     return this.httpClient.delete<Question>(this.API_URL + '/delete-question/' + id);
   }
 
-  deleteQuestionInExam(id: string): Observable<QuestionInExam> {
-    return this.httpClient.delete<QuestionInExam>(this.API_URL + '/delete-question-in-exam/' + id);
+  deleteQuestionInExam(id: number, quesIds: string[]): Observable<any> {
+    quesIds.push(id.toString())
+    return this.httpClient.post<any>(this.API_URL + '/removeQuestionInTest/', quesIds);
+  }
+
+  addQuestionInExam(id: number, quesIds: string[]): Observable<any> {
+    quesIds.push(id.toString())
+    return this.httpClient.post<any>(this.API_URL + '/addQuestionInTest/', quesIds);
   }
 
   saveQuestion(question: Question): Observable<any> {
