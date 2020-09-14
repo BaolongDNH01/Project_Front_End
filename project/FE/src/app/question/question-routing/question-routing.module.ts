@@ -7,7 +7,7 @@ import {AddQuestionComponent} from '../add-question/add-question.component';
 import {UpdateQuestionComponent} from "../update-question/update-question.component";
 import {ErrorPageComponent} from '../../error-page/error-page.component';
 import {AddQuestionInExamComponent} from '../add-question-in-exam/add-question-in-exam.component';
-import {QuestionInExam} from '../question-in-exam';
+import {QuestionListInTheExamComponent} from '../question-list-in-the-exam/question-list-in-the-exam.component';
 
 const routes: Routes = [
   {
@@ -17,8 +17,8 @@ const routes: Routes = [
       {path: 'question-delete/:id', component: QuestionBankDeleteComponent},
       {path: 'add-question', component: AddQuestionComponent},
       {path: 'update-question/:id', component: UpdateQuestionComponent},
-      {path: 'list-question-in-exam', component: QuestionInExam},
-      {path: 'add-question-in-exam', component: AddQuestionInExamComponent},
+      {path: 'list-question-in-exam', component: QuestionListInTheExamComponent},
+      {path: 'add-question-in-exam/:id', component: AddQuestionInExamComponent},
     ]
   }
 ];

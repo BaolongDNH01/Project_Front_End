@@ -32,12 +32,13 @@ export class QuestionListInTheExamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.findTestById(6);
+      this.findTestById(1);
   }
 
   findTestById(id: number) {
     this.testService.findById(id).subscribe(
       next => {
+        console.log(next.questions);
         this.findQuestionInTest(next.questions);
         this.idTestUpdating = next.testId
       }
@@ -56,8 +57,8 @@ export class QuestionListInTheExamComponent implements OnInit {
   }
 
   addQuestionList(): void {
-    this.router.navigateByUrl('question/add-question-in-exam');
-    console.log('jfhfhfhfh');
+    this.router.navigateByUrl('question/add-question-in-exam/' + this.idTestUpdating);
+
   }
 
   chooseToDelete(questionId: string): void {
