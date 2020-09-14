@@ -60,15 +60,13 @@
         </div>
       </div>
     </div>
-    <!-- Thiện update lần 2 - CẤM XOÁ ! -->
     <div>
-      <h1>Sau khi đăng nhập ở đây sẽ có link để truy cập vào các chức năng tuỳ theo role </h1>
       <ul class="nav navbar-nav" routerLinkActive="active">
         <li *ngIf="authority === 'admin'" class="nav-item">
-          Task nào cần role admin thì bỏ selector vào đây
-          <pre>List admin feature</pre>
+<!--          <pre>List admin feature</pre>-->
           <a class="nav-link" routerLink="list-user">
             List User
+          </a>
           <a class="nav-link" [routerLink]="['testManage']">
             Test
           </a>
@@ -80,7 +78,6 @@
           </a>
         </li>
         <li *ngIf="authority === 'member'" class="nav-item">
-          Task nào cần role member thì bỏ selector vào đây
           <pre>List member feature</pre>
           <a class="nav-link" routerLink="member">
             Chức năng 1

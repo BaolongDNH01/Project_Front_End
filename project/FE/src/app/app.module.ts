@@ -21,6 +21,10 @@ import {FormDirective} from './directive/form.directive';
 import {ReactiveFormsModule} from '@angular/forms';
 import {InfoComponent} from "./user/info/info.component";
 import {NgxPaginationModule} from 'ngx-pagination';
+import {AngularFirestore, AngularFirestoreModule} from "@angular/fire/firestore";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
 
 
 
@@ -43,7 +47,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ReactiveFormsModule,
     NgxPaginationModule,
     LoginModule,
-    SocialLoginModule
+    SocialLoginModule,
+    AngularFirestoreModule,
+    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule.enablePersistence()
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -67,7 +76,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
           },
         ],
       } as SocialAuthServiceConfig,
-    }
+    },
+    AngularFirestore,
   ],
   bootstrap: [AppComponent],
   exports: [FormDirective]

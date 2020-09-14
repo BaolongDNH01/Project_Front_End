@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {UserService} from '../user_service/user.service';
-import {AuthHttpInterceptor} from '../../login/auth/auth-http.interceptor';
-import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-delete-user',

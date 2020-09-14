@@ -11,30 +11,30 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {QuestionListInTheExamComponent} from './question-list-in-the-exam/question-list-in-the-exam.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
-import { UpdateQuestionComponent } from './update-question/update-question.component';
+import {UpdateQuestionComponent} from './update-question/update-question.component';
 import {AddQuestionComponent} from './add-question/add-question.component';
-
-
+import {AddQuestionInExamComponent} from './add-question-in-exam/add-question-in-exam.component';
 
 
 @NgModule({
-  declarations: [QuestionBankListComponent, QuestionBankDeleteComponent, AddQuestionComponent, UpdateQuestionComponent
-  , QuestionListInTheExamComponent],
+  declarations: [QuestionBankListComponent, QuestionBankDeleteComponent, AddQuestionComponent, UpdateQuestionComponent, AddQuestionInExamComponent
+    , QuestionListInTheExamComponent],
 
-    imports: [
-        CommonModule,
-        QuestionRoutingModule,
-        RouterModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        AutocompleteLibModule,
-    ],
+  imports: [
+    CommonModule,
+    QuestionRoutingModule,
+    RouterModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    AutocompleteLibModule
+  ],
   exports: [
     QuestionBankListComponent,
     QuestionListInTheExamComponent,
-      AddQuestionComponent,
-    UpdateQuestionComponent
+    AddQuestionComponent,
+    UpdateQuestionComponent,
+    AddQuestionInExamComponent
 
   ],
   providers: [

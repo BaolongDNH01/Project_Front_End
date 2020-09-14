@@ -9,6 +9,7 @@ import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-logi
 import { LoginInfo } from './../../models/login-info';
 import { AuthService } from './../../services/auth.service';
 import { JwtService } from './../../services/jwt.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth-login',
@@ -40,8 +41,10 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private jwtService: JwtService,
     private socialAuthService: SocialAuthService,
-    private formatUsername: FormatUsernameService
-  ) { }
+    private formatUsername: FormatUsernameService,
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
