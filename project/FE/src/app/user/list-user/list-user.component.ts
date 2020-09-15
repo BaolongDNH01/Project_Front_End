@@ -17,23 +17,6 @@ export class ListUserComponent implements OnInit {
     userService.findAllUser().subscribe(next => this.userList = next);
   }
 
-  getTotalTime(user: User){
-    let exam: Exam;
-    let totalTime = 0;
-    for (exam of user.examList){
-      totalTime += exam.times;
-    }
-    return totalTime;
-  }
-
-  getTotalPoint(user: User){
-    let exam: Exam;
-    let totalPoint = 0;
-    for (exam of user.examList){
-      totalPoint += exam.mark;
-    }
-    return totalPoint;
-  }
 
   deleteUser(id: number){
     this.userService.deleteUser(id).subscribe(res => {
