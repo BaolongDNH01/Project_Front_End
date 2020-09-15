@@ -67,10 +67,19 @@ html, body {
 }
 
 .submit-import {
-    width: 150px;
-    height: 50px;
-    margin-top: -40px;
+  padding: 0;
+  width:140px;
+  height: 40px;
+  border-radius: 5px;
+  background-image: url("../../../src/assets/image/import.PNG");
+  background-size: 120px;
+  background-position: 9px 4px;
 
+}
+.btn-import{
+  width: 200px;
+  height: 200px;
+  background: black;
 }
 
 .errors {
