@@ -1,6 +1,6 @@
-<div class="card-body m-3 rounded login-background" *ngIf="isLoggedIn; else loggedOut">
-  <!-- use below when integration  -->
-  <!-- <div class="card-body mt-3 mx-3 rounded login-background"> -->
+<!-- <div class="card-body m-3 rounded login-background" *ngIf="isLoggedIn; else loggedOut"> -->
+<!-- use below when integration  -->
+<div class="card-body mt-3 mx-3 rounded login-background" *ngIf="isLoggedIn; else loggedOut">
   <div>
     <div class="form-group row">
       <div class="col-md-10">
@@ -12,27 +12,26 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-body p-2">User:
-            <div class="username-card">{{ username }}</div>
-            <img src="{{ avatar }}" class="ml-4 my-2 rounded shadow" alt="avatar.jpg">
+            <div class="username-card">{{ username }} | ({{ roles }})</div>
+            <img src="{{ avatar }}" class="my-3 rounded shadow avt" alt="avatar.jpg">
           </div>
         </div>
       </div>
       <div class="col-md-12">
         <div class="card">
-          <div class="card-body p-2">Information:
-            <div class="username-card">{{ roles }}</div>
-          </div>
-          <div *ngIf="isLoggedIn">
-            <div class="card-body p-2">Email:
-              <div class="username-card">{{ email }}</div>
+          <div class="card-body p-2 text-center">Information:
+             <div class="username-card">
+              
+            </div>
+            <div class="username-card">
+              <a routerLink="detail-user">View details</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="form-group row mt-4">
+    <div class="form-group row mt-3">
       <div class="col-md-12 d-flex justify-content-center flex-column align-items-center">
-        <a class="btn rounded" [routerLink]="['detail-user']">Information</a>
         <button class="btn rounded" (click)="logOut()">Log out</button>
       </div>
     </div>
@@ -63,7 +62,8 @@
           <b>User</b>
         </label>
         <div class="col-md-10">
-          <input type="text" class="form-control form-control-md" placeholder="Name" formControlName="username" [(ngModel)]="username">
+          <input type="text" class="form-control form-control-md" placeholder="Name" formControlName="username"
+            [(ngModel)]="username">
           <div class="alert alert-danger p-1" role="alert" *ngIf="valid('username', 'required')">
             Must not be empty !
           </div>
