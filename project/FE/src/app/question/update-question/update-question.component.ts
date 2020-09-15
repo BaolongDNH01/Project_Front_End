@@ -7,6 +7,7 @@ import {QuestionService} from '../question.service';
 import {TestService} from '../../test/test_service/test.service';
 import {Subject} from '../subject';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {JwtService} from '../../login/services/jwt.service';
 
 @Component({
   selector: 'app-update-question',
@@ -35,12 +36,41 @@ export class UpdateQuestionComponent implements OnInit {
   question: Question;
   listQuestion: Question[] = [];
   error = '';
+  roles: string[];
   constructor(private questionService: QuestionService, private fb: FormBuilder,
-              private testService: TestService, private activatedRoute: ActivatedRoute, private router: Router) {
+              private testService: TestService, private activatedRoute: ActivatedRoute, private router: Router, private jwt: JwtService) {
+    this.roles = jwt.getAuthorities();
+    if (this.roles.length === 0){
+      router.navigateByUrl('**');
+    }
+    this.roles.every(role => {
+      if (role === 'ROLE_MEMBER'){
+        router.navigateByUrl('**');
+      }
+    });
     this.data$ = questionService.getAllTest();
     activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
     });
+    questionService.getAllQuestion().subscribe(
+      next => {
+        this.listQuestion = next;
+      }, error => {
+        this.listQuestion = new Array();
+      }, () => {
+        let num = 0;
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < this.listQuestion.length; i++){
+          if (this.id === this.listQuestion[i].questionId){
+            num++;
+            return;
+          }
+        }
+        if (num === 0 ){
+          router.navigateByUrl('**');
+        }
+      }
+    );
   }
   ngOnInit(): void {
 
@@ -126,17 +156,17 @@ export class UpdateQuestionComponent implements OnInit {
       this.testIdList.push(Number(this.listTestQuestion[i].testId));
     }
     console.log(this.testIdList);
-    // this.question = new Question(
-    //   this.formQuestion.value.questionId,
-    //   this.formQuestion.value.question,
-    //   this.formQuestion.value.answerA,
-    //   this.formQuestion.value.answerB,
-    //   this.formQuestion.value.answerC,
-    //   this.formQuestion.value.answerD,
-    //   this.formQuestion.value.answerAndRight.rightAnswer,
-    //   this.testIdList,
-    //   this.formQuestion.value.subjectId,
-    // );
+    this.question = new Question(
+      this.formQuestion.value.questionId,
+      this.formQuestion.value.question,
+      this.formQuestion.value.answerA,
+      this.formQuestion.value.answerB,
+      this.formQuestion.value.answerC,
+      this.formQuestion.value.answerD,
+      this.formQuestion.value.answerAndRight.rightAnswer,
+      this.testIdList,
+      this.formQuestion.value.subjectId,
+    );
     this.questionService.saveQuestion(this.question).subscribe(
       next => {},
       error => {},

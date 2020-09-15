@@ -19,9 +19,7 @@ ul {
   margin: 0px;
   padding: 0px;
 }
-.rightAnswer{
-  visibility: hidden;
-}
+
 .question input[type="radio"] {
   display: none;
 }

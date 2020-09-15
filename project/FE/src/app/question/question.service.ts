@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Question} from './question';
-import {HttpClient, HttpEvent} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Test} from '../test/test';
 import {QuestionInExam} from './question-in-exam';
 import {Subject} from "./subject";
+import {JwtResponse} from '../login/models/jwt-response';
+import {JwtService} from '../login/services/jwt.service';
 
 
 @Injectable({
@@ -16,8 +18,16 @@ export class QuestionService {
   uploadFile = 'http://localhost:8080/importQuestion';
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private jwt: JwtService
   ) {
+  }
+
+  getQuestionAllToTest(idTest: number, idSubject: number): Observable<Question[]> {
+    let ids: number[] = [];
+    ids.push(idTest);
+    ids.push(idSubject)
+    return this.httpClient.get<Question[]>(this.API_URL + '/getQuestionsToAddToTest/' + ids)
   }
 
   getAllQuestion(): Observable<Question[]> {
@@ -38,17 +48,19 @@ export class QuestionService {
   }
 
   deleteQuestionInExam(id: number, quesIds: string[]): Observable<any> {
-    quesIds.push(id.toString())
+    quesIds.push(id.toString());
     return this.httpClient.post<any>(this.API_URL + '/removeQuestionInTest/', quesIds);
   }
 
   addQuestionInExam(id: number, quesIds: string[]): Observable<any> {
-    quesIds.push(id.toString())
+    quesIds.push(id.toString());
     return this.httpClient.post<any>(this.API_URL + '/addQuestionInTest/', quesIds);
   }
 
   saveQuestion(question: Question): Observable<any> {
-    return this.httpClient.post<any>(this.API_URL + '/create-question', question);
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
+    return this.httpClient.post<any>(this.API_URL + '/add-question', question, {headers: headerAuth});
   }
 
   saveQuestionInExam(questionInExam: QuestionInExam[]): Observable<QuestionInExam> {
