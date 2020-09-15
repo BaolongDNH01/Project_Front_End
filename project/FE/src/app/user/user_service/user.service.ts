@@ -34,7 +34,7 @@ export class UserService {
   }
 
   findAllUser(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.API_URL + '/allUser');
+    return this.httpClient.get<User[]>(this.API_URL + '/listUser');
   }
 
   deleteUser(id: number): Observable<HttpResponse<any>> {
