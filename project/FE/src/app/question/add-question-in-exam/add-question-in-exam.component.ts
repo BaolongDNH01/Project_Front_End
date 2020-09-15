@@ -3,6 +3,8 @@ import {Question} from "../question";
 import {QuestionService} from '../question.service';
 import {TestService} from '../../test/test_service/test.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {loggedIn} from '@angular/fire/auth-guard';
+import {QuestionInExam} from '../question-in-exam';
 
 @Component({
   selector: 'app-add-question-in-exam',
@@ -11,9 +13,11 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 })
 export class AddQuestionInExamComponent implements OnInit {
   question: Question[];
-  listQuestionIdInExam: string[] = [];
+  listSubjectInQuestion: string[] = [];
+  listQuestion: Array<Question> = [];
   listQuestionInExamAdd: string[] = [];
   idTest: number;
+  idSubjectInTest: number;
 
   constructor(
     private questionService: QuestionService,
@@ -26,12 +30,17 @@ export class AddQuestionInExamComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.idTest = parseInt(paramMap.get('id'));
+
+      this.testService.findById(this.idTest).subscribe(
+        next => {
+          this.idSubjectInTest = next.subjectId;
+          this.questionService.getQuestionAllToTest(this.idTest, this.idSubjectInTest).subscribe(
+            list => this.question = list
+          );
+        })
     });
 
 
-    this.questionService.getAllQuestion().subscribe(
-      next => this.question = next
-    );
   }
 
 
@@ -48,8 +57,7 @@ export class AddQuestionInExamComponent implements OnInit {
     this.questionService.addQuestionInExam(this.idTest, this.listQuestionInExamAdd).subscribe(
       () => null,
       () => null,
-      // () => this.findTestById(this.idTestUpdating)
     );
-    this.router.navigateByUrl('/question/list-question-in-exam')
+    this.router.navigateByUrl('/question/list-question-in-exam');
   }
 }
