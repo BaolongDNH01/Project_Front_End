@@ -33,7 +33,7 @@ export class QuestionListInTheExamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.findTestById(13);
+      this.findTestById(15);
   }
 
   findTestById(id: number) {

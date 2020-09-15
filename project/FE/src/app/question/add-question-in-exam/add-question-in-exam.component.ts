@@ -35,7 +35,14 @@ export class AddQuestionInExamComponent implements OnInit {
         next => {
           this.idSubjectInTest = next.subjectId;
           this.questionService.getQuestionAllToTest(this.idTest, this.idSubjectInTest).subscribe(
-            list => this.question = list
+            list => {
+                if(list.length > 0){
+                  this.question = list
+                }else {
+                  alert("No related question found !")
+                  this.router.navigateByUrl("/question/list-question-in-exam")
+                }
+            }
           );
         })
     });
