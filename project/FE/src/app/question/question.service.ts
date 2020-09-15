@@ -23,6 +23,13 @@ export class QuestionService {
   ) {
   }
 
+  getQuestionAllToTest(idTest: number, idSubject: number): Observable<Question[]> {
+    let ids: number[] = [];
+    ids.push(idTest);
+    ids.push(idSubject)
+    return this.httpClient.get<Question[]>(this.API_URL + '/getQuestionsToAddToTest/' + ids)
+  }
+
   getAllQuestion(): Observable<Question[]> {
     return this.httpClient.get<Question[]>(this.API_URL + '/question');
   }
@@ -41,12 +48,12 @@ export class QuestionService {
   }
 
   deleteQuestionInExam(id: number, quesIds: string[]): Observable<any> {
-    quesIds.push(id.toString())
+    quesIds.push(id.toString());
     return this.httpClient.post<any>(this.API_URL + '/removeQuestionInTest/', quesIds);
   }
 
   addQuestionInExam(id: number, quesIds: string[]): Observable<any> {
-    quesIds.push(id.toString())
+    quesIds.push(id.toString());
     return this.httpClient.post<any>(this.API_URL + '/addQuestionInTest/', quesIds);
   }
 

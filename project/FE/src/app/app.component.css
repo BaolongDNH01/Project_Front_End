@@ -1,0 +1,58 @@
+/* DEFAULT PAGE */
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-size: 1em;
+  font-family: 'arial', consolas;
+}
+
+.custom-border {
+  border: 1px solid rgb(199, 197, 197);
+}
+
+.main-body {
+  margin-top: 85px;
+  margin-bottom: 50px;
+}
+
+.test {
+  border: 1px solid tomato;
+}
+
+.blue {
+  background: #d9edf7;
+  color: #6aa9cd;
+}
+
+.yellow {
+  background: #fcf8e3;
+  color: #a59588;
+}
+
+.green {
+  background: #dff0D8;
+  color: #80a482;
+}
+
+.red {
+  background: #f2dede;
+  color: #b8719c;
+}
+
+.item-subject img {
+  width: 100%;
+}
+
+.item-subject {
+  border: 1px solid black;
+}
+
+/* LEFT */
+.online-support-massage img {
+  width: 15%;
+}
+
+/* CENTER */
+
+/* RIGHT */

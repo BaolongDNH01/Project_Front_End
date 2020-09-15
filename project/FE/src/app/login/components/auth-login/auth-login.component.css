@@ -45,4 +45,9 @@
   background: linear-gradient(0deg, rgb(228, 223, 223) 0%, rgb(248, 248, 248) 35%);
   border: 1px solid rgb(199, 197, 197);
 }
+
+.avt {
+  width: 40%;
+  margin-left: 30%;
+}
 /* ////////////// */

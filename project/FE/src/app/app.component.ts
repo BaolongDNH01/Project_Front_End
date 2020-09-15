@@ -14,12 +14,15 @@ export class AppComponent implements OnInit, OnDestroy {
   roles: string[] = [];
   authority: string;
 
+  isClear = false;
+
   constructor(private jwtService: JwtService) { }
 
   ngOnInit(): void {
 
     // Handling authority granted
     if (this.jwtService.getToken()) {
+      this. isClear = true;
       this.roles = this.jwtService.getAuthorities();
       this.roles.every(role => {
         if (role === 'ROLE_ADMIN') {

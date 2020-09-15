@@ -24,6 +24,8 @@ button.import{
   background-image: url("src/assets/image/import.PNG");
   background-size: 120px;
   background-position: 9px 4px;
+  width: 140px;
+  height: 40px;
 }
 
 

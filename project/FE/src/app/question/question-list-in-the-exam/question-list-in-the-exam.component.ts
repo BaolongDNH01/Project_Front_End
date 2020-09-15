@@ -22,6 +22,7 @@ export class QuestionListInTheExamComponent implements OnInit {
   questionInExams: Array<QuestionInExam> = [];
   exam: Exam[];
   idTestUpdating: number;
+  idSubjectInTest: number;
 
   constructor(
     private questionService: QuestionService,
@@ -32,7 +33,7 @@ export class QuestionListInTheExamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.findTestById(1);
+      this.findTestById(15);
   }
 
   findTestById(id: number) {
@@ -57,7 +58,12 @@ export class QuestionListInTheExamComponent implements OnInit {
   }
 
   addQuestionList(): void {
-    this.router.navigateByUrl('question/add-question-in-exam/' + this.idTestUpdating);
+    this.testService.findById(this.idTestUpdating).subscribe(
+      next => {
+        this.idSubjectInTest = next.subjectId;
+      })
+
+      this.router.navigateByUrl('question/add-question-in-exam/' + this.idTestUpdating);
 
   }
 

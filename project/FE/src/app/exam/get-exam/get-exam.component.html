@@ -16,31 +16,43 @@
           <!--question-->
           <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b><br>
           <!--answer-->
-          <div *ngIf="isAnswerA(i); then thenBlock else elseBlock"></div>
-          <ng-template #thenBlock><i id="I{{i+1}}A" class="fa fa-check "></i></ng-template>
-          <ng-template #elseBlock><i id="II{{i+1}}A" class="fa fa-times"></i></ng-template>
+          <div *ngIf="isCheckCorrectA(i); then thenBlock else elseBlock"></div>
+          <ng-template #thenBlock><i id="I{{i+1}}A" class="fa fa-check "
+                                     [style.visibility]="isAnswerA(i)?'visible':''"></i></ng-template>
+          <ng-template #elseBlock><i id="II{{i+1}}A" class="fa fa-times"
+                                     [style.visibility]="isAnswerA(i)?'visible':''"></i></ng-template>
 
           <input id="Cau{{question.questionId}}A" name="{{question.questionId}}" type="radio"
                  value="{{question.answerA}}" disabled><label
           for="Cau{{question.questionId}}A" id="C{{question.questionId}}A">{{question.answerA}}</label>
           <br/>
-          <div *ngIf="isAnswerB(i); then thenBlock else elseBlock"></div>
-          <ng-template #thenBlock><i id="I{{i+1}}B" class="fa fa-check " ></i></ng-template>
-          <ng-template #elseBlock><i id="II{{i+1}}B" class="fa fa-times "></i></ng-template>
+
+          <div *ngIf="isCheckCorrectB(i); then thenBlockB else elseBlockB"></div>
+          <ng-template #thenBlockB><i id="I{{i+1}}B" class="fa fa-check "
+                                     [style.visibility]="isAnswerB(i)?'visible':''"></i></ng-template>
+          <ng-template #elseBlockB><i id="II{{i+1}}B" class="fa fa-times "
+                                     [style.visibility]="isAnswerB(i)?'visible':''"></i></ng-template>
+
           <input id="Cau{{question.questionId}}B" name="{{question.questionId}}" type="radio"
                  value="{{question.answerB}}" disabled><label
           for="Cau{{question.questionId}}B" id="C{{question.questionId}}B">{{question.answerB}}</label>
           <br/>
-          <div *ngIf="isAnswerC(i); then thenBlock else elseBlock"></div>
-          <ng-template #thenBlock><i id="I{{i+1}}C" class="fa fa-check "></i></ng-template>
-          <ng-template #elseBlock><i id="II{{i+1}}C" class="fa fa-times "></i></ng-template>
+
+          <div *ngIf="isCheckCorrectC(i); then thenBlockC else elseBlockC"></div>
+          <ng-template #thenBlockC><i id="I{{i+1}}C" class="fa fa-check "
+                                     [style.visibility]="isAnswerC(i)?'visible':''"></i></ng-template>
+          <ng-template #elseBlockC><i id="II{{i+1}}C" class="fa fa-times "
+                                     [style.visibility]="isAnswerC(i)?'visible':''"></i></ng-template>
           <input id="Cau{{question.questionId}}C" name="{{question.questionId}}" type="radio"
                  value="{{question.answerC}}" disabled><label
           for="Cau{{question.questionId}}C" id="C{{question.questionId}}C">{{question.answerC}}</label>
           <br/>
-          <div *ngIf="isAnswerD(i); then thenBlock else elseBlock"></div>
-          <ng-template #thenBlock><i id="I{{i+1}}D" class="fa fa-check "></i></ng-template>
-          <ng-template #elseBlock><i id="II{{i+1}}D" class="fa fa-times "></i></ng-template>
+
+          <div *ngIf="isCheckCorrectD(i); then thenBlockD else elseBlockD"></div>
+          <ng-template #thenBlockD><i id="I{{i+1}}D" class="fa fa-check "
+                                     [style.visibility]="isAnswerD(i)?'visible':''"></i></ng-template>
+          <ng-template #elseBlockD><i id="II{{i+1}}D" class="fa fa-times "
+                                     [style.visibility]="isAnswerD(i)?'visible':''"></i></ng-template>
           <input id="Cau{{question.questionId}}D" name="{{question.questionId}}" type="radio"
                  value="{{question.answerD}}" disabled><label
           for="Cau{{question.questionId}}D" id="C{{question.questionId}}D">{{question.answerD}}</label>
