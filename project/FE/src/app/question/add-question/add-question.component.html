@@ -1,105 +1,153 @@
 <div class="border">
-<nav class="navbar bg-title-list-quiz ">
-  <p class="m-auto heard">Add Question</p>
-</nav>
-<form  [formGroup]="formQuestion">
-  <div class="d-flex justify-content-center align-items-center flex-column update">
-    <div class="card-body body-background top-ranking">
-      <ul class="list-group">
-        <li class="list-inline mt-2">
-          Question Code
-          <i class="pr-5" aria-hidden="true"></i>
-          <span class="float-right "><input class="form-control" style="width: 300px" formControlName="questionId" type="text"></span>
-        </li>
-        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="error !== ''">* {{error}}</li>
-        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.get('questionId').hasError('required') && formQuestion.get('questionId').touched">* Enter Question Code please</li>
-        <li class="list-inline mt-2">
-          Question
-          <i class="pr-5" aria-hidden="true"></i>
-          <span class="float-right "><input class="form-control" style="width: 300px"formControlName="question" type="text"></span>
-        </li>
-        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.get('question').hasError('required') && formQuestion.get('question').touched">* Enter Question please</li>
-        <fieldset  formGroupName="answerAndRight">
-          <ul class="list-group">
-            <li class="list-inline mt-2">
-              Answer
-              <i class="pr-5" aria-hidden="true"></i>
-              <span class="float-right"><textarea class="form-control" style="width: 300px" formControlName="answer" type="text" rows="4" cols="23"></textarea></span>
-            </li>
-            <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.get('answerAndRight').get('answer').hasError('check') && formQuestion.get('answerAndRight').get('answer').touched">* Answer must include 4 responses!</li>
-            <li class="list-inline mt-2">
-              Right Answer
-              <i class="pr-5" aria-hidden="true"></i>
-              <span class="float-right "><textarea class="form-control" style="width: 300px" formControlName="rightAnswer"  type="text" rows="1" cols="23"></textarea></span>
-            </li>
-          </ul>
-        </fieldset>
-        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.hasError('checkRightAnswer', 'answerAndRight') && formQuestion.get('answerAndRight').touched">* Right Answer must belongs to 1 of 4 answers!</li>
-        <li class="list-inline mt-2">
-          Subject
-          <i class="pr-5" aria-hidden="true"></i>
-          <span class="float-right">
-
-            <select class="form-control" style="width: 300px" formControlName="subjectId">
-              <option class="form-control" *ngFor="let subject of listSubject" value="{{subject.subjectId}}">{{subject.subjectName}}</option>
-            </select>
-          </span>
-
-        </li>
-        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.get('subjectId').hasError('required') && formQuestion.get('subjectId').touched">* Enter subject please</li>
-
-        <li class="list-inline mt-2">
-          Test
-          <i class="pr-5" aria-hidden="true"></i>
-          <div class="input-group mb-3  float-right" style="width: 300px">
-            <input formControlName="testCodeList" readonly  class=" form-control" type="text"  [(ngModel)]="listTestCode" [value]="listTestCode" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" (click)="reset()" type="button" >Retype</button>
-            </div>
-          </div>
-
-        </li>
-        <li  class="list-inline">
-          <i class=" " aria-hidden="true"></i>
-          <div class="row">
-
-            <div class="col-4"></div>
-            <div class="col-8 float-left">
-            <div class="float-left  input-group" style="width: 200px" >
-
-              <ng-autocomplete  formControlName="testCode"
-                                [data]="data$ | async"
-                                [searchKeyword]="keyword"
-                                [itemTemplate]="itemTemplate"
-                                [notFoundTemplate]="notFoundTemplate"
-              >
-              </ng-autocomplete>
-
-              <ng-template  #itemTemplate let-item>
-                <a  [innerHTML]="item.testCode" ></a>
-              </ng-template>
-              <ng-template  #notFoundTemplate let-notFound>
-                <div [innerHTML]="listTestCode"></div>
-              </ng-template>
-            </div>
-            <div class="input-group-append float-right">
-              <input class=" btn btn-outline-secondary" value="add test"   type="submit" (click)="inputTesst()">
-            </div>
-          </div>
-          </div>
-        </li>
-        <li class="list-inline mt-2 ml-5 text-danger" *ngIf="formQuestion.get('testCodeList').hasError('required') && formQuestion.get('testCodeList').touched">* Enter test please</li>
-        <li class="list-inline mt-4" style="margin-left: 150px">
-          <div>
-            <button (click)="addQuestion()" [disabled]="formQuestion.invalid" class="btn btn-sm  rounded border"  type="submit" >Submit</button>
-
-          </div>
-        </li>
-      </ul>
+  <nav class="navbar bg-title-list-quiz ">
+    <p class="m-auto heard">Add Question</p>
+  </nav>
+  <form [formGroup]="formQuestion">
+    <!--  Question code-->
+    <div class="row mg-form">
+      <div class="col-md-1"></div>
+      <div class="col-md-3">Question code</div>
+      <div class="col-md-6">
+        <div>
+          <input class="form-control" type="text" formControlName="questionId" (click)="resetError()">
+        </div>
+        <!--error line-->
+        <div class="list-inline text-danger" *ngIf="error !== ''">* {{error}}</div>
+        <div class="list-inline text-danger"
+             *ngIf="formQuestion.get('questionId').hasError('required') && formQuestion.get('questionId').touched">*
+          Enter Question Code please
+        </div>
+      </div>
     </div>
-  </div>
+    <div class="row">
 
-</form>
+    </div>
+
+    <!--  Question-->
+    <div class="row mg-form">
+      <div class="col-md-1"></div>
+      <div class="col-md-3">Question</div>
+      <div class="col-md-6">
+        <div>
+          <input class="form-control" type="text" formControlName="question">
+        </div>
+        <!--error line-->
+        <div class="list-inline mt-2 ml-5 text-danger"
+             *ngIf="formQuestion.get('question').hasError('required') && formQuestion.get('question').touched">* Enter
+          Question please
+        </div>
+      </div>
+    </div>
+
+    <fieldset formGroupName="answerAndRight">
+      <!--  Answer -->
+      <div class="row mg-form">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">Answer</div>
+        <div class="col-md-6">
+          <textarea rows="4" class="form-control" type="text" formControlName="answer"></textarea>
+          <!--error line-->
+          <div class="list-inline mt-2 ml-5 text-danger"
+              *ngIf="formQuestion.get('answerAndRight').get('answer').hasError('check') && formQuestion.get('answerAndRight').get('answer').touched">
+            * Answer must include 4 responses!
+          </div>
+        </div>
+      </div>
+
+      <!--Right answer -->
+      <div class="row mg-form">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">Right answer</div>
+        <div class="col-md-6">
+          <textarea rows="1" class="form-control" type="text" formControlName="rightAnswer"></textarea>
+          <!--error line-->
+          <div class="list-inline mt-2 ml-5 text-danger"
+              *ngIf="formQuestion.hasError('checkRightAnswer', 'answerAndRight') && formQuestion.get('answerAndRight').touched">
+            * Right Answer must belongs to 1 of 4 answers!
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <!--    Subject-->
+    <div class="row mg-form">
+      <div class="col-md-1"></div>
+      <div class="col-md-3">Subject</div>
+      <div class="col-md-6">
+        <select class="form-control" formControlName="subjectId">
+          <option class="form-control" *ngFor="let subject of listSubject"
+                  value="{{subject.subjectId}}">{{subject.subjectName}}</option>
+        </select>
+        <!--error line-->
+        <div class="list-inline mt-2 ml-5 text-danger"
+            *ngIf="formQuestion.get('subjectId').hasError('required') && formQuestion.get('subjectId').touched">*
+          Enter subject please
+        </div>
+      </div>
+    </div>
+
+    <!--    Test-->
+    <div class="row mg-form">
+      <div class="col-md-1"></div>
+      <div class="col-md-3">Test</div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-10">
+            <input formControlName="testCodeList" readonly class="form-control w-100" type="text"
+                   [(ngModel)]="listTestCode" [value]="listTestCode" aria-label="Recipient's username"
+                   aria-describedby="button-addon2">
+          </div>
+          <div class="col-md-2">
+            <input style="margin-left: -30px" class="btn btn-outline-secondary" (click)="reset()" type="button"
+                   value="Retype">
+          </div>
+        </div>
+        <!--error line-->
+        <div class="list-inline mt-2 ml-5 text-danger"
+            *ngIf="formQuestion.get('testCodeList').hasError('required') && formQuestion.get('testCodeList').touched">
+          * Enter test please
+        </div>
+      </div>
+    </div>
+
+    <!--    -->
+    <div class="row mg-form">
+      <div class="col-md-1"></div>
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-10" >
+            <ng-autocomplete formControlName="testCode"
+                             [data]="data$ | async"
+                             [searchKeyword]="keyword"
+                             [itemTemplate]="itemTemplate"
+                             [notFoundTemplate]="notFoundTemplate"
+            >
+            </ng-autocomplete>
+
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item.testCode"></a>
+            </ng-template>
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="listTestCode"></div>
+            </ng-template>
+          </div>
+          <div class="col-md-2">
+            <input style="margin-left: -30px" class="btn btn-outline-secondary" value="Add test" type="submit"
+                   (click)="inputTesst()">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--    Submit-->
+    <div class="row mg-form">
+      <div class="col-md-12 text-center">
+        <button (click)="addQuestion()" [disabled]="formQuestion.invalid" type="submit" class="btn btn-outline-secondary">Submit</button>
+      </div>
+    </div>
+
+  </form>
 </div>
 
 
