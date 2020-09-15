@@ -161,7 +161,9 @@ export class AddQuestionComponent implements OnInit {
       }
     }
   }
-
+  resetError(): void{
+    this.error = '';
+  }
   reset(): void{
     this.listTestCode = '';
   }
