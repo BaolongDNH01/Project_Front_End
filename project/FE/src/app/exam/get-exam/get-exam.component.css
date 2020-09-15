@@ -69,11 +69,11 @@ ul {
 }
 
 .fa-times{
-  visibility: visible;
+  visibility: hidden;
 }
 
 .fa-check{
-  visibility: visible;
+  visibility: hidden;
 }
 
 

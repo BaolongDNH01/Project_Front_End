@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Exam} from '../exam';
-import {Password} from "../../user/update-password/password";
-import {User} from "../../user/user_model/User";
 
 
 @Injectable({
@@ -11,8 +9,11 @@ import {User} from "../../user/user_model/User";
 })
 export class ExamService {
   URL = 'http://localhost:8080';
-  listExam: Exam[];
-
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(private httpClient: HttpClient) {
   }
@@ -26,7 +27,7 @@ export class ExamService {
   }
 
   save(exam: Exam): Observable<Exam> {
-    return this.httpClient.post<Exam>(this.URL + '/create-exam', Exam);
+    return this.httpClient.post<Exam>(this.URL + '/create-exam', exam);
   }
 
   findExamByUserId(userId: number): Observable<any> {
