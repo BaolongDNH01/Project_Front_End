@@ -52,24 +52,28 @@ export class TestListComponent implements OnInit {
   }
 
   deleteTests(): void {
-    this.testService.deleteTests(this.listTestDelete).subscribe(
-      () => null,
-      () => null,
-      () => {
-        this.getAllTest();
-        this.listTestDelete = [];
-      }
-    );
+    if (this.listTestDelete.length > 0) {
+      this.testService.deleteTests(this.listTestDelete).subscribe(
+        () => null,
+        () => null,
+        () => {
+          this.getAllTest();
+          this.showMessage('message', 'delete # ' + this.listTestDelete.toString() + ' successful !');
+          this.listTestDelete = [];
+        }
+      );
+    }else {
+      this.showMessage('message', 'please choose one to delete !');
+    }
   }
 
   showMessage(id: string, mess: string): void {
     this.message = mess;
-    document.getElementById(id).hidden = false;
 
     setTimeout(() => this.hideMessage(id), 5000);
   }
 
   hideMessage(id): void {
-    document.getElementById(id).hidden = true;
+    this.message = null;
   }
 }

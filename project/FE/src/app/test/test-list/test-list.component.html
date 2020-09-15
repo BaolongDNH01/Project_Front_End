@@ -27,7 +27,7 @@
     <div class="col-md-10">
       <div class="row">
         <div class="col-md-12 message-bg mt-4">
-          <span id="message" class="d-flex align-items-center" hidden>{{message}}</span>
+          <span id="message" *ngIf="message" class="d-flex align-items-center">{{message}}</span>
         </div>
       </div>
     </div>
@@ -75,7 +75,7 @@
     <div class="col-md-6">
       <div class="row">
         <div class="col-md-3 col-sm-6">
-          <button id="import" class="btn import" style="width: 140px; height: 40px">
+          <button id="import" class="btn import">
             <input type="file" accept=".txt" (change)="selectFile($event)" class="custom-file-input" for="import">
           </button>
         </div>
@@ -104,7 +104,7 @@
   </div>
 </div>
 
-<!--code của cái custom confirm-->
+<!--code custom confirm-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -115,7 +115,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div id="confirmBody"></div>
+        <div id="confirmBody">are you sure to delete #{{listTestDelete.toString()}}?</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
