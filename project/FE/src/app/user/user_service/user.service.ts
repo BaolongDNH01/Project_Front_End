@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {User} from '../user_model/User';
 import {Observable} from 'rxjs';
@@ -22,8 +22,8 @@ export class UserService {
   }
 
 
-  saveNewUser(user: User): Observable<HttpResponse<User>> {
-   return  this.httpClient.post <User>(this.REGISTER_USER_API_URL, user, { observe: 'response' });
+  saveNewUser(user: User): Observable<HttpResponse<any>> {
+   return  this.httpClient.post <any>(this.REGISTER_USER_API_URL, user, { observe: 'response' });
   }
   findUserNew(): Observable<User>{
     return this.httpClient.get<User>(this.API_URL + '/new-user');
@@ -32,11 +32,11 @@ export class UserService {
     return this.httpClient.get<User[]>(this.API_URL + '/allUser');
   }
 
-  deleteUser(id: number): Observable<void> {
-    const headerAuth = new HttpHeaders();
-    headerAuth.append('Authorization',
-      'Bearer ' + this.jwt.getToken());
-    return this.httpClient.delete<void>(this.API_URL + '/delete-user/' + id, {headers: headerAuth});
+  deleteUser(id: number): Observable<HttpResponse<any>> {
+    // const headerAuth = new HttpHeaders();
+    // headerAuth.append('Authorization',
+    //   'Bearer ' + this.jwt.getToken());
+    return this.httpClient.delete<any>(this.API_URL + '/delete-user/' + id, { observe: 'response' });
   }
 
   // THIEN UPDATE

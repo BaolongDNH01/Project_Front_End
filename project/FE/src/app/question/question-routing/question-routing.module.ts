@@ -9,6 +9,7 @@ import {ErrorPageComponent} from '../../error-page/error-page.component';
 import {AddQuestionInExamComponent} from '../add-question-in-exam/add-question-in-exam.component';
 import {QuestionListInTheExamComponent} from '../question-list-in-the-exam/question-list-in-the-exam.component';
 
+
 const routes: Routes = [
   {
     path: 'question',
