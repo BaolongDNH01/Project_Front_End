@@ -36,6 +36,7 @@ export class GetExamComponent implements OnInit {
         }, error => {
         }, () => {
           this.listAnswer = this.exam.answer.split(',');
+          console.log(this.listAnswer);
           this.testService.findById(this.exam.test).subscribe(
             (next) => {
               this.test = next;
@@ -49,6 +50,7 @@ export class GetExamComponent implements OnInit {
                   }, () => {
                   });
               });
+              console.log(this.listQuestion);
             });
         }
       );
@@ -56,7 +58,7 @@ export class GetExamComponent implements OnInit {
 
   }
 
-  isAnswerA(id) {
+  isCheckCorrectA(id) {
     // tslint:disable-next-line:triple-equals
     if (this.listQuestion[id].rightAnswer == this.listQuestion[id].answerA) {
       return true;
@@ -64,9 +66,41 @@ export class GetExamComponent implements OnInit {
     return false;
   }
 
-  isAnswerB(id) {
+  isCheckCorrectB(id) {
     // tslint:disable-next-line:triple-equals
     if (this.listQuestion[id].rightAnswer == this.listQuestion[id].answerB) {
+      return true;
+    }
+    return false;
+  }
+
+  isCheckCorrectC(id) {
+    // tslint:disable-next-line:triple-equals
+    if (this.listQuestion[id].rightAnswer == this.listQuestion[id].answerC) {
+      return true;
+    }
+    return false;
+  }
+
+  isCheckCorrectD(id) {
+    // tslint:disable-next-line:triple-equals
+    if (this.listQuestion[id].rightAnswer == this.listQuestion[id].answerD) {
+      return true;
+    }
+    return false;
+  }
+
+  isAnswerA(id) {
+    // tslint:disable-next-line:triple-equals
+    if (this.listAnswer[id] == this.listQuestion[id].answerA ) {
+      return true;
+    }
+    return false;
+  }
+
+  isAnswerB(id) {
+    // tslint:disable-next-line:triple-equals
+    if (this.listAnswer[id] == this.listQuestion[id].answerB ) {
       return true;
     }
     return false;
@@ -74,7 +108,7 @@ export class GetExamComponent implements OnInit {
 
   isAnswerC(id) {
     // tslint:disable-next-line:triple-equals
-    if (this.listQuestion[id].rightAnswer == this.listQuestion[id].answerB) {
+    if (this.listAnswer[id] == this.listQuestion[id].answerC ) {
       return true;
     }
     return false;
@@ -82,14 +116,11 @@ export class GetExamComponent implements OnInit {
 
   isAnswerD(id) {
     // tslint:disable-next-line:triple-equals
-    if (this.listQuestion[id].rightAnswer == this.listQuestion[id].answerB) {
+    if (this.listAnswer[id] == this.listQuestion[id].answerD ) {
       return true;
     }
     return false;
   }
-
-
-
 }
 
 // tslint:disable-next-line:ban-types
