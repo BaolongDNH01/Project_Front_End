@@ -1,7 +1,5 @@
 <div class="container-fluid p-0">
-
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top heigh-navbar">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,7 +12,7 @@
         <i class="fa fa-eur" aria-hidden="true"></i> Grade A
       </a>
       <a class="flex-md-fill text-md-center nav-link" href="#">
-        <i class="fa fa-cloud" aria-hidden="true"></i> Grade B
+        <i class="fa fa-cloud" aria-hidden="true"></i>Grade B
       </a>
       <a class="flex-md-fill text-md-center nav-link" href="#">
         <i class="fa fa-wrench" aria-hidden="true"></i> Grade D
@@ -28,163 +26,167 @@
     </div>
   </nav>
 
-  <!-- BODY -->
-  <div class="row d-flex justify-content-md-around main-comp mx-0">
-
-    <!-- LEFT COLLUMN -->
-    <div class="col-md-3 ">
-      <div class="sticky-top" style="top: 10%">
-        <app-top-point></app-top-point>
-        <div class="border p-0 rounded online-support">
-          <div class="card-header p-2">
-            <i class="fa fa-phone" aria-hidden="true"></i> Online Support
+  <div class="px-2 mx-0 main-body d-flex justify-content-around">
+    <div class="col-md-2 p-0 m-0">
+      <div class="border p-0 rounded">
+        <div class="card-header p-2 blue">
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Top Ranking
+        </div>
+        <div class="card-body body-background top-ranking">
+          <ul class="list-group">
+            <li class="list-group-item green">
+              <i class="fa fa-inbox pr-3" aria-hidden="true"></i>Naruto
+              <span class="badge badge-pill badge-secondary float-right mt-1">225</span>
+            </li>
+            <li class="list-group-item blue">
+              <i class="fa fa-inbox pr-3" aria-hidden="true"></i>Kakashi
+              <span class="badge badge-pill badge-secondary float-right mt-1">200</span>
+            </li>
+            <li class="list-group-item yellow">
+              <i class="fa fa-gift pr-3" aria-hidden="true"></i>Sasuke
+              <span class="badge badge-pill badge-secondary float-right mt-1">185</span>
+            </li>
+            <li class="list-group-item yellow">
+              <i class="fa fa-gift pr-3" aria-hidden="true"></i>Gaara
+              <span class="badge badge-pill badge-secondary float-right mt-1">160</span>
+            </li>
+            <li class="list-group-item yellow">
+              <i class="fa fa-gift pr-3" aria-hidden="true"></i>Obito
+              <span class="badge badge-pill badge-secondary float-right mt-1">101</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border p-0 rounded online-support">
+        <div class="card-header p-2 blue">
+          <i class="fa fa-phone" aria-hidden="true"></i> Online Support
+        </div>
+        <div class="card-body body-background">
+          <ul class="list-group">
+            <li class="list-group-item green">
+              <i class="fa fa-inbox pr-2" aria-hidden="true"></i> ONLINE
+              <span class="badge badge-pill badge-secondary float-right mt-1">Skype</span>
+            </li>
+            <li class="list-group-item blue">
+              <i class="fa fa-mobile pr-2" aria-hidden="true"></i> HOTLINE
+              <span class="badge badge-pill badge-secondary float-right mt-1">092.2216.3113</span>
+            </li>
+          </ul>
+          <div class="card online-support-massage">
+            <div class="card-body">
+              <img
+                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png"
+                alt="mess">
+              MESSENGER</div>
           </div>
-          <div class="card-body body-background">
-            <ul class="list-group">
-              <li class="list-group-item green">
-                <i class="fa fa-inbox pr-2" aria-hidden="true"></i> ONLINE
-                <span class="badge badge-pill badge-secondary float-right mt-1">Skype</span>
-              </li>
-              <li class="list-group-item blue">
-                <i class="fa fa-mobile pr-2" aria-hidden="true"></i> HOTLINE
-                <span class="badge badge-pill badge-secondary float-right mt-1">092.2216.3113</span>
-              </li>
-            </ul>
-            <div class="card online-support-massage">
-              <div class="card-mess">
-                <img src="images/messenger.jpg" alt="mess">
-                MESSENGER
-              </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 px-3 overflow-auto">
+      <ng-container [ngSwitch]="authority">
+        <ng-container *ngSwitchCase="'admin'">
+          <ul class="list-group list-group-horizontal d-flex justify-content-center">
+            <li class="list-group-item list-group-item-info">
+              <a routerLink="list-user">List User</a>
+            </li>
+            <li class="list-group-item">Admin Function 2</li>
+            <li class="list-group-item">Admin Function 3</li>
+            <li class="list-group-item">Admin Function 4</li>
+          </ul>
+        </ng-container>
+        <ng-container *ngSwitchCase="'member'">
+          <ul class="list-group list-group-horizontal mb-3 d-flex justify-content-center">
+            <li class="list-group-item">Member function 1</li>
+            <li class="list-group-item">Member function 2</li>
+            <li class="list-group-item">Member function 3</li>
+            <li class="list-group-item">Member function 4</li>
+          </ul>
+          
+          <!-- Phần dưới này hiển thị phần chọn môn để làm bài test -->
+          <!-- <div class="row d-flex justify-content-md-around mb-5">
+            <div class="frames-img col-md-5 item-subject p-0">
+              <img class="img-card"
+                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png">
+              <p class="m-3">Math</p>
+            </div>
+            <div class="frames-img col-md-5 item-subject p-0">
+              <img class="img-card"
+                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png">
+              <p class="m-3">Math</p>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <ul class="nav navbar-nav" routerLinkActive="active">
-        <li *ngIf="authority === 'admin'" class="nav-item">
-<!--          <pre>List admin feature</pre>-->
-          <a class="nav-link" routerLink="list-user">
-            List User
-          </a>
-          <a class="nav-link" [routerLink]="['testManage']">
-            Test
-          </a>
-          <a class="nav-link" routerLink="admin">
-            Chức năng 2
-          </a>
-          <a class="nav-link" routerLink="admin">
-            Chức năng 3
-          </a>
-        </li>
-        <li *ngIf="authority === 'member'" class="nav-item">
-          <pre>List member feature</pre>
-          <a class="nav-link" routerLink="member">
-            Chức năng 1
-          </a>
-          <a class="nav-link" routerLink="member">
-            Chức năng 2
-          </a>
-          <a class="nav-link" routerLink="member">
-            Chức năng 3
-          </a>
-        </li>
-        <li *ngIf="authority === 'unauthorized'" class="nav-item">
-          <p>Login please!</p>
-        </li>
-      </ul>
-      <h1>Feature Area</h1>
+          <div class="row d-flex justify-content-md-around mb-5">
+            <div class="frames-img col-md-5 item-subject p-0">
+              <img class="img-card"
+                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png">
+              <p class="m-3">Math</p>
+            </div>
+            <div class="frames-img col-md-5 item-subject p-0">
+              <img class="img-card"
+                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png">
+              <p class="m-3">Math</p>
+            </div>
+          </div> -->
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <div class="text-center">
+            <h1>Welcome to our Multi-choice Examination website !</h1>
+            <p>Want to test knowledges self ? You finded right place</p>
+            <pre>Please create new account or use your Gmail or Facebook</pre>
+            <hr>
+            <h3>Let's go !</h3>
+            <img src="https://s31450.pcdn.co/wp-content/uploads/2015/09/iStock_exam.150922.jpg" alt="cover.jpg">      
+          </div>  
+        </ng-container>
+      </ng-container>
       <router-outlet></router-outlet>
     </div>
-    <!-- // -->
-
-    <!-- CENTER COLLUMN -->
-
-    <div class="col-md-6">
-      <!--            Content-->
-      <div class="row d-flex justify-content-md-center">
-        <div class="frames-img col-md-5">
-          <img class="img-card" src="images/toan-hoc.png">
-          <div class="label">Toán học</div>
-        </div>
-        <div class="frames-img col-md-5">
-          <img class="img-card" src="images/hoa-hoc.png">
-          <div class="label">Hoá học</div>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-md-center">
-        <div class="frames-img col-md-5">
-          <img class="img-card" src="images/vat-ly.png">
-          <div class="label">Vật lý</div>
-        </div>
-        <div class="frames-img col-md-5">
-          <img class="img-card" src="images/tu-nhien.png">
-          <div class="label">Tự nhiên</div>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-md-center">
-        <div class="frames-img col-md-5">
-          <img class="img-card" src="images/vat-ly.png">
-          <div class="label">Vật lý</div>
-        </div>
-        <div class="frames-img col-md-5">
-          <img class="img-card" src="images/tu-nhien.png">
-          <div class="label">Tự nhiên</div>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-md-center">
-        <div class="frames-img col-md-5">
-          <img class="img-card" src="images/vat-ly.png">
-          <div class="label">Vật lý</div>
-        </div>
-        <div class="frames-img col-md-5">
-          <img class="img-card" src="images/tu-nhien.png">
-          <div class="label">Tự nhiên</div>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-md-center">
-        <div class="frames-img col-md-5">
-          <img class="img-card" src="images/vat-ly.png">
-          <div class="label">Vật lý</div>
-        </div>
-        <div class="frames-img col-md-5">
-          <img class="img-card" src="images/tu-nhien.png">
-          <div class="label">Tự nhiên</div>
-        </div>
-      </div>
-    </div>
-    <!-- RIGHT COLLUMN -->
-    <div class="col-md-3 pr-4">
-      <div class="sticky-top" style="top: 10%">
-        <div class="border p-0 rounded ">
-          <div class="card-header p-2">Customers</div>
-          <app-auth-login></app-auth-login>
-          <div class="card-body members yellow">
-            <!-- Thiện: Chỗ này sau khi import reactive form sẽ lỗi, nên sửa -->
-            <form formGroup="">
-              <div class="form-group row">
-                <i class="fa fa-user" aria-hidden="true"> MEMBERS</i>
+    <div class="col-md-3 p-0 m-0 rounded">
+      <div class="border">
+        <div class="card-header p-2 blue">Customers</div>
+        <app-auth-login></app-auth-login>
+        <div class="card-body members yellow">
+          <form formGroup="#">
+            <div class="form-group row">
+              <div class="col-md-12">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                MEMBERS
               </div>
-              <app-statistical-user></app-statistical-user>
-            </form>
-          </div>
-          <div class="card-body blue search-box">
-            <!-- Thiện: Chỗ này sau khi import reactive form sẽ lỗi, nên sửa -->
-            <form formGroup="">
-              <div class="form-group row">
-                <i class="fa fa-search" aria-hidden="true"> SEARCH</i>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-body p-2">Total
+                    <span class="badge badge-pill badge-secondary float-right mt-1">5</span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body p-2">Newest
+                    <span class="badge badge-pill badge-secondary float-right mt-1">Gaara</span>
+                  </div>
+                </div>
               </div>
-              <div class="form-group row">
+            </div>
+          </form>
+        </div>
+        <div class="card-body blue search-box">
+          <form formGroup="#">
+            <div class="form-group row">
+              <div class="col-md-12">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                SEARCH
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
                 <div class="form-group">
                   <input type="text" class="form-control" id="search" placeholder="Search">
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-
