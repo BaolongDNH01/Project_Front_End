@@ -29,33 +29,7 @@
   <div class="px-2 mx-0 main-body d-flex justify-content-around">
     <div class="col-md-2 p-0 m-0">
       <div class="border p-0 rounded">
-        <div class="card-header p-2 blue">
-          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Top Ranking
-        </div>
-        <div class="card-body body-background top-ranking">
-          <ul class="list-group">
-            <li class="list-group-item green">
-              <i class="fa fa-inbox pr-3" aria-hidden="true"></i>Naruto
-              <span class="badge badge-pill badge-secondary float-right mt-1">225</span>
-            </li>
-            <li class="list-group-item blue">
-              <i class="fa fa-inbox pr-3" aria-hidden="true"></i>Kakashi
-              <span class="badge badge-pill badge-secondary float-right mt-1">200</span>
-            </li>
-            <li class="list-group-item yellow">
-              <i class="fa fa-gift pr-3" aria-hidden="true"></i>Sasuke
-              <span class="badge badge-pill badge-secondary float-right mt-1">185</span>
-            </li>
-            <li class="list-group-item yellow">
-              <i class="fa fa-gift pr-3" aria-hidden="true"></i>Gaara
-              <span class="badge badge-pill badge-secondary float-right mt-1">160</span>
-            </li>
-            <li class="list-group-item yellow">
-              <i class="fa fa-gift pr-3" aria-hidden="true"></i>Obito
-              <span class="badge badge-pill badge-secondary float-right mt-1">101</span>
-            </li>
-          </ul>
-        </div>
+        <app-top-point></app-top-point>
       </div>
       <div class="border p-0 rounded online-support">
         <div class="card-header p-2 blue">
@@ -154,20 +128,7 @@
                 MEMBERS
               </div>
             </div>
-            <div class="form-group row">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-body p-2">Total
-                    <span class="badge badge-pill badge-secondary float-right mt-1">5</span>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-body p-2">Newest
-                    <span class="badge badge-pill badge-secondary float-right mt-1">Gaara</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <app-statistical-user></app-statistical-user>
           </form>
         </div>
         <div class="card-body blue search-box">
@@ -190,3 +151,4 @@
       </div>
     </div>
   </div>
+</div>
