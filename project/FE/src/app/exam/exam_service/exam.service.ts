@@ -30,8 +30,8 @@ export class ExamService {
     return this.httpClient.post<Exam>(this.URL + '/create-exam', exam);
   }
 
-  findExamByUserId(userId: number): Observable<any> {
-    return this.httpClient.get<Exam>(`${this.URL}/history/${userId}`);
+  findExamByUserName(username: string): Observable<any> {
+    return this.httpClient.get<Exam>(`${this.URL}/history/${username}`);
   }
 
 }

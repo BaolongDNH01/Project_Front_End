@@ -21,7 +21,7 @@ export class GetTestComponent implements OnInit {
   examForm: FormGroup;
   listQuestion = new Array<Question>();
   answerArr = new FormArray([]);
-  timeSet = 15 * 60;
+  timeSet = 1* 60;
   time = this.timeSet;
   display;
   interval;
@@ -90,6 +90,7 @@ export class GetTestComponent implements OnInit {
     this.interval = setInterval(() => {
       if (this.time === 0) {
         this.onSubmit();
+        clearInterval(this.interval);
       } else {
         this.time--;
       }

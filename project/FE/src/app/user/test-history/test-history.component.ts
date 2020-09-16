@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Exam} from '../../exam/exam';
 import {User} from '../user_model/User';
-import {UserService} from "../user_service/user.service";
+import {JwtService} from "../../login/services/jwt.service";
 import {ExamService} from "../../exam/exam_service/exam.service";
+
 
 @Component({
   selector: 'app-test-history',
@@ -12,24 +13,20 @@ import {ExamService} from "../../exam/exam_service/exam.service";
 export class TestHistoryComponent implements OnInit {
 
   user: User;
-  userId: number;
   examList: Exam[];
   // sum: number;
   // avg: number;
   currentPage = 1;
 
-  constructor(
-    private userService: UserService,
-    private examService: ExamService
-  ) { }
+  constructor(private jwt: JwtService, private examService: ExamService) {
+  }
 
   ngOnInit(): void {
-    this.getHistory()
+    this.examService.findExamByUserName(this.jwt.getUsername()).subscribe(
+      next => {
+        this.examList = next;
+      });
   }
 
-  getHistory() {
-    this.examService.findExamByUserId(this.userId).subscribe(data => {
-      this.examList = data;
-    })
-  }
+
 }

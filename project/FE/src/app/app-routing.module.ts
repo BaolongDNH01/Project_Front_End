@@ -48,7 +48,7 @@ const routes: Routes = [
   {path: 'addTest', component: AddTestComponent},
   {path: 'testManage', component: TestListComponent},
   {path: 'update-user/:id', component: UpdateUserComponent},
-  {path: 'history/:id', component: TestHistoryComponent},
+  {path: 'history', component: TestHistoryComponent},
   {path: 'update-password/:id', component: UpdatePasswordComponent},
   {path: 'update-avatar/:id', component: UpdatePasswordComponent},
   {path: 'detail-user', component: DetailUserComponent},
