@@ -22,24 +22,28 @@
         </tr>
         </tbody>
       </table>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
-        </ul>
-      </nav>
+
     </div>
   </div>
-<!--  <div class="form-row mt-3 mb-3">-->
-<!--    <div class="col-md-4 form-group font-weight-bold text-right">-->
-<!--      <label>Total Mark:</label>-->
-<!--      <label class="text-danger">abc</label>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 form-group font-weight-bold text-center">-->
-<!--      <label>AVG:</label>-->
-<!--      <label class="text-danger">abc</label>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 form-group text-left">-->
-<!--      <a routerLink="" class="btn btn-info">Close</a>-->
-<!--    </div>-->
-<!--  </div>-->
+  <div class="form-row mt-3 mb-3">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+      </ul>
+    </nav>
+  </div>
+  <div class="form-row mt-3 mb-3">
+    <div class="col-md-4 form-group font-weight-bold text-right">
+      <label>Total Mark:</label>
+      <label class="text-danger">{{sum}}</label>
+    </div>
+    <div class="col-md-4 form-group font-weight-bold text-center">
+      <label>AVG:</label>
+      <label class="text-danger">{{avg}}</label>
+    </div>
+    <div class="col-md-4 form-group text-left">
+      <a routerLink="" class="btn btn-info">Close</a>
+    </div>
+
+  </div>
 </div>
