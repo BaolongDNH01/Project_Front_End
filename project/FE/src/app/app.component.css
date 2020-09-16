@@ -1,5 +1,4 @@
 /* DEFAULT PAGE */
-
 body {
   width: 100%;
   height: 100vh;
@@ -46,6 +45,25 @@ body {
 
 .item-subject {
   border: 1px solid black;
+}
+
+.custom-footer {
+  background: #353b48;
+  color: #ddd;
+}
+
+.logo-company {
+  width: 30%;
+  margin-left: 10%;
+}
+
+.icon-contact i {
+  color: #ddd;
+  transition: all .3s;
+}
+
+.icon-contact i:hover {
+  transform: scale(1.3);
 }
 
 /* LEFT */

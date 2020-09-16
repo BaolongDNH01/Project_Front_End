@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {QuestionService} from '../question.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Question} from '../question';
+import {JwtService} from '../../login/services/jwt.service';
 
 @Component({
   selector: 'app-question-bank-delete',
@@ -13,12 +14,23 @@ export class QuestionBankDeleteComponent implements OnInit {
   question: Question;
   deleteQuestionForm: FormGroup;
   id: string;
-
+  roles: string[];
   constructor(
     private questionService: QuestionService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private jwt: JwtService
   ) {
+    this.roles = jwt.getAuthorities();
+    if (this.roles.length === 0){
+      router.navigateByUrl('**');
+    }
+    this.roles.every(role => {
+      if (role === 'ROLE_MEMBER'){
+        router.navigateByUrl('**');
+        return;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -57,7 +69,7 @@ export class QuestionBankDeleteComponent implements OnInit {
         this.question = next;
       }
     );
-    this.router.navigateByUrl('question');
+    this.router.navigateByUrl('/list-question-bank');
     alert('Đã xóa câu hỏi : ' + this.question.question);
   }
 }

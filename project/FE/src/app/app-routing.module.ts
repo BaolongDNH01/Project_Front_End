@@ -6,7 +6,6 @@ import {GetExamComponent} from './exam/get-exam/get-exam.component';
 import {GetTestComponent} from './test/get-test/get-test.component';
 import {RegisterUserComponent} from './user/register-user/register-user.component';
 import {ListUserComponent} from './user/list-user/list-user.component';
-import {DeleteUserComponent} from './user/delete-user/delete-user.component';
 import { AdminComponent } from './login/components/admin/admin.component';
 import { MemberComponent } from './login/components/member/member.component';
 import {UpdateUserComponent} from './user/update-user/update-user.component';
@@ -18,15 +17,30 @@ import {AddTestComponent} from './test/add-test/add-test.component';
 import {AddQuestionComponent} from './question/add-question/add-question.component';
 import {UpdateQuestionComponent} from './question/update-question/update-question.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
+import {AddQuestionInExamComponent} from './question/add-question-in-exam/add-question-in-exam.component';
+import {QuestionBankListComponent} from './question/question-bank-list/question-bank-list.component';
+import {QuestionListInTheExamComponent} from './question/question-list-in-the-exam/question-list-in-the-exam.component';
+import {DefaultPageComponent} from './default-page/default-page.component';
+import {ListComponent} from "./list/list.component";
 
 
 const routes: Routes = [
-  {path: 'question-delete', component: QuestionBankDeleteComponent},
-  {path: 'user-register', component: RegisterUserComponent},
+  {path: '', children: [
+      {path: '', component: DefaultPageComponent},
+      {path: 'user-register', component: RegisterUserComponent},
+      {path: 'list', component: ListComponent, children: [
+          {path: 'user', component: ListUserComponent},
+          {path: 'test', component: TestListComponent},
+          {path: 'question', component: QuestionBankListComponent}
+        ]}
+    ]},
   {path: 'get-exam/:id', component: GetExamComponent},
-  {path: 'getTestById/:id/:idUser', component: GetTestComponent},
+  {path: 'getTestById/:id', component: GetTestComponent},
   {path: 'list-user', component: ListUserComponent},
-  {path: 'delete-user/:id', component: DeleteUserComponent},
+  {path: 'list-question-bank', component: QuestionBankListComponent},
+  {path: 'delete-question-bank/:id', component: QuestionBankDeleteComponent},
+  {path: 'list-question-in-exam', component: QuestionListInTheExamComponent},
+  {path: 'add-question-in-exam/:id', component: AddQuestionInExamComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'member', component: MemberComponent },
   { path: 'add-question', component: AddQuestionComponent },

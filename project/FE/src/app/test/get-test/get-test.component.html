@@ -9,7 +9,6 @@
           <td>
             <!--question-->
             <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b><br>
-            <!--correct answer-->
             <!--answer-->
             <input id="Cau{{question.questionId}}A" name="{{question.questionId}}" type="radio"
                    value="{{question.answerA}}"
@@ -35,7 +34,7 @@
         </tr>
       </table>
     </div>
-    <input class="btn btn-sm  rounded" type="submit" value="Submit">
+    <input class="btn btn-sm  rounded" type="submit" value="Submit" onclick="return confirm('You are finish test ?')">
   </form>
   <div>
   </div>

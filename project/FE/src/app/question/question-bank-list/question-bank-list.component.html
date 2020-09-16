@@ -1,24 +1,6 @@
 <div class="container-fluid mt-md-3 mb-md-3 ">
   <div class="row">
     <div class="col-md-12">
-      <div class=" border">
-        <nav class="navbar bg-title-list-quiz  ">
-          List Question
-        </nav>
-        <div class="d-flex mt-2">
-          <i class="fa fa-sign-in mt-2" aria-hidden="true"> List Name : </i>
-          <div class="dropdown">
-            <button class="btn btn-primary bg-btn  dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Question bank
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">List member </a>
-              <a class="dropdown-item" href="#">List exam</a>
-              <a class="dropdown-item" href="#">TOP</a>
-            </div>
-          </div>
-        </div>
         <table class="table table-bordered mt-lg-2 text-center">
           <thead>
           <tr class="bg-title-table">
@@ -44,8 +26,8 @@
             </td>
             <td class="text-left">{{questionList.rightAnswer}}</td>
             <td>
-              <a [routerLink]="['question-delete', questionList.questionId]">Del</a>
-              <a [routerLink]="['update-question/' + questionList.questionId]" >Edit</a>
+              <a [routerLink]="['/delete-question-bank', questionList.questionId]">Del</a><br><br>
+              <a [routerLink]="['/update-question/' + questionList.questionId]">Edit</a>
             </td>
           </tr>
 
@@ -55,55 +37,35 @@
         <div class="container-fluid  ">
           <div class="row ">
             <div class="col-xs-12 col-sm-6 col-md-3">
-              <div id="emoji" class="collapse">
-<!--                <input type="file" accept=".txt" (change)="selectFile($event)" class="custom-file-input">-->
-<!--                <button data-toggle="collapse" type="button" data-target="#notification"-->
-<!--                        class="btn bg-btn btn-primary mt-3">Upload-->
-<!--                </button>-->
-              </div>
 
-              <div id="notification" class="collapse errors">
-                Error : have not built functions yet !
-              </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-2">
 
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-2">
-              <button [routerLink]="['add-question']" data-toggle="collapse" type="button" data-target="#notification"
-                      class="btn bg-btn btn-primary mb-3">Add New
+            <div class="col-xs-12 col-sm-2 col-md-2">
+              <button [routerLink]="['/add-question']" data-toggle="collapse" type="button"
+                      class="btn bg-btn btn-primary mb-3">Add
               </button>
 
-              <button type="button" data-toggle="collapse" data-target="#notification"
-                      class="btn bg-btn btn-primary mb-3">Close
+            </div>
+
+            <div class="col-xs-12 col-sm-2 col-md-2">
+              <button type="button" data-toggle="collapse"
+                      class="btn bg-btn btn-primary mb-3" (click)="close()">Close
               </button>
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-1">
 
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-2">
-
+            <div class="col-xs-12 col-sm-2 col-md-1">
               <button type="button"
                       class="submit-import ">
-                <input type="file" accept=".txt" btn-import  (change)="selectFile($event)" class="custom-file-input" for="import">
+                <input type="file" accept=".txt" btn-import (change)="selectFile($event)" class="custom-file-input"
+                       for="import">
               </button>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-2">
-
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
-</div>
-
 
 

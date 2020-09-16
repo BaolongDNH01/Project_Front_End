@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {QuestionService} from '../question.service';
 import {Question} from '../question';
+import {Router} from '@angular/router';
+import {JwtService} from '../../login/services/jwt.service';
 
 
 @Component({
@@ -11,10 +13,23 @@ import {Question} from '../question';
 export class QuestionBankListComponent implements OnInit {
   question: Question[];
   numberCount = 1;
+  roles: string[];
 
   constructor(
-    private questionService: QuestionService
+    private questionService: QuestionService,
+    private router: Router,
+    private jwt: JwtService
   ) {
+    this.roles = jwt.getAuthorities();
+    if (this.roles.length === 0){
+      router.navigateByUrl('**');
+    }
+    this.roles.every(role => {
+      if (role === 'ROLE_MEMBER'){
+        router.navigateByUrl('**');
+        return;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -31,6 +46,17 @@ export class QuestionBankListComponent implements OnInit {
   }
 
   selectFile(event): void {
-    this.questionService.upload(event.target.files.item(0)).subscribe();
+    if(event.target.files.item(0).name.includes('.txt')){
+      console.log(event);
+      this.questionService.upload(event.target.files.item(0)).subscribe();
+      this.router.navigateByUrl('/question');
+    }else {
+      alert('The file is not in the correct format!');
+    }
+
+  }
+
+  close() {
+    this.router.navigateByUrl('/');
   }
 }

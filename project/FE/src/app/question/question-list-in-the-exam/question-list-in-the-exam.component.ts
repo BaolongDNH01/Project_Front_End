@@ -8,6 +8,8 @@ import {ExamService} from '../../exam/exam_service/exam.service';
 
 import {Question} from '../question';
 import {TestService} from '../../test/test_service/test.service';
+import {JwtService} from '../../login/services/jwt.service';
+import {Test} from '../../test/test';
 
 
 // @ts-ignore
@@ -18,27 +20,44 @@ import {TestService} from '../../test/test_service/test.service';
 })
 export class QuestionListInTheExamComponent implements OnInit {
   question: Question[];
+  testTitle: string;
+  subjectName: string;
   listQuestionInExamDelete: string[] = [];
   questionInExams: Array<QuestionInExam> = [];
   exam: Exam[];
   idTestUpdating: number;
   idSubjectInTest: number;
-
+  roles: string[];
+  numberCount = 1;
   constructor(
     private questionService: QuestionService,
     private router: Router,
     private examService: ExamService,
-    private testService: TestService
+    private testService: TestService,
+    private jwt: JwtService
   ) {
+    this.roles = jwt.getAuthorities();
+    if (this.roles.length === 0){
+      router.navigateByUrl('**');
+    }
+    this.roles.every(role => {
+      if (role === 'ROLE_MEMBER'){
+        router.navigateByUrl('**');
+        return;
+      }
+    });
   }
 
   ngOnInit(): void {
-      this.findTestById(15);
+      this.findTestById(4);
   }
 
   findTestById(id: number) {
     this.testService.findById(id).subscribe(
       next => {
+        this.testTitle = next.testName;
+        this.subjectName = next.subjectName;
+        console.log(this.testTitle);
         console.log(next.questions);
         this.findQuestionInTest(next.questions);
         this.idTestUpdating = next.testId
@@ -52,6 +71,10 @@ export class QuestionListInTheExamComponent implements OnInit {
       this.questionService.findById(questions[i]).subscribe(
         question => {
           this.questionInExams.push(question);
+        },
+        error => {},
+        () => {
+
         }
       );
     }
@@ -62,8 +85,7 @@ export class QuestionListInTheExamComponent implements OnInit {
       next => {
         this.idSubjectInTest = next.subjectId;
       })
-
-      this.router.navigateByUrl('question/add-question-in-exam/' + this.idTestUpdating);
+      this.router.navigateByUrl('add-question-in-exam/' + this.idTestUpdating);
 
   }
 
@@ -84,4 +106,7 @@ export class QuestionListInTheExamComponent implements OnInit {
     );
   }
 
+  close(): void {
+    this.router.navigateByUrl('/')
+  }
 }

@@ -44,41 +44,22 @@
 
         <div class="container-fluid  ">
           <div class="row ">
-            <div class="col-xs-12 col-sm-6 col-md-3">
-              <div id="emoji" class="collapse">
-              </div>
 
-              <div id="notification" class="collapse errors">
-                Error : have not built functions yet !
-              </div>
-            </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-2">
+            <div class="col-xs-12 col-sm-5 col-md-5">
 
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-2">
+            <div class="col-xs-12 col-sm-7 col-md-7">
               <button    data-toggle="collapse" type="button" data-target="#notification"
                       class="btn bg-btn btn-primary mb-3" (click)="addQuestionList()" >Add New
               </button>
 
               <button type="button" data-toggle="collapse" data-target="#notification"
-                      class="btn bg-btn btn-primary mb-3">Close
+                      class="btn bg-btn btn-primary mb-3" (click)="close()">Close
               </button>
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-1">
-
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-2">
-
-
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-2">
-
-            </div>
           </div>
         </div>
       </div>
