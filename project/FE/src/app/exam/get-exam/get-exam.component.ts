@@ -50,7 +50,6 @@ export class GetExamComponent implements OnInit {
                   }, () => {
                   });
               });
-              console.log(this.listQuestion);
             });
         }
       );

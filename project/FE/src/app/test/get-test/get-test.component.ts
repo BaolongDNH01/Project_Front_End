@@ -50,19 +50,18 @@ export class GetTestComponent implements OnInit {
                 this.listQuestion.push(next);
               }, error => {
               }, () => {
-                this.createArrAnswer();
+
               });
           });
-
         });
     });
-
+    this.createArrAnswer();
     this.startTimer();
   }
 
   createArrAnswer() {
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.listQuestion.length; i++) {
+    for (let i = 0; i < 10; i++) {
       this.answerArr.push(new FormControl(''));
     }
   }
@@ -84,7 +83,7 @@ export class GetTestComponent implements OnInit {
         console.log('Create failed!');
       },
     );
-    // this.router.navigateByUrl();
+    this.router.navigateByUrl('');
   }
 
   startTimer() {
