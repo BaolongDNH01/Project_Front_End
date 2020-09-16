@@ -8,7 +8,7 @@ import {ExamService} from '../../exam/exam_service/exam.service';
 import {Question} from '../../question/question';
 import {DatePipe} from '@angular/common';
 import {QuestionService} from '../../question/question.service';
-import {JwtService} from "../../login/services/jwt.service";
+import {JwtService} from '../../login/services/jwt.service';
 
 @Component({
   selector: 'app-get-test',
