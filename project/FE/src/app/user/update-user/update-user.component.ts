@@ -5,8 +5,8 @@ import {UserService} from '../user_service/user.service';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {JwtService} from "../../login/services/jwt.service";
-import {AuthService} from "../../login/services/auth.service";
+import {JwtService} from '../../login/services/jwt.service';
+import {AuthService} from '../../login/services/auth.service';
 
 @Component({
   selector: 'app-update-user',
@@ -16,7 +16,7 @@ import {AuthService} from "../../login/services/auth.service";
 export class UpdateUserComponent implements OnInit {
 
   infoEditForm: FormGroup;
-  userId: number;
+  username: string;
   user: User;
 
   constructor(
@@ -41,17 +41,23 @@ export class UpdateUserComponent implements OnInit {
   }
 
   getUserById() {
-    this.userId = this.jwtService.getUser().id;
-    this.userService.getUserById(this.userId).subscribe(data => {
+    this.username = this.jwtService.getUsername();
+    this.userService.getUserByUsername(this.username).subscribe(data => {
       this.user = data;
       this.infoEditForm.patchValue(this.user);
     });
   }
 
   onSubmit() {
-      this.userService.editUser(this.infoEditForm.value).subscribe(data => {
-        this.authService.getCurrentUser();
-        this.router.navigateByUrl('detail-user/' + this.userId);
-      });
+    if (this.infoEditForm.valid){
+      this.user.fullName = this.infoEditForm.value.name;
+      this.user.address = this.infoEditForm.value.address;
+      this.user.email = this.infoEditForm.value.email;
+      this.user.phoneNumber = this.infoEditForm.value.phoneNumber;
+      console.log(this.user);
+      this.userService.editUser(this.user).subscribe(data => {
+        this.router.navigateByUrl('detail-user');
+      }, error => console.log('err'));
+    }
   }
 }

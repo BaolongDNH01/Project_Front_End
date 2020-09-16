@@ -29,6 +29,7 @@ const routes: Routes = [
   {path: '', children: [
       {path: '', component: DefaultPageComponent},
       {path: 'user-register', component: RegisterUserComponent},
+      {path: 'detail-user', component: DetailUserComponent},
       {path: 'list', component: ListComponent, children: [
           {path: 'user', component: ListUserComponent},
           {path: 'test', component: TestListComponent},
@@ -53,8 +54,7 @@ const routes: Routes = [
   {path: 'history', component: TestHistoryComponent},
   {path: 'update-password/:id', component: UpdatePasswordComponent},
   {path: 'update-avatar/:id', component: UpdatePasswordComponent},
-  {path: 'detail-user', component: DetailUserComponent},
-  { path: '**', component: ErrorPageComponent },
+  { path: '**', component: ErrorPageComponent }
 ];
 
 @NgModule({
