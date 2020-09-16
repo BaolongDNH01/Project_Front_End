@@ -16,7 +16,7 @@
         <tbody id="tbody-custom">
         <tr *ngFor="let exam of examList | paginate: {itemsPerPage: 5, currentPage: currentPage}; let i = index">
           <th scope="row">{{i}}</th>
-          <td><a [routerLink]="['get-exam',exam.examId]">{{exam.test}}</a></td>
+          <td><a [routerLink]="['/get-exam',exam.examId]">{{exam.test}}</a></td>
           <td>{{exam.mark}}</td>
           <td>{{exam.examDate}}</td>
         </tr>
