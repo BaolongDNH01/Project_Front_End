@@ -9,6 +9,7 @@ import {ExamService} from '../../exam/exam_service/exam.service';
 import {Question} from '../question';
 import {TestService} from '../../test/test_service/test.service';
 import {JwtService} from '../../login/services/jwt.service';
+import {Test} from '../../test/test';
 
 
 // @ts-ignore
@@ -19,12 +20,15 @@ import {JwtService} from '../../login/services/jwt.service';
 })
 export class QuestionListInTheExamComponent implements OnInit {
   question: Question[];
+  testTitle: string;
+  subjectName: string;
   listQuestionInExamDelete: string[] = [];
   questionInExams: Array<QuestionInExam> = [];
   exam: Exam[];
   idTestUpdating: number;
   idSubjectInTest: number;
   roles: string[];
+  numberCount = 1;
   constructor(
     private questionService: QuestionService,
     private router: Router,
@@ -45,12 +49,15 @@ export class QuestionListInTheExamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.findTestById(15);
+      this.findTestById(4);
   }
 
   findTestById(id: number) {
     this.testService.findById(id).subscribe(
       next => {
+        this.testTitle = next.testName;
+        this.subjectName = next.subjectName;
+        console.log(this.testTitle);
         console.log(next.questions);
         this.findQuestionInTest(next.questions);
         this.idTestUpdating = next.testId
@@ -64,6 +71,10 @@ export class QuestionListInTheExamComponent implements OnInit {
       this.questionService.findById(questions[i]).subscribe(
         question => {
           this.questionInExams.push(question);
+        },
+        error => {},
+        () => {
+
         }
       );
     }
