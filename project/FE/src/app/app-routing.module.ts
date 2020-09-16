@@ -31,14 +31,14 @@ const routes: Routes = [
   { path: 'member', component: MemberComponent },
   { path: 'add-question', component: AddQuestionComponent },
   { path: 'update-question/:id', component: UpdateQuestionComponent },
+  {path: 'addTest', component: AddTestComponent},
+  {path: 'testManage', component: TestListComponent},
   { path: '**', redirectTo: '', component: ErrorPageComponent },
   {path: 'update-user/:id', component: UpdateUserComponent},
   {path: 'history/:id', component: TestHistoryComponent},
   {path: 'update-password/:id', component: UpdatePasswordComponent},
   {path: 'update-avatar/:id', component: UpdatePasswordComponent},
   {path: 'detail-user', component: DetailUserComponent},
-  {path: 'testManage', component: TestListComponent},
-  {path: 'addTest', component: AddTestComponent},
 ];
 
 @NgModule({
