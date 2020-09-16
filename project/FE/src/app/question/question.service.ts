@@ -70,9 +70,9 @@ export class QuestionService {
   }
 
   saveQuestion(question: Question): Observable<any> {
-    const headerAuth = new HttpHeaders();
-    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
-    return this.httpClient.post<any>(this.API_URL + '/add-question', question, {headers: headerAuth});
+    // const headerAuth = new HttpHeaders();
+    // headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
+    return this.httpClient.post<any>(this.API_URL + '/add-question', question);
   }
 
   saveQuestionInExam(questionInExam: QuestionInExam[]): Observable<QuestionInExam> {

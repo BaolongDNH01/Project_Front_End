@@ -25,6 +25,8 @@ import {AngularFirestore, AngularFirestoreModule} from "@angular/fire/firestore"
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
+import { DefaultPageComponent } from './default-page/default-page.component';
+import { ListComponent } from './list/list.component';
 
 
 
@@ -34,6 +36,8 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     ErrorPageComponent,
     FormDirective,
     InfoComponent,
+    DefaultPageComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,

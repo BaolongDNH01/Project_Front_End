@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteUserComponent } from './delete-user.component';
+import { DefaultPageComponent } from './default-page.component';
 
-describe('DeleteUserComponent', () => {
-  let component: DeleteUserComponent;
-  let fixture: ComponentFixture<DeleteUserComponent>;
+describe('DefaultPageComponent', () => {
+  let component: DefaultPageComponent;
+  let fixture: ComponentFixture<DefaultPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeleteUserComponent ]
+      declarations: [ DefaultPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeleteUserComponent);
+    fixture = TestBed.createComponent(DefaultPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
