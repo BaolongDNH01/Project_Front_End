@@ -21,7 +21,7 @@ export class GetTestComponent implements OnInit {
   examForm: FormGroup;
   listQuestion = new Array<Question>();
   answerArr = new FormArray([]);
-  timeSet = 1* 60;
+  timeSet = 5 * 60;
   time = this.timeSet;
   display;
   interval;
