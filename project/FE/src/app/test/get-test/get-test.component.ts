@@ -32,7 +32,6 @@ export class GetTestComponent implements OnInit {
               private activatedRoute: ActivatedRoute, private datePipe: DatePipe) {
     this.examForm = this.fb.group({
       answer: this.answerArr,
-      userId: ['']
     });
   }
 
@@ -110,7 +109,7 @@ export class GetTestComponent implements OnInit {
     for (let i = 0; i < this.listQuestion.length; i++) {
       // tslint:disable-next-line:triple-equals
       if (this.exam.answer[i] == this.listQuestion[i].rightAnswer) {
-        this.mark += 0.5;
+        this.mark += 1;
       }
     }
     this.exam.mark = this.mark;
