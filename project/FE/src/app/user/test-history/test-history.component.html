@@ -7,7 +7,7 @@
       <table class="table table-bordered w-100 h-100 text-center">
         <thead class="thead">
         <tr style="background-color: #DFF0D8">
-          <td scope="col">NO</td>
+          <td scope="col">Exam Id</td>
           <td scope="col">Test</td>
           <td scope="col">Mark<span>(mark/10)</span></td>
           <td scope="col">Day<span>(MM/dd/yy)</span></td>
@@ -15,26 +15,31 @@
         </thead>
         <tbody id="tbody-custom">
         <tr *ngFor="let exam of examList | paginate: {itemsPerPage: 5, currentPage: currentPage}; let i = index">
-          <th scope="row">{{i}}</th>
+          <th scope="row">{{exam.examId}}</th>
           <td><a [routerLink]="['/get-exam',exam.examId]">{{exam.test}}</a></td>
           <td>{{exam.mark}}</td>
           <td>{{exam.examDate}}</td>
         </tr>
         </tbody>
       </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+        </ul>
+      </nav>
     </div>
   </div>
-  <div class="form-row mt-3 mb-3">
-    <div class="col-md-4 form-group font-weight-bold text-right">
-      <label>Total Mark:</label>
-      <label class="text-danger">abc</label>
-    </div>
-    <div class="col-md-4 form-group font-weight-bold text-center">
-      <label>AVG:</label>
-      <label class="text-danger">abc</label>
-    </div>
-    <div class="col-md-4 form-group text-left">
-      <a routerLink="" class="btn btn-info">Close</a>
-    </div>
-  </div>
+<!--  <div class="form-row mt-3 mb-3">-->
+<!--    <div class="col-md-4 form-group font-weight-bold text-right">-->
+<!--      <label>Total Mark:</label>-->
+<!--      <label class="text-danger">abc</label>-->
+<!--    </div>-->
+<!--    <div class="col-md-4 form-group font-weight-bold text-center">-->
+<!--      <label>AVG:</label>-->
+<!--      <label class="text-danger">abc</label>-->
+<!--    </div>-->
+<!--    <div class="col-md-4 form-group text-left">-->
+<!--      <a routerLink="" class="btn btn-info">Close</a>-->
+<!--    </div>-->
+<!--  </div>-->
 </div>

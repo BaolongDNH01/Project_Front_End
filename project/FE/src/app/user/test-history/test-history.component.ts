@@ -25,7 +25,6 @@ export class TestHistoryComponent implements OnInit {
     this.examService.findExamByUserName(this.jwt.getUsername()).subscribe(
       next => {
         this.examList = next;
-        console.log(next);
       });
   }
 
