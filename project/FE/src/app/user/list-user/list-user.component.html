@@ -1,7 +1,7 @@
 <div class="col-md-12 mt-2">
   <table class="table table-bordered text-center">
     <thead class="thead">
-    <tr>
+    <tr class="bg-title-table">
       <th scope="col">No</th>
       <th scope="col">Username</th>
       <th scope="col">Full Name</th>
@@ -66,7 +66,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            <a class="text-white" [routerLink]="'list-user'">
+            <a class="text-white" [routerLink]="'/list/user'">
               Close
             </a>
           </button>
@@ -74,9 +74,11 @@
       </div>
     </div>
   </div>
+  <div class="col-sm-12 justify-content-end d-flex">
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
   <div class="col-md-12 d-flex justify-content-md-end mb-3">
-    <button id="closeButton" class="btn btn-outline-secondary align-self-end">
+    <button id="closeButton" routerLink="" class="btn btn-outline-secondary align-self-end">
       Close
     </button>
   </div>

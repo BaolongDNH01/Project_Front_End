@@ -85,9 +85,7 @@ html, body {
 .errors {
     color: red;
 }
-.bg-btn{
-  background: blue;
-}
+
 .bg-import-file{
   background:gray;
 }

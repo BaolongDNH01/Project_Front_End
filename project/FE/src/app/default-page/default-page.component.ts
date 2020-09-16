@@ -12,4 +12,8 @@ export class DefaultPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  scrollTo(id: string): void {
+    const elmnt = document.getElementById(id);
+    elmnt.scrollIntoView();
+  }
 }

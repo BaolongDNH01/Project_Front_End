@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { JwtService } from './login/services/jwt.service';
 
@@ -36,6 +36,11 @@ export class AppComponent implements OnInit, OnDestroy {
         return true;
       });
     }
+  }
+
+  scroll(id: string): void {
+    const elmnt = document.getElementById(id);
+    elmnt.scrollIntoView();
   }
 
   ngOnDestroy(): void {

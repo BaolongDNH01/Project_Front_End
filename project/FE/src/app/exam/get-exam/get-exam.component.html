@@ -4,7 +4,7 @@
       <p>Exam number {{exam.test}}</p>
     </div>
     <div>
-      <label id="result">Your score is <b id="score"> {{exam.mark}}/10 </b> question."
+      <label id="result">Your score is <b id="score"> {{exam.mark}} </b> point."
       </label><br/>
     </div>
   </div>
@@ -24,38 +24,42 @@
 
           <input id="Cau{{question.questionId}}A" name="{{question.questionId}}" type="radio"
                  value="{{question.answerA}}" disabled><label
-          for="Cau{{question.questionId}}A" id="C{{question.questionId}}A">{{question.answerA}}</label>
+          for="Cau{{question.questionId}}A" id="C{{question.questionId}}A" class="answer"
+          [style.color]="isCheckCorrectA(i)?'red':''">{{question.answerA}}</label>
           <br/>
 
           <div *ngIf="isCheckCorrectB(i); then thenBlockB else elseBlockB"></div>
           <ng-template #thenBlockB><i id="I{{i+1}}B" class="fa fa-check "
-                                     [style.visibility]="isAnswerB(i)?'visible':''"></i></ng-template>
+                                      [style.visibility]="isAnswerB(i)?'visible':''"></i></ng-template>
           <ng-template #elseBlockB><i id="II{{i+1}}B" class="fa fa-times "
-                                     [style.visibility]="isAnswerB(i)?'visible':''"></i></ng-template>
+                                      [style.visibility]="isAnswerB(i)?'visible':''"></i></ng-template>
 
           <input id="Cau{{question.questionId}}B" name="{{question.questionId}}" type="radio"
                  value="{{question.answerB}}" disabled><label
-          for="Cau{{question.questionId}}B" id="C{{question.questionId}}B">{{question.answerB}}</label>
+          for="Cau{{question.questionId}}B" id="C{{question.questionId}}B" class="answer"
+          [style.color]="isCheckCorrectB(i)?'red':''">{{question.answerB}}</label>
           <br/>
 
           <div *ngIf="isCheckCorrectC(i); then thenBlockC else elseBlockC"></div>
           <ng-template #thenBlockC><i id="I{{i+1}}C" class="fa fa-check "
-                                     [style.visibility]="isAnswerC(i)?'visible':''"></i></ng-template>
+                                      [style.visibility]="isAnswerC(i)?'visible':''"></i></ng-template>
           <ng-template #elseBlockC><i id="II{{i+1}}C" class="fa fa-times "
-                                     [style.visibility]="isAnswerC(i)?'visible':''"></i></ng-template>
+                                      [style.visibility]="isAnswerC(i)?'visible':''"></i></ng-template>
           <input id="Cau{{question.questionId}}C" name="{{question.questionId}}" type="radio"
                  value="{{question.answerC}}" disabled><label
-          for="Cau{{question.questionId}}C" id="C{{question.questionId}}C">{{question.answerC}}</label>
+          for="Cau{{question.questionId}}C" id="C{{question.questionId}}C" class="answer"
+          [style.color]="isCheckCorrectC(i)?'red':''">{{question.answerC}}</label>
           <br/>
 
           <div *ngIf="isCheckCorrectD(i); then thenBlockD else elseBlockD"></div>
           <ng-template #thenBlockD><i id="I{{i+1}}D" class="fa fa-check "
-                                     [style.visibility]="isAnswerD(i)?'visible':''"></i></ng-template>
+                                      [style.visibility]="isAnswerD(i)?'visible':''"></i></ng-template>
           <ng-template #elseBlockD><i id="II{{i+1}}D" class="fa fa-times "
-                                     [style.visibility]="isAnswerD(i)?'visible':''"></i></ng-template>
+                                      [style.visibility]="isAnswerD(i)?'visible':''"></i></ng-template>
           <input id="Cau{{question.questionId}}D" name="{{question.questionId}}" type="radio"
                  value="{{question.answerD}}" disabled><label
-          for="Cau{{question.questionId}}D" id="C{{question.questionId}}D">{{question.answerD}}</label>
+          for="Cau{{question.questionId}}D" id="C{{question.questionId}}D" class="answer"
+          [style.color]="isCheckCorrectD(i)?'red':''">{{question.answerD}}</label>
           <br/><br/>
         </td>
       </tr>
@@ -63,6 +67,6 @@
     </tbody>
   </table>
   <div>
-    <button class="btn btn-sm  rounded"><a href="">Other test </a></button>
+    <button routerLink="" class="btn btn-outline-info  rounded"><a href="">Other test </a></button>
   </div>
 </div>

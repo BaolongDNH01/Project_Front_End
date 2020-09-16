@@ -1,0 +1,18 @@
+.custom-footer {
+  background: #353b48;
+  color: #ddd;
+}
+
+.logo-company {
+  width: 30%;
+  margin-left: 10%;
+}
+
+.icon-contact i {
+  color: #ddd;
+  transition: all .3s;
+}
+
+.icon-contact i:hover {
+  transform: scale(1.3);
+}

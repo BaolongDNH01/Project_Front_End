@@ -12,20 +12,21 @@
           <p class="m-0">List Name:</p>
         </div>
         <div class="dropdown col-md-2 align-self-center">
-          <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button"
-             id="dropdownMenuLink"
+          <a id="dropDown" class="btn btn-outline-secondary dropdown-toggle" href="#" role="button"
              data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">
-            Member List
+            {{dropdownSelected}}
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" routerLink="list">Member List</a>
-            <a class="dropdown-item" href="#">Exam List</a>
-            <a class="dropdown-item" href="#">Questions Bank</a>
-            <a class="dropdown-item" href="#">Top Grade</a>
+            <a (click)="menuChange('Member List')" class="dropdown-item" routerLink="user">Member List</a>
+            <a (click)="menuChange('Test List')" class="dropdown-item" routerLink="test">Test List</a>
+            <a (click)="menuChange('Questions Bank')" class="dropdown-item" routerLink="question">Questions Bank</a>
+            <a (click)="menuChange('Top Grade')" class="dropdown-item" href="#">Top Grade</a>
           </div>
         </div>
-        <router-outlet></router-outlet>
       </div>
+        <div class="col-sm-12 card-body justify-content-center">
+        <router-outlet></router-outlet>
+        </div>
     </div>
   </div>
 </div>

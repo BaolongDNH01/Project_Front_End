@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { GetTestComponent } from './get-test/get-test.component';
 import {TestListComponent} from './test-list/test-list.component';
 import {RouterModule} from '@angular/router';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -18,14 +19,15 @@ import {RouterModule} from '@angular/router';
 @NgModule({
   declarations: [GetTestComponent, TestListComponent, AddTestComponent],
 
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule
-  ],
+    imports: [
+        CommonModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        NgxPaginationModule
+    ],
   exports: [
     GetTestComponent,
     TestListComponent,

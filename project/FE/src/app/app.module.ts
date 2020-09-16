@@ -27,6 +27,7 @@ import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import { DefaultPageComponent } from './default-page/default-page.component';
 import { ListComponent } from './list/list.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -38,6 +39,7 @@ import { ListComponent } from './list/list.component';
     InfoComponent,
     DefaultPageComponent,
     ListComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,22 +5,22 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <a class="flex-md-fill text-md-center nav-link" href="#">
+      <a class="flex-md-fill text-md-center nav-link" routerLink="">
         <i class="fa fa-home" aria-hidden="true"></i> Home
       </a>
-      <a class="flex-md-fill text-md-center nav-link" href="#">
+      <a class="flex-md-fill text-md-center nav-link" (click)="scroll('gradeA')">
         <i class="fa fa-eur" aria-hidden="true"></i> Grade A
       </a>
-      <a class="flex-md-fill text-md-center nav-link" href="#">
+      <a class="flex-md-fill text-md-center nav-link" (click)="scroll('gradeB')">
         <i class="fa fa-cloud" aria-hidden="true"></i>Grade B
       </a>
-      <a class="flex-md-fill text-md-center nav-link" href="#">
+      <a class="flex-md-fill text-md-center nav-link" (click)="scroll('gradeD')">
         <i class="fa fa-wrench" aria-hidden="true"></i> Grade D
       </a>
-      <a class="flex-md-fill text-md-center nav-link" href="#">
+      <a class="flex-md-fill text-md-center nav-link" (click)="scroll('iqTest')">
         <i class="fa fa-book" aria-hidden="true"></i> IQ Test
       </a>
-      <a class="flex-md-fill text-md-center nav-link" href="#">
+      <a class="flex-md-fill text-md-center nav-link" (click)="scroll('footer')">
         <i class="fa fa-globe" aria-hidden="true"></i> About Us
       </a>
     </div>
@@ -62,7 +62,7 @@
         <ng-container *ngSwitchCase="'admin'">
           <ul class="list-group list-group-horizontal d-flex justify-content-center">
             <li class="list-group-item list-group-item-info">
-              <a routerLink="list-user">List User</a>
+              <a routerLink="/list/user">Manager</a>
             </li>
             <li class="list-group-item">
               <a [routerLink]="'list-question-bank'">List Question</a>
@@ -78,42 +78,6 @@
             <li class="list-group-item">Member function 3</li>
             <li class="list-group-item">Member function 4</li>
           </ul>
-
-          <!-- Phần dưới này hiển thị phần chọn môn để làm bài test -->
-          <!-- <div class="row d-flex justify-content-md-around mb-5">
-            <div class="frames-img col-md-5 item-subject p-0">
-              <img class="img-card"
-                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png">
-              <p class="m-3">Math</p>
-            </div>
-            <div class="frames-img col-md-5 item-subject p-0">
-              <img class="img-card"
-                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png">
-              <p class="m-3">Math</p>
-            </div>
-          </div>
-          <div class="row d-flex justify-content-md-around mb-5">
-            <div class="frames-img col-md-5 item-subject p-0">
-              <img class="img-card"
-                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png">
-              <p class="m-3">Math</p>
-            </div>
-            <div class="frames-img col-md-5 item-subject p-0">
-              <img class="img-card"
-                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png">
-              <p class="m-3">Math</p>
-            </div>
-          </div> -->
-        </ng-container>
-        <ng-container *ngSwitchDefault>
-          <div class="text-center">
-            <h1>Welcome to our Multi-choice Examination website !</h1>
-            <p>Want to test knowledges self ? You finded right place</p>
-            <pre>Please create new account or use your Gmail or Facebook</pre>
-            <hr>
-            <h3>Let's go !</h3>
-            <img src="https://s31450.pcdn.co/wp-content/uploads/2015/09/iStock_exam.150922.jpg" alt="cover.jpg">
-          </div>
         </ng-container>
       </ng-container>
       <router-outlet></router-outlet>
@@ -153,49 +117,7 @@
       </div>
     </div>
   </div>
-  <div class="row pt-4 custom-footer d-flex justify-content-center p-0 m-0">
-    <div class="col-md-4 pl-5">
-      <h3 class="mb-4">C0220H1 Company</h3>
-      <img class="logo-company" src="https://seeklogo.com/images/S/spring-logo-F6678FED25-seeklogo.com.png"
-        alt="logo.jpg">
-    </div>
-    <div class="col-md-4">
-      <h3 class="mb-4">Developers</h3>
-      <ul>
-        <li>Duong Tran Bao Long</li>
-        <li>Do Quoc Khanh</li>
-        <li>Phan Thi My Tinh</li>
-        <li>Dau Tuan Phuong</li>
-        <li>Vo Ngoc Quan</li>
-        <li>Le Thanh Tung</li>
-        <li>Dang Ngoc Minh Chau</li>
-        <li>Pham Anh Thien</li>
-      </ul>
-    </div>
-    <div class="col-md-4">
-      <h3 class="mb-4">Contact us</h3>
-      <a href="https://github.com/BaolongDNH01/Project_Front_End" target="_blank" rel="noopener noreferrer"
-        class="pl-4 icon-contact">
-        <i class="fa fa-3x fa-github" aria-hidden="true"></i>
-      </a>
-      <a href="https://www.facebook.com/chubble.chubble.96" target="_blank" rel="noopener noreferrer"
-        class="pl-4 icon-contact">
-        <i class="fa fa-3x fa-facebook-square" aria-hidden="true"></i>
-      </a>
-      <a href="https://www.facebook.com/chubble.chubble.96" target="_blank" rel="noopener noreferrer"
-        class="pl-4 icon-contact">
-        <i class="fa fa-3x fa-linkedin-square" aria-hidden="true"></i>
-      </a>
-      <a href="https://www.facebook.com/chubble.chubble.96" target="_blank" rel="noopener noreferrer"
-        class="pl-4 icon-contact">
-        <i class="fa fa-3x fa-twitter-square" aria-hidden="true"></i>
-      </a>
-      <a href="https://www.facebook.com/chubble.chubble.96" target="_blank" rel="noopener noreferrer"
-        class="pl-4 icon-contact">
-        <i class="fa fa-3x fa-instagram" aria-hidden="true"></i>
-      </a>
-    </div>
-  </div>
+  <app-footer id="footer"></app-footer>
 </div>
 
 

@@ -1,0 +1,24 @@
+.card-header, thead {
+  background-color: #DFF0D8;
+}
+body {
+  font-family: 'arial', consolas, serif;
+  font-size: 16px;
+}
+
+label {
+  font-weight: bolder;
+}
+
+#closeButton, #delete {
+  background-color: #D9EDF7;
+}
+
+.errors {
+  color: white;
+  background-color: red;
+}
+
+/*tbody {*/
+/*    background-color: #DFF0D8;*/
+/*}*/

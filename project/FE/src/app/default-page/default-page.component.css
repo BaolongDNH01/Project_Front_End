@@ -1,0 +1,12 @@
+.card-img-top {
+  width: 100%;
+  height: 10vw;
+  object-fit: cover;
+}
+
+p {
+  font-size: 32px;
+  font-weight: bolder;
+  font-family: Arial, serif;
+  color: #1979a9;
+}
