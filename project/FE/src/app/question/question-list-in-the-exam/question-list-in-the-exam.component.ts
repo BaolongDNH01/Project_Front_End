@@ -8,6 +8,7 @@ import {ExamService} from '../../exam/exam_service/exam.service';
 
 import {Question} from '../question';
 import {TestService} from '../../test/test_service/test.service';
+import {JwtService} from '../../login/services/jwt.service';
 
 
 // @ts-ignore
@@ -23,13 +24,24 @@ export class QuestionListInTheExamComponent implements OnInit {
   exam: Exam[];
   idTestUpdating: number;
   idSubjectInTest: number;
-
+  roles: string[];
   constructor(
     private questionService: QuestionService,
     private router: Router,
     private examService: ExamService,
-    private testService: TestService
+    private testService: TestService,
+    private jwt: JwtService
   ) {
+    this.roles = jwt.getAuthorities();
+    if (this.roles.length === 0){
+      router.navigateByUrl('**');
+    }
+    this.roles.every(role => {
+      if (role === 'ROLE_MEMBER'){
+        router.navigateByUrl('**');
+        return;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -62,8 +74,7 @@ export class QuestionListInTheExamComponent implements OnInit {
       next => {
         this.idSubjectInTest = next.subjectId;
       })
-
-      this.router.navigateByUrl('question/add-question-in-exam/' + this.idTestUpdating);
+      this.router.navigateByUrl('add-question-in-exam/' + this.idTestUpdating);
 
   }
 
@@ -84,4 +95,7 @@ export class QuestionListInTheExamComponent implements OnInit {
     );
   }
 
+  close(): void {
+    this.router.navigateByUrl('/')
+  }
 }

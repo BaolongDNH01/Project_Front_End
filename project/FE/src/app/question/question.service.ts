@@ -24,6 +24,8 @@ export class QuestionService {
   }
 
   getQuestionAllToTest(idTest: number, idSubject: number): Observable<Question[]> {
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     let ids: number[] = [];
     ids.push(idTest);
     ids.push(idSubject)
@@ -31,6 +33,8 @@ export class QuestionService {
   }
 
   getAllQuestion(): Observable<Question[]> {
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     return this.httpClient.get<Question[]>(this.API_URL + '/question');
   }
 
@@ -40,19 +44,27 @@ export class QuestionService {
 
 
   findById(id: string): Observable<Question> {
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     return this.httpClient.get<Question>(this.API_URL + '/question/' + id);
   }
 
   deleteQuestion(id: string): Observable<Question> {
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     return this.httpClient.delete<Question>(this.API_URL + '/delete-question/' + id);
   }
 
   deleteQuestionInExam(id: number, quesIds: string[]): Observable<any> {
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     quesIds.push(id.toString());
     return this.httpClient.post<any>(this.API_URL + '/removeQuestionInTest/', quesIds);
   }
 
   addQuestionInExam(id: number, quesIds: string[]): Observable<any> {
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     quesIds.push(id.toString());
     return this.httpClient.post<any>(this.API_URL + '/addQuestionInTest/', quesIds);
   }
@@ -72,16 +84,22 @@ export class QuestionService {
   }
 
   getAllTest(): Observable<Test[]> {
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     return this.httpClient.get<Test[]>(this.API_URL + '/getAllTest');
   }
 
   upload(file: File): Observable<HttpEvent<any>> {
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     const formData: FormData = new FormData();
     formData.append('file', file);
     return this.httpClient.post<HttpEvent<any>>(this.uploadFile, formData);
   }
 
   getAllSubject(): Observable<Subject[]>{
+    const headerAuth = new HttpHeaders();
+    headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     return this.httpClient.get<Subject[]>(this.API_URL + '/getAllSubject');
   }
 }
