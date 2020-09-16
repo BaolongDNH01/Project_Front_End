@@ -4,7 +4,7 @@ import {User} from '../user_model/User';
 import {Observable} from 'rxjs';
 import {Password} from '../update-password/password';
 import {JwtService} from '../../login/services/jwt.service';
-import {Exam} from "../../exam/exam";
+import {Exam} from '../../exam/exam';
 
 @Injectable({
   providedIn: 'root'
@@ -38,13 +38,10 @@ export class UserService {
   }
 
   deleteUser(id: number): Observable<HttpResponse<any>> {
-    // const headerAuth = new HttpHeaders();
-    // headerAuth.append('Authorization',
-    //   'Bearer ' + this.jwt.getToken());
     return this.httpClient.delete<any>(this.API_URL + '/delete-user/' + id, {observe: 'response'});
   }
 
-  // THIEN UPDATE
+
   getUserById(id: number): Observable<User> {
     return this.httpClient.get<User>(`${this.API_URL}/detail-user/${id}`);
   }
