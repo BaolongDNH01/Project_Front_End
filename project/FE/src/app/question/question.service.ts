@@ -29,7 +29,7 @@ export class QuestionService {
     let ids: number[] = [];
     ids.push(idTest);
     ids.push(idSubject)
-    return this.httpClient.get<Question[]>(this.API_URL + '/getQuestionsToAddToTest/' + ids)
+    return this.httpClient.get<Question[]>(this.API_URL + '/getQuestionsToAddToTest/' + ids);
   }
 
   getAllQuestion(): Observable<Question[]> {

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {TestService} from '../test_service/test.service';
 import {Test} from '../test';
 import {Message} from '../message';
+import {JwtService} from '../../login/services/jwt.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -14,8 +16,18 @@ export class TestListComponent implements OnInit {
   listTestDelete: number[] = [];
   messageFormBe: Message;
   message: string;
-
-  constructor(private testService: TestService) {
+  roles: string[];
+  constructor(private testService: TestService, private jwt: JwtService, private router: Router) {
+    this.roles = jwt.getAuthorities();
+    if (this.roles.length === 0){
+      router.navigateByUrl('**');
+    }
+    this.roles.every(role => {
+      if (role === 'ROLE_MEMBER'){
+        router.navigateByUrl('**');
+        return;
+      }
+    });
   }
 
   ngOnInit(): void {
