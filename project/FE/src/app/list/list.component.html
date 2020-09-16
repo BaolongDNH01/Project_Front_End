@@ -15,13 +15,13 @@
           <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button"
              id="dropdownMenuLink"
              data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">
-            Member List
+            {{dropdownSelected}}
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" routerLink="list">Member List</a>
-            <a class="dropdown-item" href="#">Exam List</a>
-            <a class="dropdown-item" href="#">Questions Bank</a>
-            <a class="dropdown-item" href="#">Top Grade</a>
+            <a (click)="menuChange('Member List')" class="dropdown-item" routerLink="user">Member List</a>
+            <a (click)="menuChange('Exam List')" class="dropdown-item" routerLink="test">Exam List</a>
+            <a (click)="menuChange('Questions Bank')" class="dropdown-item" routerLink="question">Questions Bank</a>
+            <a (click)="menuChange('Top Grade')" class="dropdown-item" href="#">Top Grade</a>
           </div>
         </div>
         <router-outlet></router-outlet>

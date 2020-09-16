@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
+dropdownSelected = '';
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  menuChange(selected: string){
+    this.dropdownSelected = selected;
+  }
 }
