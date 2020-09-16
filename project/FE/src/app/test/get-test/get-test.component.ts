@@ -85,8 +85,7 @@ export class GetTestComponent implements OnInit {
         console.log('Create failed!');
       },
     );
-    // this.router.navigateByUrl('');
-
+    // this.router.navigateByUrl('get-exam/'+);
   }
 
   startTimer() {
