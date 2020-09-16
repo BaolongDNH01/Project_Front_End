@@ -61,7 +61,7 @@
             </label>
           </td>
           <td>
-            <a href="#" class="text-decoration-none">View</a>
+            <a [routerLink]="['']" class="text-decoration-none">View</a>
           </td>
         </tr>
         </tbody>
@@ -87,7 +87,7 @@
           </button>
         </div>
         <div class="col-md-3 col-sm-6">
-          <a [routerLink]="['addTest']"
+          <a [routerLink]="['../addTest']"
              class="btn btn-outline-info">
             <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
             Add new
