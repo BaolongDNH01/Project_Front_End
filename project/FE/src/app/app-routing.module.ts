@@ -28,13 +28,13 @@ import {PickTestComponent} from './exam/pick-test/pick-test.component';
 const routes: Routes = [
   {path: '', children: [
       {path: '', component: DefaultPageComponent},
-      {path: ':subjectName', component: PickTestComponent},
       {path: 'user-register', component: RegisterUserComponent},
       {path: 'list', component: ListComponent, children: [
           {path: 'user', component: ListUserComponent},
           {path: 'test', component: TestListComponent},
           {path: 'question', component: QuestionBankListComponent}
-        ]}
+        ]},
+      {path: ':subjectName', component: PickTestComponent}
     ]},
   {path: 'get-exam/:id', component: GetExamComponent},
   {path: 'getTestById/:id', component: GetTestComponent},
