@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user_service/user.service';
 import {User} from '../user_model/User';
 import {JwtService} from '../../login/services/jwt.service';
@@ -34,12 +34,13 @@ export class DetailUserComponent implements OnInit {
     private angularFirestore: AngularFirestore,
     private authService: AuthService,
     private router: Router,
-    private fs: FirebaseService ) {
+    private fs: FirebaseService) {
     this.getUser();
-    this.uploadForm = formBuilder.group ({
-    category: ['myCategoria'],
-    }
-    ); }
+    this.uploadForm = formBuilder.group({
+        category: ['myCategoria'],
+      }
+    );
+  }
 
 
   ngOnInit(): void {
@@ -73,28 +74,36 @@ export class DetailUserComponent implements OnInit {
 
     task.snapshotChanges().pipe(
       finalize(() => {
-        fileRef.getDownloadURL().toPromise().then( (url) => {
+        fileRef.getDownloadURL().toPromise().then((url) => {
           this.downloadURL = url;
 
           myAvatar.set({
             category: this.uploadForm.value.categoria,
-            image : this.downloadURL,
-            myId : myAvatar.id
+            image: this.downloadURL,
+            myId: myAvatar.id
           });
 
-          console.log( this.downloadURL );
-        }).catch(err => { console.log(err); });
+          console.log(this.downloadURL);
+        }).catch(err => {
+          console.log(err);
+        });
       })
     )
       .subscribe();
   }
 
   saveAvatar() {
-     // @ts-ignore
+    // @ts-ignore
     this.user.avatar = this.downloadURL;
+    this.jwtService.saveAvatar(this.user.avatar);
     console.log(this.user);
-    this.userService.editUser(this.user).subscribe(next => {this.router.navigateByUrl(''); }, error => {
-    console.error(); } );
+    this.userService.editUser(this.user).subscribe(next => {
+      this.router.navigateByUrl('').then(() => {
+        window.location.reload();
+      });
+    }, error => {
+      console.error();
+    });
   }
 
   uploadAvatar() {
