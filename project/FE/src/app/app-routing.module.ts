@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'question-delete', component: QuestionBankDeleteComponent},
   {path: 'user-register', component: RegisterUserComponent},
   {path: 'get-exam/:id', component: GetExamComponent},
-  {path: 'getTestById/:id/:idUser', component: GetTestComponent},
+  {path: 'getTestById/:id', component: GetTestComponent},
   {path: 'list-user', component: ListUserComponent},
   {path: 'delete-user/:id', component: DeleteUserComponent},
   { path: 'admin', component: AdminComponent },
