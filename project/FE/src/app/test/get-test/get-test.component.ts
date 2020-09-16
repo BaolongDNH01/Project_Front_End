@@ -21,7 +21,7 @@ export class GetTestComponent implements OnInit {
   examForm: FormGroup;
   listQuestion = new Array<Question>();
   answerArr = new FormArray([]);
-  timeSet = 15 * 60;
+  timeSet = 5 * 60;
   time = this.timeSet;
   display;
   interval;
@@ -50,19 +50,18 @@ export class GetTestComponent implements OnInit {
                 this.listQuestion.push(next);
               }, error => {
               }, () => {
-                this.createArrAnswer();
+
               });
           });
-
         });
     });
-
+    this.createArrAnswer();
     this.startTimer();
   }
 
   createArrAnswer() {
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.listQuestion.length; i++) {
+    for (let i = 0; i < 10; i++) {
       this.answerArr.push(new FormControl(''));
     }
   }
@@ -84,13 +83,14 @@ export class GetTestComponent implements OnInit {
         console.log('Create failed!');
       },
     );
-    // this.router.navigateByUrl();
+    this.router.navigateByUrl('');
   }
 
   startTimer() {
     this.interval = setInterval(() => {
       if (this.time === 0) {
         this.onSubmit();
+        clearInterval(this.interval);
       } else {
         this.time--;
       }
