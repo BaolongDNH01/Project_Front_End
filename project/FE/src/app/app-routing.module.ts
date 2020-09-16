@@ -21,12 +21,14 @@ import {AddQuestionInExamComponent} from './question/add-question-in-exam/add-qu
 import {QuestionBankListComponent} from './question/question-bank-list/question-bank-list.component';
 import {QuestionListInTheExamComponent} from './question/question-list-in-the-exam/question-list-in-the-exam.component';
 import {DefaultPageComponent} from './default-page/default-page.component';
-import {ListComponent} from "./list/list.component";
+import {ListComponent} from './list/list.component';
+import {PickTestComponent} from './exam/pick-test/pick-test.component';
 
 
 const routes: Routes = [
   {path: '', children: [
       {path: '', component: DefaultPageComponent},
+      {path: ':subjectName', component: PickTestComponent},
       {path: 'user-register', component: RegisterUserComponent},
       {path: 'list', component: ListComponent, children: [
           {path: 'user', component: ListUserComponent},
