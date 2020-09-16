@@ -49,9 +49,9 @@ export class QuestionBankListComponent implements OnInit {
     if(event.target.files.item(0).name.includes('.txt')){
       console.log(event);
       this.questionService.upload(event.target.files.item(0)).subscribe();
-      this.router.navigateByUrl("/question")
+      this.router.navigateByUrl('/question');
     }else {
-      alert("The file is not in the correct format!")
+      alert('The file is not in the correct format!');
     }
 
   }
