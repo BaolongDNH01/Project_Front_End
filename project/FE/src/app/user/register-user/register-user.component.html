@@ -1,10 +1,10 @@
 <div class="row justify-content-center">
-    <div class="col-md-8 card p-0">
+    <div class="col-md-12 card p-0">
       <div class="card-header">Register</div>
       <div class="card-body mt-3 mb-3">
         <form [formGroup]="registerForm" (submit)="register()">
           <div class="form-group row justify-content-center">
-            <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
+            <label for="inputUsername" class="col-sm-3 col-form-label">Username</label>
             <div class="col-sm-6">
               <input formControlName="username" type="text"  class="form-control" id="inputUsername" placeholder="Username">
               <span *ngIf="((registerForm.get('username').hasError('required')) && (registerForm.get('username').touched))" class="errors">
@@ -19,7 +19,7 @@
             </div>
           </div>
           <div formGroupName="user_password" class="form-group row justify-content-center">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
             <div class="col-sm-6">
               <input formControlName="password" type="password"  class="form-control" id="inputPassword" placeholder="Password">
               <span *ngIf="passwordForm.controls['password'].hasError('required') && passwordForm.controls['password'].touched" class="errors" >
@@ -34,7 +34,7 @@
             </div>
           </div>
           <div formGroupName="user_password" class="form-group row justify-content-center">
-            <label for="inputRePassword" class="col-sm-2 col-form-label">Re Password</label>
+            <label for="inputRePassword" class="col-sm-3 col-form-label">Re Password</label>
             <div class="col-sm-6">
               <input type="password" formControlName="confirm_password" class="form-control" id="inputRePassword" placeholder="Re Password">
               <span *ngIf="passwordForm.hasError('mismatchedPasswords') && passwordForm.controls['confirm_password'].touched" class="errors" >
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="form-group row justify-content-center">
-            <label for="inputFullName" class="col-sm-2 col-form-label">Full Name</label>
+            <label for="inputFullName" class="col-sm-3 col-form-label">Full Name</label>
             <div class="col-sm-6">
               <input formControlName="fullName" type="text"  class="form-control" id="inputFullName" placeholder="Full Name">
               <span *ngIf="registerForm.get('fullName').hasError('required') && registerForm.get('fullName').touched" class="errors" >
@@ -61,7 +61,7 @@
             </div>
           </div>
           <div class="form-group row justify-content-center">
-            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+            <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
             <div class="col-sm-6">
               <input formControlName="email" type="text"  class="form-control" id="inputEmail" placeholder="Email">
               <span *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched" class="errors" >
@@ -79,7 +79,7 @@
             </div>
           </div>
           <div class="form-group row justify-content-center">
-            <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
+            <label for="inputAddress" class="col-sm-3 col-form-label">Address</label>
             <div class="col-sm-6">
               <input formControlName="address" type="text"  class="form-control" id="inputAddress" placeholder="Address">
               <span *ngIf="registerForm.get('address').hasError('required') && registerForm.get('address').touched" class="errors" >
@@ -94,7 +94,7 @@
             </div>
           </div>
           <div class="form-group row justify-content-center">
-            <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone No</label>
+            <label for="inputPhoneNumber" class="col-sm-3 col-form-label">Phone No</label>
             <div class="col-sm-6">
               <input formControlName="phoneNumber" type="tel"  class="form-control" id="inputPhoneNumber" placeholder="Phone Number">
               <span *ngIf="registerForm.get('phoneNumber').hasError('required') && registerForm.get('phoneNumber').touched" class="errors" >
