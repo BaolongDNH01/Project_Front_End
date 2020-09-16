@@ -31,4 +31,5 @@ button.import{
 
 .message-bg{
   background-color: #FCF8E3;
+  box-shadow: 2px 2px 4px 4px #FCF8E3;
 }
