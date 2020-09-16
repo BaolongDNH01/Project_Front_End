@@ -1,5 +1,5 @@
 .card-header, thead {
-  background-color: #d9edf7;
+  background-color: #DFF0D8;
 }
 body {
   font-family: 'arial', consolas, serif;
@@ -20,6 +20,6 @@ label {
   background-color: red;
 }
 
-tbody {
-    background-color: #d3d3d3;
-}
+/*tbody {*/
+/*    background-color: #DFF0D8;*/
+/*}*/
