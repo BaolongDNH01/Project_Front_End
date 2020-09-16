@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subject} from '../subject';
 import {TestService} from '../test_service/test.service';
 import {Test} from '../test';
+import {JwtService} from '../../login/services/jwt.service';
+import {Router} from '@angular/router';
+import {Message} from '../message';
 
 
 @Component({
@@ -14,9 +17,22 @@ export class AddTestComponent implements OnInit {
   formAddTest: FormGroup;
   listSubject: Array<Subject>;
   test: Test;
+  roles: string[];
+  messageFormBe: Message;
+  message: string;
 
-  constructor(private formBuilder: FormBuilder,
-              private testService: TestService) {
+  constructor(private formBuilder: FormBuilder, private router: Router,
+              private testService: TestService, private jwt: JwtService) {
+    this.roles = jwt.getAuthorities();
+    if (this.roles.length === 0) {
+      router.navigateByUrl('**');
+    }
+    this.roles.every(role => {
+      if (role === 'ROLE_MEMBER') {
+        router.navigateByUrl('**');
+        return;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -38,11 +54,24 @@ export class AddTestComponent implements OnInit {
     this.test = this.formAddTest.value;
     console.log(this.test);
     this.testService.addTest(this.test).subscribe(
-      () => null,
+      mess => {
+        this.messageFormBe = mess;
+        this.message = this.messageFormBe.message;
+      },
       () => null,
       () => {
-        console.log('add ok');
+        this.showMessage('message', this.message);
       }
     );
+  }
+
+  showMessage(id: string, mess: string): void {
+    this.message = mess;
+
+    setTimeout(() => this.hideMessage(id), 5000);
+  }
+
+  hideMessage(id): void {
+    this.message = null;
   }
 }

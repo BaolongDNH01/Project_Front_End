@@ -5,7 +5,7 @@ export class Exam {
   mark: number;
   answer: string;
   times: number;
-  user: number;
+  user: string;
   test: number;
 
   constructor() {

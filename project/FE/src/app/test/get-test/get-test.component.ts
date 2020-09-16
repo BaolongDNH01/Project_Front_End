@@ -8,6 +8,7 @@ import {ExamService} from '../../exam/exam_service/exam.service';
 import {Question} from '../../question/question';
 import {DatePipe} from '@angular/common';
 import {QuestionService} from '../../question/question.service';
+import {JwtService} from "../../login/services/jwt.service";
 
 @Component({
   selector: 'app-get-test',
@@ -29,7 +30,7 @@ export class GetTestComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private testService: TestService, private examService: ExamService,
               private questionService: QuestionService, private router: Router,
-              private activatedRoute: ActivatedRoute, private datePipe: DatePipe) {
+              private activatedRoute: ActivatedRoute, private datePipe: DatePipe, private jwt: JwtService) {
     this.examForm = this.fb.group({
       answer: this.answerArr,
     });
@@ -69,9 +70,7 @@ export class GetTestComponent implements OnInit {
   // tslint:disable-next-line:typedef
   onSubmit() {
     this.exam = Object.assign({}, this.examForm.value);
-    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      this.exam.user = Number(paramMap.get('idUser'));
-    });
+    this.exam.user = this.jwt.getUsername();
     this.exam.examDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
     this.exam.test = this.test.testId;
     this.caculationMark();
@@ -85,8 +84,7 @@ export class GetTestComponent implements OnInit {
         console.log('Create failed!');
       },
     );
-    // this.router.navigateByUrl('');
-
+    // this.router.navigateByUrl();
   }
 
   startTimer() {
@@ -114,6 +112,4 @@ export class GetTestComponent implements OnInit {
     }
     this.exam.mark = this.mark;
   }
-
-
 }

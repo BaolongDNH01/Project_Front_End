@@ -11,17 +11,17 @@ import {QuestionListInTheExamComponent} from '../question-list-in-the-exam/quest
 
 
 const routes: Routes = [
-  {
-    path: 'question',
-    children: [
-      {path: '', component: QuestionBankListComponent},
-      {path: 'question-delete/:id', component: QuestionBankDeleteComponent},
-      {path: 'add-question', component: AddQuestionComponent},
-      {path: 'update-question/:id', component: UpdateQuestionComponent},
-      {path: 'list-question-in-exam', component: QuestionListInTheExamComponent},
-      {path: 'add-question-in-exam/:id', component: AddQuestionInExamComponent},
-    ]
-  }
+  // {
+  //   path: 'question',
+  //   children: [
+  //     {path: '', component: QuestionBankListComponent},
+  //     {path: 'question-delete/:id', component: QuestionBankDeleteComponent},
+  //     {path: 'add-question', component: AddQuestionComponent},
+  //     {path: 'update-question/:id', component: UpdateQuestionComponent},
+  //     {path: 'list-question-in-exam', component: QuestionListInTheExamComponent},
+  //     {path: 'add-question-in-exam/:id', component: AddQuestionInExamComponent},
+  //   ]
+  // }
 ];
 
 @NgModule({

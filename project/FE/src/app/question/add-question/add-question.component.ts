@@ -102,13 +102,11 @@ export class AddQuestionComponent implements OnInit {
     this.testCodeQuestion =  this.formQuestion.value.testCodeList.split(' ');
     for (let i = 0; i < this.testCodeQuestion.length - 1; i++){
       this.testQuestion = this.listAllTest.find(test => test.testCode === this.testCodeQuestion[i] );
-      console.log(this.testQuestion);
       this.listTestQuestion.push(this.testQuestion);
     }
     for (let i = 0; i < this.listTestQuestion.length; i++){
       this.testIdList.push(Number(this.listTestQuestion[i].testId));
     }
-    console.log(this.testIdList);
     this.question = new Question(
       this.formQuestion.value.questionId,
       this.formQuestion.value.question,
@@ -124,16 +122,7 @@ export class AddQuestionComponent implements OnInit {
       next => {},
       error => {},
       () => {
-        this.error = '';
-        this.questionService.getAllQuestion().subscribe(
-          next => {
-            this.listQuestion = next;
-          }, error => {
-            this.listQuestion = [];
-          }, () => {
-            this.router.navigateByUrl('/question');
-          },
-        );
+      this.router.navigateByUrl('/list-question-bank');
       }
     );
   }
@@ -182,7 +171,6 @@ function checkAnswer(formControl: AbstractControl): any {
 }
 function checkRightAnswer(formControl: AbstractControl): any {
   const arrCheck =  formControl.value.answer.split('\n');
-  console.log(arrCheck[0].length);
   // tslint:disable-next-line:prefer-for-of
   for (let i = 0; i < arrCheck.length; i++ ) {
     if (formControl.value.rightAnswer === arrCheck[i]){
