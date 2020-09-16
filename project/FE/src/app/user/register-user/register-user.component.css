@@ -10,16 +10,12 @@ label {
   font-weight: bolder;
 }
 
-#dropdownMenuLink, #closeButton, .dropdown-menu, #delete {
-  background-color: #1979a9;
+ #closeButton, .dropdown-menu, #delete {
+  background-color: #D9EDF7;
   color: white;
 }
 
 .errors {
-  color: white;
-  background-color: red;
+  color: red;
 }
 
-/*tbody {*/
-/*    background-color: #d3d3d3;*/
-/*}*/

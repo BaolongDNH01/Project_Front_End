@@ -8,7 +8,7 @@ import {JwtService} from '../../login/services/jwt.service';
 @Component({
   selector: 'app-question-bank-list',
   templateUrl: './question-bank-list.component.html',
-  styleUrls: ['../../../assets/css/style-table-question.css']
+  styleUrls: ['./question-bank-list.component.css']
 })
 export class QuestionBankListComponent implements OnInit {
   question: Question[];
