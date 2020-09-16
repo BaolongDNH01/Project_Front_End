@@ -17,13 +17,15 @@ export class TestListComponent implements OnInit {
   messageFormBe: Message;
   message: string;
   roles: string[];
+  p: number;
+
   constructor(private testService: TestService, private jwt: JwtService, private router: Router) {
     this.roles = jwt.getAuthorities();
-    if (this.roles.length === 0){
+    if (this.roles.length === 0) {
       router.navigateByUrl('**');
     }
     this.roles.every(role => {
-      if (role === 'ROLE_MEMBER'){
+      if (role === 'ROLE_MEMBER') {
         router.navigateByUrl('**');
         return;
       }
@@ -43,7 +45,7 @@ export class TestListComponent implements OnInit {
   }
 
   selectFile(event): void {
-    if (event.target.value !== '') {
+    if (event.target.files.item(0).name.includes('.txt')) {
       this.testService.upload(event.target.files.item(0)).subscribe(
         mess => this.messageFormBe = mess,
         e => console.log(e),
@@ -52,6 +54,8 @@ export class TestListComponent implements OnInit {
           this.showMessage('message', this.messageFormBe.message);
         }
       );
+    }else {
+      this.showMessage('message', 'can not import ' +  event.target.files.item(0).name);
     }
   }
 
@@ -74,7 +78,7 @@ export class TestListComponent implements OnInit {
           this.listTestDelete = [];
         }
       );
-    }else {
+    } else {
       this.showMessage('message', 'please choose one to delete !');
     }
   }
@@ -82,7 +86,7 @@ export class TestListComponent implements OnInit {
   showMessage(id: string, mess: string): void {
     this.message = mess;
 
-    setTimeout(() => this.hideMessage(id), 5000);
+    setTimeout(() => this.hideMessage(id), 7000);
   }
 
   hideMessage(id): void {

@@ -68,7 +68,7 @@ export class AddTestComponent implements OnInit {
   showMessage(id: string, mess: string): void {
     this.message = mess;
 
-    setTimeout(() => this.hideMessage(id), 5000);
+    setTimeout(() => this.hideMessage(id), 7000);
   }
 
   hideMessage(id): void {
