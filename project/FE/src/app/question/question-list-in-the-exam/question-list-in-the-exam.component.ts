@@ -81,10 +81,6 @@ export class QuestionListInTheExamComponent implements OnInit {
   }
 
   addQuestionList(): void {
-    this.testService.findById(this.idTestUpdating).subscribe(
-      next => {
-        this.idSubjectInTest = next.subjectId;
-      })
       this.router.navigateByUrl('add-question-in-exam/' + this.idTestUpdating);
 
   }
