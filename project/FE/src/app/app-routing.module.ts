@@ -31,12 +31,14 @@ const routes: Routes = [
       {path: 'user-register', component: RegisterUserComponent},
       {path: 'detail-user', component: DetailUserComponent},
       {path: 'test-list/:subjectName', component: PickTestComponent},
+      { path: 'add-question', component: AddQuestionComponent },
+      { path: 'update-question/:id', component: UpdateQuestionComponent },
       {path: 'list', component: ListComponent, children: [
           {path: 'user', component: ListUserComponent},
           {path: 'test', component: TestListComponent},
           {path: 'question', component: QuestionBankListComponent}
         ]},
-      {path: ':subjectName', component: PickTestComponent}
+      {path: ':subjectName', component: PickTestComponent},
     ]},
   {path: 'get-exam/:id', component: GetExamComponent},
   {path: 'getTestById/:id', component: GetTestComponent},
@@ -47,8 +49,6 @@ const routes: Routes = [
   {path: 'add-question-in-exam/:id', component: AddQuestionInExamComponent},
   { path: 'admin', component: AdminComponent },
   { path: 'member', component: MemberComponent },
-  { path: 'add-question', component: AddQuestionComponent },
-  { path: 'update-question/:id', component: UpdateQuestionComponent },
   {path: 'addTest', component: AddTestComponent},
   {path: 'testManage', component: TestListComponent},
   {path: 'update-user/:id', component: UpdateUserComponent},
