@@ -30,6 +30,7 @@ const routes: Routes = [
       {path: '', component: DefaultPageComponent},
       {path: 'user-register', component: RegisterUserComponent},
       {path: 'detail-user', component: DetailUserComponent},
+      {path: 'test-list/:subjectName', component: PickTestComponent},
       {path: 'list', component: ListComponent, children: [
           {path: 'user', component: ListUserComponent},
           {path: 'test', component: TestListComponent},
