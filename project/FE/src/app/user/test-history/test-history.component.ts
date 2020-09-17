@@ -17,7 +17,7 @@ export class TestHistoryComponent implements OnInit {
   username: string;
   examList: Exam[];
   sum: number;
-  avg: number;
+  avg: string;
   currentPage = 1;
 
   constructor(private jwt: JwtService, private examService: ExamService,
@@ -35,7 +35,7 @@ export class TestHistoryComponent implements OnInit {
     }, error => {
     }, () => {
       this.sum = this.userService.getTotalPoint(this.user);
-      this.avg = this.userService.getAverage(this.user);
+      this.avg = this.userService.getAverage(this.user).toFixed(2);
     });
   }
 
