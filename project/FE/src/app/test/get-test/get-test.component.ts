@@ -78,12 +78,11 @@ export class GetTestComponent implements OnInit {
     console.log(this.exam);
     this.examService.save(this.exam).subscribe(
       next => {
-        console.log('Create process!');
       }, error => {
-        console.log('Create failed!');
-      },
-    );
-    this.router.navigateByUrl('history');
+
+      }, () => {
+        this.router.navigateByUrl('history');
+      });
   }
 
   startTimer() {
