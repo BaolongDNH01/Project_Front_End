@@ -69,7 +69,7 @@ export class QuestionBankDeleteComponent implements OnInit {
         this.question = next;
       }
     );
-    this.router.navigateByUrl('/list-question-bank');
+    this.router.navigateByUrl('/list/question');
     alert('Đã xóa câu hỏi : ' + this.question.question);
   }
 }
