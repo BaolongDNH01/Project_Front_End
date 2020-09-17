@@ -122,7 +122,7 @@ export class AddQuestionComponent implements OnInit {
       next => {},
       error => {},
       () => {
-      this.router.navigateByUrl('/list-question-bank');
+      this.router.navigateByUrl('/list/question');
       }
     );
   }

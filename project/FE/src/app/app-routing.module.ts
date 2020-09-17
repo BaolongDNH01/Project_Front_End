@@ -32,6 +32,7 @@ const routes: Routes = [
       {path: 'detail-user', component: DetailUserComponent},
       {path: 'test-list/:subjectName', component: PickTestComponent},
       { path: 'add-question', component: AddQuestionComponent },
+      { path: 'update-question/:id', component: UpdateQuestionComponent },
       {path: 'list', component: ListComponent, children: [
           {path: 'user', component: ListUserComponent},
           {path: 'test', component: TestListComponent},
