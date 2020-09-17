@@ -1,4 +1,3 @@
-
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {QuestionBankDeleteComponent} from './question/question-bank-delete/question-bank-delete.component';
@@ -6,8 +5,8 @@ import {GetExamComponent} from './exam/get-exam/get-exam.component';
 import {GetTestComponent} from './test/get-test/get-test.component';
 import {RegisterUserComponent} from './user/register-user/register-user.component';
 import {ListUserComponent} from './user/list-user/list-user.component';
-import { AdminComponent } from './login/components/admin/admin.component';
-import { MemberComponent } from './login/components/member/member.component';
+import {AdminComponent} from './login/components/admin/admin.component';
+import {MemberComponent} from './login/components/member/member.component';
 import {UpdateUserComponent} from './user/update-user/update-user.component';
 import {TestHistoryComponent} from './user/test-history/test-history.component';
 import {UpdatePasswordComponent} from './user/update-password/update-password.component';
@@ -26,7 +25,8 @@ import {PickTestComponent} from './exam/pick-test/pick-test.component';
 
 
 const routes: Routes = [
-  {path: '', children: [
+  {
+    path: '', children: [
       {path: '', component: DefaultPageComponent},
       {path: 'user-register', component: RegisterUserComponent},
       {path: 'detail-user', component: DetailUserComponent},
