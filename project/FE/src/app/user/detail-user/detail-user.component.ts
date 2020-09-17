@@ -25,6 +25,7 @@ export class DetailUserComponent implements OnInit {
   uploadPercent;
   downloadURL: Observable<string>;
   avatar: Observable<any[]>;
+  private myAvatar: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -62,11 +63,13 @@ export class DetailUserComponent implements OnInit {
   }
 
   uploadFile() {
-    const myAvatar = this.angularFirestore.collection('test').ref.doc();
-    console.log(myAvatar.id);
+    if (!(this.user.address === 'FACEBOOK') && !(this.user.address === 'GOOGLE')) {
+       this.myAvatar = this.angularFirestore.collection('test').ref.doc();
+       console.log(this.myAvatar.id);
+    }
 
     const file = this.selectedFile;
-    const filePath = `${myAvatar.id}`;
+    const filePath = `${this.myAvatar.id}`;
     const fileRef = this.angularFireStorage.ref(filePath);
     const task = this.angularFireStorage.upload(filePath, file);
 
@@ -77,10 +80,10 @@ export class DetailUserComponent implements OnInit {
         fileRef.getDownloadURL().toPromise().then((url) => {
           this.downloadURL = url;
 
-          myAvatar.set({
+          this.myAvatar.set({
             category: this.uploadForm.value.categoria,
             image: this.downloadURL,
-            myId: myAvatar.id
+            myId: this.myAvatar.id
           });
 
           console.log(this.downloadURL);
