@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {QuestionService} from '../question.service';
 import {QuestionInExam} from '../question-in-exam';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 import {Exam} from '../../exam/exam';
 import {ExamService} from '../../exam/exam_service/exam.service';
@@ -34,7 +34,8 @@ export class QuestionListInTheExamComponent implements OnInit {
     private router: Router,
     private examService: ExamService,
     private testService: TestService,
-    private jwt: JwtService
+    private jwt: JwtService,
+    private activatedRoute: ActivatedRoute
   ) {
     this.roles = jwt.getAuthorities();
     if (this.roles.length === 0){
@@ -49,7 +50,10 @@ export class QuestionListInTheExamComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.findTestById(4);
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.findTestById(parseInt(paramMap.get('id')));
+    });
+
   }
 
   findTestById(id: number) {
@@ -60,7 +64,7 @@ export class QuestionListInTheExamComponent implements OnInit {
         console.log(this.testTitle);
         console.log(next.questions);
         this.findQuestionInTest(next.questions);
-        this.idTestUpdating = next.testId
+        this.idTestUpdating = next.testId;
       }
     );
   }

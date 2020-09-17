@@ -40,8 +40,16 @@ export class TestListComponent implements OnInit {
     this.testService.getAllTest().subscribe(
       list => {
         this.listTest = list;
-      }
+      },
+      () => null,
+      () => this.checkListEmpty()
     );
+  }
+
+  checkListEmpty(): void {
+    if (this.listTest.length === 0) {
+      this.showMessage('message', 'table have no data');
+    }
   }
 
   selectFile(event): void {
@@ -54,8 +62,8 @@ export class TestListComponent implements OnInit {
           this.showMessage('message', this.messageFormBe.message);
         }
       );
-    }else {
-      this.showMessage('message', 'can not import ' +  event.target.files.item(0).name);
+    } else {
+      this.showMessage('message', 'can not import ' + event.target.files.item(0).name);
     }
   }
 
@@ -91,5 +99,9 @@ export class TestListComponent implements OnInit {
 
   hideMessage(id): void {
     this.message = null;
+  }
+
+  goView(testId: number) {
+    this.router.navigateByUrl('list-question-in-exam/' + testId).then();
   }
 }
