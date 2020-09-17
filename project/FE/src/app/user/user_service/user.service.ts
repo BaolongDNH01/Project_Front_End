@@ -10,8 +10,8 @@ import {Exam} from '../../exam/exam';
   providedIn: 'root'
 })
 export class UserService {
-  REGISTER_USER_API_URL = 'http://localhost:8080/register';
-  API_URL = 'http://localhost:8080';
+  private REGISTER_USER_API_URL = 'http://localhost:8080/register';
+  private API_URL = 'http://localhost:8080';
 
   private ACCESS_ADMIN_API = 'http://localhost:8080/admin';
   private ACCESS_MEMBER_API = 'http://localhost:8080/member';
@@ -42,8 +42,8 @@ export class UserService {
   }
 
 
-  getUserById(id: number): Observable<User> {
-    return this.httpClient.get<User>(`${this.API_URL}/detail-user/${id}`);
+  getUserByUsername(username: string): Observable<User> {
+    return this.httpClient.get<User>(`${this.API_URL}/getUserByUsername/${username}`);
   }
 
   changePassword(userId: number, password: Password): Observable<User> {
@@ -53,8 +53,8 @@ export class UserService {
     );
   }
 
-  editUser(user: User): Observable<User> {
-    return this.httpClient.patch<User>(`${this.API_URL}/${user.id}`, user);
+  editUser(user: User): Observable<HttpResponse<any>> {
+    return this.httpClient.patch<HttpResponse<any>>(this.API_URL + '/update-user/' + user.id, user, {observe: 'response'});
   }
 
   accessAdminPage(): Observable<string> {

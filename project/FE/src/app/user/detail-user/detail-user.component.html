@@ -1,14 +1,14 @@
-<div class="container w-75 mt-5">
+<div class="col-sm-12">
     <div class="title card-header">
       <span>Personal Information</span>
     </div>
     <div class="form-row pr-5 pt-5">
       <div class="col-md-4 form-group text-center pl-4">
         <p>Avatar</p>
-          <div class="col-lg-2 col-6" *ngFor="let ava of avatar | async">
+          <div class="col-lg-2 col-6">
             <a class='btn btn-upload' [href]="downloadURL">
-              {{ downloadURL }}
-              <img src="{{ava.imagenes}}" alt="avatar" style="width: 200px; height: 230px">
+<!--              {{ downloadURL }}-->
+<!--              <img src="{{ava.imagenes}}" alt="avatar" style="width: 200px; height: 230px">-->
             </a>
             <input type="file" multiple (change)="detectFiles($event)">
             <button (click)="uploadFile()" class="btn btn-primary">Update</button>
@@ -43,7 +43,7 @@
       </div>
     <div class="form-row ml-5 pl-4">
       <div class="col-md-1 form-group pl-5 ml-3">
-        <button type="button" class="btn btn-outline-secondary">Update</button>
+        <button type="button" (click)="saveAvatar()" class="btn btn-outline-secondary">Update</button>
       </div>
       <div class="col-md-10 ml-5 pt-2">
         <span class='label label-info text-info' id="upload-file-info"></span>
@@ -51,7 +51,7 @@
     </div>
     <div class="form-row">
       <div class="col-md-12 form-group text-center">
-        <a [routerLink]="['update-user/:id']" class="btn btn-info">Edit</a>
+        <a [routerLink]="['/update-user/:id']" class="btn btn-info">Edit</a>
         <a [routerLink]="['update-user/:id']" class="btn btn-info">History</a>
       </div>
     </div>

@@ -175,7 +175,7 @@ export class UpdateQuestionComponent implements OnInit {
           }, error => {
             this.listQuestion = new Array();
           }, () => {
-            this.router.navigateByUrl('/list-question-bank');
+            this.router.navigateByUrl('/list/question');
           }
         );
       }

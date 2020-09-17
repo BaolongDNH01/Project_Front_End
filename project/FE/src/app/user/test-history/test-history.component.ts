@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Exam} from '../../exam/exam';
 import {User} from '../user_model/User';
-import {JwtService} from "../../login/services/jwt.service";
-import {ExamService} from "../../exam/exam_service/exam.service";
+import {JwtService} from '../../login/services/jwt.service';
+import {ExamService} from '../../exam/exam_service/exam.service';
+import {UserService} from '../user_service/user.service';
 
 
 @Component({
@@ -13,20 +14,29 @@ import {ExamService} from "../../exam/exam_service/exam.service";
 export class TestHistoryComponent implements OnInit {
 
   user: User;
+  username: string;
   examList: Exam[];
-  // sum: number;
-  // avg: number;
+  sum: number;
+  avg: string;
   currentPage = 1;
 
-  constructor(private jwt: JwtService, private examService: ExamService) {
+  constructor(private jwt: JwtService, private examService: ExamService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
     this.examService.findExamByUserName(this.jwt.getUsername()).subscribe(
       next => {
         this.examList = next;
-        console.log(next);
       });
+    this.username = this.jwt.getUsername();
+    this.userService.getUserByUsername(this.username).subscribe(data => {
+      this.user = data;
+    }, error => {
+    }, () => {
+      this.sum = this.userService.getTotalPoint(this.user);
+      this.avg = this.userService.getAverage(this.user).toFixed(2);
+    });
   }
 
 

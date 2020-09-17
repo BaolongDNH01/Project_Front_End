@@ -5,8 +5,31 @@
 }
 
 p {
-  font-size: 32px;
-  font-weight: bolder;
+  font-size: 1.15em;
   font-family: Arial, serif;
   color: #1979a9;
+}
+
+.subject-title {
+  margin: 0;
+  padding: 0;
+}
+
+.item-subject {
+  transition: all .3s;
+}
+
+.item-subject:hover {
+  transform: scale(1.1);
+  box-shadow: 12px 8px 10px grey;
+  
+}
+
+h4 {
+  color: teal;
+  font-weight: bold;
+}
+
+.cus {
+  margin-left: 4%;
 }
