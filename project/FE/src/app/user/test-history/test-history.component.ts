@@ -14,7 +14,7 @@ import {UserService} from '../user_service/user.service';
 export class TestHistoryComponent implements OnInit {
 
   user: User;
-  userId: number;
+  username: string;
   examList: Exam[];
   sum: number;
   avg: number;
@@ -29,8 +29,8 @@ export class TestHistoryComponent implements OnInit {
       next => {
         this.examList = next;
       });
-    this.userId = this.jwt.getUser().id;
-    this.userService.getUserById(this.userId).subscribe(data => {
+    this.username = this.jwt.getUsername();
+    this.userService.getUserByUsername(this.username).subscribe(data => {
       this.user = data;
     }, error => {
     }, () => {

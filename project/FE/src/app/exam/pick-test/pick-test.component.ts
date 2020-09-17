@@ -15,6 +15,7 @@ export class PickTestComponent implements OnInit {
   constructor(private testService: TestService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const subjectName = paramMap.get('subjectName');
+      console.log(subjectName);
       this.testService.getTestBySubject(subjectName).subscribe((next) => {
         this.listTest = next;
       }, error => console.log('empty'));
