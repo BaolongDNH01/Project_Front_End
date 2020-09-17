@@ -62,4 +62,7 @@ export class TestService {
     return this.httpClient.get<Test>(this.URL + '/getTestById/' + testId);
   }
 
+  getTestBySubject(subjectName: string): Observable<Test[]> {
+    return this.httpClient.get<Test[]>(this.URL + '/getAllTestOfSubject/' + subjectName);
+  }
 }

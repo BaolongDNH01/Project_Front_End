@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user_service/user.service';
 import {User} from '../user_model/User';
-import {JwtService} from "../../login/services/jwt.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {AngularFireStorage} from "@angular/fire/storage";
-import {finalize} from "rxjs/operators";
-import {AuthService} from "../../login/services/auth.service";
-import {Router} from "@angular/router";
-import {AngularFirestore} from "@angular/fire/firestore";
-import {Observable} from "rxjs";
-import {FirebaseService} from "../../firebase.service";
+import {JwtService} from '../../login/services/jwt.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {finalize} from 'rxjs/operators';
+import {AuthService} from '../../login/services/auth.service';
+import {Router} from '@angular/router';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
+import {FirebaseService} from '../../firebase.service';
 
 @Component({
   selector: 'app-detail-user',
@@ -20,7 +20,7 @@ export class DetailUserComponent implements OnInit {
 
   uploadForm: FormGroup;
   user: User;
-  userId: number;
+  username: string;
   selectedFile: File = null;
   uploadPercent;
   downloadURL: Observable<string>;
@@ -34,21 +34,24 @@ export class DetailUserComponent implements OnInit {
     private angularFirestore: AngularFirestore,
     private authService: AuthService,
     private router: Router,
-    private fs: FirebaseService ) {
-    this.uploadForm = formBuilder.group ({
-    categoria: ['myCategoria'],
-    }
-    )}
+    private fs: FirebaseService) {
+    this.getUser();
+    this.uploadForm = formBuilder.group({
+        category: ['myCategoria'],
+      }
+    );
+  }
 
 
   ngOnInit(): void {
     this.getUser();
     this.uploadAvatar();
+    console.log(this.avatar);
   }
 
   getUser() {
-    this.userId = this.jwtService.getUser().id;
-    this.userService.getUserById(this.userId).subscribe(data => {
+    this.username = this.jwtService.getUsername();
+    this.userService.getUserByUsername(this.username).subscribe((data) => {
       this.user = data;
     });
   }
@@ -60,9 +63,9 @@ export class DetailUserComponent implements OnInit {
 
   uploadFile() {
     const myAvatar = this.angularFirestore.collection('test').ref.doc();
-    console.log(myAvatar.id)
+    console.log(myAvatar.id);
 
-    const file = this.selectedFile
+    const file = this.selectedFile;
     const filePath = `${myAvatar.id}`;
     const fileRef = this.angularFireStorage.ref(filePath);
     const task = this.angularFireStorage.upload(filePath, file);
@@ -71,20 +74,36 @@ export class DetailUserComponent implements OnInit {
 
     task.snapshotChanges().pipe(
       finalize(() => {
-        fileRef.getDownloadURL().toPromise().then( (url) => {
+        fileRef.getDownloadURL().toPromise().then((url) => {
           this.downloadURL = url;
 
           myAvatar.set({
-            categoria: this.uploadForm.value.categoria,
-            imagenes : this.downloadURL,
-            myId : myAvatar.id
-          })
+            category: this.uploadForm.value.categoria,
+            image: this.downloadURL,
+            myId: myAvatar.id
+          });
 
-          console.log( this.downloadURL )
-        }).catch(err=> { console.log(err) });
+          console.log(this.downloadURL);
+        }).catch(err => {
+          console.log(err);
+        });
       })
     )
       .subscribe();
+  }
+
+  saveAvatar() {
+    // @ts-ignore
+    this.user.avatar = this.downloadURL;
+    this.jwtService.saveAvatar(this.user.avatar);
+    console.log(this.user);
+    this.userService.editUser(this.user).subscribe(next => {
+      this.router.navigateByUrl('').then(() => {
+        window.location.reload();
+      });
+    }, error => {
+      console.error();
+    });
   }
 
   uploadAvatar() {

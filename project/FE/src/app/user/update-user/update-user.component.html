@@ -1,5 +1,4 @@
-<div class="container mt-5" style="width: 800px">
-  <form class="card info-form m-5" [formGroup]="infoEditForm" (ngSubmit)="onSubmit()">
+ <form class="card info-form m-5" [formGroup]="infoEditForm" (ngSubmit)="onSubmit()">
     <div class="card-header title">
       <span>Edit Personal Information</span>
     </div>
@@ -23,7 +22,8 @@
         <div class="col-md-4 font-weight-bolder">Email</div>
         <div class="col-md-7">
           <input class="form-control" type="email" formControlName="email" required>
-          <p *ngIf="infoEditForm.get('email').hasError('required') && infoEditForm.get('email').touched">
+          <p *ngIf="infoEditForm.get('email').hasError('required') && infoEditForm.get('email').touched"
+          class="text-danger">
             Enter your information!
           </p>
           <p *ngIf="infoEditForm.get('email').hasError('pattern')">
@@ -64,10 +64,10 @@
       </div>
       <div class="row mb-1 mt-4">
         <div class="col-md-12 text-center">
-          <button class="btn btn-light border-secondary">Submit</button>
-          <a routerLink="update-password/:id" class="btn btn-info">Edit Password</a>
+          <button class="btn btn-light border-secondary mr-1">Submit</button>
+          <a routerLink="update-password/:id" class="btn btn-info ml-1">Edit Password</a>
         </div>
       </div>
     </div>
   </form>
-</div>
+

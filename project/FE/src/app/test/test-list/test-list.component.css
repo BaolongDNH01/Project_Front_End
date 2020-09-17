@@ -18,8 +18,7 @@ div.header{
 thead.header{
   background-color: #DFF0D8;
 }
-
-button.import{
+#import{
   padding: 0;
   background-image: url("src/assets/image/import.PNG");
   background-size: 120px;
@@ -27,6 +26,12 @@ button.import{
   width: 140px;
   height: 40px;
 }
+
+button, #addNew {
+  background-color: #D9EDF7;
+}
+
+
 
 
 .message-bg{

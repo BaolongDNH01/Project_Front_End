@@ -21,18 +21,22 @@ import {AddQuestionInExamComponent} from './question/add-question-in-exam/add-qu
 import {QuestionBankListComponent} from './question/question-bank-list/question-bank-list.component';
 import {QuestionListInTheExamComponent} from './question/question-list-in-the-exam/question-list-in-the-exam.component';
 import {DefaultPageComponent} from './default-page/default-page.component';
-import {ListComponent} from "./list/list.component";
+import {ListComponent} from './list/list.component';
+import {PickTestComponent} from './exam/pick-test/pick-test.component';
 
 
 const routes: Routes = [
   {path: '', children: [
       {path: '', component: DefaultPageComponent},
       {path: 'user-register', component: RegisterUserComponent},
+      {path: 'detail-user', component: DetailUserComponent},
+      {path: 'test-list/:subjectName', component: PickTestComponent},
       {path: 'list', component: ListComponent, children: [
           {path: 'user', component: ListUserComponent},
           {path: 'test', component: TestListComponent},
           {path: 'question', component: QuestionBankListComponent}
-        ]}
+        ]},
+      {path: ':subjectName', component: PickTestComponent}
     ]},
   {path: 'get-exam/:id', component: GetExamComponent},
   {path: 'getTestById/:id', component: GetTestComponent},
@@ -51,8 +55,7 @@ const routes: Routes = [
   {path: 'history', component: TestHistoryComponent},
   {path: 'update-password/:id', component: UpdatePasswordComponent},
   {path: 'update-avatar/:id', component: UpdatePasswordComponent},
-  {path: 'detail-user', component: DetailUserComponent},
-  { path: '**', component: ErrorPageComponent },
+  { path: '**', component: ErrorPageComponent }
 ];
 
 @NgModule({

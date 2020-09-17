@@ -1,0 +1,29 @@
+<div class="col-md-12 p-0 mt-2">
+  <table class="table table-bordered table-responsive-md text-center">
+    <thead class="header">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">TestCode</th>
+      <th scope="col">NameTest</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Grade</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let test of listTest | paginate: {itemsPerPage: 5, currentPage: p}; let i = index">
+      <th scope="col">{{i+1}}</th>
+      <td>{{test.testCode}}</td>
+      <td>{{test.testName}}</td>
+      <td>{{test.subjectName}}</td>
+      <td>{{test.grade}}</td>
+      <td>
+        <a [routerLink]="['/getTestById/' + test.testId]" class="text-decoration-none">Pick</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="col-sm-12 justify-content-end d-flex">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

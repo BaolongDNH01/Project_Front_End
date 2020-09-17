@@ -8,7 +8,7 @@ import {JwtService} from '../../login/services/jwt.service';
 @Component({
   selector: 'app-question-bank-list',
   templateUrl: './question-bank-list.component.html',
-  styleUrls: ['../../../assets/css/style-table-question.css']
+  styleUrls: ['./question-bank-list.component.css']
 })
 export class QuestionBankListComponent implements OnInit {
   question: Question[];
@@ -21,11 +21,11 @@ export class QuestionBankListComponent implements OnInit {
     private jwt: JwtService
   ) {
     this.roles = jwt.getAuthorities();
-    if (this.roles.length === 0){
+    if (this.roles.length === 0) {
       router.navigateByUrl('**');
     }
     this.roles.every(role => {
-      if (role === 'ROLE_MEMBER'){
+      if (role === 'ROLE_MEMBER') {
         router.navigateByUrl('**');
         return;
       }
@@ -46,11 +46,14 @@ export class QuestionBankListComponent implements OnInit {
   }
 
   selectFile(event): void {
-    if(event.target.files.item(0).name.includes('.txt')){
-      console.log(event);
+    if (event.target.files.item(0).name.includes('.txt')) {
+      if (event.target.files.item(0).size == 0) {
+        alert('File Empty');
+        return;
+      }
       this.questionService.upload(event.target.files.item(0)).subscribe();
       this.router.navigateByUrl('/question');
-    }else {
+    } else {
       alert('The file is not in the correct format!');
     }
 

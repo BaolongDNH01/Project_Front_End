@@ -13,6 +13,7 @@
         <div class="card">
           <div class="card-body p-2">User:
             <div class="username-card">{{ username }} | ({{ roles }})</div>
+<!--            {{avatar}}-->
             <img src="{{ avatar }}" class="my-3 rounded shadow avt" alt="avatar.jpg">
           </div>
         </div>
@@ -89,7 +90,7 @@
             </label>
           </div>
           <button type="submit" class="btn rounded mr-3 mt-3" [disabled]="loginForm.invalid">Sign in</button>
-          <button routerLink="/user-register" class="btn rounded mt-3">Register</button>
+          <button routerLink="user-register" class="btn rounded mt-3">Register</button>
           <div *ngIf="loginForm.dirty && isLogInFailed" class="alert alert-danger p-1 mt-2">
             Account doesn't exist !
           </div>

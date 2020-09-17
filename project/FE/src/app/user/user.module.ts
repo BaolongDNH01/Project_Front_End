@@ -11,6 +11,7 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { TestHistoryComponent } from './test-history/test-history.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {RouterModule} from '@angular/router';
+import {FirebaseService} from '../firebase.service';
 
 
 
@@ -32,7 +33,7 @@ import {RouterModule} from '@angular/router';
     exports: [
         StatisticalUserComponent
     ],
-    providers: [UserService]
+    providers: [UserService, FirebaseService]
 
 })
 export class UserModule {
