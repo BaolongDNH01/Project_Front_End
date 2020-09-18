@@ -107,6 +107,6 @@ export class QuestionListInTheExamComponent implements OnInit {
   }
 
   close(): void {
-    this.router.navigateByUrl('/')
+    this.router.navigateByUrl('/list/test');
   }
 }

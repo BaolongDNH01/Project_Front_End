@@ -41,7 +41,7 @@ const routes: Routes = [
       {path: 'get-exam/:id', component: GetExamComponent},
       {path: 'getTestById/:id', component: GetTestComponent},
       {path: 'delete-question-bank/:id', component: QuestionBankDeleteComponent},
-      {path: 'list-question-in-exam', component: QuestionListInTheExamComponent},
+      {path: 'list-question-in-exam/:id', component: QuestionListInTheExamComponent},
       {path: 'add-question-in-exam/:id', component: AddQuestionInExamComponent},
       { path: 'admin', component: AdminComponent },
       { path: 'member', component: MemberComponent },
