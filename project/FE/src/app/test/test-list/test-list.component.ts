@@ -102,6 +102,6 @@ export class TestListComponent implements OnInit {
   }
 
   goView(testId: number) {
-    this.router.navigateByUrl('list-question-in-exam/' + testId).then();
+    this.router.navigateByUrl('/list-question-in-exam/' + testId).then();
   }
 }
