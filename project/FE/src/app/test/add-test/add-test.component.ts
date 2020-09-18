@@ -52,7 +52,6 @@ export class AddTestComponent implements OnInit {
 
   addTest(): void {
     this.test = this.formAddTest.value;
-    console.log(this.test);
     this.testService.addTest(this.test).subscribe(
       mess => {
         this.messageFormBe = mess;
@@ -60,7 +59,7 @@ export class AddTestComponent implements OnInit {
       },
       () => null,
       () => {
-        this.showMessage('message', this.message);
+        this.showMessage('message', this.message + ' Test name: ' + this.test.testName);
       }
     );
   }
