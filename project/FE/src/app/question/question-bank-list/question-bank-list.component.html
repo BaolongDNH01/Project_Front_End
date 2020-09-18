@@ -1,4 +1,5 @@
  <div class="col-md-12 mt-2">
+   <div *ngIf="questionShow.length === 0" class="text-danger">table have no data</div>
         <table class="table table-bordered mt-lg-2 text-center">
           <thead>
           <tr class="bg-title-table">
@@ -7,10 +8,11 @@
             <th scope="col">Question</th>
             <th scope="col">The answer</th>
             <th scope="col">Correct answer</th>
+            <th scope="col">Subject</th>
           </tr>
           </thead>
           <tbody class="bg-table ">
-          <tr *ngFor="let questionList of question">
+          <tr *ngFor="let questionList of questionShow">
             <th style="font-weight: normal">{{questionList.no}}</th>
             <td>{{questionList.questionId}}</td>
             <td class="text-left">{{questionList.question}}</td>
@@ -23,6 +25,7 @@
               </div>
             </td>
             <td class="text-left">{{questionList.rightAnswer}}</td>
+            <td class="text-left" >{{questionList.subjectName}}</td>
             <td>
               <a [routerLink]="['/delete-question-bank', questionList.questionId]">Del</a><br><br>
               <a [routerLink]="['/update-question/' + questionList.questionId]">Edit</a>
@@ -35,6 +38,14 @@
 
           <div class="row ">
             <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{subjectNameDr}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a *ngFor="let subject of subjectList" class="dropdown-item" (click)="find(subject.subjectName)">{{subject.subjectName}}</a>
+                </div>
+              </div>
             </div>
             <div class="col-xs-12 col-sm-2 col-md-2">
               <button [routerLink]="['/add-question']" data-toggle="collapse" type="button"
