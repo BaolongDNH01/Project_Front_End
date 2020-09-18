@@ -9,6 +9,8 @@ export class Question {
   rightAnswer: string;
   testId: number[];
   subjectId;
+  subjectName;
+
 
   constructor(questionId: string, question: string, answerA: string, answerB: string, answerC: string, answerD: string, rightAnswer: string, testId: number[], subjectId) {
     this.questionId = questionId;

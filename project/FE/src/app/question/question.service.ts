@@ -4,7 +4,7 @@ import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Test} from '../test/test';
 import {QuestionInExam} from './question-in-exam';
-import {Subject} from "./subject";
+import {Subject} from './subject';
 import {JwtResponse} from '../login/models/jwt-response';
 import {JwtService} from '../login/services/jwt.service';
 
@@ -28,7 +28,7 @@ export class QuestionService {
     headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     let ids: number[] = [];
     ids.push(idTest);
-    ids.push(idSubject)
+    ids.push(idSubject);
     return this.httpClient.get<Question[]>(this.API_URL + '/getQuestionsToAddToTest/' + ids);
   }
 
@@ -97,10 +97,19 @@ export class QuestionService {
     return this.httpClient.post<HttpEvent<any>>(this.uploadFile, formData);
   }
 
-  getAllSubject(): Observable<Subject[]>{
+  getAllSubject(): Observable<Subject[]> {
     const headerAuth = new HttpHeaders();
     headerAuth.append('admin', 'Bearer' + this.jwt.getToken());
     return this.httpClient.get<Subject[]>(this.API_URL + '/getAllSubject');
   }
+
+  findQuestionBySubject(id: number): Observable<Question[]> {
+    return this.httpClient.post<Question[]>(this.API_URL + '/findQuestionBySubject', id);
+  }
+
+  findBySubject(id: number): Observable<Subject>{
+    return this.httpClient.get<Subject>(this.API_URL + 'getSubjectById/' + id);
+  }
+
 }
 
