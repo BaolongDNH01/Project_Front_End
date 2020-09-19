@@ -18,8 +18,8 @@ export class ExamService {
   constructor(private httpClient: HttpClient) {
   }
 
-  findNameUserPointDesc(): Observable<any> {
-    return this.httpClient.get<any>(this.URL + '/get-user-point');
+  findUserTopPositive(): Observable<any> {
+    return this.httpClient.get<any>(this.URL + '/get-user-top-positive');
   }
 
   findById(examId: number): Observable<Exam> {
@@ -32,6 +32,9 @@ export class ExamService {
 
   findExamByUserName(username: string): Observable<any> {
     return this.httpClient.get<Exam>(`${this.URL}/history/${username}`);
+  }
+  findTopUserExamSubject(subjectId: number): Observable<any> {
+    return this.httpClient.get<any>(this.URL + '/top-user-exam-subject/' + subjectId);
   }
 
 }
