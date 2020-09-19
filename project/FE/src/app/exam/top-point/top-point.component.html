@@ -1,6 +1,11 @@
 
           <div class="card-header p-2 blue">
-            <i class="fa fa-thumbs-o-up  " aria-hidden="true"></i> Top Ranking
+            <i class="fa fa-thumbs-o-up  " aria-hidden="true"> </i>
+            <select (change)="topUser($event.target.value)" name="subject" class="  blue not-border" style="border: none">
+              <option value="0">Top active users</option>
+              <option *ngFor="let subject of subjectList" value="{{subject.subjectId}}">Top user best {{subject.subjectName}}</option>
+            </select>
+
           </div>
           <div class="card-body body-background top-ranking">
             <ul class="list-group">
