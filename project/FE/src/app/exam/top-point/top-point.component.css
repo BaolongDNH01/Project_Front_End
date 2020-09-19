@@ -1,3 +1,5 @@
+
+.not-border:focus{border-color:#80bdff;outline:0;box-shadow:0 0 0 0 rgba(0,123,255,.25)}
 .blue {
   background: #d9edf7;
   color: #6aa9cd;
