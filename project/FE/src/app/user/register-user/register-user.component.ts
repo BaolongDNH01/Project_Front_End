@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../user_service/user.service';
 import {Router} from '@angular/router';
 import {User} from '../user_model/User';
@@ -40,12 +40,6 @@ export class RegisterUserComponent implements OnInit {
       }
     );
   }
-
-  // tslint:disable-next-line:typedef
-  // ValidatePassword(abstract: AbstractControl) {
-  //   const v = abstract.value;
-  //   return (v.password !== v.confirm_password) ? {passwordnotmatch: true} : null;
-  // }
 
   ngOnInit(): void {
     console.log(this.registerForm.value.user_password);

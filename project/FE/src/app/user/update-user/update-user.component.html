@@ -6,7 +6,7 @@
       <div class="row mb-3">
         <div class="col-md-4 font-weight-bolder">Full name</div>
         <div class="col-md-7">
-          <input class="form-control" type="text" formControlName="name" required>
+          <input class="form-control" type="text" formControlName="fullName" required>
           <p *ngIf="infoEditForm.controls.name.errors?.required && infoEditForm.controls.name.touched"
              class="text-danger">
             Enter your information!
