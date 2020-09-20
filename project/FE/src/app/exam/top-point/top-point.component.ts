@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Pipe} from '@angular/core';
 import {ExamService} from '../exam_service/exam.service';
+import {QuestionService} from '../../question/question.service';
+import {Subject} from '../../question/subject';
 
 @Component({
   selector: 'app-top-point',
@@ -8,19 +10,48 @@ import {ExamService} from '../exam_service/exam.service';
 })
 export class TopPointComponent implements OnInit {
   listUserPoint = new Array();
-  constructor(private examService: ExamService) {
-    examService.findNameUserPointDesc().subscribe(
+  subjectList: Subject[];
+  constructor(private examService: ExamService, private questionService: QuestionService) {
+    questionService.getAllSubject().subscribe(
       next => {
-        this.listUserPoint = next;
+        this.subjectList = next;
       }, error => {
-        this.listUserPoint = new Array();
+        this.subjectList = new Array();
+      }, () => {
+        examService.findUserTopPositive().subscribe(
+          next => {
+            this.listUserPoint = next;
+          }, error => {
+            this.listUserPoint = new Array();
+          }
+        );
       }
     );
   }
 
   ngOnInit(): void {
   }
-
+  topUser(subjectId: any) {
+    if (subjectId === '0') {
+      this.examService.findUserTopPositive().subscribe(
+        next => {
+          this.listUserPoint = next;
+        }, error => {
+          this.listUserPoint = new Array();
+        }
+      );
+    }
+    else {
+      this.examService.findTopUserExamSubject(subjectId).subscribe(
+        next => {
+          this.listUserPoint = next;
+        }, error => {
+          this.listUserPoint = new Array();
+        }, () => {
+        }
+      );
+    }
+  }
   getBackground(index: number): string{
     switch (index) {
       case 0: {

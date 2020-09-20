@@ -44,11 +44,65 @@
       <div class="row mg-form">
         <div class="col-md-1"></div>
         <div class="col-md-3">Answer</div>
-        <div class="col-md-6">
-          <textarea rows="4" class="form-control" type="text" formControlName="answer"></textarea>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-9">
+              <textarea rows="1" class="form-control w-100" type="text" formControlName="answerA" aria-label="Recipient's username"
+                        aria-describedby="button-addon2">></textarea>
+            </div>
+            <div *ngIf="numAnswer < 4"  class="col-md-3 ">
+              <button style="margin-left: -30px" class="btn btn-outline-secondary" (click)='clickOneMore()'>one more</button></div>
+          </div>
           <!--error line-->
           <div class="list-inline mt-2 ml-5 text-danger"
-              *ngIf="formQuestion.get('answerAndRight').get('answer').hasError('check') && formQuestion.get('answerAndRight').get('answer').touched">
+               *ngIf="formQuestion.get('answerAndRight').get('answerA').hasError('required') && formQuestion.get('answerAndRight').get('answerA').touched">
+            * Enter answer please!
+          </div>
+        </div>
+      </div>
+      <div class="row mg-form">
+        <div class="col-md-1"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <textarea rows="1" class="form-control" type="text" formControlName="answerB"></textarea>
+          <div class="list-inline mt-2 ml-5 text-danger"
+               *ngIf="formQuestion.get('answerAndRight').get('answerB').hasError('required') && formQuestion.get('answerAndRight').get('answerB').touched">
+            * Enter answer please!
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="numAnswer > 2" class="row mg-form">
+        <div class="col-md-1"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-9">
+              <textarea rows="1" class="form-control w-100" type="text" formControlName="answerC" aria-label="Recipient's username"
+                        aria-describedby="button-addon2"></textarea>
+            </div>
+            <div *ngIf="numAnswer === 3" class="col-md-2"><button style="margin-left: -30px" class="btn btn-outline-secondary"(click)='clickDelete()'>delete</button></div>
+          </div>
+          <div class="list-inline mt-2 ml-5 text-danger"
+               *ngIf="formQuestion.get('answerAndRight').get('answerC').hasError('checkAnswerC') && formQuestion.get('answerAndRight').get('answerC').touched">
+            * Answer must include 4 responses!
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="numAnswer > 3" class="row mg-form">
+        <div class="col-md-1"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-9">
+              <textarea rows="1" class="form-control w-100" type="text" formControlName="answerD" aria-label="Recipient's username"
+                        aria-describedby="button-addon2"></textarea>
+            </div>
+            <div *ngIf="numAnswer === 4" class="col-md-2"><button style="margin-left: -30px" class="btn btn-outline-secondary" (click)='clickDelete()'>delete</button></div>
+          </div>
+          <div class="list-inline mt-2 ml-5 text-danger"
+               *ngIf="formQuestion.get('answerAndRight').get('answerD').hasError('checkAnswerD') && formQuestion.get('answerAndRight').get('answerD').touched">
             * Answer must include 4 responses!
           </div>
         </div>
@@ -62,8 +116,8 @@
           <textarea rows="1" class="form-control" type="text" formControlName="rightAnswer"></textarea>
           <!--error line-->
           <div class="list-inline mt-2 ml-5 text-danger"
-              *ngIf="formQuestion.hasError('checkRightAnswer', 'answerAndRight') && formQuestion.get('answerAndRight').touched">
-            * Right Answer must belongs to 1 of 4 answers!
+              *ngIf="(formQuestion.get('answerAndRight').hasError('checkRightAnswer') || formQuestion.get('answerAndRight').get('rightAnswer').hasError('required')) && formQuestion.get('answerAndRight').touched">
+            * Right Answer cannot be left blank and must belongs to 1 of the answers!
           </div>
         </div>
       </div>

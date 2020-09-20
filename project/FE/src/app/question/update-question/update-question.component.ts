@@ -37,6 +37,7 @@ export class UpdateQuestionComponent implements OnInit {
   listQuestion: Question[] = [];
   error = '';
   roles: string[];
+  numAnswer = 2;
   constructor(private questionService: QuestionService, private fb: FormBuilder,
               private testService: TestService, private activatedRoute: ActivatedRoute, private router: Router, private jwt: JwtService) {
     this.roles = jwt.getAuthorities();
@@ -77,12 +78,18 @@ export class UpdateQuestionComponent implements OnInit {
     this.questionService.findById(this.id).subscribe(
       next => {
         this.question = next;
+        if (this.question.answerC !== '' && this.question.answerD === ''){
+          this.numAnswer = 3;
+        }else if (this.question.answerC !== '' && this.question.answerD !== ''){
+          this.numAnswer = 4;
+        }
+        this.formQuestion.patchValue({answerAndRight: {numAnswer: this.numAnswer}})
         this.formQuestion.patchValue({questionId: this.question.questionId});
         this.formQuestion.patchValue({question: this.question.question});
-        this.formQuestion.patchValue({answerAndRight: {answer: (this.question.answerA + '\n' +
-              this.question.answerB + '\n' + this.question.answerC + '\n' + this.question.answerD)}});
-        this.formQuestion.patchValue({question: this.question.question});
-        this.formQuestion.patchValue({question: this.question.question});
+        this.formQuestion.patchValue({answerAndRight: {answerA: this.question.answerA}});
+        this.formQuestion.patchValue({answerAndRight: {answerB: this.question.answerB}});
+        this.formQuestion.patchValue({answerAndRight: {answerC: this.question.answerC}});
+        this.formQuestion.patchValue({answerAndRight: {answerD: this.question.answerD}});
         this.formQuestion.patchValue({answerAndRight: {rightAnswer: this.question.rightAnswer}});
         this.formQuestion.patchValue({subjectId: this.question.subjectId});
         let test: Test;
@@ -131,20 +138,19 @@ export class UpdateQuestionComponent implements OnInit {
       questionId: ['', [Validators.required]],
       question: ['', [Validators.required]],
       answerAndRight: this.fb.group({
-        answer: ['', [Validators.required, checkAnswer]],
+        answerA: ['', [Validators.required]],
+        answerB: ['', [Validators.required]],
+        answerC: [''],
+        answerD: [''],
         rightAnswer: ['', [Validators.required]],
+        numAnswer: [this.numAnswer]
       }, {validators: checkRightAnswer}),
       testCodeList: ['', [Validators.required]],
-      answerA: [''],
-      answerB: [''],
-      answerC: [''],
-      answerD: [''],
       subjectId: ['', [Validators.required]],
-      testCode: ['']
+      testCode: [''],
     });
   }
   addQuestion(): void{
-    this.splitAnswer();
     this.testCodeQuestion =  this.formQuestion.value.testCodeList.split(' ');
     for (let i = 0; i < this.testCodeQuestion.length - 1; i++){
       this.testQuestion = this.listAllTest.find(test => test.testCode === this.testCodeQuestion[i] );
@@ -156,10 +162,10 @@ export class UpdateQuestionComponent implements OnInit {
     this.question = new Question(
       this.formQuestion.value.questionId,
       this.formQuestion.value.question,
-      this.formQuestion.value.answerA,
-      this.formQuestion.value.answerB,
-      this.formQuestion.value.answerC,
-      this.formQuestion.value.answerD,
+      this.formQuestion.value.answerAndRight.answerA,
+      this.formQuestion.value.answerAndRight.answerB,
+      this.formQuestion.value.answerAndRight.answerC,
+      this.formQuestion.value.answerAndRight.answerD,
       this.formQuestion.value.answerAndRight.rightAnswer,
       this.testIdList,
       this.formQuestion.value.subjectId,
@@ -168,16 +174,7 @@ export class UpdateQuestionComponent implements OnInit {
       next => {},
       error => {},
       () => {
-        this.error = '';
-        this.questionService.getAllQuestion().subscribe(
-          next => {
-            this.listQuestion = next;
-          }, error => {
-            this.listQuestion = new Array();
-          }, () => {
-            this.router.navigateByUrl('/list/question');
-          }
-        );
+        this.router.navigateByUrl('/list/question');
       }
     );
   }
@@ -208,24 +205,42 @@ export class UpdateQuestionComponent implements OnInit {
   reset(): void{
     this.listTestCode = '';
   }
-}
-function checkAnswer(formControl: AbstractControl): any {
-  let arr = [];
-  arr = formControl.value.split('\n');
-  if (arr.length !== 4){
-    return {check: true};
-  }else {
-    if (arr[0] === '' || arr[1] === '' || arr[2] === '' || arr[3] === ''){
-      return {check: true};
+
+  clickOneMore(){
+    this.numAnswer++;
+    this.formQuestion.patchValue({answerAndRight: {numAnswer: this.numAnswer}});
+  }
+  clickDelete(){
+    this.numAnswer--;
+    this.formQuestion.patchValue({answerAndRight: {numAnswer: this.numAnswer}});
+    if (this.numAnswer === 3){
+      this.formQuestion.patchValue({answerAndRight: {answerD: ''}});
+    }
+    if (this.numAnswer === 2){
+      this.formQuestion.patchValue({answerAndRight: {answerC: ''}});
+      this.formQuestion.patchValue({answerAndRight: {answerD: ''}});
     }
   }
-  return null;
 }
+
 function checkRightAnswer(formControl: AbstractControl): any {
-  const arrCheck =  formControl.value.answer.split('\n');
-  // tslint:disable-next-line:prefer-for-of
-  for (let i = 0; i < arrCheck.length; i++ ) {
-    if (formControl.value.rightAnswer === arrCheck[i]){
+  console.log('a' + formControl.value.numAnswer);
+  if (formControl.value.numAnswer === 2){
+    if (formControl.value.rightAnswer === formControl.value.answerA ||
+      formControl.value.rightAnswer === formControl.value.answerB){
+      return null;
+    }
+  } else if (formControl.value.numAnswer === 3){
+    if (formControl.value.rightAnswer === formControl.value.answerA ||
+      formControl.value.rightAnswer === formControl.value.answerB ||
+      formControl.value.rightAnswer === formControl.value.answerC){
+      return null;
+    }
+  } else if (formControl.value.numAnswer === 4){
+    if (formControl.value.rightAnswer === formControl.value.answerA ||
+      formControl.value.rightAnswer === formControl.value.answerB ||
+      formControl.value.rightAnswer === formControl.value.answerC ||
+      formControl.value.rightAnswer === formControl.value.answerD){
       return null;
     }
   }
