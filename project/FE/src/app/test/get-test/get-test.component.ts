@@ -34,16 +34,22 @@ export class GetTestComponent implements OnInit {
     this.examForm = this.fb.group({
       answer: this.answerArr,
     });
+
   }
 
   ngOnInit(): void {
+
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+
       const id = Number(paramMap.get('id'));
       this.testService.findById(id).subscribe(
         (next) => {
           this.test = next;
         }, error => {
         }, () => {
+          if (this.test == null) {
+            this.router.navigateByUrl('');
+          }
           this.test.questions.forEach(item => {
             this.questionService.findById(item).subscribe(
               next => {
@@ -57,6 +63,8 @@ export class GetTestComponent implements OnInit {
     });
     this.createArrAnswer();
     this.startTimer();
+    this.checkHaveUser();
+
   }
 
   createArrAnswer() {
@@ -75,7 +83,6 @@ export class GetTestComponent implements OnInit {
     this.caculationMark();
     this.exam.answer = this.exam.answer.toString();
     this.exam.times = this.timeSet - this.time;
-    console.log(this.exam);
     this.examService.save(this.exam).subscribe(
       next => {
       }, error => {
@@ -110,5 +117,11 @@ export class GetTestComponent implements OnInit {
       }
     }
     this.exam.mark = this.mark;
+  }
+
+  checkHaveUser() {
+    if (this.jwt.getUser() == null) {
+      this.router.navigateByUrl('');
+    }
   }
 }
