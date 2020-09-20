@@ -52,6 +52,7 @@ ul {
 }
 
 #resultFinal div{
+  margin-left: 15px;
   padding: 10px;
   background: #ddd;
   width: 45%;
@@ -80,3 +81,8 @@ ul {
   margin-left:10px;
 }
 
+#exam{
+  border: 2px solid black;
+  clear: both;
+  padding: 10px;
+}

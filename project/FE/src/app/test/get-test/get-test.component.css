@@ -76,3 +76,11 @@ ul {
 #time{
   color: red;
 }
+
+#message{
+  background-color: blue;
+}
+
+#exam{
+  border: 2px solid black;
+}

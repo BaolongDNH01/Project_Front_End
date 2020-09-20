@@ -27,6 +27,9 @@ export class GetTestComponent implements OnInit {
   interval;
   mark = 0;
   myDate = new Date();
+  timeOutSubmit = 6;
+  timeInterval;
+  message = '';
 
   constructor(private fb: FormBuilder, private testService: TestService, private examService: ExamService,
               private questionService: QuestionService, private router: Router,
@@ -34,16 +37,22 @@ export class GetTestComponent implements OnInit {
     this.examForm = this.fb.group({
       answer: this.answerArr,
     });
+
   }
 
   ngOnInit(): void {
+
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+
       const id = Number(paramMap.get('id'));
       this.testService.findById(id).subscribe(
         (next) => {
           this.test = next;
         }, error => {
         }, () => {
+          if (this.test == null) {
+            this.router.navigateByUrl('');
+          }
           this.test.questions.forEach(item => {
             this.questionService.findById(item).subscribe(
               next => {
@@ -57,6 +66,8 @@ export class GetTestComponent implements OnInit {
     });
     this.createArrAnswer();
     this.startTimer();
+    this.checkHaveUser();
+
   }
 
   createArrAnswer() {
@@ -75,7 +86,6 @@ export class GetTestComponent implements OnInit {
     this.caculationMark();
     this.exam.answer = this.exam.answer.toString();
     this.exam.times = this.timeSet - this.time;
-    console.log(this.exam);
     this.examService.save(this.exam).subscribe(
       next => {
       }, error => {
@@ -110,5 +120,28 @@ export class GetTestComponent implements OnInit {
       }
     }
     this.exam.mark = this.mark;
+  }
+
+  checkHaveUser() {
+    if (this.jwt.getUser() == null) {
+      this.router.navigateByUrl('');
+    }
+  }
+
+  alertUserLeavePage() {
+    this.timeOutSubmit = 10;
+    this.timeInterval = setInterval(() => {
+      this.message = 'Please return to the test area ' + this.timeOutSubmit-- + ' seconds later will automatically submit';
+      if (this.timeOutSubmit < 0) {
+        this.message = '';
+        setTimeout(() => document.getElementById('submitExam').click(), 1000);
+        clearInterval(this.timeInterval);
+      }
+    }, 1000);
+  }
+
+  stopAlert() {
+    clearInterval(this.timeInterval);
+    this.message = '';
   }
 }
