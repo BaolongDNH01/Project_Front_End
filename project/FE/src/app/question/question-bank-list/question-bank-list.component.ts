@@ -18,6 +18,7 @@ export class QuestionBankListComponent implements OnInit {
   numberCount = 1;
   roles: string[];
   id: number;
+  curpage = 1;
   test: number[];
   subject = new Subject();
   subjectList: Subject[];
@@ -76,6 +77,7 @@ export class QuestionBankListComponent implements OnInit {
 
   find(subjectName: string) {
     this.questionShow = [];
+    this.subjectNameDr = subjectName;
    this.question.forEach(q => {
      if(q.subjectName === subjectName){
         this.questionShow.push(q)
