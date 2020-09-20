@@ -9,8 +9,8 @@
         <tr style="background-color: #DFF0D8">
           <td scope="col">Exam Id</td>
           <td scope="col">Test</td>
-          <td scope="col">Mark<span>(mark/10)</span></td>
-          <td scope="col">Day<span>(MM/dd/yy)</span></td>
+          <td scope="col">Point</td>
+          <td scope="col">Day</td>
         </tr>
         </thead>
         <tbody id="tbody-custom">
@@ -33,15 +33,14 @@
     </nav>
   </div>
   <div class="form-row mt-3 mb-3">
-    <div class="col-md-4 form-group font-weight-bold text-right">
-      <label>Total Mark:</label>
-      <label class="text-danger">{{sum}}</label>
+    <div class="col-md-6 form-group font-weight-bold text-right">
+      <label>Total Accumulated Points:</label>
+      <label class="text-danger">{{point}}</label>
     </div>
-    <div class="col-md-4 form-group font-weight-bold text-center">
-      <label>AVG:</label>
-      <label class="text-danger">{{avg}}</label>
+    <div class="col-md-3 form-group font-weight-bold text-center">
+
     </div>
-    <div class="col-md-4 form-group text-left">
+    <div class="col-md-3 form-group text-left">
       <a routerLink="" class="btn btn-info">Close</a>
     </div>
 
