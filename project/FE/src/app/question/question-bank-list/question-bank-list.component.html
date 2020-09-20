@@ -12,7 +12,8 @@
           </tr>
           </thead>
           <tbody class="bg-table ">
-          <tr *ngFor="let questionList of questionShow">
+          <ng-container *ngFor="let questionList of questionShow | paginate: {itemsPerPage: 5, currentPage: curpage}">
+            <tr>
             <th style="font-weight: normal">{{questionList.no}}</th>
             <td>{{questionList.questionId}}</td>
             <td class="text-left">{{questionList.question}}</td>
@@ -31,10 +32,11 @@
               <a [routerLink]="['/update-question/' + questionList.questionId]">Edit</a>
             </td>
           </tr>
+          </ng-container>
 
           </tbody>
         </table>
-
+<pagination-controls (pageChange)="curpage = $event"></pagination-controls>
 
           <div class="row ">
             <div class="col-xs-12 col-sm-6 col-md-3">

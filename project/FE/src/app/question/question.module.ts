@@ -14,21 +14,23 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {UpdateQuestionComponent} from './update-question/update-question.component';
 import {AddQuestionComponent} from './add-question/add-question.component';
 import {AddQuestionInExamComponent} from './add-question-in-exam/add-question-in-exam.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [QuestionBankListComponent, QuestionBankDeleteComponent, AddQuestionComponent, UpdateQuestionComponent, AddQuestionInExamComponent
     , QuestionListInTheExamComponent],
 
-  imports: [
-    CommonModule,
-    QuestionRoutingModule,
-    RouterModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    AutocompleteLibModule
-  ],
+    imports: [
+        CommonModule,
+        QuestionRoutingModule,
+        RouterModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        AutocompleteLibModule,
+        NgxPaginationModule
+    ],
   exports: [
     QuestionBankListComponent,
     QuestionListInTheExamComponent,
