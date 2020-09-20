@@ -27,6 +27,9 @@ export class GetTestComponent implements OnInit {
   interval;
   mark = 0;
   myDate = new Date();
+  timeOutSubmit = 6;
+  timeInterval;
+  message = '';
 
   constructor(private fb: FormBuilder, private testService: TestService, private examService: ExamService,
               private questionService: QuestionService, private router: Router,
@@ -123,5 +126,22 @@ export class GetTestComponent implements OnInit {
     if (this.jwt.getUser() == null) {
       this.router.navigateByUrl('');
     }
+  }
+
+  alertUserLeavePage() {
+    this.timeOutSubmit = 10;
+    this.timeInterval = setInterval(() => {
+      this.message = 'Please return to the test area ' + this.timeOutSubmit-- + ' seconds later will automatically submit';
+      if (this.timeOutSubmit < 0) {
+        this.message = '';
+        setTimeout(() => document.getElementById('submitExam').click(), 1000);
+        clearInterval(this.timeInterval);
+      }
+    }, 1000);
+  }
+
+  stopAlert() {
+    clearInterval(this.timeInterval);
+    this.message = '';
   }
 }

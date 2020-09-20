@@ -1,4 +1,9 @@
-<div class="get-test">
+<div id="exam" class="get-test p-5" (mouseleave)="alertUserLeavePage()" (mouseover)="stopAlert()">
+  <div class="row position-fixed bg-light" style="z-index: 1">
+    <div *ngIf="message !== ''" id="message" class="text-danger col-md-12 p-5">
+      {{message}}
+    </div>
+  </div>
   <div>
     <label>Remaining time <span id="time"><b>{{display}}</b></span></label>
   </div>
@@ -35,6 +40,7 @@
       </table>
     </div>
     <input class="btn btn-outline-info  rounded" type="submit" value="Submit" onclick="return confirm('You are finish test ?')">
+    <input id="submitExam" class="btn btn-outline-info  rounded" type="submit" value="Submit" hidden>
   </form>
   <div>
   </div>
