@@ -65,6 +65,10 @@ export class UserService {
     return this.httpClient.get(this.ACCESS_MEMBER_API, {responseType: 'text'});
   }
 
+  adminEditUser(user: User): Observable<HttpResponse<any>> {
+    return this.httpClient.patch<HttpResponse<any>>(this.API_URL + '/edit-user', user, {observe: 'response'});
+  }
+
   getTotalTime(user: User) {
     let exam: Exam;
     let totalTime = 0;

@@ -43,7 +43,6 @@ export class AuthLoginComponent implements OnInit, OnDestroy {
     private socialAuthService: SocialAuthService,
     private formatUsername: FormatUsernameService,
   ) {
-
   }
 
   ngOnInit(): void {

@@ -22,6 +22,7 @@ import {QuestionListInTheExamComponent} from './question/question-list-in-the-ex
 import {DefaultPageComponent} from './default-page/default-page.component';
 import {ListComponent} from './list/list.component';
 import {PickTestComponent} from './exam/pick-test/pick-test.component';
+import {EditUserByAdminComponent} from './user/edit-user-by-admin/edit-user-by-admin.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
       {path: 'test-list/:subjectName', component: PickTestComponent},
       { path: 'add-question', component: AddQuestionComponent },
       { path: 'update-question/:id', component: UpdateQuestionComponent },
+      {path: 'edit-user/:username', component: EditUserByAdminComponent },
       {path: 'list', component: ListComponent, children: [
           {path: 'user', component: ListUserComponent},
           {path: 'test', component: TestListComponent},
@@ -48,7 +50,7 @@ const routes: Routes = [
       { path: 'update-question/:id', component: UpdateQuestionComponent },
       {path: 'addTest', component: AddTestComponent},
       {path: 'testManage', component: TestListComponent},
-      {path: 'update-user/:id', component: UpdateUserComponent},
+      {path: 'update-user/', component: UpdateUserComponent},
       {path: 'history', component: TestHistoryComponent},
       {path: 'update-password/:id', component: UpdatePasswordComponent},
       {path: 'update-avatar/:id', component: UpdatePasswordComponent}

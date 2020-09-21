@@ -12,6 +12,7 @@ import { TestHistoryComponent } from './test-history/test-history.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {RouterModule} from '@angular/router';
 import {FirebaseService} from '../firebase.service';
+import { EditUserByAdminComponent } from './edit-user-by-admin/edit-user-by-admin.component';
 
 
 
@@ -23,6 +24,7 @@ import {FirebaseService} from '../firebase.service';
         UpdateUserComponent,
         UpdatePasswordComponent,
         TestHistoryComponent,
+        EditUserByAdminComponent,
     ],
   imports: [
     CommonModule,

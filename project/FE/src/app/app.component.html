@@ -46,40 +46,18 @@
               <span class="badge badge-pill badge-secondary float-right mt-1">092.2216.3113</span>
             </li>
           </ul>
-          <div class="card online-support-massage">
-            <div class="card-body">
-              <img
-                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png"
-                alt="mess">
-              MESSENGER</div>
-          </div>
+<!--          <div class="card online-support-massage">-->
+<!--            <div class="card-body">-->
+<!--              <img-->
+<!--                src="https://www.clipartmax.com/png/middle/217-2175673_facebook-messenger-logo-vector-facebook-messenger.png"-->
+<!--                alt="mess">-->
+<!--              MESSENGER</div>-->
+<!--          </div>-->
         </div>
       </div>
     </div>
 
     <div class="col-md-6 px-3 overflow-auto">
-      <ng-container [ngSwitch]="authority">
-        <ng-container *ngSwitchCase="'admin'">
-          <ul class="list-group list-group-horizontal d-flex justify-content-center mb-4">
-            <li class="list-group-item list-group-item-info">
-              <a routerLink="/list/user">Manager</a>
-            </li>
-            <li class="list-group-item">
-              <a [routerLink]="'list-question-bank'">List Question</a>
-            </li>
-            <li class="list-group-item">Admin Function 3</li>
-            <li class="list-group-item">Admin Function 4</li>
-          </ul>
-        </ng-container>
-        <ng-container *ngSwitchCase="'member'">
-          <ul class="list-group list-group-horizontal d-flex justify-content-center mb-4">
-            <li class="list-group-item">Member function 1</li>
-            <li class="list-group-item">Member function 2</li>
-            <li class="list-group-item">Member function 3</li>
-            <li class="list-group-item">Member function 4</li>
-          </ul>
-        </ng-container>
-      </ng-container>
       <router-outlet></router-outlet>
     </div>
     <div class="col-md-3 p-0 m-0 rounded">

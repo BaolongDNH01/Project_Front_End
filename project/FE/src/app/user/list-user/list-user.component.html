@@ -1,4 +1,4 @@
- <table class="table table-bordered text-center">
+ <table class="table table-bordered text-center mt-2">
     <thead class="thead">
     <tr class="bg-title-table">
       <th scope="col">No</th>
@@ -19,7 +19,7 @@
       <td>{{user.phoneNumber}}</td>
       <td>{{userService.getTotalPoint(user)}} / {{userService.getTotalTime(user)}}</td>
       <td>
-        <a href="#">
+        <a [routerLink]="'/edit-user/' + user.username">
           <i class="fa fa-pencil" aria-hidden="true"></i>
         </a>
       </td>
