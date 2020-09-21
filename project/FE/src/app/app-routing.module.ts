@@ -50,7 +50,7 @@ const routes: Routes = [
       { path: 'update-question/:id', component: UpdateQuestionComponent },
       {path: 'addTest', component: AddTestComponent},
       {path: 'testManage', component: TestListComponent},
-      {path: 'update-user/', component: UpdateUserComponent},
+      {path: 'update-user', component: UpdateUserComponent},
       {path: 'history', component: TestHistoryComponent},
       {path: 'update-password/:id', component: UpdatePasswordComponent},
       {path: 'update-avatar/:id', component: UpdatePasswordComponent}
