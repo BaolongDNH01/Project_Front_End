@@ -68,7 +68,7 @@ export class QuestionBankListComponent implements OnInit {
         return;
       }
       this.questionService.upload(event.target.files.item(0)).subscribe();
-      this.listQuestion();
+      this.router.navigateByUrl('/list/question');
     } else {
       alert('The file is not in the correct format!');
     }
