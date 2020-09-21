@@ -11,8 +11,8 @@ export class Question {
   subjectId;
   subjectName;
 
-
-  constructor(questionId: string, question: string, answerA: string, answerB: string, answerC: string, answerD: string, rightAnswer: string, testId: number[], subjectId) {
+  constructor(questionId: string, question: string, answerA: string, answerB: string, answerC: string, answerD: string,
+              rightAnswer: string, testId: number[], subjectId) {
     this.questionId = questionId;
     this.question = question;
     this.answerA = answerA;

@@ -6,7 +6,6 @@ import {JwtService} from '../../login/services/jwt.service';
 import {Subject} from '../subject';
 
 
-
 @Component({
   selector: 'app-question-bank-list',
   templateUrl: './question-bank-list.component.html',
@@ -23,6 +22,7 @@ export class QuestionBankListComponent implements OnInit {
   subject = new Subject();
   subjectList: Subject[];
   subjectNameDr = 'All Question';
+
   constructor(
     private questionService: QuestionService,
     private router: Router,
@@ -41,6 +41,10 @@ export class QuestionBankListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.listQuestion();
+  }
+
+  listQuestion() {
     this.questionService.getAllQuestion().subscribe(
       next => {
         this.question = next;
@@ -59,12 +63,12 @@ export class QuestionBankListComponent implements OnInit {
 
   selectFile(event): void {
     if (event.target.files.item(0).name.includes('.txt')) {
-      if (event.target.files.item(0).size == 0) {
+      if (event.target.files.item(0).size === 0) {
         alert('File Empty');
         return;
       }
       this.questionService.upload(event.target.files.item(0)).subscribe();
-      this.router.navigateByUrl('/list.question');
+      this.router.navigateByUrl('/list/question');
     } else {
       alert('The file is not in the correct format!');
     }
@@ -78,10 +82,10 @@ export class QuestionBankListComponent implements OnInit {
   find(subjectName: string) {
     this.questionShow = [];
     this.subjectNameDr = subjectName;
-   this.question.forEach(q => {
-     if(q.subjectName === subjectName){
-        this.questionShow.push(q)
-     }
-   })
+    this.question.forEach(q => {
+      if (q.subjectName === subjectName) {
+        this.questionShow.push(q);
+      }
+    });
   }
 }
