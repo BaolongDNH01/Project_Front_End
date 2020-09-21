@@ -50,8 +50,6 @@
               <textarea rows="1" class="form-control w-100" type="text" formControlName="answerA" aria-label="Recipient's username"
                         aria-describedby="button-addon2">></textarea>
             </div>
-            <div *ngIf="numAnswer < 4"  class="col-md-3 ">
-              <button style="margin-left: -30px" class="btn btn-outline-secondary" (click)='clickOneMore()'>one more</button></div>
           </div>
           <!--error line-->
           <div class="list-inline mt-2 ml-5 text-danger"
@@ -107,7 +105,12 @@
           </div>
         </div>
       </div>
-
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div *ngIf="numAnswer < 4" class="ml-3 mg-form">
+          <button class="btn btn-outline-secondary" (click)='clickOneMore()'>one more</button>
+        </div>
+      </div>
       <!--Right answer -->
       <div class="row mg-form">
         <div class="col-md-1"></div>

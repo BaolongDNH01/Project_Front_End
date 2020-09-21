@@ -1,4 +1,4 @@
-import {Component, OnInit, Pipe} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {ExamService} from '../exam_service/exam.service';
 import {QuestionService} from '../../question/question.service';
 import {Subject} from '../../question/subject';
@@ -82,5 +82,5 @@ export class TopPointComponent implements OnInit {
       }
     }
   }
-
 }
+
