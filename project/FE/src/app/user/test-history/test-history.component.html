@@ -11,14 +11,16 @@
           <td scope="col">Test</td>
           <td scope="col">Point</td>
           <td scope="col">Day</td>
+          <td></td>
         </tr>
         </thead>
         <tbody id="tbody-custom">
         <tr *ngFor="let exam of examList | paginate: {itemsPerPage: 5, currentPage: currentPage}; let i = index">
           <th scope="row">{{exam.examId}}</th>
-          <td><a [routerLink]="['/get-exam',exam.examId]">{{exam.test}}</a></td>
+          <td>{{exam.test}}</td>
           <td>{{exam.mark}}</td>
-          <td>{{exam.examDate}}</td>
+          <td>{{exam.examDate| date}} </td>
+          <td><a [routerLink]="['/get-exam',exam.examId]">View</a></td>
         </tr>
         </tbody>
       </table>
