@@ -53,18 +53,19 @@ export class TestListComponent implements OnInit {
   }
 
   selectFile(event): void {
-    if (event.target.files.item(0).name.includes('.txt')) {
+    // if (event.target.files.item(0).name.includes('.txt')) {
       this.testService.upload(event.target.files.item(0)).subscribe(
         mess => this.messageFormBe = mess,
         e => console.log(e),
         () => {
           this.getAllTest();
           this.showMessage('message', this.messageFormBe.message);
+          (document.getElementById('importFile') as HTMLButtonElement).value = null;
         }
       );
-    } else {
-      this.showMessage('message', 'can not import ' + event.target.files.item(0).name);
-    }
+    // } else {
+    //   this.showMessage('message', 'can not import ' + event.target.files.item(0).name);
+    // }
   }
 
   chooseToDelete(testId: number): void {

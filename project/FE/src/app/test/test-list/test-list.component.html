@@ -1,41 +1,42 @@
 <!--            bảng -->
-  <div class="col-md-12 mt-4 text-center">
-    <span id="message" *ngIf="message" class="d-flex align-items-center message-bg">{{message}}</span>
-  </div>
-  <div class="col-md-12 p-0 m-0">
-    <table class="table table-bordered table-responsive-md text-center">
-      <thead class="header">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">TestCode</th>
-        <th scope="col">NameTest</th>
-        <th scope="col">Subject</th>
-        <th scope="col">Grade</th>
-        <th scope="col">Delete</th>
-        <th scope="col">View</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let test of listTest | paginate: {itemsPerPage: 5, currentPage: p}; let i = index">
-        <th scope="col">{{test.testId}}</th>
-        <td>{{test.testCode}}</td>
-        <td>{{test.testName}}</td>
-        <td>{{test.subjectName}}</td>
-        <td>{{test.grade}}</td>
-        <td>
-          <label>
-            <input (click)="chooseToDelete(test.testId)" type="checkbox">
-          </label>
-        </td>
-        <td>
-          <a (click)="goView(test.testId)" class="text-decoration-none">View</a>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
 
-<!--phaan trang-->
+<div class="col-md-12 mt-4 text-center">
+  <span id="message" *ngIf="message" class="d-flex align-items-center message-bg">{{message}}</span>
+</div>
+<div class="col-md-12 p-0 m-0">
+  <table class="table table-bordered table-responsive-md text-center">
+    <thead class="header">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">TestCode</th>
+      <th scope="col">NameTest</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Grade</th>
+      <th scope="col">Delete</th>
+      <th scope="col">View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let test of listTest | paginate: {itemsPerPage: 5, currentPage: p}; let i = index">
+      <th scope="col">{{test.testId}}</th>
+      <td>{{test.testCode}}</td>
+      <td>{{test.testName}}</td>
+      <td>{{test.subjectName}}</td>
+      <td>{{test.grade}}</td>
+      <td>
+        <label>
+          <input (click)="chooseToDelete(test.testId)" type="checkbox">
+        </label>
+      </td>
+      <td>
+        <a (click)="goView(test.testId)" class="text-decoration-none">View</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--phan trang-->
 <div class="row">
   <div class="col-md-10 text-center">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
@@ -48,7 +49,8 @@
     <div class="row">
       <div class="col-md-3 col-sm-6">
         <button id="import" class="btn import">
-          <input type="file" accept=".txt" (change)="selectFile($event)" class="custom-file-input" for="import">
+          <input id="importFile" type="file" accept=".txt, .csv" (change)="selectFile($event)" class="custom-file-input"
+                 for="import">
         </button>
       </div>
       <div class="col-md-3">
@@ -61,7 +63,7 @@
           Delete
         </button>
       </div>
-      <div  class="col-md-2 col-sm-6">
+      <div class="col-md-2 col-sm-6">
         <a id="addNew" [routerLink]="['../../addTest']"
            class="btn btn-outline-info">
           Add new
@@ -86,8 +88,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" *ngIf="listTestDelete.length > 0">
         <div id="confirmBody">are you sure to delete #{{listTestDelete.toString()}}?</div>
+      </div>
+      <div class="modal-body" *ngIf="listTestDelete.length <= 0">
+        <div>no test selected!</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -96,3 +101,4 @@
     </div>
   </div>
 </div>
+
