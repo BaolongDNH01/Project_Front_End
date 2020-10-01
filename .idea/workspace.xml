@@ -3,6 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="375226ba-6cfe-46f9-b49b-cd8ffe8d5973" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-delete/question-bank-delete.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-delete/question-bank-delete.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-delete/question-bank-delete.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-delete/question-bank-delete.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-delete/question-bank-delete.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-delete/question-bank-delete.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-list/question-bank-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-list/question-bank-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-list/question-bank-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-list/question-bank-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-bank/question-bank-list/question-bank-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-bank-list/question-bank-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question-routing/question-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question-routing/question-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/FE/src/app/question/question.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/FE/src/app/question/question.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +34,6 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -39,8 +49,6 @@
       <workItem from="1599311221224" duration="23000" />
       <workItem from="1599325143055" duration="13000" />
       <workItem from="1599442036019" duration="126000" />
-      <workItem from="1600833305556" duration="2214000" />
-      <workItem from="1600922407379" duration="279000" />
     </task>
     <servers />
   </component>
