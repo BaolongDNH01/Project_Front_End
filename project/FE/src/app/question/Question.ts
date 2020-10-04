@@ -1,7 +1,7 @@
 export class Question {
   no: number;
   questionId: string;
-  question: string;
+  questionName: string;
   answerA: string;
   answerB: string;
   answerC: string;
@@ -14,7 +14,7 @@ export class Question {
   constructor(questionId: string, question: string, answerA: string, answerB: string, answerC: string, answerD: string,
               rightAnswer: string, testId: number[], subjectId) {
     this.questionId = questionId;
-    this.question = question;
+    this.questionName = question;
     this.answerA = answerA;
     this.answerB = answerB;
     this.answerC = answerC;

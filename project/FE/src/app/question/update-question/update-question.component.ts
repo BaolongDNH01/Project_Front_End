@@ -85,7 +85,7 @@ export class UpdateQuestionComponent implements OnInit {
         }
         this.formQuestion.patchValue({answerAndRight: {numAnswer: this.numAnswer}})
         this.formQuestion.patchValue({questionId: this.question.questionId});
-        this.formQuestion.patchValue({question: this.question.question});
+        this.formQuestion.patchValue({question: this.question.questionName});
         this.formQuestion.patchValue({answerAndRight: {answerA: this.question.answerA}});
         this.formQuestion.patchValue({answerAndRight: {answerB: this.question.answerB}});
         this.formQuestion.patchValue({answerAndRight: {answerC: this.question.answerC}});

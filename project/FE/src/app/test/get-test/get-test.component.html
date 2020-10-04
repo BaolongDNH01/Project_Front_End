@@ -13,7 +13,7 @@
         <tr class="question">
           <td>
             <!--question-->
-            <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b><br>
+            <b><span>Q {{i + 1}}: </span></b><b><span>{{question.questionName}}</span></b><br>
             <!--answer-->
             <input *ngIf="question.answerA!=null" id="Cau{{question.questionId}}A" name="{{question.questionId}}" type="radio"
                    value="{{question.answerA}}"

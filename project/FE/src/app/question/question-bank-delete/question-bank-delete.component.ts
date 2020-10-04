@@ -42,7 +42,7 @@ export class QuestionBankDeleteComponent implements OnInit {
           this.id = this.question.questionId;
           this.deleteQuestionForm.patchValue({
             questionId: this.question.questionId,
-            question: this.question.question,
+            question: this.question.questionName,
             answerA: this.question.answerA,
             answerB: this.question.answerB,
             answerC: this.question.answerC,
@@ -70,6 +70,6 @@ export class QuestionBankDeleteComponent implements OnInit {
       }
     );
     this.router.navigateByUrl('/list/question');
-    alert('Đã xóa câu hỏi : ' + this.question.question);
+    alert('Đã xóa câu hỏi : ' + this.question.questionName);
   }
 }

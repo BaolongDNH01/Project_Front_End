@@ -15,7 +15,7 @@
       <tr class="question">
         <td>
           <!--question-->
-          <b><span>Q {{i + 1}}: </span></b><b><span>{{question.question}}</span></b><br>
+          <b><span>Q {{i + 1}}: </span></b><b><span>{{question.questionName}}</span></b><br>
           <!--answer-->
           <div *ngIf="isCheckCorrectA(i); then thenBlock else elseBlock"></div>
           <ng-template #thenBlock><i id="I{{i+1}}A" class="fa fa-check "

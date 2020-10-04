@@ -1,7 +1,7 @@
 export class QuestionInExam {
   no: number;
   questionId: string;
-  question: string;
+  questionName: string;
   rightAnswer: string;
 
 
