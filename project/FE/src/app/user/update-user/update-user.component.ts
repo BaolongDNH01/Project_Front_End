@@ -31,7 +31,7 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.infoEditForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]],
+      fullName: ['', [Validators.required, Validators.maxLength(50)]],
       address: ['', [Validators.required, Validators.maxLength(100)]],
       phoneNumber: ['', [Validators.required, Validators.pattern('^0[1-9]{2}[0-9]{7}$')]],
       email: ['', [Validators.required, Validators.email]],
@@ -45,6 +45,7 @@ export class UpdateUserComponent implements OnInit {
     this.userService.getUserByUsername(this.username).subscribe(data => {
       this.user = data;
       this.infoEditForm.patchValue(this.user);
+      console.log(this.user);
     });
   }
 

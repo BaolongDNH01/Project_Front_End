@@ -13,7 +13,7 @@
                   [ngStyle]="{'background-color': getBackground(listUserPoint.indexOf(userPoint)),
       'color': getColor(listUserPoint.indexOf(userPoint))}">
                 <i class="fa fa-inbox pr-3" aria-hidden="true"></i>{{userPoint[0]}}
-                <span class="badge badge-pill badge-secondary float-right mt-1">{{userPoint[1]}}</span>
+                <span class="badge badge-pill badge-secondary float-right mt-1">{{userPoint[1] | number : '1.1-2'}}</span>
               </li>
             </ul>
           </div>

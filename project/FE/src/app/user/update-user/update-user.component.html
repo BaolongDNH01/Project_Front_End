@@ -7,11 +7,11 @@
         <div class="col-md-4 font-weight-bolder">Full name</div>
         <div class="col-md-7">
           <input class="form-control" type="text" formControlName="fullName" required>
-          <p *ngIf="infoEditForm.controls.name.errors?.required && infoEditForm.controls.name.touched"
+          <p *ngIf="infoEditForm.controls.fullName.errors?.required && infoEditForm.controls.fullName.touched"
              class="text-danger">
             Enter your information!
           </p>
-          <p *ngIf="infoEditForm.controls.name.errors?.maxlength && infoEditForm.controls.name.touched"
+          <p *ngIf="infoEditForm.controls.fullName.errors?.maxlength && infoEditForm.controls.fullName.touched"
              class="text-danger">
             Information has length invalid!
           </p>
