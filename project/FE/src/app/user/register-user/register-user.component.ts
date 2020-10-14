@@ -65,14 +65,15 @@ export class RegisterUserComponent implements OnInit {
           document.getElementById('message').innerText = 'Register Successfully';
           $('#modalSuccess').modal();
           setTimeout(() => {
-            this.router.navigateByUrl('');
-          }, 7000);
+            $('#modalSuccess').modal('toggle');
+            this.router.navigateByUrl('').then(window.location.reload);
+          }, 3000);
         }
       }, error => {
         console.log(error);
         document.getElementById('message').innerText = 'Your username already exist';
         $('#modalSuccess').modal();
-      },)
+      } )
       ;
     }
   }

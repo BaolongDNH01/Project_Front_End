@@ -8,7 +8,7 @@
     <div class="card">
       <p class="card-title text-center font-weight-bold">Avatar</p>
       <a class='btn btn-upload' [href]="downloadURL">
-        <img class="card-img" src="{{displayAvatar}}">
+        <img class="card-img" src="{{user.avatar}}">
       </a>
       <div class="card-body justify-content-lg-start">
         <input type="file" multiple (change)="detectFiles($event)">
@@ -48,7 +48,7 @@
       <button type="button" (click)="saveAvatar()" class="btn btn-outline-secondary">Update</button>
     </div>
     <div class="col-md-6 text-center d-inline-flex justify-content-center">
-      <a [routerLink]="['/update-user/:id']" class="btn btn-info">Edit</a>
+      <a [routerLink]="['/update-user']" class="btn btn-info">Edit</a>
       <a [routerLink]="['/history']" class="btn btn-info">History</a>
     </div>
     </div>
